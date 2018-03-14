@@ -1,3 +1,4 @@
+package User;
 import java.util.*;
 /**
  * Abstract class that allows a user to interact with CMC

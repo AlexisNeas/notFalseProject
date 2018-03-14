@@ -1,3 +1,4 @@
+package User;
 /**
  * Provides the admin with functionalities.
  * 

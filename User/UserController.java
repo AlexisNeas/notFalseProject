@@ -1,3 +1,4 @@
+package User;
 import java.util.*;
 /**
  * Class that controls the user interactions, and interacts with the database

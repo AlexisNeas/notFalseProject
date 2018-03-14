@@ -1,9 +1,7 @@
-package DatabaseController
 import dblibrary.project.csci230.*;
 import java.io.*;
 import java.util.*;
-import University.*;
-import User.*;
+
 
 /**
  * Manages the Database.
