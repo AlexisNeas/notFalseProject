@@ -1,5 +1,9 @@
 package User;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import DatabaseController.DBController;
+import University.University;
 /**
  * Class that controls the user interactions, and interacts with the database
  * 

@@ -1,5 +1,7 @@
 package User;
-import java.util.*;
+import java.util.ArrayList;
+
+import University.University;
 /**
  * Abstract class that allows a user to interact with CMC
  * 

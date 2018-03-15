@@ -1,12 +1,14 @@
 package User;
-import DatabaseController;
 /**
 
  * Provides the logic for the Account Controller class 
  * author: Jess Hansen
  * date: 2/27/2018
  */
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import DatabaseController.DBController;
 
 public class AccountController {
   
