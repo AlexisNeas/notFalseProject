@@ -3,7 +3,7 @@ package User;
  * Account entity
  * 
  * @author Zachary Vetter
- * @version 2/25/18
+ * @version 3/15/18
  */
 public abstract class Account {
   
@@ -42,7 +42,29 @@ public abstract class Account {
    */
   private char status;
   
+  
+  
   /**
+ * @param loggedIn
+ * @param firstName
+ * @param lastName
+ * @param username
+ * @param password
+ * @param accountType
+ * @param status
+ */
+public Account(boolean loggedIn, String firstName, String lastName, String username, String password, char accountType,
+		char status) {
+	this.loggedIn = loggedIn;
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.username = username;
+	this.password = password;
+	this.accountType = accountType;
+	this.status = status;
+}
+
+/**
    * Gets the account's first name
    * 
    * @return first name
