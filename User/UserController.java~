@@ -15,11 +15,33 @@ public class UserController {
    * Takes a list of search criteria inputed by user, and returns a list of Universities
    * in an order of relevance
    * 
-   * @param university the university criteria being searched for 
+   * @param criteria the search criteria 
    */
-  public String[][] searchSchool(University university) {
+  public String[][] searchSchool(String schoolName, String stateName, String location, String control,
+                           int lowNumberOfStudents, int upNumberOfStudents,  
+                           double lowPercentFemale, double upPercentFemale, 
+                           double lowSATVerbal, double upSATVerbal,
+                           double lowSATMath, double upSATMath,
+                           double lowExpenses, double upExpenses,
+                           double lowPercentEnrolled, double upPercentEnrolled,
+                           int lowAcademicsScale, int upAcademicsScale,
+                           int lowSocialScale, int upSocialScale,
+                           int lowQualityOfLifeScale, int upQualityOfLifeScale,
+                           String emphases1,String emphases2,String emphases3,
+                           String emphases4,String emphases5) {
 
-     return dbController.search(university);
+     return dbController.search( schoolName,  stateName,  location,  control,
+                            lowNumberOfStudents,  upNumberOfStudents,  
+                            lowPercentFemale,  upPercentFemale, 
+                            lowSATVerbal,  upSATVerbal,
+                            lowSATMath,  upSATMath,
+                            lowExpenses,  upExpenses,
+                            lowPercentEnrolled,  upPercentEnrolled,
+                            lowAcademicsScale,  upAcademicsScale,
+                            lowSocialScale,  upSocialScale,
+                            lowQualityOfLifeScale,  upQualityOfLifeScale,
+                            emphases1, emphases2, emphases3,
+                            emphases4, emphases5);
   }
   
   /**
@@ -63,9 +85,17 @@ public class UserController {
    * 
    * @param school the school that should be compared to
    */
-  public String[][] findSimilarSchools(University school)
+  public String[][] findSimilarSchools(String schoolName, String stateName, String location, String control,
+                                       int numberOfStudents,  double percentFemale, 
+                                       double SATVerbal, double SATMath, double expenses, double percentEnrolled, 
+                                       int academicsScale, int socialScale, int qualityOfLifeScale, String emphases1,
+                                       String emphases2, String emphases3, String emphases4, String emphases5)
   {
-   return dbController.findSimilarSchools(school); 
+   return dbController.findSimilarSchools( schoolName,  stateName,  location,  control,
+                                        numberOfStudents,   percentFemale, 
+                                        SATVerbal,  SATMath,  expenses,  percentEnrolled, 
+                                        academicsScale,  socialScale,  qualityOfLifeScale,  emphases1,
+                                        emphases2,  emphases3,  emphases4,  emphases5); 
   }
   
   /**
