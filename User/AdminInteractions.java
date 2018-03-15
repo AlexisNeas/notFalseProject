@@ -12,7 +12,6 @@ public class AdminInteractions {
    */
   private AdminController adminController;
   
-  
   /**
    * Edits a schools informations
    * 
@@ -43,11 +42,11 @@ public class AdminInteractions {
                          double perAccepted, double perEnroll, int academicScale, int social, int qualOfLife,
                          String studyArea1, String studyArea2, String studyArea3, String studyArea4, String studyArea5) {
     
-    
-    adminController.setSchoolInfo(name, state, loc, control, numStudents, perFem,
+    University school = new University(name, state, loc, control, numStudents, perFem,
                                   satVerbal, satMath, tuition, perFinancialAid, numApplicants,
                                   perAccepted, perEnroll, academicScale, social, qualOfLife,
                                   studyArea1, studyArea2, studyArea3, studyArea4, studyArea5);
+    adminController.setSchoolInfo(school);
   }
   
   /**
@@ -76,7 +75,7 @@ public class AdminInteractions {
    * @param type
    */
   public void addNewUser(String firstName, String lastName, String username, String password, char type){
-    adminController.addNewUser(firstName, lastName, username, password, type);
+	  adminController.addNewUser(firstName, lastName, username, password, type);
   }
   
   /**
