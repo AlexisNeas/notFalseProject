@@ -18,6 +18,8 @@ public class AccountController {
   /**
    * Checks if the user's credentials are valid and either
    * logs them in or supplies them with an error message to try again
+   * @param username is the username of the account trying to log on
+   * @param password of the user trying to log on
    * @return boolean value regarding if the sign in was successful or not
    */
   public boolean logOn(String username, String password){
@@ -34,7 +36,7 @@ public class AccountController {
         return true;
     } else {
        // System.out.print("User was not found.");
-      showError();
+      displayError();
       return false;
       
     }
@@ -44,8 +46,8 @@ public class AccountController {
  // public void displayOptions(){}
   
   /**
-   * If the user is logged on, the user is able to log off using this method 
-   * @return boolean value whether they successfully log off or not
+   * If the user is logged on, 
+   * the user is able to log off using this method 
    */
   public void logOff(){
     account.logOff();
@@ -67,21 +69,18 @@ public class AccountController {
   
   /**
    * Allows the user to edit their account by being able 
-   * to change their username, password, or status.
+   * to change their credentials
    * @param username of the account that wants to edit their account
-   * @param password of the account that wants to edit
-   * @param status of the account that wants to edit
-   * @return String of account details changed
    */
-  public void editAccount(String username, String password, String firstName, String lastName, char type, char status){
+  public void editAccount(String username){
     
     if(dbController.findUser(username))
     {
-      ArrayList<String> userInfo = dbController.getUserInfo(user);
+      ArrayList<String> userInfo = dbController.getUserInfo(username);
       dbController.setUserInfo(username,password,firstName,  lastName,  type,  status);
     }
     else{
-     showError(); 
+     displayError(); 
     }
     
     
@@ -90,12 +89,38 @@ public class AccountController {
   /**
    * Shows an error message if the user gave incorrect credentials
    */
-  public void showError(){
+  public void displayError(){
     
     System.out.println("Error, try again.");
     
   }
   
+  /**
+   * Checks if a specific user has an active accountor not
+   * displays an error message if their account is not active
+   */
+  public void getActive(String user) {
+	  
+  if(findUser(user))
+  {
+	  ArrayList<String> info = getUserInfo(user);
+	  //search through list of info for active/nonactive char
+	  //if statement confirming whether the user has an active or inactive account
+	  //displays an error if the account is inactive
+  }
+  else {
+	  //Account doesn't exist
+	  displayError();
+  }
+  }
+  
+  /**
+   * Displays an error message if the account that is trying to log on 
+   * is active or not.
+   */
+  public void deactivatedAccountError() {
+	  System.out.println("Sorry, your account is curently deactivated.");
+  }
   
   
 }
