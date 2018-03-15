@@ -6,8 +6,6 @@ package User;
  * date: 2/27/2018
  */
 
-
-
 public class AccountInteractions {
  
   private AccountController aController;
@@ -32,7 +30,11 @@ public class AccountInteractions {
   }
    
   
-  //public void displayError(){ }
+  //public void displayError(){}
+  
+  //public void deactivtedAccountError(){}
+  
+  
   
   /**
    * Sets the users account with their changed information

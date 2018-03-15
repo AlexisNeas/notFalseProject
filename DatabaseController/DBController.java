@@ -1,4 +1,4 @@
-package DatabaseController
+package DatabaseController;
 import dblibrary.project.csci230.*;
 import java.io.*;
 import java.util.*;
@@ -16,6 +16,7 @@ public class DBController
   // The Database library
   private UniversityDBLibrary univDBlib;
   private University university;
+  private UniversityController universityController;
   
   // Contructs the database library for use in the DB Controller
   public DBController(String username, String password)
@@ -252,6 +253,12 @@ public class DBController
   {
     String[][] array = univDBlib.user_getUsers();
     //System.out.println(array[0][0]);
+    ArrayList<User> userArray = new ArrayList<User>();
+    for(int i =0; i<array.length;i++)
+    {
+    User user = returnUser(array[i][0],array[i][1],array[i][2],array[i][3],array[i][4].charAt(0),array[i][5].charAt(0));
+    userArray.add(user);
+    }
     return array;
   }
   /**
@@ -270,7 +277,7 @@ public class DBController
    * @param socialScale Lower limit for Social Scale.
    * @param qualityOfLifeScale Lower limit for Quality Of Life Scale.
    */
-  public String[][] findSimilarSchools(String schoolName, String stateName, String location, String control,
+  public ArrayList<University> findSimilarSchools(String schoolName, String stateName, String location, String control,
                                        int numberOfStudents,  double percentFemale, 
                                        double SATVerbal, double SATMath, double expenses, double percentEnrolled, 
                                        int academicsScale, int socialScale, int qualityOfLifeScale, String emphases1,
@@ -301,6 +308,12 @@ public class DBController
     String[][] arrayEmphases = univDBlib.university_getNamesWithEmphases();
     String[][] schools = new String[5][len2];
     Double[][] temp = new Double[len1][2];
+    
+    
+    
+
+    
+    //University Search
     for(int a = 0; a<array.length; a++)
     {
       if(maxStudent < Integer.parseInt(array[a][4]))
@@ -445,6 +458,49 @@ public class DBController
         v+=1; 
       }
       
+      
+      //Emphases Search
+      for(int aa = 0; aa<array.length; aa++)
+      {
+       if(arrayEmphases[i][0].contentEquals(schoolName))
+       {
+        if(arrayEmphases[i][1].contentEquals(emphases1))
+        {
+         
+        }
+        else {
+         v+=1;
+        }
+        if(arrayEmphases[i][2].contentEquals(emphases2))
+        {
+         
+        }
+        else {
+         v+=1;
+        }
+        if(arrayEmphases[i][3].contentEquals(emphases3))
+        {
+         
+        }
+        else {
+         v+=1;
+        }
+        if(arrayEmphases[i][4].contentEquals(emphases4))
+        {
+         
+        }
+        else {
+         v+=1;
+        }
+        if(arrayEmphases[i][5].contentEquals(emphases5))
+        {
+         
+        }
+        else {
+         v+=1;
+        }
+       }
+      }
       double studentVector = Math.abs(numberOfStudents - Double.parseDouble(array[i][4])) / Math.abs(maxStudent - minStudent);
       double femaleVector = Math.abs(percentFemale - Double.parseDouble(array[i][5])) /  Math.abs(maxFemale - minFemale);
       double SATVerbalVector = Math.abs(SATVerbal - Double.parseDouble(array[i][6])) /  Math.abs(maxSATVerbal - minSATVerbal);
@@ -463,7 +519,7 @@ public class DBController
       //Then add to the schools array to return the top 5 schools.
       v = 0;
     }
-    for(int q = 0; q < temp.length; q++)
+    for(int q = 0; q < temp.length; q++)//FIX SORT?
     {
       if(temp[q][1] > temp[q+1][1])
       {
@@ -475,24 +531,93 @@ public class DBController
         temp[q+1][1] = tempV;
       }
     }
+    String emp1,emp2,emp3,emp4,emp5;
+    ArrayList<University> universityArray = new ArrayList<University>();
     for(int z = 0; z<schools.length;z++)
     {
-      for( int bb = 0; bb<schools[z].length; bb++)
-      {
-        int spot = temp[z][0].intValue();
-        schools[z][bb] = array[spot][bb];
-//        University university = makeUniversity(array[i][0],array[i][1],array[i][2],  array[i][3],  array[i][4],
-//                                           
-//                                           array[i][5] , array[i][6] ,array[i][7] , array[i][8] , array[i][9] ,
-//                                           
-//                                           array[i][10] , array[i][11] , array[i][12] , array[i][13] , array[i][14] ,
-//                                           
-//                                            array[i][15], String studyArea1,String studyArea2,String studyArea3,String studyArea4, 
-//                                           
-//                                           String studyArea5)
-      }
+     
+     int spot = temp[z][0].intValue();
+     ArrayList<String> emphasesArrayList = universityEmphases(array[spot][0]);
+     if(emphasesArrayList.size() == 5)
+     {
+      emp1 = emphasesArrayList.get(0);
+      emp2 = emphasesArrayList.get(1);
+      emp3 = emphasesArrayList.get(2);
+      emp4 = emphasesArrayList.get(3);
+      emp5 = emphasesArrayList.get(4);
+      
+     }
+     else if(emphasesArrayList.size() == 4)
+     {
+      emp1 = emphasesArrayList.get(0);
+      emp2 = emphasesArrayList.get(1);
+      emp3 = emphasesArrayList.get(2);
+      emp4 = emphasesArrayList.get(3);
+      emp5 = "";
+      
+     }
+     else if(emphasesArrayList.size() == 3)
+     {
+      emp1 = emphasesArrayList.get(0);
+      emp2 = emphasesArrayList.get(1);
+      emp3 = emphasesArrayList.get(2);
+      emp4 = "";
+      emp5 = "";
+      
+     }
+     else if(emphasesArrayList.size() == 2)
+     {
+      emp1 = emphasesArrayList.get(0);
+      emp2 = emphasesArrayList.get(1);
+      emp3 = "";
+      emp4 = "";
+      emp5 = "";
+      
+     }
+     else if(emphasesArrayList.size() == 1)
+     {
+      emp1 = emphasesArrayList.get(0);
+      emp2 = "";
+      emp3 = "";
+      emp4 = "";
+      emp5 = "";
+      
+     }
+     else {
+      
+      emp1 = "";
+      emp2 = "";
+      emp3 = "";
+      emp4 = "";
+      emp5 = "";
+     }
+     
+     
+
+     
+     
+     
+     
+     University newUniversity = returnUniversity(array[spot][0], //schoolName
+                                                 array[spot][1], //State
+                                                 array[spot][2],//location
+                                                 array[spot][3],//control
+                                                 Integer.parseInt(array[spot][4]),// numStudents
+                                                 Double.parseDouble(array[spot][5]),//%Female
+                                                 Double.parseDouble(array[spot][6])//// SATVerbal
+                                                ,Double.parseDouble(array[spot][7]),//SATMath
+                                                 Double.parseDouble(array[spot][8]),//Expenses
+                                                 Double.parseDouble(array[spot][9]),// percentFinancialAid
+                                                 Integer.parseInt(array[spot][10]),// numberofApps
+                                                 Integer.parseInt(array[spot][11])// percent admitted
+                                                ,Integer.parseInt(array[spot][12]), //percentEnrolled
+                                                 Integer.parseInt(array[spot][13]), //academicsScale
+                                                 Integer.parseInt(array[spot][14]), // social scale
+                                                 Integer.parseInt(array[spot][15]), //qualoflife
+                                                 emp1,emp2,emp3,emp4,emp5);
+     universityArray.add(newUniversity);
     }
-    return schools;
+    return universityArray;
   }
   /**
    * Removes a school from a users profile.
@@ -712,6 +837,64 @@ public class DBController
     }
     return searchArray;
   }
+  /**
+   * Reads a schools information into a University Object.
+   * 
+   * 
+   * @param schoolName Name of the school to search for.
+   * @param stateName Name of the state for schools.
+   * @param location Location area of a school.
+   * @param control Private State or City control.
+   * @param numberOfStudents Lower limit for student population.
+   * @param percentFemale Lower limit for Percent Female.
+   * @param SATVerbal Lower limit for SATVerbal.
+   * @param expenses Lower limit for Expenses.
+   * @param percentEnrolled Lower limit for Percent Enrolled.
+   * @param academicsScale Lower limit for Academics Scale.
+   * @param socialScale Lower limit for Social Scale.
+   * @param qualityOfLifeScale Lower limit for Quality Of Life Scale.
+   * 
+   * 
+   * @return university A university.
+   */
+  public University returnUniversity(String schoolName,String state,String location, String control, int numStudents,
+
+                                          double percentFemale, double satVerbal,double satMath, double expenses, double percentRecFinAid,
+
+                                          int numApplicants, double percentAccepted, double percentEnroll, int academicScale, int social,
+
+                                          int qualOfLife, String studyArea1,String studyArea2,String studyArea3,String studyArea4, 
+
+                                          String studyArea5)
+  {
+   University university = universityController.makeUniversity( schoolName, state, location,  control,  numStudents,
+
+                                           percentFemale,  satVerbal, satMath,  expenses,  percentRecFinAid,
+
+                                           numApplicants,  percentAccepted,  percentEnroll,  academicScale,  social,
+
+                                           qualOfLife,  studyArea1, studyArea2, studyArea3, studyArea4, 
+
+                                           studyArea5);
+  return university;
+  }
+  
+  
+  /**
+   * Makes a user.
+   * 
+   * 
+   * 
+   * 
+   * 
+   */
+  public User returnUser(String firstName, String lastName, String username, String password, char accountType, char status)
+  {
+ User user = new User(false , firstName, lastName, username, password, accountType, status);  
+  return user;
+  }
+  
+  
   
   public static void main(String[] args)
   {

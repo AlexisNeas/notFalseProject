@@ -25,6 +25,15 @@ public class AdminController {
   private AccountController accountController;
   
   /**
+ * Constructor
+ */
+public AdminController() {
+	super();
+	this.dbController = new DBController();
+	this.accountController = new AccountController();
+}
+
+/**
    * Gets all the users in the system
    * 
    * @return a list containing all the users
