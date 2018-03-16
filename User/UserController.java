@@ -2,7 +2,7 @@ package User;
 import java.util.*;
 import DatabaseController.*;
 import University.*;
-  
+
 /**
  * Class that controls the user interactions, and interacts with the database
  * 
@@ -13,6 +13,7 @@ import University.*;
 public class UserController {
  private DBController dbController;
  private User user;
+ private University university;
  private AccountController accountController;
  
   /**

@@ -77,7 +77,7 @@ public class DBController
     return list;
   }
   /**
-   * Gets a list of all the schools in the Database.
+   * Gets a list of all the school names in the Database.
    * 
    * @return the schools.
    * 
@@ -313,8 +313,8 @@ public class DBController
       if(array[i][0].equals(username))
       {
         String password= array[i][3];
-        String firstName= "";
-        String lastName = "";//FIX THIS
+        String firstName= array[i][0];
+        String lastName = array[i][1];
         char type = 'u';
         char status = 'd';
         setUserInfo(username, password, firstName, lastName, type, status);
@@ -1040,7 +1040,7 @@ public class DBController
    */
   public User returnUser(String firstName, String lastName, String username, String password, char accountType, char status)
   {
- User user = new User(false , firstName, lastName, username, password, accountType, status);  
+ User user = new User(firstName, lastName, username, password, accountType, status);  
   return user;
   }
   

@@ -15,14 +15,15 @@ public class User extends Account {
   /**
    * Basic constructor method for the User class
    */
-  public User(boolean loggedIn, String firstName, String lastName, String username, String password, char accountType, char status){
-    this.loggedIn = loggedIn;
-    this.firstName =firstName;
-    this.lastName = lastName;
-    this.username = username; 
-    this.password = password;
-    this.accountType = accountType;
-    this.status = status;
+  public User(String firstName, String lastName, String username, String password, char accountType, char status){
+//    //this.loggedIn = loggedIn;
+//    this.firstName =firstName;
+//    this.lastName = lastName;
+//    this.username = username; 
+//    this.password = password;
+//    this.accountType = accountType;
+//    this.status = status;
+    super(firstName,lastName,username,password,accountType,status);
   }
  
   /**

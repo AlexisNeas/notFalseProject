@@ -49,7 +49,7 @@ public class AdminController {
    * 
    * @return a list of the universities
    */
-  public List viewUniversities(){
+  public ArrayList<University> viewUniversities(){
     return dbController.getListOfSchools();
   }
   
@@ -58,7 +58,7 @@ public class AdminController {
    * 
    * @param name the name of the school to get info for
    */
-  public ArrayList<String> getSchoolInformation(String name){
+  public University getSchoolInformation(String name){
     return dbController.getSchoolInfo(name);
   }
   
@@ -119,7 +119,7 @@ public class AdminController {
    * @param username the unique username of the user
    * @return the user
    */
-  public ArrayList<String> getUserInfo(String username)
+  public User getUserInfo(String username)
   {
     return dbController.getUserInfo(username);
   }
