@@ -1,9 +1,10 @@
 package DatabaseController;
+import java.util.ArrayList;
+
+import University.University;
+import University.UniversityController;
+import User.User;
 import dblibrary.project.csci230.*;
-import java.io.*;
-import java.util.*;
-import University.*;
-import User.*;
 
 /**
  * Manages the Database.
@@ -15,7 +16,7 @@ public class DBController
 {
   // The Database library
   private UniversityDBLibrary univDBlib;
-  private University university;
+  //private University university;
   private UniversityController universityController;
   
   // Contructs the database library for use in the DB Controller
@@ -44,7 +45,7 @@ public class DBController
     ArrayList<String> arrayList = new ArrayList<String>();
       for(int i = 0; i < arrayEmphases.length ;i++)
     {
-      if(arrayEmphases[0].equals(schoolName))
+      if(arrayEmphases[i][0].equals(schoolName))
       {
         arrayList.add(arrayEmphases[i][1]);
       }
@@ -172,7 +173,7 @@ public class DBController
     ArrayList<String> list = new ArrayList<String>();
     for(int i = 0; i<array.length;i++)
     {
-      if(array[i].equals(schoolName))
+      if(array[i][0].equals(schoolName))
       {
         for(int j = 0; j<array[i].length;j++)
         {
@@ -207,7 +208,7 @@ public class DBController
     int len = array.length;
     for(int i = 0; i<len ;i++)
     {
-      if(array[i].equals(username))
+      if(array[i][0].equals(username))
       {
         bool = true;
         break;
@@ -513,7 +514,7 @@ public class DBController
       double QualityOfLifeScaleVector = Math.abs(qualityOfLifeScale - Double.parseDouble(array[i][12])) /  Math.abs(maxQualityOfLifeScale - minQualityOfLifeScale);
       double total = v + studentVector + femaleVector + SATVerbalVector + SATMathVector + ExpensesVector + PercentEnrolledVector + AcademicsScaleVector + SocialScaleVector + QualityOfLifeScaleVector;
       temp[i][0] = i + 0.0;//Adds position of the school in the list.
-      temp[i][1] = v;//The 'score' the received based on the algorithm.
+      temp[i][1] = v + total;//The 'score' the received based on the algorithm.
       
       
       //Need to sort.
@@ -632,7 +633,7 @@ public class DBController
     boolean bool = false;
     for(int i = 0;i<array.length;i++)
     {
-      if(array[i].equals(schoolName))
+      if(array[i][0].equals(schoolName))
       {
         bool = true; 
       }
@@ -909,8 +910,8 @@ public class DBController
           System.out.println(array[i][j]);
         }
       }
-      String message = "";
-      String[][] arrayEmphases = databasecontroller.getUnivDBlib().university_getNamesWithEmphases();
+      //String message = "";
+      //String[][] arrayEmphases = databasecontroller.getUnivDBlib().university_getNamesWithEmphases();
 //      for(int k = 0; k < arrayEmphases.length; k++)
 //      {
 //        for(int l = 0; l<arrayEmphases[k].length; l++)

@@ -1,4 +1,7 @@
 package User;
+
+import University.University;
+
 /**
  * Provides the admin with functionalities.
  * 
