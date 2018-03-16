@@ -82,7 +82,7 @@ public class AdminInteractions {
    * @param type
    */
   public void addNewUser(String firstName, String lastName, String username, String password, char type){
-    User user = new User(firstName, lastName, username, password, type);
+    User user = new User(firstName, lastName, username, password, type, 'Y');
     adminController.addNewUser(user);
   }
   
