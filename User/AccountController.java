@@ -1,5 +1,5 @@
 package User;
-import DatabaseController;
+import DatabaseController.*;
 /**
 
  * Provides the logic for the Account Controller class 
@@ -22,24 +22,8 @@ public class AccountController {
    * @param password of the user trying to log on
    * @return boolean value regarding if the sign in was successful or not
    */
-  public boolean logOn(String username, String password){
-
-    Scanner keyboard = new Scanner(System.in);
-    
-    System.out.println("Enter username here: ");
-    String inpUser = keyboard.nextLine();
-    System.out.println("Enter password here: ");
-    String inpPass = keyboard.nextLine(); 
-   
-    if (dbController.findUser(inpUser)) {
-        //System.out.print("User found and logged in.");
-        return true;
-    } else {
-       // System.out.print("User was not found.");
-      displayError();
-      return false;
-      
-    }
+  public void logOn(String username, String password){
+     account.logOn();
     
   }
   
@@ -60,67 +44,34 @@ public class AccountController {
    * @return String of the user's password
    */
   public ArrayList<String> getPassword(){
-    Scanner in = new Scanner(System.in);
-    System.out.println("Enter your username: ");
-    String user = in.nextLine();
+  //  Scanner in = new Scanner(System.in);
+   // System.out.println("Enter your username: ");
+    //String user = in.nextLine();
     ArrayList<String> userInfo = dbController.getUserInfo(user);
     return userInfo;
   }
   
-  /**
-   * Allows the user to edit their account by being able 
-   * to change their credentials
-   * @param username of the account that wants to edit their account
-   */
-  public void editAccount(String username){
-    
-    if(dbController.findUser(username))
-    {
-      ArrayList<String> userInfo = dbController.getUserInfo(username);
-      dbController.setUserInfo(username,password,firstName,  lastName,  type,  status);
-    }
-    else{
-     displayError(); 
-    }
-    
-    
-  }
-  
-  /**
-   * Shows an error message if the user gave incorrect credentials
-   */
-  public void displayError(){
-    
-    System.out.println("Error, try again.");
-    
-  }
+
   
   /**
    * Checks if a specific user has an active accountor not
    * displays an error message if their account is not active
    */
-  public void getActive(String user) {
-	  
-  if(findUser(user))
-  {
-	  ArrayList<String> info = getUserInfo(user);
-	  //search through list of info for active/nonactive char
-	  //if statement confirming whether the user has an active or inactive account
-	  //displays an error if the account is inactive
-  }
+  public boolean getActive() {
+   char ch = account.getStatus();
+   if(ch == 'Y'){
+     return true;
+   }
+   //search through list of info for active/nonactive char
+   //if statement confirming whether the user has an active or inactive account
+   //displays an error if the account is inactive
   else {
-	  //Account doesn't exist
-	  displayError();
+    return false;
+   //Account doesn't exist
+     
   }
   }
   
-  /**
-   * Displays an error message if the account that is trying to log on 
-   * is active or not.
-   */
-  public void deactivatedAccountError() {
-	  System.out.println("Sorry, your account is curently deactivated.");
-  }
   
   
 }
