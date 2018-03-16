@@ -158,7 +158,7 @@ public class AdminInteractions {
   /**
    * Gets all the universities and lists them off
    */
-  public ArrayList<University> viewUniversities(){
+  public ArrayList<String> viewUniversities(){
     return adminController.viewUniversities();
   }
   

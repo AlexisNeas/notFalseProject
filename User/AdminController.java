@@ -49,7 +49,7 @@ public class AdminController {
    * 
    * @return a list of the universities
    */
-  public ArrayList<University> viewUniversities(){
+  public ArrayList<String> viewUniversities(){
     return dbController.getListOfSchools();
   }
   

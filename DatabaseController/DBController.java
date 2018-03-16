@@ -102,8 +102,13 @@ public class DBController
    * @param type the type of user.
    * 
    */
-  public void addNewUser(String username, String password, String firstName, String lastName, char type)
+  public void addNewUser(User user)
   {
+	String username = user.getUsername();
+	String firstName = user.getFirstName();
+	String lastName = user.getLastName();
+	String password = user.getPassword();
+	char type = user.getAccountType();
     boolean bool = findUser(username);
     if(!bool)
     {
@@ -116,34 +121,26 @@ public class DBController
    * @param University a University object containing the information for the school.
    * 
    */
-  public void addNewSchool(String schoolName, String state, String location, 
-                           String control, int numberOfStudents, double percentFemales, 
-                           double SATVerbal, double SATMath, double expenses, double percentFinancialAid, 
-                           int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
-                           int academicsScale, int socialScale, int qualityOfLifeScale)
+  public void addNewSchool(University univ)
   {
-    univDBlib.university_addUniversity( schoolName,  state,  location, 
-                                       control,  numberOfStudents,  percentFemales, 
-                                       SATVerbal,  SATMath,  expenses,  percentFinancialAid, 
-                                       numberOfApplicants,  percentAdmitted,  percentEnrolled, 
-                                       academicsScale,  socialScale,  qualityOfLifeScale); 
+    univDBlib.university_addUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), 
+            univ.getControl(),  univ.getNumStudents(),  univ.getPercentFemale(), 
+            univ.getSatVerbal(),  univ.getSatMath(),  univ.getTuition(),  univ.getPercentRecFinAid(),
+            univ.getNumApplicants(),  univ.getPercentAccepted(), 
+            univ.getPercentEnroll(),  univ.getAcademicScale(),  univ.getSocial(),  univ.getQualOfLife());
   }
   /**
    * Sets a current Schools information.
    * @param University a University object containing the information for the school.
    * 
    */
-  public void setSchoolInformation(String schoolName, String state, String location, 
-                                   String control, int numberOfStudents, double percentFemales, 
-                                   double SATVerbal, double SATMath, double expenses, double percentFinancialAid, 
-                                   int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
-                                   int academicsScale, int socialScale, int qualityOfLifeScale)
+  public void setSchoolInformation(University univ)
   {
-    univDBlib.university_editUniversity(schoolName, state, location, 
-                                        control,  numberOfStudents,  percentFemales, 
-                                        SATVerbal,  SATMath,  expenses,  percentFinancialAid,
-                                        numberOfApplicants,  percentAdmitted, 
-                                        percentEnrolled,  academicsScale,  socialScale,  qualityOfLifeScale);
+    univDBlib.university_editUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), 
+                                        univ.getControl(),  univ.getNumStudents(),  univ.getPercentFemale(), 
+                                        univ.getSatVerbal(),  univ.getSatMath(),  univ.getTuition(),  univ.getPercentRecFinAid(),
+                                        univ.getNumApplicants(),  univ.getPercentAccepted(), 
+                                        univ.getPercentEnroll(),  univ.getAcademicScale(),  univ.getSocial(),  univ.getQualOfLife());
   }
   
   /**
@@ -167,10 +164,10 @@ public class DBController
    * @param schoolName the school name.
    * @return the school
    */
-  public ArrayList<University> getSchoolInfo(String schoolName)
+  public University getSchoolInfo(String schoolName)
   {
     String[][] array = univDBlib. university_getUniversities();
-    ArrayList<University> list = new ArrayList<University>();
+    University  university = null;
     String emp1,emp2,emp3,emp4,emp5;
     for(int i = 0; i<array.length;i++)
     {
@@ -234,7 +231,7 @@ public class DBController
             }
         	
           
-          University university = returnUniversity(array[i][0], //schoolName
+          university = returnUniversity(array[i][0], //schoolName
                   array[i][1], //State
                   array[i][2],//location
                   array[i][3],//control
@@ -251,11 +248,11 @@ public class DBController
                   Integer.parseInt(array[i][14]), // social scale
                   Integer.parseInt(array[i][15]), //qualoflife
                   emp1,emp2,emp3,emp4,emp5);
-          list.add(university);
+          
         }
       }
     }
-    return list;
+    return university;
   }
   /**
    * Saves a school to a users profile.
