@@ -60,21 +60,18 @@ public class DBController
    * @return
    * 
    */
-  public ArrayList<String> getUserInfo(String username)
+  public User getUserInfo(String username)
   {
     String[][] array = univDBlib.user_getUsers();
-    ArrayList<String> list = new ArrayList<String>();
+    User user = null;
     for(int i = 0; i<array.length ;i++)
     {
       if(array[i][0].equals(username))
       {
-        for( int j = 0; j<array[i].length; j++)
-        {
-          list.add(array[i][j]);
-        }
+        user = returnUser(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4].charAt(0), array[i][5].charAt(0));
       }
     }
-    return list;
+    return user;
   }
   /**
    * Gets a list of all the school names in the Database.
@@ -104,11 +101,11 @@ public class DBController
    */
   public void addNewUser(User user)
   {
-	String username = user.getUsername();
-	String firstName = user.getFirstName();
-	String lastName = user.getLastName();
-	String password = user.getPassword();
-	char type = user.getAccountType();
+ String username = user.getUsername();
+ String firstName = user.getFirstName();
+ String lastName = user.getLastName();
+ String password = user.getPassword();
+ char type = user.getAccountType();
     boolean bool = findUser(username);
     if(!bool)
     {
@@ -175,7 +172,7 @@ public class DBController
       {
         for(int j = 0; j<array[i].length;j++)
         {
-        	ArrayList<String> emphasesArrayList = universityEmphases(array[i][0]);
+         ArrayList<String> emphasesArrayList = universityEmphases(array[i][0]);
             if(emphasesArrayList.size() == 5)
             {
              emp1 = emphasesArrayList.get(0);
@@ -229,7 +226,7 @@ public class DBController
              emp4 = "";
              emp5 = "";
             }
-        	
+         
           
           university = returnUniversity(array[i][0], //schoolName
                   array[i][1], //State
@@ -808,7 +805,7 @@ public class DBController
                            String emphases4,String emphases5)
   {
     //University Info
-	ArrayList<University> univArray = new ArrayList<University>();
+ ArrayList<University> univArray = new ArrayList<University>();
     String[][] array = univDBlib.university_getUniversities();
     int len1 = array.length;
 
@@ -957,8 +954,8 @@ public class DBController
              emp4 = "";
              emp5 = "";
             }
-        	
-        	
+         
+         
           University univ = returnUniversity(array[i][0], //schoolName
                                                  array[i][1], //State
                                                  array[i][2],//location

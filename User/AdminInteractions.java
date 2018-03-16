@@ -61,14 +61,14 @@ public class AdminInteractions {
    * 
    * @param schoolName the name of school to get info for
    */
-  public University schoolInfo(String schoolName) {
+  public void schoolInfo(String schoolName) {
     adminController.getSchoolInformation(schoolName);
   }
   
   /**
    * Gets all the users in the system
    */
-  public ArrayList<User> getListOfUsers(){
+  public void getListOfUsers(){
     adminController.getListOfUsers();
   }
   

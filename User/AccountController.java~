@@ -1,9 +1,8 @@
 package User;
 import DatabaseController.*;
-<<<<<<< HEAD
-=======
 
->>>>>>> 9b74cf654fcaf0f701d74290046deeba6e2c962f
+
+
 /**
 
  * Provides the logic for the Account Controller class 
@@ -64,7 +63,7 @@ public class AccountController {
    * Checks if a specific user has an active accountor not
    * displays an error message if their account is not active
    */
-<<<<<<< HEAD
+
   public boolean getActive() {
    char ch = account.getStatus();
    if(ch == 'Y'){
@@ -80,30 +79,7 @@ public class AccountController {
   }
   }
   
-=======
-  public void getActive(String user) {
-   
-  if(findUser(user))
-  {
-   ArrayList<String> info = getUserInfo(user);
-   //search through list of info for active/nonactive char
-   //if statement confirming whether the user has an active or inactive account
-   //displays an error if the account is inactive
-  }
-  else {
-   //Account doesn't exist
-   displayError();
-  }
-  }
-  
-  /**
-   * Displays an error message if the account that is trying to log on 
-   * is active or not.
-   */
-  public void deactivatedAccountError() {
-   System.out.println("Sorry, your account is curently deactivated.");
-  }
->>>>>>> 9b74cf654fcaf0f701d74290046deeba6e2c962f
+
   
   
 }
