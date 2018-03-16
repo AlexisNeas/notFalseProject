@@ -1,10 +1,19 @@
 package User;
+<<<<<<< HEAD
+import DatabaseController.*;
 import java.util.*;
+=======
+import java.util.ArrayList;
+import java.util.List;
+
+import DatabaseController.DBController;
+import University.University;
+>>>>>>> 9b74cf654fcaf0f701d74290046deeba6e2c962f
 /**
  * Class that controls the user interactions, and interacts with the database
  * 
  * @author Alexis Neas
- * @version 1
+ * @version 3
  */
 
 public class UserController {
@@ -37,6 +46,8 @@ public class UserController {
    * @param upSocialScale Upper limit for Social Scale.
    * @param lowQualityOfLifeScale Lower limit for Quality Of Life Scale.
    * @param upQualityOfLifeScale Upper limit for Quality Of Life Scale.
+   * 
+   * @return the university object closest to the search
    */
   public University searchSchool(String schoolName, String stateName, String location, String control,
                            int lowNumberOfStudents, int upNumberOfStudents,  

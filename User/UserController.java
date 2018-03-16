@@ -1,9 +1,13 @@
 package User;
+
+
+
 import java.util.ArrayList;
 import java.util.List;
 
 import DatabaseController.DBController;
 import University.University;
+
 /**
  * Class that controls the user interactions, and interacts with the database
  * 
@@ -14,6 +18,7 @@ import University.University;
 public class UserController {
  private DBController dbController;
  private User user;
+ private University university;
  private AccountController accountController;
   /**
    * Takes a list of search criteria inputed by user, and returns a list of Universities
@@ -176,7 +181,7 @@ public class UserController {
    */
   public void editProfile(String username, String password, String firstName, String lastName, char type, char status)
   {
-   accountController.editAccount(  username,  password,  firstName,  lastName,  type,  status);
+   dbController.setUserInfo(  username,  password,  firstName,  lastName,  type,  status);
   }
   
   /**
