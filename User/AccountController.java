@@ -1,5 +1,5 @@
 package User;
-import DatabaseController;
+import DatabaseController.*;
 /**
 
  * Provides the logic for the Account Controller class 
@@ -100,17 +100,17 @@ public class AccountController {
    * displays an error message if their account is not active
    */
   public void getActive(String user) {
-	  
+   
   if(findUser(user))
   {
-	  ArrayList<String> info = getUserInfo(user);
-	  //search through list of info for active/nonactive char
-	  //if statement confirming whether the user has an active or inactive account
-	  //displays an error if the account is inactive
+   ArrayList<String> info = getUserInfo(user);
+   //search through list of info for active/nonactive char
+   //if statement confirming whether the user has an active or inactive account
+   //displays an error if the account is inactive
   }
   else {
-	  //Account doesn't exist
-	  displayError();
+   //Account doesn't exist
+   displayError();
   }
   }
   
@@ -119,7 +119,7 @@ public class AccountController {
    * is active or not.
    */
   public void deactivatedAccountError() {
-	  System.out.println("Sorry, your account is curently deactivated.");
+   System.out.println("Sorry, your account is curently deactivated.");
   }
   
   
