@@ -1,6 +1,7 @@
 package User;
-import University.*;
 import java.util.*;
+import University.University;
+
 /**
  * Provides the admin with functionalities.
  * 

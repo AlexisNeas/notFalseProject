@@ -1,5 +1,5 @@
 package User;
-import java.util.*;
+
 /**
  * Provides the logic for the User class 
  * author: Jess Hansen

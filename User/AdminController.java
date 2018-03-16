@@ -1,7 +1,8 @@
 package User;
-import java.util.*;
-import DatabaseController.*;
 import University.*;
+import java.util.ArrayList;
+import java.util.List;
+import DatabaseController.DBController;
 
 /**
  * Provides the the logic for admin functionalities.
