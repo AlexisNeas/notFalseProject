@@ -1,5 +1,9 @@
 package User;
+<<<<<<< HEAD
+
+=======
 import java.util.*;
+>>>>>>> 71986a1b9956dddb7f988a071c6e39e3b1dd119e
 /**
  * Provides the logic for the User class 
  * author: Jess Hansen

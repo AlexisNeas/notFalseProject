@@ -1,12 +1,7 @@
 package User;
-
-
-
-import java.util.ArrayList;
-import java.util.List;
-
-import DatabaseController.DBController;
-import University.University;
+import java.util.*;
+import DatabaseController.*;
+import University.*;
 
 /**
  * Class that controls the user interactions, and interacts with the database
@@ -20,6 +15,7 @@ public class UserController {
  private User user;
  private University university;
  private AccountController accountController;
+ 
   /**
    * Takes a list of search criteria inputed by user, and returns a list of Universities
    * in an order of relevance
@@ -49,7 +45,7 @@ public class UserController {
    * 
    * @return the university object closest to the search
    */
-  public University searchSchool(String schoolName, String stateName, String location, String control,
+  public ArrayList <University> searchSchool(String schoolName, String stateName, String location, String control,
                            int lowNumberOfStudents, int upNumberOfStudents,  
                            double lowPercentFemale, double upPercentFemale, 
                            double lowSATVerbal, double upSATVerbal,
@@ -62,7 +58,12 @@ public class UserController {
                            String emphases1,String emphases2,String emphases3,
                            String emphases4,String emphases5) {
 
-     return dbController.search(university);
+     return dbController.search(schoolName, stateName, location, control, lowNumberOfStudents, upNumberOfStudents,
+                                lowPercentFemale, upPercentFemale, lowSATVerbal, upSATVerbal, lowSATMath, upSATMath,
+                                lowExpenses, upExpenses, lowPercentEnrolled, upPercentEnrolled, lowAcademicsScale, upAcademicsScale,
+                                lowSocialScale,upSocialScale, lowQualityOfLifeScale, upQualityOfLifeScale, emphases1, emphases2,
+                                emphases3, emphases4, emphases5);
+                               
   }
   
   /**
@@ -86,7 +87,7 @@ public class UserController {
    * 
    * @return returns a University containing all of the information
    */
-  public ArrayList<String> getSchoolInfo(String school)
+  public ArrayList<University> getSchoolInfo(String school)
   {
      return dbController.getSchoolInfo(school); 
   }
@@ -127,10 +128,20 @@ public class UserController {
    * @param upSocialScale Upper limit for Social Scale.
    * @param lowQualityOfLifeScale Lower limit for Quality Of Life Scale.
    * @param upQualityOfLifeScale Upper limit for Quality Of Life Scale.
+   * 
+   * @return list of similar schools
    */
-  public University findSimilarSchools(University school)
+  public ArrayList<University> findSimilarSchools(String schoolName, String stateName, String location, String control,
+                                       int numberOfStudents,  double percentFemale, 
+                                       double SATVerbal, double SATMath, double expenses, double percentEnrolled, 
+                                       int academicsScale, int socialScale, int qualityOfLifeScale, String emphases1,
+                                       String emphases2, String emphases3, String emphases4, String emphases5)
   {
-   return dbController.findSimilarSchools(school); 
+   return dbController.findSimilarSchools(schoolName, stateName, location, control,
+                                       numberOfStudents, percentFemale, 
+                                       SATVerbal, SATMath, expenses, percentEnrolled, 
+                                       academicsScale, socialScale, qualityOfLifeScale, emphases1,
+                                       emphases2, emphases3, emphases4, emphases5); 
   }
   
   /**
@@ -138,9 +149,15 @@ public class UserController {
    * 
    * @param schools list of schools that should be displayed
    */
-  public void displayResults(List schools)
+  public void displayResults(ArrayList<University> universities)
   {
-    
+    if (universities == null)
+      System.out.println("No universities to display");
+    else
+    for( University u:universities)
+    {
+      System.out.println("University: "+ u.getSchoolName()); 
+    }
   }
   
   /**
@@ -153,14 +170,7 @@ public class UserController {
    return dbController.getUserSchools(username); 
   }
   
-  /**
-   * Will allow the user to view the saved Universities
-   */
-//  public void viewSavedUniversities()
-//  {
-//    for (University u : getSavedUniversities())
-//      System.out.println(u);
-//  }
+
   
   /**
    * Displays an error message if there are no schools saved
