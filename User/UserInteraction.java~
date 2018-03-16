@@ -1,5 +1,7 @@
 package User;
-import java.util.*;
+import java.util.ArrayList;
+
+import University.University;
 /**
  * Abstract class that allows a user to interact with CMC
  * 
@@ -14,17 +16,10 @@ public class UserInteraction {
    * 
    * @param school the school that the schools should be similar to
    */
-  public void displaySimilarSchools(String schoolName, String stateName, String location, String control,
-                                       int numberOfStudents,  double percentFemale, 
-                                       double SATVerbal, double SATMath, double expenses, double percentEnrolled, 
-                                       int academicsScale, int socialScale, int qualityOfLifeScale, String emphases1,
-                                       String emphases2, String emphases3, String emphases4, String emphases5)
+  public void displaySimilarSchools(University school)
   {
-    String[][] schools = userController.findSimilarSchools( schoolName,  stateName,  location,  control,
-                                        numberOfStudents,   percentFemale, 
-                                        SATVerbal,  SATMath,  expenses,  percentEnrolled, 
-                                        academicsScale,  socialScale,  qualityOfLifeScale,  emphases1,
-                                        emphases2,  emphases3,  emphases4,  emphases5);
+    String[][] schools = userController.findSimilarSchools(school);
+    
     for ( int i = 0; i<schools[i].length; i++)
     {
       System.out.println(schools[i][0]);
@@ -83,32 +78,10 @@ public class UserInteraction {
    * Takes a list of search criteria inputed by user, and returns a list of Universities
    * in an order of relevance
    * 
-   * @param criteria the search criteria
+   * @param university the university criteria being searched for
    */
-  public String[][] searchSchool(String schoolName, String stateName, String location, String control,
-                           int lowNumberOfStudents, int upNumberOfStudents,  
-                           double lowPercentFemale, double upPercentFemale, 
-                           double lowSATVerbal, double upSATVerbal,
-                           double lowSATMath, double upSATMath,
-                           double lowExpenses, double upExpenses,
-                           double lowPercentEnrolled, double upPercentEnrolled,
-                           int lowAcademicsScale, int upAcademicsScale,
-                           int lowSocialScale, int upSocialScale,
-                           int lowQualityOfLifeScale, int upQualityOfLifeScale,
-                           String emphases1,String emphases2,String emphases3,
-                           String emphases4,String emphases5) {
-   return userController.searchSchool( schoolName,  stateName,  location,  control,
-                            lowNumberOfStudents,  upNumberOfStudents,  
-                            lowPercentFemale,  upPercentFemale, 
-                            lowSATVerbal,  upSATVerbal,
-                            lowSATMath,  upSATMath,
-                            lowExpenses,  upExpenses,
-                            lowPercentEnrolled,  upPercentEnrolled,
-                            lowAcademicsScale,  upAcademicsScale,
-                            lowSocialScale,  upSocialScale,
-                            lowQualityOfLifeScale,  upQualityOfLifeScale,
-                            emphases1, emphases2, emphases3,
-                            emphases4, emphases5);
+  public String[][] searchSchool(University university) {
+   return userController.searchSchool( university);
   }  
   
   /**
