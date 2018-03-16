@@ -55,7 +55,8 @@ public abstract class Account {
  */
 public Account(String firstName, String lastName, String username, String password, char accountType,
   char status) {
- //this.loggedIn = loggedIn;
+
+ this.loggedIn = false;
  this.firstName = firstName;
  this.lastName = lastName;
  this.username = username;
