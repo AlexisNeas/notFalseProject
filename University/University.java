@@ -605,7 +605,10 @@ public class University extends UniversityController
 
   }
 
-  
+  public int getSocial()
+  {
+    return social;
+  }
 
   
 
@@ -783,12 +786,17 @@ public class University extends UniversityController
 
    */
 
-  public void getStudyArea5(String studyArea5) 
+  public void setStudyArea5(String studyArea5) 
 
   {
 
   this.studyArea5= studyArea5;
 
+  }
+  
+  public void setSocial(int social)
+  {
+    this.social=social;
   }
 
   
@@ -1010,5 +1018,6 @@ public class University extends UniversityController
   this.percentEnroll= percentEnroll;
 
   }
+
 
 }
