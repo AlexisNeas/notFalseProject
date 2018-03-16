@@ -87,7 +87,7 @@ public class UserController {
    * 
    * @return returns a University containing all of the information
    */
-  public ArrayList<University> getSchoolInfo(String school)
+  public University getSchoolInfo(String school)
   {
      return dbController.getSchoolInfo(school); 
   }
