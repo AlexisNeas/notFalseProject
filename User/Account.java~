@@ -53,15 +53,16 @@ public abstract class Account {
  * @param accountType
  * @param status
  */
-public Account(boolean loggedIn, String firstName, String lastName, String username, String password, char accountType,
-		char status) {
-	this.loggedIn = loggedIn;
-	this.firstName = firstName;
-	this.lastName = lastName;
-	this.username = username;
-	this.password = password;
-	this.accountType = accountType;
-	this.status = status;
+public Account(String firstName, String lastName, String username, String password, char accountType,
+  char status) {
+
+ this.loggedIn = false;
+ this.firstName = firstName;
+ this.lastName = lastName;
+ this.username = username;
+ this.password = password;
+ this.accountType = accountType;
+ this.status = status;
 }
 
 /**

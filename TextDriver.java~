@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-/**
- * 
- */
-
-/**
- * @author zvetter001
- *
- */
-public class TextDriver {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
-=======
 import User.*;
   
 /**
@@ -26,12 +6,55 @@ import User.*;
  */
 public class TextDriver {
   
+  Account activeAccount;
+  
   /**
    * @param args
    */
-  public static void main(String[] args) {
+  public static void main(String [] args) {
+    /*TODO
+     * Log in with User Account
+     * View Profile
+     * Edit Profile
+     * Search Schools
+     * View Results
+     * View School Information
+     * Display similar recommendations
+     * Add School to profile
+     * View Saved Schools
+     * Remove Schools
+     * Log out
+     * 
+     * Log in as Admin
+     * View Universities
+     * Add new school
+     * Save school
+     * Edit school
+     * View Users
+     * Add new user
+     * Deactivate user
+     * Edit user
+     */
     AccountInteractions accountInteractions = new AccountInteractions();
-    System.out.println("Trying to log in as user:");
+    AdminInteractions adminInteractions = new AdminInteractions();
+    
+    System.out.println("Logging in with invalid user credentials:");
+    System.out.println("Logging in with valid user credentials:");
   }
->>>>>>> 0f44276eb6e9c75f3d31dc7f95f42928f221dbd7
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

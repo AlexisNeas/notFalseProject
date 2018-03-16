@@ -12,7 +12,7 @@ public class AccountInteractions {
   
   
   public AccountInteractions() {
-	  this.aController = new AccountController();
+   this.aController = new AccountController();
   }
   /**
    * Checks if the user's credentials are valid and either
@@ -36,15 +36,6 @@ public class AccountInteractions {
   
   
   
-  
-  /**
-   * Sets the users account with their changed information
-   * @param account that wants to be edited
-   * @return String of account details changed
-   */
-  public void setAccount(String username, String password, String firstName, String lastName, char type, char status){
-    
-    aController.editAccount( username,  password,  firstName,  lastName,  type,  status);
-  }
+ 
 
 }
