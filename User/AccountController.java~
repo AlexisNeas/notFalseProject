@@ -1,12 +1,19 @@
 package User;
 import DatabaseController.*;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b74cf654fcaf0f701d74290046deeba6e2c962f
 /**
 
  * Provides the logic for the Account Controller class 
  * author: Jess Hansen
  * date: 2/27/2018
  */
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import DatabaseController.DBController;
 
 public class AccountController {
   
@@ -22,25 +29,8 @@ public class AccountController {
    * @param password of the user trying to log on
    * @return boolean value regarding if the sign in was successful or not
    */
-  public boolean logOn(String username, String password){
-
-    Scanner keyboard = new Scanner(System.in);
-    
-    System.out.println("Enter username here: ");
-    String inpUser = keyboard.nextLine();
-    System.out.println("Enter password here: ");
-    String inpPass = keyboard.nextLine(); 
-   
-    if (dbController.findUser(inpUser)) {
-     inpUser.getActive();
-        //System.out.print("User found and logged in.");
-        return true;
-    } else {
-       // System.out.print("User was not found.");
-      displayError();
-      return false;
-      
-    }
+  public void logOn(String username, String password){
+     account.logOn();
     
   }
   
@@ -61,37 +51,36 @@ public class AccountController {
    * @return String of the user's password
    */
   public ArrayList<String> getPassword(){
-    Scanner in = new Scanner(System.in);
-    System.out.println("Enter your username: ");
-    String user = in.nextLine();
+  //  Scanner in = new Scanner(System.in);
+   // System.out.println("Enter your username: ");
+    //String user = in.nextLine();
     ArrayList<String> userInfo = dbController.getUserInfo(user);
     return userInfo;
   }
   
-  /**
-   * Allows the user to edit their account by being able 
-   * to change their credentials
-   * @param  user of the account that wants to edit their account
-   */
-  public void editAccount(String userName, String password, String firstName, String lastName, ch accountType, ch active){
-    
-    if(dbController.findUser(userName))
-    {
-     // ArrayList<String> userInfo = dbController.getUserInfo(username);
-      
-      dbController.setUserInfo(userName,password,firstName,lastName, accountType, active);
-    }
-    else{
-     displayError(); 
-    }
-    
-    
-  }
+
   
   /**
    * Checks if a specific user has an active accountor not
    * displays an error message if their account is not active
    */
+<<<<<<< HEAD
+  public boolean getActive() {
+   char ch = account.getStatus();
+   if(ch == 'Y'){
+     return true;
+   }
+   //search through list of info for active/nonactive char
+   //if statement confirming whether the user has an active or inactive account
+   //displays an error if the account is inactive
+  else {
+    return false;
+   //Account doesn't exist
+     
+  }
+  }
+  
+=======
   public void getActive(String user) {
    
   if(findUser(user))
@@ -103,10 +92,18 @@ public class AccountController {
   }
   else {
    //Account doesn't exist
-     
+   displayError();
   }
   }
   
+  /**
+   * Displays an error message if the account that is trying to log on 
+   * is active or not.
+   */
+  public void deactivatedAccountError() {
+   System.out.println("Sorry, your account is curently deactivated.");
+  }
+>>>>>>> 9b74cf654fcaf0f701d74290046deeba6e2c962f
   
   
 }

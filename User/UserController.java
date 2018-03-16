@@ -1,24 +1,55 @@
 package User;
-import DatabaseController.*;
-import java.util.*;
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import DatabaseController.DBController;
+import University.University;
+
 /**
  * Class that controls the user interactions, and interacts with the database
  * 
  * @author Alexis Neas
- * @version 1
+ * @version 3
  */
 
 public class UserController {
  private DBController dbController;
  private User user;
+ private University university;
  private AccountController accountController;
   /**
    * Takes a list of search criteria inputed by user, and returns a list of Universities
    * in an order of relevance
    * 
-   * @param criteria the search criteria 
+   * @param schoolName Name of the school to search for.
+   * @param stateName Name of the state for schools.
+   * @param location Location area of a school.
+   * @param control Private State or City control.
+   * @param lowNumberOfStudents Lower limit for student population.
+   * @param upNumberOfStudents Upper limit for student population.
+   * @param lowPercentFemale Lower limit for Percent Female.
+   * @param upPercentFemale Upper limit for Percent Female.
+   * @param lowSATVerbal Lower limit for SATVerbal.
+   * @param upSATVerbal Upper limit for SATVerbal.
+   * @param lowSATMath Lower limit for SATMath.
+   * @param upSATMath Upper limit for SATMath.
+   * @param lowExpenses Lower limit for Expenses.
+   * @param upExpenses Upper limit for Expenses.
+   * @param lowPercentEnrolled Lower limit for Percent Enrolled.
+   * @param upPercentEnrolled Upper limit for Percent Enrolled.
+   * @param lowAcademicsScale Lower limit for Academics Scale.
+   * @param upAcademicsScale Upper limit for Academics Scale.
+   * @param lowSocialScale Lower limit for Social Scale.
+   * @param upSocialScale Upper limit for Social Scale.
+   * @param lowQualityOfLifeScale Lower limit for Quality Of Life Scale.
+   * @param upQualityOfLifeScale Upper limit for Quality Of Life Scale.
+   * 
+   * @return the university object closest to the search
    */
-  public String[][] searchSchool(String schoolName, String stateName, String location, String control,
+  public University searchSchool(String schoolName, String stateName, String location, String control,
                            int lowNumberOfStudents, int upNumberOfStudents,  
                            double lowPercentFemale, double upPercentFemale, 
                            double lowSATVerbal, double upSATVerbal,
@@ -31,18 +62,7 @@ public class UserController {
                            String emphases1,String emphases2,String emphases3,
                            String emphases4,String emphases5) {
 
-     return dbController.search( schoolName,  stateName,  location,  control,
-                            lowNumberOfStudents,  upNumberOfStudents,  
-                            lowPercentFemale,  upPercentFemale, 
-                            lowSATVerbal,  upSATVerbal,
-                            lowSATMath,  upSATMath,
-                            lowExpenses,  upExpenses,
-                            lowPercentEnrolled,  upPercentEnrolled,
-                            lowAcademicsScale,  upAcademicsScale,
-                            lowSocialScale,  upSocialScale,
-                            lowQualityOfLifeScale,  upQualityOfLifeScale,
-                            emphases1, emphases2, emphases3,
-                            emphases4, emphases5);
+     return dbController.search(university);
   }
   
   /**
@@ -74,29 +94,43 @@ public class UserController {
   /**
    * Adds a school to the user's list of saved schools
    * 
+   * @param user the name of user saving the school
    * @param school school to be added to user's list
    */
-  public void addSchool(String school, String user)
+  public void addSchool(String user, String school)
   {
-   dbController.userSaveSchool(school, user); 
+   dbController.userSaveSchool(user, school); 
   }
   
   /**
    * Find similar schools to the one selected
    * 
-   * @param school the school that should be compared to
+   * @param schoolName Name of the school to search for.
+   * @param stateName Name of the state for schools.
+   * @param location Location area of a school.
+   * @param control Private State or City control.
+   * @param lowNumberOfStudents Lower limit for student population.
+   * @param upNumberOfStudents Upper limit for student population.
+   * @param lowPercentFemale Lower limit for Percent Female.
+   * @param upPercentFemale Upper limit for Percent Female.
+   * @param lowSATVerbal Lower limit for SATVerbal.
+   * @param upSATVerbal Upper limit for SATVerbal.
+   * @param lowSATMath Lower limit for SATMath.
+   * @param upSATMath Upper limit for SATMath.
+   * @param lowExpenses Lower limit for Expenses.
+   * @param upExpenses Upper limit for Expenses.
+   * @param lowPercentEnrolled Lower limit for Percent Enrolled.
+   * @param upPercentEnrolled Upper limit for Percent Enrolled.
+   * @param lowAcademicsScale Lower limit for Academics Scale.
+   * @param upAcademicsScale Upper limit for Academics Scale.
+   * @param lowSocialScale Lower limit for Social Scale.
+   * @param upSocialScale Upper limit for Social Scale.
+   * @param lowQualityOfLifeScale Lower limit for Quality Of Life Scale.
+   * @param upQualityOfLifeScale Upper limit for Quality Of Life Scale.
    */
-  public String[][] findSimilarSchools(String schoolName, String stateName, String location, String control,
-                                       int numberOfStudents,  double percentFemale, 
-                                       double SATVerbal, double SATMath, double expenses, double percentEnrolled, 
-                                       int academicsScale, int socialScale, int qualityOfLifeScale, String emphases1,
-                                       String emphases2, String emphases3, String emphases4, String emphases5)
+  public University findSimilarSchools(University school)
   {
-   return dbController.findSimilarSchools( schoolName,  stateName,  location,  control,
-                                        numberOfStudents,   percentFemale, 
-                                        SATVerbal,  SATMath,  expenses,  percentEnrolled, 
-                                        academicsScale,  socialScale,  qualityOfLifeScale,  emphases1,
-                                        emphases2,  emphases3,  emphases4,  emphases5); 
+   return dbController.findSimilarSchools(school); 
   }
   
   /**
@@ -107,14 +141,6 @@ public class UserController {
   public void displayResults(List schools)
   {
     
-  }
-  
-  /**
-   * Allows the user to manage and display the profile
-   */
-  public void manageProfile()
-  {
-   
   }
   
   /**
@@ -155,7 +181,7 @@ public class UserController {
    */
   public void editProfile(String username, String password, String firstName, String lastName, char type, char status)
   {
-   accountController.editAccount(  username,  password,  firstName,  lastName,  type,  status);
+   dbController.setUserInfo(  username,  password,  firstName,  lastName,  type,  status);
   }
   
   /**
