@@ -1,4 +1,4 @@
-import User.*;
+import User.AccountInteractions;
   
 /**
  * @author zvetter001
@@ -10,8 +10,29 @@ public class TextDriver {
    * @param args
    */
   public static void main(String[] args) {
-    AccountInteractions accountInteractions = new AccountInteractions();
-    System.out.println("Trying to log in as user:");
+    /*TODO
+     * Log in with User Account
+     * View Profile
+     * Edit Profile
+     * Search Schools
+     * View Results
+     * View School Information
+     * Display similar recommendations
+     * Add School to profile
+     * View Saved Schools
+     * Remove Schools
+     * Log out
+     * 
+     * Log in as Admin
+     * View Universities
+     * Add new school
+     * Save school
+     * Edit school
+     * View Users
+     * Add new user
+     * Deactivate user
+     * Edit user
+     */
   }
 
 }
