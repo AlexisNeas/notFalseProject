@@ -21,8 +21,9 @@ public class DBController
   // Contructs the database library for use in the DB Controller
   public DBController(String username, String password)
   {
-    univDBlib = new UniversityDBLibrary(username,username,password);
+    univDBlib = new UniversityDBLibrary(username,password);
   }
+  
   // Gets the Database.
   //@return the database.
   public UniversityDBLibrary getUnivDBlib(){
