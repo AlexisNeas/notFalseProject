@@ -1,11 +1,9 @@
 package User;
-import University.*;
-import java.util.*;
 /**
  * Provides the admin with functionalities.
  * 
  * @author Zachary Vetter
- * @version 3/15/18
+ * @version 2/24/18
  */
 public class AdminInteractions {
   
@@ -13,10 +11,6 @@ public class AdminInteractions {
    * Admin Controller object that actually has the logic for the admin methods.
    */
   private AdminController adminController;
-  
-  public AdminInteractions(){
-    this.adminController = new AdminController();
-  }
   
   /**
    * Edits a schools informations
@@ -49,9 +43,9 @@ public class AdminInteractions {
                          String studyArea1, String studyArea2, String studyArea3, String studyArea4, String studyArea5) {
     
     University school = new University(name, state, loc, control, numStudents, perFem,
-                                       satVerbal, satMath, tuition, perFinancialAid, numApplicants,
-                                       perAccepted, perEnroll, academicScale, social, qualOfLife,
-                                       studyArea1, studyArea2, studyArea3, studyArea4, studyArea5);
+                                  satVerbal, satMath, tuition, perFinancialAid, numApplicants,
+                                  perAccepted, perEnroll, academicScale, social, qualOfLife,
+                                  studyArea1, studyArea2, studyArea3, studyArea4, studyArea5);
     adminController.setSchoolInfo(school);
   }
   
@@ -60,14 +54,14 @@ public class AdminInteractions {
    * 
    * @param schoolName the name of school to get info for
    */
-  public University schoolInfo(String schoolName) {
+  public void schoolInfo(String schoolName) {
     adminController.getSchoolInformation(schoolName);
   }
   
   /**
    * Gets all the users in the system
    */
-  public ArrayList<User> getListOfUsers(){
+  public void getListOfUsers(){
     adminController.getListOfUsers();
   }
   
@@ -81,8 +75,7 @@ public class AdminInteractions {
    * @param type
    */
   public void addNewUser(String firstName, String lastName, String username, String password, char type){
-    User user = new User(firstName, lastName, username, password, type);
-    adminController.addNewUser(user);
+	  adminController.addNewUser(firstName, lastName, username, password, type);
   }
   
   /**
@@ -90,8 +83,8 @@ public class AdminInteractions {
    * 
    * @param username the username of the user to get info for
    */
-  public User getUserInfo(String username){
-    return adminController.getUserInfo(username);
+  public void getUserInfo(String username){
+    adminController.getUserInfo(username);
   }
   
   /**
@@ -99,8 +92,8 @@ public class AdminInteractions {
    * 
    * @param name the name of the school to get info for
    */
-  public University getSchoolInfo(String name){
-    return adminController.getSchoolInformation(name);
+  public void getSchoolInfo(String name){
+    adminController.getSchoolInformation(name);
   }
   
   /**
@@ -129,15 +122,15 @@ public class AdminInteractions {
    * @param studyArea5
    */
   public void addSchool(String name, String state, String loc, String control, int numStudents, double perFem,
-                        int satVerbal, int satMath, double tuition, double perFinancialAid, int numApplicants,
-                        double perAccepted, double perEnroll, int academicScale, int social, int qualOfLife,
-                        String studyArea1, String studyArea2, String studyArea3, String studyArea4, String studyArea5) {
+                         int satVerbal, int satMath, double tuition, double perFinancialAid, int numApplicants,
+                         double perAccepted, double perEnroll, int academicScale, int social, int qualOfLife,
+                         String studyArea1, String studyArea2, String studyArea3, String studyArea4, String studyArea5) {
     
-    University school = new University(name, state, loc, control, numStudents, perFem,
-                                       satVerbal, satMath, tuition, perFinancialAid, numApplicants,
-                                       perAccepted, perEnroll, academicScale, social, qualOfLife,
-                                       studyArea1, studyArea2, studyArea3, studyArea4, studyArea5);
-      adminController.addSchool(school);
+    
+    adminController.addSchool(name, state, loc, control, numStudents, perFem,
+                              satVerbal, satMath, tuition, perFinancialAid, numApplicants,
+                              perAccepted, perEnroll, academicScale, social, qualOfLife,
+                              studyArea1, studyArea2, studyArea3, studyArea4, studyArea5);
   }
   
   /**
@@ -148,7 +141,6 @@ public class AdminInteractions {
    * @param username
    * @param password
    * @param type
-   * @param status
    */
   public void editUser(String firstName, String lastName, String username, String password, char type, char status){
     adminController.editUser(firstName, lastName, username, password, type, status);
@@ -157,8 +149,8 @@ public class AdminInteractions {
   /**
    * Gets all the universities and lists them off
    */
-  public ArrayList<University> viewUniversities(){
-    return adminController.viewUniversities();
+  public void viewUniversities(){
+    adminController.viewUniversities();
   }
   
   /**
