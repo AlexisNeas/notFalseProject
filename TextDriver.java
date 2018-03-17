@@ -44,6 +44,9 @@ public class TextDriver {
 
     accountInteractions.logOn("juser", "user");
 
+    
+    accountInteractions.logOn("nadmin","admin");
+    
   }
 
 }
