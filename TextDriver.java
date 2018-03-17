@@ -7,6 +7,8 @@ import User.*;
 public class TextDriver {
   
   Account activeAccount;
+  Admin admin;
+  User user;
   
   /**
    * @param args
@@ -44,6 +46,11 @@ public class TextDriver {
     accountInteractions.logOn("juser", "user");
     System.out.println("Logging in with valid admin credentials:");
     accountInteractions.logOn("nadmin", "admin");
+
+    
+    adminInteractions.getListOfUsers();
+    adminInteractions.addNewUser("Trevor", "Wensman","trevor", "password", 'u');
+
     
   }
 
