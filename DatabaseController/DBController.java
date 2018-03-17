@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 import University.University;
 import University.UniversityController;
-import User.User;
+import User.*;
 import dblibrary.project.csci230.*;
 
 /**
@@ -60,10 +60,10 @@ public class DBController
    * @return
    * 
    */
-  public User getUserInfo(String username)
+  public Account getUserInfo(String username)
   {
     String[][] array = univDBlib.user_getUsers();
-    User user = null;
+    Account user = null;
     for(int i = 0; i<array.length ;i++)
     {
       if(array[i][2].equals(username))
