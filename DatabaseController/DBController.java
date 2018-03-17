@@ -1034,7 +1034,7 @@ public class DBController
    */
   public User returnUser(String firstName, String lastName, String username, String password, char accountType, char status)
   {
- User user = new User(firstName, lastName, username, password, accountType, status);  
+  User user = new User(firstName, lastName, username, password, accountType, status);  
   return user;
   }
   
