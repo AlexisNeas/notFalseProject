@@ -32,14 +32,17 @@ public class AccountController {
    * @param password of the user trying to log on
    * @return boolean value regarding if the sign in was successful or not
    */
-  public User logOn(String username, String password){
-    User user = dbController.getUserInfo(username);
+  public Account logOn(String username, String password){
+    Account user = dbController.getUserInfo(username);
     if(user == null)
       return user;
     else if(user != null && password.equals(user.getPassword()))
     {
       user.logOn();
-      return user;
+      if(user.getAccountType() == 'u')
+        return (User)user;
+      else
+        return (Admin)user;
     }
     else
     {
@@ -63,11 +66,11 @@ public class AccountController {
    * They enter their username and are able to retrieve.
    * @return String of the user's password
    */
-  public User getPassword(){
+  public Account getPassword(){
   //  Scanner in = new Scanner(System.in);
    // System.out.println("Enter your username: ");
     //String user = in.nextLine();
-    User userInfo = dbController.getUserInfo(user);
+    Account userInfo = dbController.getUserInfo(user);
     return userInfo;
   }
   
