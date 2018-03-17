@@ -15,6 +15,7 @@ public class AdminInteractions {
    */
   private AdminController adminController;
   
+  
   public AdminInteractions(){
     this.adminController = new AdminController();
   }
@@ -69,7 +70,11 @@ public class AdminInteractions {
    * Gets all the users in the system
    */
   public void getListOfUsers(){
-    adminController.getListOfUsers();
+    ArrayList<Account> array = adminController.getListOfUsers();
+    for(int i = 0; i < array.size();i++)
+    {
+    	System.out.println(array.get(i).getUsername());
+    }
   }
   
   /**

@@ -40,7 +40,7 @@ public class AdminController {
    * 
    * @return a list containing all the users
    */
-  public ArrayList<User> getListOfUsers(){
+  public ArrayList<Account> getListOfUsers(){
     return dbController.getListOfUsers();
   }
   
