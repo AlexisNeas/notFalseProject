@@ -28,7 +28,7 @@ public class AccountController {
    * @param password of the user trying to log on
    * @return boolean value regarding if the sign in was successful or not
    */
-  public void logOn(String username, String password){
+  public User logOn(String username, String password){
       User user = dbController.getUserInfo(username);
       if(user != null || password.equals(user.getPassword()))
            {
