@@ -186,4 +186,8 @@ public Account(String firstName, String lastName, String username, String passwo
   public void logOff(){
     this.loggedIn = false;
   }
+  
+  public boolean isLoggedOn(){
+    return this.loggedIn;
+  }
 }

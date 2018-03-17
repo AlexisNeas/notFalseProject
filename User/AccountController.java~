@@ -49,11 +49,11 @@ public class AccountController {
    * They enter their username and are able to retrieve.
    * @return String of the user's password
    */
-  public ArrayList<String> getPassword(){
+  public User getPassword(){
   //  Scanner in = new Scanner(System.in);
    // System.out.println("Enter your username: ");
     //String user = in.nextLine();
-    ArrayList<String> userInfo = dbController.getUserInfo(user);
+    User userInfo = dbController.getUserInfo(user);
     return userInfo;
   }
   
