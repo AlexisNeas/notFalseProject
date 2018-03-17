@@ -29,7 +29,12 @@ public class AccountController {
    * @return boolean value regarding if the sign in was successful or not
    */
   public void logOn(String username, String password){
-     account.logOn();
+      User user = dbController.getUserInfo(username);
+      if(user != null || password.equals(user.getPassword()))
+           {
+        account.logOn();
+      }
+     return user;
     
   }
   
