@@ -119,7 +119,7 @@ public class AdminController {
    * @param username the unique username of the user
    * @return the user
    */
-  public User getUserInfo(String username)
+  public Account getUserInfo(String username)
   {
     return dbController.getUserInfo(username);
   }
