@@ -319,14 +319,14 @@ public class DBController
    * Gets the information for all users.
    * @return the user's information.
    */
-  public ArrayList<User> getListOfUsers()
+  public ArrayList<Account> getListOfUsers()
   {
     String[][] array = univDBlib.user_getUsers();
     //System.out.println(array[0][0]);
-    ArrayList<User> userArray = new ArrayList<User>();
+    ArrayList<Account> userArray = new ArrayList<Account>();
     for(int i =0; i<array.length;i++)
     {
-    User user = returnUser(array[i][0],array[i][1],array[i][2],array[i][3],array[i][4].charAt(0),array[i][5].charAt(0));
+    Account user = returnUser(array[i][0],array[i][1],array[i][2],array[i][3],array[i][4].charAt(0),array[i][5].charAt(0));
     userArray.add(user);
     }
     return userArray;
@@ -1034,7 +1034,7 @@ public class DBController
    */
   public Account returnUser(String firstName, String lastName, String username, String password, char accountType, char status)
   {
-  Account user = new User(firstName, lastName, username, password, accountType, status);  
+  Account user = new Account(firstName, lastName, username, password, accountType, status);  
   return user;
   }
   
