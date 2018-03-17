@@ -1032,9 +1032,9 @@ public class DBController
    * 
    * 
    */
-  public User returnUser(String firstName, String lastName, String username, String password, char accountType, char status)
+  public Account returnUser(String firstName, String lastName, String username, String password, char accountType, char status)
   {
-  User user = new User(firstName, lastName, username, password, accountType, status);  
+  Account user = new User(firstName, lastName, username, password, accountType, status);  
   return user;
   }
   
