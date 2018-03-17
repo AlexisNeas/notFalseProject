@@ -1044,7 +1044,8 @@ public class DBController
   {
     try{
       DBController databasecontroller = new DBController("notfal", "csci230");
-      String[][] array = databasecontroller.getUnivDBlib().university_getUniversities();
+     // String[][] array = databasecontroller.getUnivDBlib().university_getUniversities();
+      String[][] array = databasecontroller.getUnivDBlib().user_getUsers();
       for(int i = 0; i < array.length; i++)
       {
         for(int j = 0; j<array[i].length; j++)
