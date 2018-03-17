@@ -21,7 +21,7 @@ public class AccountInteractions {
    */
   public void logOn(String username, String password){
     
-    User user = aController.logOn(username,password);
+    Account user = aController.logOn(username,password);
     if(user == null)
     {
       System.out.println("Invalid username or password");

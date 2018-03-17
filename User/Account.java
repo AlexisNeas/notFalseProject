@@ -5,7 +5,7 @@ package User;
  * @author Zachary Vetter
  * @version 3/15/18
  */
-public abstract class Account {
+public class Account {
   
   /**
    * Says if this account is logged in or not

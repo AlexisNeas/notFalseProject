@@ -41,7 +41,6 @@ public class TextDriver {
     System.out.println("Logging in with invalid user credentials:");
     accountInteractions.logOn("ERROR", "ERROR");
     System.out.println("Logging in with valid user credentials:");
-
     accountInteractions.logOn("juser", "user");
 
     

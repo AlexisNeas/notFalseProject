@@ -5,7 +5,7 @@ package User;
  * author: Jess Hansen
  * date: 2/27/2018
  */
-public class Admin extends Account
+public class Admin
 {
   private boolean loggedIn;
   private String firstName, lastName, username, password;
@@ -20,14 +20,13 @@ public class Admin extends Account
    * @param accountType indicates whether the account is an admin or user
    * @param status indicates whether the admin has an active acount or not
    */
-  public Admin(String firstName, String lastName, String username, String password, char accountType, char status){
-//    this.loggedIn = loggedIn;
-//    this.firstName =firstName;
-//    this.lastName = lastName;
-//    this.username = username; 
-//    this.password = password;
-//    this.accountType = accountType;
-//    this.status = status;
-    super(firstName,lastName,username,password,accountType,status);
+  public Admin(boolean loggedIn, String firstName, String lastName, String username, String password, char accountType, char status){
+    this.loggedIn = loggedIn;
+    this.firstName =firstName;
+    this.lastName = lastName;
+    this.username = username; 
+    this.password = password;
+    this.accountType = accountType;
+    this.status = status;
   }
 }
