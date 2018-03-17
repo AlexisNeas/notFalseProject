@@ -44,9 +44,6 @@ public class TextDriver {
     accountInteractions.logOn("juser", "user");
     System.out.println("Logging in with valid admin credentials:");
     accountInteractions.logOn("nadmin", "admin");
-
-    
-    accountInteractions.logOn("nadmin","admin");
     
   }
 
