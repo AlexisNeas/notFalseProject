@@ -38,11 +38,20 @@ public class AccountController {
       return user;
     else if(user != null && password.equals(user.getPassword()))
     {
-      user.logOn();
       if(user.getAccountType() == 'u')
-        return (User)user;
+      {
+        user = new User(user.getFirstName(), user.getLastName(), user.getUsername(),
+                               user.getPassword(), user.getAccountType(), user.getStatus());
+        user.logOn();
+        return user;
+      }
       else
-        return (Admin)user;
+      {
+        user =  new Admin(user.getFirstName(), user.getLastName(), user.getUsername(),
+                               user.getPassword(), user.getAccountType(), user.getStatus());
+        user.logOn();
+        return user;
+      }
     }
     else
     {
