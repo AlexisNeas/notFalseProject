@@ -13,7 +13,7 @@ public class TextDriver {
    */
   public static void main(String [] args) {
     /*TODO
-     * Log in with User Account
+     * X Log in with User Account
      * View Profile
      * Edit Profile
      * Search Schools
@@ -25,7 +25,7 @@ public class TextDriver {
      * Remove Schools
      * Log out
      * 
-     * Log in as Admin
+     * X Log in as Admin
      * View Universities
      * Add new school
      * Save school
