@@ -27,7 +27,12 @@ public class AccountInteractions {
       System.out.println("Invalid username or password");
     }
     else if(user != null && user.isLoggedOn())
-      System.out.println("The account is now logged on");
+    {
+      if(user instanceof User)
+        System.out.println("The user account is now logged on");
+      else
+        System.out.println("The admin account is now logged on");
+    }
     else
     {
       System.out.println("Invalid username or password");
