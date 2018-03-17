@@ -66,7 +66,7 @@ public class DBController
     User user = null;
     for(int i = 0; i<array.length ;i++)
     {
-      if(array[i][0].equals(username))
+      if(array[i][2].equals(username))
       {
         user = returnUser(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4].charAt(0), array[i][5].charAt(0));
       }
