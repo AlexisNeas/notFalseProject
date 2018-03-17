@@ -12,7 +12,7 @@ import DatabaseController.*;
  * 
  */
 public class UserInteraction {
-  private UserController userController;
+  //private UserController userController;
   /**
    * Displays the list of similar schools
    * 
@@ -25,12 +25,21 @@ public class UserInteraction {
                                        int academicsScale, int socialScale, int qualityOfLifeScale, String emphases1,
                                        String emphases2, String emphases3, String emphases4, String emphases5)
   {
-     userController.findSimilarSchools(schoolName, stateName, location, control,
+     ArrayList<University> universities = userController.findSimilarSchools(schoolName, stateName, location, control,
                                        numberOfStudents, percentFemale, 
                                        SATVerbal, SATMath, expenses, percentEnrolled, 
                                        academicsScale, socialScale, qualityOfLifeScale, emphases1,
                                        emphases2, emphases3, emphases4, emphases5);
     
+     if(universities == null)
+       System.out.println("Error: No Similar Schools");
+     else 
+     {
+       for(University u : universities)
+       {
+        System.out.println(u.getName()); 
+       }
+     }
   }
   
 /**
@@ -57,8 +66,17 @@ public class UserInteraction {
    */
   public void viewSchoolInfo(String school)
   {
-    userController.getSchoolInfo(school);
-    
+    University u = userController.getSchoolInfo(school);
+    System.out.println("Name: " + u.getSchoolName()+"\nState: " +
+    					u.getState()+"\nLocation: " + u.getLocation()"\nControl: " + u.getControl()+"\nStudy Area 1: " + u.getStudyArea1()+
+    					"\nStudy Area 2: " + u.getStudyArea2()+"\nStudy Area 3: " + u.getStudyArea3()"\nStudy Area 4: " 
+    					+ u.getStudyArea4()"\nStudy Area 5: " + u.getStudyArea5()"\nNumber of Applications: " +
+    					u.getNumApplicants() + "\nNumber of Students: " + u.getNumStudents() + "Academic Scale: " +
+    					u.getAcademicScale()+ "\nQuality of Life: " + u.getQualOfLife()+ "\nFemales %: " + 
+    					u.getPercentFemale() + "%\nSAT Verbal: " + u.getSatVerbal() + "\nSAT Math: " + u.getSatMath() + "\nTuition: " + u.getTuition() +
+    					"% Receiving Financial Aid: " + u.getPercentRecFinAid()+ "%\nAccepted: " + u.getPercentAccepted() + "\nEnrolled: " + u.getPercentEnrolled() + "%/nSocial Rating: "+
+    					u.getSocial() + "\n");
+
   } 
   
   /**
@@ -69,6 +87,7 @@ public class UserInteraction {
   public void addSchool(String school, String username)
   {
    userController.addSchool(school, username); 
+   System.out.println("School has been added.")
   }
   
   /**
