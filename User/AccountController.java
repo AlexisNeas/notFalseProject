@@ -21,6 +21,10 @@ public class AccountController {
   private DBController dbController;
   private Account account;
   
+  public AccountController(){
+    this.dbController = new DBController("notfal", "csci230");
+  }
+  
   /**
    * Checks if the user's credentials are valid and either
    * logs them in or supplies them with an error message to try again
@@ -29,13 +33,18 @@ public class AccountController {
    * @return boolean value regarding if the sign in was successful or not
    */
   public User logOn(String username, String password){
-      User user = dbController.getUserInfo(username);
-      if(user != null || password.equals(user.getPassword()))
-           {
-        account.logOn();
-      }
-     return user;
-    
+    User user = dbController.getUserInfo(username);
+    if(user == null)
+      return user;
+    else if(user != null && password.equals(user.getPassword()))
+    {
+      user.logOn();
+      return user;
+    }
+    else
+    {
+      return user;
+    }
   }
   
  // public void displayOptions(){}

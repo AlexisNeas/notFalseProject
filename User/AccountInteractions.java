@@ -22,10 +22,16 @@ public class AccountInteractions {
   public void logOn(String username, String password){
     
     User user = aController.logOn(username,password);
-    if(user != null || user.isLoggedOn())
+    if(user == null)
+    {
+      System.out.println("Invalid username or password");
+    }
+    else if(user != null && user.isLoggedOn())
       System.out.println("The account is now logged on");
     else
+    {
       System.out.println("Invalid username or password");
+    }
   }
   
   /**
