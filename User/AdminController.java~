@@ -1,14 +1,8 @@
 package User;
-<<<<<<< HEAD
-import java.util.*;
-import DatabaseController.*;
 import University.*;
-=======
 import java.util.ArrayList;
 import java.util.List;
-
 import DatabaseController.DBController;
->>>>>>> b8adfce78e46157065ad8b4b47b6057768f00b16
 
 /**
  * Provides the the logic for admin functionalities.
@@ -55,7 +49,7 @@ public class AdminController {
    * 
    * @return a list of the universities
    */
-  public List viewUniversities(){
+  public ArrayList<String> viewUniversities(){
     return dbController.getListOfSchools();
   }
   
@@ -64,7 +58,7 @@ public class AdminController {
    * 
    * @param name the name of the school to get info for
    */
-  public ArrayList<String> getSchoolInformation(String name){
+  public University getSchoolInformation(String name){
     return dbController.getSchoolInfo(name);
   }
   
@@ -125,7 +119,7 @@ public class AdminController {
    * @param username the unique username of the user
    * @return the user
    */
-  public ArrayList<String> getUserInfo(String username)
+  public User getUserInfo(String username)
   {
     return dbController.getUserInfo(username);
   }

@@ -91,8 +91,8 @@ public class AdminInteractions {
    * 
    * @param username the username of the user to get info for
    */
-  public User getUserInfo(String username){
-    return adminController.getUserInfo(username);
+  public void getUserInfo(String username){
+    adminController.getUserInfo(username);
   }
   
   /**
