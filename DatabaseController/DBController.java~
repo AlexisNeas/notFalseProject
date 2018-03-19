@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 import University.University;
 import University.UniversityController;
-import User.User;
+import User.*;
 import dblibrary.project.csci230.*;
 
 /**
@@ -60,21 +60,18 @@ public class DBController
    * @return
    * 
    */
-  public ArrayList<String> getUserInfo(String username)
+  public Account getUserInfo(String username)
   {
     String[][] array = univDBlib.user_getUsers();
-    ArrayList<String> list = new ArrayList<String>();
+    Account user = null;
     for(int i = 0; i<array.length ;i++)
     {
-      if(array[i][0].equals(username))
+      if(array[i][2].equals(username))
       {
-        for( int j = 0; j<array[i].length; j++)
-        {
-          list.add(array[i][j]);
-        }
+        user = returnUser(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4].charAt(0), array[i][5].charAt(0));
       }
     }
-    return list;
+    return user;
   }
   /**
    * Gets a list of all the school names in the Database.
@@ -104,11 +101,11 @@ public class DBController
    */
   public void addNewUser(User user)
   {
-	String username = user.getUsername();
-	String firstName = user.getFirstName();
-	String lastName = user.getLastName();
-	String password = user.getPassword();
-	char type = user.getAccountType();
+ String username = user.getUsername();
+ String firstName = user.getFirstName();
+ String lastName = user.getLastName();
+ String password = user.getPassword();
+ char type = user.getAccountType();
     boolean bool = findUser(username);
     if(!bool)
     {
@@ -153,11 +150,16 @@ public class DBController
    * @param status status of the user
    * 
    */
-  public void setUserInfo(String username, String password, String firstName, String lastName, char type, char status)
+  public Account setUserInfo(String username, String password, String firstName, String lastName, char type, char status)
   {
-    if(!username.equals("") && !firstName.equals("") && !lastName.equals("") && !password.equals(""))
+	Account acc = null;
+
       univDBlib.user_editUser(username , firstName, lastName, 
                               password, type, status);
+      acc = returnUser(username,password,firstName,lastName,type,status);
+      
+    
+    return acc;
   }
   /**
    * Gets an individual schools information.
@@ -175,7 +177,7 @@ public class DBController
       {
         for(int j = 0; j<array[i].length;j++)
         {
-        	ArrayList<String> emphasesArrayList = universityEmphases(array[i][0]);
+         ArrayList<String> emphasesArrayList = universityEmphases(array[i][0]);
             if(emphasesArrayList.size() == 5)
             {
              emp1 = emphasesArrayList.get(0);
@@ -223,13 +225,13 @@ public class DBController
             }
             else {
              
-             emp1 = "";
-             emp2 = "";
-             emp3 = "";
-             emp4 = "";
-             emp5 = "";
+             emp1 = " ";
+             emp2 = " ";
+             emp3 = " ";
+             emp4 = " ";
+             emp5 = " ";
             }
-        	
+         
           
           university = returnUniversity(array[i][0], //schoolName
                   array[i][1], //State
@@ -300,36 +302,38 @@ public class DBController
    * Deactivates a user.
    * @param username the user to deactivate.
    */
-  public void deactivateUser(String username)
+  public Account deactivateUser(String username)
   {
+	Account acc = null;
     String[][] array = univDBlib.user_getUsers();
     int len = array.length;
     for(int i = 0; i<len ;i++)
     {
       
-      if(array[i][0].equals(username))
+      if(array[i][2].equals(username))
       {
         String password= array[i][3];
         String firstName= array[i][0];
         String lastName = array[i][1];
         char type = 'u';
-        char status = 'd';
-        setUserInfo(username, password, firstName, lastName, type, status);
+        char status = 'N';
+        acc = setUserInfo(username, password, firstName, lastName, type, status);
       }
     }
+    return acc;
   }
   /**
    * Gets the information for all users.
    * @return the user's information.
    */
-  public ArrayList<User> getListOfUsers()
+  public ArrayList<Account> getListOfUsers()
   {
     String[][] array = univDBlib.user_getUsers();
     //System.out.println(array[0][0]);
-    ArrayList<User> userArray = new ArrayList<User>();
+    ArrayList<Account> userArray = new ArrayList<Account>();
     for(int i =0; i<array.length;i++)
     {
-    User user = returnUser(array[i][0],array[i][1],array[i][2],array[i][3],array[i][4].charAt(0),array[i][5].charAt(0));
+    Account user = returnUser(array[i][0],array[i][1],array[i][2],array[i][3],array[i][4].charAt(0),array[i][5].charAt(0));
     userArray.add(user);
     }
     return userArray;
@@ -808,7 +812,7 @@ public class DBController
                            String emphases4,String emphases5)
   {
     //University Info
-	ArrayList<University> univArray = new ArrayList<University>();
+ ArrayList<University> univArray = new ArrayList<University>();
     String[][] array = univDBlib.university_getUniversities();
     int len1 = array.length;
 
@@ -957,8 +961,8 @@ public class DBController
              emp4 = "";
              emp5 = "";
             }
-        	
-        	
+         
+         
           University univ = returnUniversity(array[i][0], //schoolName
                                                  array[i][1], //State
                                                  array[i][2],//location
@@ -1014,7 +1018,7 @@ public class DBController
 
                                           String studyArea5)
   {
-   University university = universityController.makeUniversity( schoolName, state, location,  control,  numStudents,
+   University university = new University( schoolName, state, location,  control,  numStudents,
 
                                            percentFemale,  satVerbal, satMath,  expenses,  percentRecFinAid,
 
@@ -1035,9 +1039,9 @@ public class DBController
    * 
    * 
    */
-  public User returnUser(String firstName, String lastName, String username, String password, char accountType, char status)
+  public Account returnUser(String firstName, String lastName, String username, String password, char accountType, char status)
   {
- User user = new User(firstName, lastName, username, password, accountType, status);  
+  Account user = new Account(firstName, lastName, username, password, accountType, status);  
   return user;
   }
   
@@ -1047,7 +1051,8 @@ public class DBController
   {
     try{
       DBController databasecontroller = new DBController("notfal", "csci230");
-      String[][] array = databasecontroller.getUnivDBlib().university_getUniversities();
+     // String[][] array = databasecontroller.getUnivDBlib().university_getUniversities();
+      String[][] array = databasecontroller.getUnivDBlib().user_getUsers();
       for(int i = 0; i < array.length; i++)
       {
         for(int j = 0; j<array[i].length; j++)

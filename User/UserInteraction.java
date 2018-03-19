@@ -57,9 +57,9 @@ public class UserInteraction {
   {
     boolean removed = userController.removeSchool(school, user);
    if( removed )
-    System.out.println("School has been removed");
+    System.out.println("\tSchool has been removed");
    else
-     System.out.println("Error: School was not removed");
+     System.out.println("\tError: School was not removed");
   }
   
   /**
@@ -90,7 +90,7 @@ public class UserInteraction {
    */
   public void addSchool(String school, String username)
   {
-   userController.addSchool(school, username); 
+   userController.addSchool(username, school); 
    System.out.println("School has been added.");
   }
   
@@ -136,7 +136,7 @@ public class UserInteraction {
     
     for (String u: universities)
     {
-     System.out.println(u); 
+     System.out.println("\t"+u); 
     }
   }
   
@@ -158,7 +158,7 @@ public class UserInteraction {
   public void viewProfile(String username)
   {
     Account info = userController.viewProfile(username);
-    System.out.println("First name: "+info.getFirstName()+"\nLast name: "+info.getLastName()+"\nUsername: "
-                         +info.getUsername()+"\nPassword: "+info.getPassword()+"\nAccount type: "+info.getAccountType());
+    System.out.println("\tFirst name: "+info.getFirstName()+"\n\tLast name: "+info.getLastName()+"\n\tUsername: "
+                         +info.getUsername()+"\n\tPassword: "+info.getPassword()+"\n\tAccount type: "+info.getAccountType());
   }
 }
