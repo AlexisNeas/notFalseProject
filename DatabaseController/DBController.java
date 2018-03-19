@@ -156,7 +156,7 @@ public class DBController
 
       univDBlib.user_editUser(username , firstName, lastName, 
                               password, type, status);
-      acc = returnUser(username,password,firstName,lastName,type,status);
+      acc = returnUser(firstName,lastName,username,password,type,status);
       
     
     return acc;
@@ -1051,8 +1051,8 @@ public class DBController
   {
     try{
       DBController databasecontroller = new DBController("notfal", "csci230");
-     // String[][] array = databasecontroller.getUnivDBlib().university_getUniversities();
-      String[][] array = databasecontroller.getUnivDBlib().user_getUsers();
+      String[][] array = databasecontroller.getUnivDBlib().university_getUniversities();
+      databasecontroller.getUnivDBlib().user_deleteUser("trevor");
       for(int i = 0; i < array.length; i++)
       {
         for(int j = 0; j<array[i].length; j++)

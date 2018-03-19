@@ -57,17 +57,18 @@ public class TextDriver {
     adminInteractions.getListOfUsers();
     System.out.println("Adding a new user to the system");
     adminInteractions.addNewUser("Trevor", "Wensman","trevor", "password", 'u');
+    
     System.out.println("Printing updated list of users");
     adminInteractions.getListOfUsers();
 
-    
+    adminInteractions.getUserInfo("trevor");
     System.out.println("Deactivating user");
     adminInteractions.deactivateUser("trevor");
     adminInteractions.getUserInfo("trevor");
     
     System.out.println("Editting User.");
-    adminInteractions.editUser("Trevor", "Wensman", "rovert", "password", 'u', 'N');
-    adminInteractions.getUserInfo("rovert");
+    adminInteractions.editUser("ROVERT", "Wensman", "trevor", "password", 'u', 'N');
+    adminInteractions.getUserInfo("trevor");
     
     
     System.out.println("Adding a new school.");
