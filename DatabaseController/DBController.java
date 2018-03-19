@@ -150,11 +150,16 @@ public class DBController
    * @param status status of the user
    * 
    */
-  public void setUserInfo(String username, String password, String firstName, String lastName, char type, char status)
+  public Account setUserInfo(String username, String password, String firstName, String lastName, char type, char status)
   {
-    if(!username.equals("") && !firstName.equals("") && !lastName.equals("") && !password.equals(""))
+	Account acc = null;
+
       univDBlib.user_editUser(username , firstName, lastName, 
                               password, type, status);
+      acc = returnUser(username,password,firstName,lastName,type,status);
+      
+    
+    return acc;
   }
   /**
    * Gets an individual schools information.
@@ -220,11 +225,11 @@ public class DBController
             }
             else {
              
-             emp1 = "";
-             emp2 = "";
-             emp3 = "";
-             emp4 = "";
-             emp5 = "";
+             emp1 = " ";
+             emp2 = " ";
+             emp3 = " ";
+             emp4 = " ";
+             emp5 = " ";
             }
          
           
@@ -297,23 +302,25 @@ public class DBController
    * Deactivates a user.
    * @param username the user to deactivate.
    */
-  public void deactivateUser(String username)
+  public Account deactivateUser(String username)
   {
+	Account acc = null;
     String[][] array = univDBlib.user_getUsers();
     int len = array.length;
     for(int i = 0; i<len ;i++)
     {
       
-      if(array[i][0].equals(username))
+      if(array[i][2].equals(username))
       {
         String password= array[i][3];
         String firstName= array[i][0];
         String lastName = array[i][1];
         char type = 'u';
-        char status = 'd';
-        setUserInfo(username, password, firstName, lastName, type, status);
+        char status = 'N';
+        acc = setUserInfo(username, password, firstName, lastName, type, status);
       }
     }
+    return acc;
   }
   /**
    * Gets the information for all users.
@@ -1011,7 +1018,7 @@ public class DBController
 
                                           String studyArea5)
   {
-   University university = universityController.makeUniversity( schoolName, state, location,  control,  numStudents,
+   University university = new University( schoolName, state, location,  control,  numStudents,
 
                                            percentFemale,  satVerbal, satMath,  expenses,  percentRecFinAid,
 

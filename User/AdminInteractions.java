@@ -97,7 +97,8 @@ public class AdminInteractions {
    * @param username the username of the user to get info for
    */
   public void getUserInfo(String username){
-    adminController.getUserInfo(username);
+    Account account = adminController.getUserInfo(username);
+    System.out.println(account.getFirstName()+ " " + account.getLastName() + " " + account.getUsername() + " " + account.getStatus());
   }
   
   /**
@@ -105,8 +106,9 @@ public class AdminInteractions {
    * 
    * @param name the name of the school to get info for
    */
-  public University getSchoolInfo(String name){
-    return adminController.getSchoolInformation(name);
+  public void getSchoolInfo(String name){
+    University univ = adminController.getSchoolInformation(name);
+    System.out.println(univ.getSchoolName());
   }
   
   /**
@@ -128,21 +130,14 @@ public class AdminInteractions {
    * @param academicScale the academic scale of the school
    * @param social the scale of social life
    * @param qualOfLife scale of the quality of life of students
-   * @param studyArea1 area the school specializes in
-   * @param studyArea2
-   * @param studyArea3
-   * @param studyArea4
-   * @param studyArea5
    */
   public void addSchool(String name, String state, String loc, String control, int numStudents, double perFem,
                         int satVerbal, int satMath, double tuition, double perFinancialAid, int numApplicants,
-                        double perAccepted, double perEnroll, int academicScale, int social, int qualOfLife,
-                        String studyArea1, String studyArea2, String studyArea3, String studyArea4, String studyArea5) {
+                        double perAccepted, double perEnroll, int academicScale, int social, int qualOfLife) {
     
     University school = new University(name, state, loc, control, numStudents, perFem,
                                        satVerbal, satMath, tuition, perFinancialAid, numApplicants,
-                                       perAccepted, perEnroll, academicScale, social, qualOfLife,
-                                       studyArea1, studyArea2, studyArea3, studyArea4, studyArea5);
+                                       perAccepted, perEnroll, academicScale, social, qualOfLife,"","","","","");
       adminController.addSchool(school);
   }
   
@@ -170,7 +165,7 @@ public class AdminInteractions {
   /**
    * Changes a user's status to deactivated
    */
-  public void deactivateUser(String username){
+  public void deactivateUser(String username) {
     adminController.deactivateUser(username);
   }
 }

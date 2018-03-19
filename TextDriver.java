@@ -47,10 +47,28 @@ public class TextDriver {
     System.out.println("Logging in with valid admin credentials:");
     accountInteractions.logOn("nadmin", "admin");
 
-    
+    System.out.println("List of all users in the Database.");
     adminInteractions.getListOfUsers();
+    System.out.println("Adding a new user to the system");
     adminInteractions.addNewUser("Trevor", "Wensman","trevor", "password", 'u');
+    System.out.println("Printing updated list of users");
     adminInteractions.getListOfUsers();
+    
+    System.out.println("Deactivating user");
+    adminInteractions.deactivateUser("trevor");
+    adminInteractions.getUserInfo("trevor");
+    
+    System.out.println("Editting User.");
+    adminInteractions.editUser("Trevor", "Wensman", "rovert", "password", 'u', 'N');
+    adminInteractions.getUserInfo("rovert");
+    
+    
+    System.out.println("Adding a new school.");
+    adminInteractions.addSchool("Temp School", "Minnesota", "Urban", "State", 10, 50, 50, 50, 50000.00, 99,12, 100.0, 10, 3, 3, 3);
+    System.out.println("Added School..... Verifying School is there.");
+    adminInteractions.getSchoolInfo("Temp School");
+
+    
 
     
   }
