@@ -75,10 +75,10 @@ public class UserInteraction {
          u.getState()+"\nLocation: " + u.getLocation()+"\nControl: " + u.getControl()+"\nStudy Area 1: " + u.getStudyArea1()+
          "\nStudy Area 2: " + u.getStudyArea2()+"\nStudy Area 3: " + u.getStudyArea3()+"\nStudy Area 4: " 
          + u.getStudyArea4()+"\nStudy Area 5: " + u.getStudyArea5()+"\nNumber of Applications: " +
-         u.getNumApplicants() + "\nNumber of Students: " + u.getNumStudents() + "Academic Scale: " +
+         u.getNumApplicants() + "\nNumber of Students: " + u.getNumStudents() + "\nAcademic Scale: " +
          u.getAcademicScale()+ "\nQuality of Life: " + u.getQualOfLife()+ "\nFemales %: " + 
          u.getPercentFemale() + "%\nSAT Verbal: " + u.getSatVerbal() + "\nSAT Math: " + u.getSatMath() + "\nTuition: " + u.getTuition() +
-         "% Receiving Financial Aid: " + u.getPercentRecFinAid()+ "%\nAccepted: " + u.getPercentAccepted() + "\nEnrolled: " + u.getPercentEnroll() + "%/nSocial Rating: "+
+         "\nReceiving Financial Aid: " + u.getPercentRecFinAid()+ "%" + "\nAccepted: " + u.getPercentAccepted() + "\nEnrolled: " + u.getPercentEnroll() + "% " +"\nSocial Rating: "+
          u.getSocial() + "\n");
 
   } 

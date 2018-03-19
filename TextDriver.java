@@ -18,10 +18,10 @@ public class TextDriver {
      * X Log in with User Account
      * View Profile
      * Edit Profile
-     * Search Schools
+     * Search Schools******************
      * View Results
      * View School Information
-     * Display similar recommendations
+     * Display similar recommendations *************8
      * Add School to profile
      * View Saved Schools
      * Remove Schools
@@ -52,17 +52,21 @@ public class TextDriver {
     System.out.println("Edit Profile: Change name to Alexis Neas");
     userInteractions.editProfile(account.getUsername(), account.getPassword(), "Alexis", "Neas", account.getAccountType(), account.getStatus());
     userInteractions.viewProfile(account.getUsername());
-    System.out.println("Search schools: University of Minnesota");
-    userInteractions.searchSchool("", "MINNESOTA","" ,"",
-                                  null, 40000,
-                                  null,null,
-                                  null,null,
-                                  null,null,
-                                  null,null,
-                                  null,null,
-                                  null, null,
-                                  null,null,
-                                  "", "","", "","");  
+//    System.out.println("Search schools: University of Minnesota and View Results");
+//    userInteractions.searchSchool("", "MINNESOTA","" ,"",
+//                                  null, 40000,
+//                                  null,null,
+//                                  null,null,
+//                                  null,null,
+//                                  null,null,
+//                                  null,null,
+//                                  null, null,
+//                                  null,null,
+//                                  "", "","", "","");  
+    System.out.println("View School Information: University of Minnesota");
+    userInteractions.viewSchoolInfo("UNIVERSITY OF MINNESOTA");
+    System.out.println("Display Similar Schools:");
+    
                                 
     
     
