@@ -49,7 +49,23 @@ public class TextDriver {
     System.out.println("Logging in with valid user credentials:");
     account = accountInteractions.logOn("juser", "user");
     System.out.println("User account log on status: "+account.isLoggedOn());
+    System.out.println("**View Profile**");
     userInteractions.viewProfile(account.getUsername());
+    System.out.println("Edit Profile: Change name to Alexis Neas");
+    userInteractions.editProfile(account.getUsername(), account.getPassword(), "Alexis", "Neas", account.getAccountType(), account.getStatus());
+    userInteractions.viewProfile(account.getUsername());
+    System.out.println("Search schools: University of Minnesota");
+//    userInteractions.searchSchool("", "MINNESOTA","" ,"",
+//                                  null, 40000,
+//                                  null,null,
+//                                  null,null,
+//                                  null,null,
+//                                  null,null,
+//                                  null,null,
+//                                  null, null,
+//                                  null,null,
+//                                  "", "","", "","");  
+                                
     
     userInteractions.addSchool("University of Minnesota", account.getUsername());
     System.out.println("Saved universities:");
@@ -67,9 +83,22 @@ public class TextDriver {
     adminInteractions.getListOfUsers();
     adminInteractions.addNewUser("Trevor", "Wensman","trevor", "password", 'u');
     adminInteractions.getListOfUsers();
+
+
     
-    System.out.println("View Profile");
-    //userInteraction.
+    System.out.println("Deactivating user");
+    adminInteractions.deactivateUser("trevor");
+    adminInteractions.getUserInfo("trevor");
+    
+    System.out.println("Editting User.");
+    adminInteractions.editUser("Trevor", "Wensman", "rovert", "password", 'u', 'N');
+    adminInteractions.getUserInfo("rovert");
+    
+    
+    System.out.println("Adding a new school.");
+    adminInteractions.addSchool("Temp School", "Minnesota", "Urban", "State", 10, 50, 50, 50, 50000.00, 99,12, 100.0, 10, 3, 3, 3);
+    System.out.println("Added School..... Verifying School is there.");
+    adminInteractions.getSchoolInfo("Temp School");
      }
 
 }
