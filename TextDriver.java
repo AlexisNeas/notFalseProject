@@ -57,9 +57,10 @@ public class TextDriver {
     adminInteractions.getListOfUsers();
     adminInteractions.addNewUser("Trevor", "Wensman","trevor", "password", 'u');
     adminInteractions.getListOfUsers();
-
     
-  }
+    System.out.println("View Profile");
+    //userInteraction.
+     }
 
 }
 

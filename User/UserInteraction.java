@@ -13,7 +13,6 @@ import DatabaseController.*;
  */
 public class UserInteraction {
   private UserController userController;
-  
   public UserInteraction()
   {
     this.userController = new UserController();
@@ -95,16 +94,6 @@ public class UserInteraction {
    System.out.println("School has been added.");
   }
   
-  /**
-   * Removes add button from the school
-   * 
-   * @param school the school that can no longer be added
-   */
-  public void removeAddButton(String school)
-  {
-    
-  }
-  
 /**
    * Takes a list of search criteria inputed by user, and returns a list of Universities
    * in an order of relevance
@@ -123,22 +112,33 @@ public class UserInteraction {
                            int lowQualityOfLifeScale, int upQualityOfLifeScale,
                            String emphases1,String emphases2,String emphases3,
                            String emphases4,String emphases5) {
-    userController.searchSchool(schoolName, stateName, location, control, lowNumberOfStudents, upNumberOfStudents,
+    ArrayList<University> universities = userController.searchSchool(schoolName, stateName, location, control, lowNumberOfStudents, upNumberOfStudents,
                                 lowPercentFemale, upPercentFemale, lowSATVerbal, upSATVerbal, lowSATMath, upSATMath,
                                 lowExpenses, upExpenses, lowPercentEnrolled, upPercentEnrolled, lowAcademicsScale, upAcademicsScale,
                                 lowSocialScale,upSocialScale, lowQualityOfLifeScale, upQualityOfLifeScale, emphases1, emphases2,
                                 emphases3, emphases4, emphases5);
+    for (University u: universities)
+    {
+     System.out.println(u.getSchoolName()); 
+    }
   }  
   
 
   
   /**
    * Will allow the user to view the saved Universities
+   * 
+   * @param username the username of the account to view universities
    */
-//  public void viewSavedUniversities()
-//  {
-//  userController.viewSavedUniversities();
-//  }
+  public void getSavedUniversities(String username)
+  {
+    ArrayList<String> universities = userController.getSavedUniversities(username);
+    
+    for (String u: universities)
+    {
+     System.out.println(u); 
+    }
+  }
   
   /**
    * Edits the user's profile and saves changes
@@ -147,11 +147,12 @@ public class UserInteraction {
    * @param last the user's last name
    * @param password the user's password
    * 
-   * @return returns true if the profile has been successfully saved
    */
   public void editProfile(String username, String password, String firstName, String lastName, char type, char status)
   {
     userController.editProfile( username,  password,  firstName,  lastName,  type,  status);
+    System.out.println("Changes have been saved");
+    
   }
   
   public void viewProfile(String username)
