@@ -7,13 +7,15 @@ import User.*;
 public class TextDriver {
   
   Account activeAccount;
+  Admin admin;
+  User user;
   
   /**
    * @param args
    */
   public static void main(String [] args) {
     /*TODO
-     * Log in with User Account
+     * X Log in with User Account
      * View Profile
      * Edit Profile
      * Search Schools
@@ -25,7 +27,7 @@ public class TextDriver {
      * Remove Schools
      * Log out
      * 
-     * Log in as Admin
+     * X Log in as Admin
      * View Universities
      * Add new school
      * Save school
@@ -39,7 +41,18 @@ public class TextDriver {
     AdminInteractions adminInteractions = new AdminInteractions();
     
     System.out.println("Logging in with invalid user credentials:");
+    accountInteractions.logOn("ERROR", "ERROR");
     System.out.println("Logging in with valid user credentials:");
+    accountInteractions.logOn("juser", "user");
+    System.out.println("Logging in with valid admin credentials:");
+    accountInteractions.logOn("nadmin", "admin");
+
+    
+    adminInteractions.getListOfUsers();
+    adminInteractions.addNewUser("Trevor", "Wensman","trevor", "password", 'u');
+    adminInteractions.getListOfUsers();
+
+    
   }
 
 }

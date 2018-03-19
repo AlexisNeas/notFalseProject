@@ -43,7 +43,7 @@ public class UserController {
    * @param lowQualityOfLifeScale Lower limit for Quality Of Life Scale.
    * @param upQualityOfLifeScale Upper limit for Quality Of Life Scale.
    * 
-   * @return the university object closest to the search
+   * @return the university objects closest to the search
    */
   public ArrayList <University> searchSchool(String schoolName, String stateName, String location, String control,
                            int lowNumberOfStudents, int upNumberOfStudents,  

@@ -39,6 +39,7 @@ public class TextDriver {
      */
     AccountInteractions accountInteractions = new AccountInteractions();
     AdminInteractions adminInteractions = new AdminInteractions();
+    UserInteraction userInteractions = new UserInteraction();
     
     System.out.println("Logging in with invalid user credentials:");
     accountInteractions.logOn("ERROR", "ERROR");
@@ -51,9 +52,10 @@ public class TextDriver {
     adminInteractions.getListOfUsers();
     adminInteractions.addNewUser("Trevor", "Wensman","trevor", "password", 'u');
     adminInteractions.getListOfUsers();
-
     
-  }
+    System.out.println("View Profile");
+    userInteraction.
+     }
 
 }
 
