@@ -47,7 +47,23 @@ public class TextDriver {
     
     System.out.println("Logging in with valid user credentials:");
     account = accountInteractions.logOn("juser", "user");
+    System.out.println("**View Profile**");
     userInteractions.viewProfile(account.getUsername());
+    System.out.println("Edit Profile: Change name to Alexis Neas");
+    userInteractions.editProfile(account.getUsername(), account.getPassword(), "Alexis", "Neas", account.getAccountType(), account.getStatus());
+    userInteractions.viewProfile(account.getUsername());
+    System.out.println("Search schools: University of Minnesota");
+    userInteractions.searchSchool("", "MINNESOTA","" ,"",
+                                  null, 40000,
+                                  null,null,
+                                  null,null,
+                                  null,null,
+                                  null,null,
+                                  null,null,
+                                  null, null,
+                                  null,null,
+                                  "", "","", "","");  
+                                
     
     
     System.out.println("Logging in with valid admin credentials:");
@@ -79,9 +95,6 @@ public class TextDriver {
     
 
 
-    
-    System.out.println("View Profile");
-    //userInteraction.
      }
 
 }
