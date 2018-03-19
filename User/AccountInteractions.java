@@ -19,7 +19,7 @@ public class AccountInteractions {
    * logs them in or supplies them with an error message to try again
    * @return boolean value regarding if the sign in was successful or not
    */
-  public void logOn(String username, String password){
+  public Account logOn(String username, String password){
     
     Account user = aController.logOn(username,password);
     if(user == null)
@@ -37,10 +37,17 @@ public class AccountInteractions {
     else
     {
       if(user instanceof User)
+      {
         System.out.println("The user account is now logged on");
+        return (User)user;
+      }
       else
+      {
         System.out.println("The admin account is now logged on");
+        return (Admin)user;
+      }
     }
+    return user;
   }
   
   /**

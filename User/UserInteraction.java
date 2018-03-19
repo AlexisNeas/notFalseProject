@@ -12,13 +12,18 @@ import DatabaseController.*;
  * 
  */
 public class UserInteraction {
-  //private UserController userController;
+  private UserController userController;
+  
+  public UserInteraction()
+  {
+    this.userController = new UserController();
+  }
+  
   /**
    * Displays the list of similar schools
    * 
    * @param school the school that the schools should be similar to
    */
-  
   public void displaySimilarSchools(String schoolName, String stateName, String location, String control,
                                        int numberOfStudents,  double percentFemale, 
                                        double SATVerbal, double SATMath, double expenses, double percentEnrolled, 
@@ -37,7 +42,7 @@ public class UserInteraction {
      {
        for(University u : universities)
        {
-        System.out.println(u.getName()); 
+        System.out.println(u.getSchoolName()); 
        }
      }
   }
@@ -68,14 +73,14 @@ public class UserInteraction {
   {
     University u = userController.getSchoolInfo(school);
     System.out.println("Name: " + u.getSchoolName()+"\nState: " +
-    					u.getState()+"\nLocation: " + u.getLocation()"\nControl: " + u.getControl()+"\nStudy Area 1: " + u.getStudyArea1()+
-    					"\nStudy Area 2: " + u.getStudyArea2()+"\nStudy Area 3: " + u.getStudyArea3()"\nStudy Area 4: " 
-    					+ u.getStudyArea4()"\nStudy Area 5: " + u.getStudyArea5()"\nNumber of Applications: " +
-    					u.getNumApplicants() + "\nNumber of Students: " + u.getNumStudents() + "Academic Scale: " +
-    					u.getAcademicScale()+ "\nQuality of Life: " + u.getQualOfLife()+ "\nFemales %: " + 
-    					u.getPercentFemale() + "%\nSAT Verbal: " + u.getSatVerbal() + "\nSAT Math: " + u.getSatMath() + "\nTuition: " + u.getTuition() +
-    					"% Receiving Financial Aid: " + u.getPercentRecFinAid()+ "%\nAccepted: " + u.getPercentAccepted() + "\nEnrolled: " + u.getPercentEnrolled() + "%/nSocial Rating: "+
-    					u.getSocial() + "\n");
+         u.getState()+"\nLocation: " + u.getLocation()+"\nControl: " + u.getControl()+"\nStudy Area 1: " + u.getStudyArea1()+
+         "\nStudy Area 2: " + u.getStudyArea2()+"\nStudy Area 3: " + u.getStudyArea3()+"\nStudy Area 4: " 
+         + u.getStudyArea4()+"\nStudy Area 5: " + u.getStudyArea5()+"\nNumber of Applications: " +
+         u.getNumApplicants() + "\nNumber of Students: " + u.getNumStudents() + "Academic Scale: " +
+         u.getAcademicScale()+ "\nQuality of Life: " + u.getQualOfLife()+ "\nFemales %: " + 
+         u.getPercentFemale() + "%\nSAT Verbal: " + u.getSatVerbal() + "\nSAT Math: " + u.getSatMath() + "\nTuition: " + u.getTuition() +
+         "% Receiving Financial Aid: " + u.getPercentRecFinAid()+ "%\nAccepted: " + u.getPercentAccepted() + "\nEnrolled: " + u.getPercentEnroll() + "%/nSocial Rating: "+
+         u.getSocial() + "\n");
 
   } 
   
@@ -87,7 +92,7 @@ public class UserInteraction {
   public void addSchool(String school, String username)
   {
    userController.addSchool(school, username); 
-   System.out.println("School has been added.")
+   System.out.println("School has been added.");
   }
   
   /**
@@ -147,5 +152,12 @@ public class UserInteraction {
   public void editProfile(String username, String password, String firstName, String lastName, char type, char status)
   {
     userController.editProfile( username,  password,  firstName,  lastName,  type,  status);
+  }
+  
+  public void viewProfile(String username)
+  {
+    Account info = userController.viewProfile(username);
+    System.out.println("First name: "+info.getFirstName()+"\nLast name: "+info.getLastName()+"\nUsername: "
+                         +info.getUsername()+"\nPassword: "+info.getPassword()+"\nAccount type: "+info.getAccountType());
   }
 }

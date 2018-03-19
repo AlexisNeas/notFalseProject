@@ -39,13 +39,19 @@ public class TextDriver {
      */
     AccountInteractions accountInteractions = new AccountInteractions();
     AdminInteractions adminInteractions = new AdminInteractions();
+    UserInteraction userInteractions = new UserInteraction();
+    Account account;
     
     System.out.println("Logging in with invalid user credentials:");
-    accountInteractions.logOn("ERROR", "ERROR");
+    account = accountInteractions.logOn("ERROR", "ERROR");
+    
     System.out.println("Logging in with valid user credentials:");
-    accountInteractions.logOn("juser", "user");
+    account = accountInteractions.logOn("juser", "user");
+    userInteractions.viewProfile(account.getUsername());
+    
+    
     System.out.println("Logging in with valid admin credentials:");
-    accountInteractions.logOn("nadmin", "admin");
+    account = accountInteractions.logOn("nadmin", "admin");
 
     
     adminInteractions.getListOfUsers();

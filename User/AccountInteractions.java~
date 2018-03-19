@@ -21,7 +21,26 @@ public class AccountInteractions {
    */
   public void logOn(String username, String password){
     
-    aController.logOn(username,password);
+    Account user = aController.logOn(username,password);
+    if(user == null)
+    {
+      System.out.println("Invalid username or password");
+    }
+    else if(!user.isLoggedOn())
+    {
+      System.out.println("Invalid username or password");
+    }
+    else if(user.getStatus() == 'N')
+    {
+      System.out.println("Account has been deactivated");
+    }
+    else
+    {
+      if(user instanceof User)
+        System.out.println("The user account is now logged on");
+      else
+        System.out.println("The admin account is now logged on");
+    }
   }
   
   /**
