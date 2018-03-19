@@ -54,9 +54,9 @@ public class AccountInteractions {
    * If the user is logged on, the user is able to log off using this method 
    * @return boolean value whether they successfully log off or not
    */
-  public void logOff(){
+  public void logOff(Account account){
     
-    aController.logOff();
+    aController.logOff(account);
   }
    
   
