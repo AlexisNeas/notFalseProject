@@ -150,7 +150,7 @@ public class DBController
    * @param status status of the user
    * 
    */
-  public Account setUserInfo(String username, String password, String firstName, String lastName, char type, char status)
+  public Account setUserInfo(String firstName, String lastName, String username, String password, char type, char status)
   {
  Account acc = null;
 
@@ -708,7 +708,7 @@ public class DBController
     boolean bool = false;
     for(int i = 0;i<array.length;i++)
     {
-      if(array[i][0].equals(schoolName))
+      if(array[i][0].equals(username))
       {
         bool = true; 
       }

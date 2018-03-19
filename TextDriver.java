@@ -53,16 +53,7 @@ public class TextDriver {
     userInteractions.editProfile(account.getUsername(), account.getPassword(), "Alexis", "Neas", account.getAccountType(), account.getStatus());
     userInteractions.viewProfile(account.getUsername());
     System.out.println("Search schools: University of Minnesota");
-    userInteractions.searchSchool("", "MINNESOTA","" ,"",
-                                  null, 40000,
-                                  null,null,
-                                  null,null,
-                                  null,null,
-                                  null,null,
-                                  null,null,
-                                  null, null,
-                                  null,null,
-                                  "", "","", "","");  
+  
                                 
     
     
@@ -73,9 +64,6 @@ public class TextDriver {
     adminInteractions.getListOfUsers();
     System.out.println("Adding a new user to the system");
     adminInteractions.addNewUser("Trevor", "Wensman","trevor", "password", 'u');
-    
-    System.out.println("Printing updated list of users");
-    adminInteractions.getListOfUsers();
 
     adminInteractions.getUserInfo("trevor");
     System.out.println("Deactivating user");
