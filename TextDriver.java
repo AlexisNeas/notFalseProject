@@ -21,19 +21,11 @@ public class TextDriver {
      * Search Schools******************
      * View Results
      * View School Information
-<<<<<<< HEAD
-     * Display similar recommendations *************8
-     * Add School to profile
-     * View Saved Schools
-     * Remove Schools
-     * Log out
-=======
      * Display similar recommendations
      * X Add School to profile
      * X View Saved Schools
      * X Remove Schools
      * X Log out
->>>>>>> 5e1f0e6fe7743f3e82e02a286e892d203c852696
      * 
      * X Log in as Admin
      * View Universities
