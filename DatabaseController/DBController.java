@@ -152,7 +152,7 @@ public class DBController
    */
   public Account setUserInfo(String username, String password, String firstName, String lastName, char type, char status)
   {
-	Account acc = null;
+ Account acc = null;
 
       univDBlib.user_editUser(username , firstName, lastName, 
                               password, type, status);
@@ -304,7 +304,7 @@ public class DBController
    */
   public Account deactivateUser(String username)
   {
-	Account acc = null;
+ Account acc = null;
     String[][] array = univDBlib.user_getUsers();
     int len = array.length;
     for(int i = 0; i<len ;i++)
@@ -1051,8 +1051,8 @@ public class DBController
   {
     try{
       DBController databasecontroller = new DBController("notfal", "csci230");
-     // String[][] array = databasecontroller.getUnivDBlib().university_getUniversities();
-      String[][] array = databasecontroller.getUnivDBlib().user_getUsers();
+      String[][] array = databasecontroller.getUnivDBlib().university_getUniversities();
+      //String[][] array = databasecontroller.getUnivDBlib().user_getUsers();
       for(int i = 0; i < array.length; i++)
       {
         for(int j = 0; j<array[i].length; j++)
