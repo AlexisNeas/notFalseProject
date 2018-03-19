@@ -150,13 +150,13 @@ public class DBController
    * @param status status of the user
    * 
    */
-  public Account setUserInfo(String username, String password, String firstName, String lastName, char type, char status)
+  public Account setUserInfo(String firstName, String lastName, String username, String password, char type, char status)
   {
  Account acc = null;
 
       univDBlib.user_editUser(username , firstName, lastName, 
                               password, type, status);
-      acc = returnUser(username,password,firstName,lastName,type,status);
+      acc = returnUser(firstName,lastName,username,password,type,status);
       
     
     return acc;
@@ -711,14 +711,21 @@ public class DBController
     else {
       for(int i = 0;i<array.length;i++)
       {
-        if(array[i][0].equals(schoolName))
+        if(array[i][0].equals(username))
         {
-          bool = true; 
+          int len2 = array[i].length;
+          for(int j = 1; j<len2;j++)
+          {
+            if(array[i][j].equals(schoolName))
+            {
+              bool = true; 
+            }
+          }
         }
-      }
-      if(bool)
-      {
-        univDBlib.user_removeSchool(username, schoolName);
+        if(bool)
+        {
+          univDBlib.user_removeSchool(username, schoolName);
+        }
       }
       return bool;
     }
@@ -1059,7 +1066,11 @@ public class DBController
     try{
       DBController databasecontroller = new DBController("notfal", "csci230");
       String[][] array = databasecontroller.getUnivDBlib().university_getUniversities();
+
+      databasecontroller.getUnivDBlib().user_deleteUser("trevor");
+
       //String[][] array = databasecontroller.getUnivDBlib().user_getUsers();
+
       for(int i = 0; i < array.length; i++)
       {
         for(int j = 0; j<array[i].length; j++)

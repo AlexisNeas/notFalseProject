@@ -55,6 +55,7 @@ public class TextDriver {
     userInteractions.editProfile(account.getUsername(), account.getPassword(), "Alexis", "Neas", account.getAccountType(), account.getStatus());
     userInteractions.viewProfile(account.getUsername());
     System.out.println("Search schools: University of Minnesota");
+
 //    userInteractions.searchSchool("", "MINNESOTA","" ,"",
 //                                  null, 40000,
 //                                  null,null,
@@ -64,7 +65,7 @@ public class TextDriver {
 //                                  null,null,
 //                                  null, null,
 //                                  null,null,
-//                                  "", "","", "","");  
+//                                  "", "","", "",""); 
                                 
     
     userInteractions.addSchool("University of Minnesota", account.getUsername());
@@ -82,17 +83,16 @@ public class TextDriver {
     
     adminInteractions.getListOfUsers();
     adminInteractions.addNewUser("Trevor", "Wensman","trevor", "password", 'u');
+
     adminInteractions.getListOfUsers();
-
-
-    
+    adminInteractions.getUserInfo("trevor");
     System.out.println("Deactivating user");
     adminInteractions.deactivateUser("trevor");
     adminInteractions.getUserInfo("trevor");
     
     System.out.println("Editting User.");
-    adminInteractions.editUser("Trevor", "Wensman", "rovert", "password", 'u', 'N');
-    adminInteractions.getUserInfo("rovert");
+    adminInteractions.editUser("ROVERT", "Wensman", "trevor", "password", 'u', 'N');
+    adminInteractions.getUserInfo("trevor");
     
     
     System.out.println("Adding a new school.");
