@@ -170,16 +170,6 @@ public class UserController {
    return dbController.getUserSchools(username); 
   }
   
-
-  
-  /**
-   * Displays an error message if there are no schools saved
-   */
-  public void noSchoolError()
-  {
-   System.out.println("Sorry, you haven't saved any schools"); 
-  }
-  
   /**
    * Edits the user's profile and saves changes
    * 
@@ -194,22 +184,8 @@ public class UserController {
    dbController.setUserInfo(  username,  password,  firstName,  lastName,  type,  status);
   }
   
-  /**
-   * Displays an error message if there was no search criteria entered
-   */
-  public void noCriteriaMessage()
-  {
-    System.out.println("You must provide search criteria");
-  }
   
-  /**
-   * Gets the options for the users to select
-   */
-  public void getUserOptions()
-  {
-    
-  }
-  
+
 }
 
   

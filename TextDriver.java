@@ -39,13 +39,19 @@ public class TextDriver {
      */
     AccountInteractions accountInteractions = new AccountInteractions();
     AdminInteractions adminInteractions = new AdminInteractions();
+    UserInteraction userInteractions = new UserInteraction();
+    Account account;
     
     System.out.println("Logging in with invalid user credentials:");
-    accountInteractions.logOn("ERROR", "ERROR");
+    account = accountInteractions.logOn("ERROR", "ERROR");
+    
     System.out.println("Logging in with valid user credentials:");
-    accountInteractions.logOn("juser", "user");
+    account = accountInteractions.logOn("juser", "user");
+    userInteractions.viewProfile(account.getUsername());
+    
+    
     System.out.println("Logging in with valid admin credentials:");
-    accountInteractions.logOn("nadmin", "admin");
+    account = accountInteractions.logOn("nadmin", "admin");
 
     System.out.println("List of all users in the Database.");
     adminInteractions.getListOfUsers();
@@ -53,6 +59,7 @@ public class TextDriver {
     adminInteractions.addNewUser("Trevor", "Wensman","trevor", "password", 'u');
     System.out.println("Printing updated list of users");
     adminInteractions.getListOfUsers();
+
     
     System.out.println("Deactivating user");
     adminInteractions.deactivateUser("trevor");
@@ -70,8 +77,11 @@ public class TextDriver {
 
     
 
+
     
-  }
+    System.out.println("View Profile");
+    //userInteraction.
+     }
 
 }
 
