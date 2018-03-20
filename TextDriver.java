@@ -61,7 +61,7 @@ public class TextDriver {
     userInteractions.viewProfile(account.getUsername());
 
     System.out.println("Search schools: University of Minnesota and View Results");
-    userInteractions.searchSchool("!", "CALIFORNIA","!" ,"!",//SchoolName, State, location,Control
+    userInteractions.searchSchool("!", "UNIVERSITY OF MINNESOTA","!" ,"!",//SchoolName, State, location,Control
                                   0, 10000,//NumStudents
                                   -2,-2,//%Female
                                   -2,-2,//SATVerbal
