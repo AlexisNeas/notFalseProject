@@ -46,7 +46,7 @@ public class AdminInteractions {
    * @param studyArea5
    */
   public void editSchool(String name, String state, String loc, String control, int numStudents, double perFem,
-                         int satVerbal, int satMath, double tuition, double perFinancialAid, int numApplicants,
+                         double satVerbal, double satMath, double tuition, double perFinancialAid, int numApplicants,
                          double perAccepted, double perEnroll, int academicScale, int social, int qualOfLife,
                          String studyArea1, String studyArea2, String studyArea3, String studyArea4, String studyArea5) {
     
@@ -63,7 +63,9 @@ public class AdminInteractions {
    * @param schoolName the name of school to get info for
    */
   public void schoolInfo(String schoolName) {
-    adminController.getSchoolInformation(schoolName);
+    University university = adminController.getSchoolInformation(schoolName);
+    System.out.println(university);
+    
   }
   
   /**
@@ -73,7 +75,7 @@ public class AdminInteractions {
     ArrayList<Account> array = adminController.getListOfUsers();
     for(int i = 0; i < array.size();i++)
     {
-    	System.out.println(array.get(i).getUsername());
+     System.out.println(array.get(i).getUsername());
     }
   }
   
@@ -106,9 +108,14 @@ public class AdminInteractions {
    * 
    * @param name the name of the school to get info for
    */
-  public void getSchoolInfo(String name){
+  public void getSchoolInfo(String name){ 
     University univ = adminController.getSchoolInformation(name);
-    System.out.println(univ.getSchoolName());
+    System.out.println("School name: " + univ.getSchoolName() + "\nState: " + univ.getState() + "\nLocation:" + univ.getLocation() + "\nControl: " + univ.getControl()
+                                 + "\nNum Students: " +univ.getNumStudents() + "\nPercent Female: " + univ.getPercentFemale() + "\nSat verbal: " +univ.getSatVerbal() + "\nSat math: " +univ.getSatMath()
+                                 + "\nTuition: " + univ.getTuition() + "\nRec Fin Aid: " +univ.getPercentRecFinAid() + "\nApplicants: " + univ.getNumApplicants() + "\nAccepted: " + univ.getPercentAccepted()
+                         + "\nEnroll: " + univ.getPercentEnroll() + "\nAc Scale: " +univ.getAcademicScale() + "\nSocial: " +univ.getSocial() + "\nQofL: " +univ.getQualOfLife()
+                                 + "\nStudyArea1: " + univ.getStudyArea1()  + "\nStudyArea2: " + univ.getStudyArea2()  + "\nStudyArea3: " + univ.getStudyArea3() + "\nStudyArea4: " +  univ.getStudyArea4()
+                                + "\nStudyArea5: " +  univ.getStudyArea5());
   }
   
   /**

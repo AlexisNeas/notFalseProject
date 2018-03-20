@@ -22,7 +22,7 @@ public class TextDriver {
      * X Search Schools******************
      * X View Results
      * X View School Information
-     * Display similar recommendations
+     * X Display similar recommendations
      * X Add School to profile
      * X View Saved Schools
      * X Remove Schools
@@ -68,7 +68,7 @@ public class TextDriver {
     System.out.println("\nCheck to ensure the account name is changed");
     userInteractions.viewProfile(account.getUsername());
 
-    System.out.println("\n\nSearch schools: Schools in California");
+    System.out.println("\n\nSearch schools and View Search Results: Schools in California");
     userInteractions.searchSchool("!", "CALIFORNIA","!" ,"!",//SchoolName, State, location,Control
                                   0, 10000,//NumStudents
                                   -2,-2,//%Female
@@ -76,7 +76,7 @@ public class TextDriver {
                                   -2,-2,//SATMath
                                   -2,-2,//Expenses
                                   -2,-2,//PercentEnrolled
-                                  -2, -2,//AcademicsScale
+                                  -2,-2,//AcademicsScale
                                   -2,-2,//Social
                                   -2,-2,//Academics
                                   "", "","", "","");  
@@ -86,15 +86,6 @@ public class TextDriver {
     System.out.println("\n\nDisplay Similar Schools");
     userInteractions.displaySimilarSchools("UNIVERSITY OF MINNESOTA");
     
-    System.out.println("Edit school: University of Minnesota");
-    adminInteractions.editSchool("Temp School", university.getState(), university.getLocation(), university.getControl(),
-                                 university.getNumStudents(), 100, university.getSatVerbal(), university.getSatMath(),
-                                 university.getTuition(), university.getPercentRecFinAid(), university.getNumApplicants(), university.getPercentAccepted(),
-                                 university.getPercentEnroll(), university.getAcademicScale(), university.getSocial(), university.getQualOfLife(),
-                                 university.getStudyArea1(),  university.getStudyArea2(),  university.getStudyArea3(),  university.getStudyArea4(),
-                                 university.getStudyArea5()); 
-    adminInteractions.getSchoolInfo("UNIVERSITY OF MINNESOTA"); 
-    
     userInteractions.addSchool("University of Minnesota", account.getUsername());
     System.out.println("Saved universities:");
     userInteractions.getSavedUniversities(account.getUsername());
@@ -103,10 +94,7 @@ public class TextDriver {
     accountInteractions.logOff(account);
     System.out.println("User account log on status: "+account.isLoggedOn());
     
-    
-    
-    
-    
+   
     System.out.println("\n\n*******************************************************\n\n");
     System.out.println("Logging in with valid admin credentials:");
     account = accountInteractions.logOn("nadmin", "admin");
@@ -126,10 +114,20 @@ public class TextDriver {
     adminInteractions.getUserInfo("trevor");
     
     
-    System.out.println("Adding a new school.");
+    System.out.println("Adding a new school called Temp School:*****NEEDS TO BE A DIFFERENT NEW SCHOOL");
+    adminInteractions.getSchoolInfo("Temp School");
     adminInteractions.addSchool("Temp School", "Minnesota", "Urban", "State", 10, 50, 50, 50, 50000.00, 99,12, 100.0, 10, 3, 3, 3);
     System.out.println("Added School..... Verifying School is there.");
     adminInteractions.getSchoolInfo("Temp School");
+    
+    System.out.println("Edit school: University of Minnesota");
+    adminInteractions.editSchool("Temp School", university.getState(), university.getLocation(), university.getControl(),
+                                 university.getNumStudents(), 100, university.getSatVerbal(), university.getSatMath(),
+                                 university.getTuition(), university.getPercentRecFinAid(), university.getNumApplicants(), university.getPercentAccepted(),
+                                 university.getPercentEnroll(), university.getAcademicScale(), university.getSocial(), university.getQualOfLife(),
+                                 university.getStudyArea1(),  university.getStudyArea2(),  university.getStudyArea3(),  university.getStudyArea4(),
+                                 university.getStudyArea5()); 
+    adminInteractions.getSchoolInfo("UNIVERSITY OF MINNESOTA"); 
      }
 
 }
