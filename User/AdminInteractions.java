@@ -100,7 +100,7 @@ public class AdminInteractions {
    */
   public void getUserInfo(String username){
     Account account = adminController.getUserInfo(username);
-    System.out.println("First: " + account.getFirstName()+ " " + "Last: " + account.getLastName() + " " + "Username: " + account.getUsername() + " " + "Password: " + account.getPassword()+ " " + "Type: " + account.getAccountType() + " " + "Status: " + account.getStatus());
+    System.out.println("\tFirst: " + account.getFirstName()+ "\n\t" + "Last: " + account.getLastName() + "\n\t" + "Username: " + account.getUsername() + "\n\t" + "Password: " + account.getPassword()+ "\n\t" + "Type: " + account.getAccountType() + "\n\t" + "Status: " + account.getStatus());
   }
   
   /**
