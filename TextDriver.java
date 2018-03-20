@@ -61,14 +61,14 @@ public class TextDriver {
     userInteractions.viewProfile(account.getUsername());
 
     System.out.println("Search schools: University of Minnesota and View Results");
-    userInteractions.searchSchool("!", "UNIVERSITY OF MINNESOTA","!" ,"!",//SchoolName, State, location,Control
+    userInteractions.searchSchool("!", "CALI","!" ,"!",//SchoolName, State, location,Control
                                   0, 10000,//NumStudents
                                   -2,-2,//%Female
                                   -2,-2,//SATVerbal
                                   -2,-2,//SATMath
                                   -2,-2,//Expenses
                                   -2,-2,//PercentEnrolled
-                                  -2, -2,//AcademicsScale
+                                  -2,-2,//AcademicsScale
                                   -2,-2,//Social
                                   -2,-2,//Academics
                                   "", "","", "","");  
