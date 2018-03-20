@@ -513,7 +513,6 @@ public class DBController
           {
             distanceArray[4][0] = distance;
             distanceArray[4][1] = i;
-            
             for(int j = 0; j<4; j++)
             {
           	  for(int k = 0; k<4-j;k++)
@@ -527,6 +526,7 @@ public class DBController
                 distanceArray[k] = distanceArray[k+1];
                 distanceArray[k+1][0] = tempDistance;
                 distanceArray[k+1][1] = spot;
+                
               }
           	  }
             }
