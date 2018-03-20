@@ -489,14 +489,21 @@ public class DBController
         {
           distanceArray[sizeOfDistanceArray][0] = distance;
           distanceArray[sizeOfDistanceArray][1] = i;
-          for(int j = 0; j<sizeOfDistanceArray; j++)
+          for(int j = 0; j<sizeOfDistanceArray-1; j++)
           {
-            if(distanceArray[j][0] > distanceArray[j+1][0])
+        	  for(int k = 0; k<sizeOfDistanceArray-j-1;k++)
+        	  {
+        		  
+        	  
+            if(distanceArray[k][0] > distanceArray[k+1][0])
             {
-              double[] temp = distanceArray[j];
-              distanceArray[j] = distanceArray[j+1];
-              distanceArray[j+1] = temp;
+              double tempDistance = distanceArray[k][0];
+              double spot = distanceArray[k][1];
+              distanceArray[k] = distanceArray[k+1];
+              distanceArray[k+1][0] = tempDistance;
+              distanceArray[k+1][1] = spot;
             }
+        	  }
           }
           sizeOfDistanceArray++;
         }
@@ -509,12 +516,19 @@ public class DBController
             
             for(int j = 0; j<4; j++)
             {
-              if(distanceArray[j][0] > distanceArray[j+1][0])
+          	  for(int k = 0; k<4-j;k++)
+          	  {
+          		  
+          	  
+              if(distanceArray[k][0] > distanceArray[k+1][0])
               {
-                double[] temp = distanceArray[j];
-                distanceArray[j] = distanceArray[j+1];
-                distanceArray[j+1] = distanceArray[j];
+                double tempDistance = distanceArray[k][0];
+                double spot = distanceArray[k][1];
+                distanceArray[k] = distanceArray[k+1];
+                distanceArray[k+1][0] = tempDistance;
+                distanceArray[k+1][1] = spot;
               }
+          	  }
             }
           }
         }
