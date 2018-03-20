@@ -117,9 +117,9 @@ public class UserInteraction {
                                 lowExpenses, upExpenses, lowPercentEnrolled, upPercentEnrolled, lowAcademicsScale, upAcademicsScale,
                                 lowSocialScale,upSocialScale, lowQualityOfLifeScale, upQualityOfLifeScale, emphases1, emphases2,
                                 emphases3, emphases4, emphases5);
-    for (University u: universities)
+    for (int i = 0; i<universities.size();i++)
     {
-     System.out.println(u.getSchoolName()); 
+     System.out.println(universities.get(i).getSchoolName()); 
     }
   }  
   
