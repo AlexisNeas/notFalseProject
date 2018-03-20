@@ -40,7 +40,7 @@ public class AdminController {
    * 
    * @return a list containing all the users
    */
-  public ArrayList<User> getListOfUsers(){
+  public ArrayList<Account> getListOfUsers(){
     return dbController.getListOfUsers();
   }
   
@@ -102,8 +102,8 @@ public class AdminController {
    * @param type
    * @param status
    */
-  public void editUser(String firstName, String lastName, String username, String password, char type, char status){
-    dbController.setUserInfo(firstName, lastName, username, password, type, status);
+  public Account editUser(String firstName, String lastName, String username, String password, char type, char status){
+    return dbController.setUserInfo(firstName, lastName, username, password, type, status);
   }
   
   /**
@@ -119,7 +119,7 @@ public class AdminController {
    * @param username the unique username of the user
    * @return the user
    */
-  public User getUserInfo(String username)
+  public Account getUserInfo(String username)
   {
     return dbController.getUserInfo(username);
   }

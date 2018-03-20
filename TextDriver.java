@@ -1,4 +1,5 @@
 import User.*;
+import University.*;
   
 /**
  * @author zvetter001
@@ -36,11 +37,15 @@ public class TextDriver {
      * X Add new user
      * X Deactivate user
      * X Edit user
+
      */
     AccountInteractions accountInteractions = new AccountInteractions();
     AdminInteractions adminInteractions = new AdminInteractions();
     UserInteraction userInteractions = new UserInteraction();
+    University university = new University();
+    AdminController adminController = new AdminController();
     Account account;
+   
     
     System.out.println("Logging in with invalid user credentials of U - ERROR, P - ERROR:");
     account = accountInteractions.logOn("ERROR", "ERROR");
@@ -54,6 +59,7 @@ public class TextDriver {
     System.out.println("Edit Profile: Change name to Alexis Neas");
     userInteractions.editProfile(account.getUsername(), account.getPassword(), "Alexis", "Neas", account.getAccountType(), account.getStatus());
     userInteractions.viewProfile(account.getUsername());
+
     System.out.println("Search schools: University of Minnesota and View Results");
     userInteractions.searchSchool("!", "CALIFORNIA","!" ,"!",//SchoolName, State, location,Control
                                   0, 10000,//NumStudents
@@ -66,11 +72,20 @@ public class TextDriver {
                                   -2,-2,//Social
                                   -2,-2,//Academics
                                   "", "","", "","");  
+
     System.out.println("View School Information: University of Minnesota");
     userInteractions.viewSchoolInfo("UNIVERSITY OF MINNESOTA");
     System.out.println("Display Similar Schools:");
     userInteractions.displaySimilarSchools("UNIVERSITY OF MINNESOTA");
-                                
+    
+    System.out.println("Edit school: University of Minnesota");
+    adminInteractions.editSchool("Temp School", university.getState(), university.getLocation(), university.getControl(),
+                                 university.getNumStudents(), 100, university.getSatVerbal(), university.getSatMath(),
+                                 university.getTuition(), university.getPercentRecFinAid(), university.getNumApplicants(), university.getPercentAccepted(),
+                                 university.getPercentEnroll(), university.getAcademicScale(), university.getSocial(), university.getQualOfLife(),
+                                 university.getStudyArea1(),  university.getStudyArea2(),  university.getStudyArea3(),  university.getStudyArea4(),
+                                 university.getStudyArea5()); 
+    adminInteractions.getSchoolInfo("UNIVERSITY OF MINNESOTA"); 
     
     userInteractions.addSchool("University of Minnesota", account.getUsername());
     System.out.println("Saved universities:");
