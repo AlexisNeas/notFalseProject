@@ -942,7 +942,7 @@ public class DBController
     try{
       DBController databasecontroller = new DBController("notfal", "csci230");
       String[][] array = databasecontroller.getUnivDBlib().university_getUniversities();
-
+      databasecontroller.getUnivDBlib().university_deleteUniversity("Temp School");
       databasecontroller.getUnivDBlib().user_deleteUser("trevor");
 
       //String[][] array = databasecontroller.getUnivDBlib().user_getUsers();
