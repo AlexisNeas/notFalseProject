@@ -46,33 +46,30 @@ public class TextDriver {
     AdminController adminController = new AdminController();
     Account account;
    
-    
+    System.out.println(" ~~ TEST: Log on with invalid username and password ~~");
     System.out.println("Logging in with invalid user credentials of U - ERROR, P - ERROR:");
     account = accountInteractions.logOn("ERROR", "ERROR");
     System.out.println("\n\n*******************************************************\n\n");
     
-    System.out.println("Logging in with valid user credentials:");
-    System.out.println("Username: juser   Password: user");
+    System.out.println("**********************************************");
+    System.out.println("************ User Functionalities ************");
+    System.out.println("**********************************************");
+    System.out.println("\n\n");
+    
+    System.out.println("*** Logging in with valid user credentials: ***");
+    System.out.println(" -- Username: juser   Password: user --");
     account = accountInteractions.logOn("juser", "user");
     System.out.println("User account log on status: "+account.isLoggedOn());
-    System.out.println("\n\n*******************************************************\n\n");
     
-    System.out.println("********************************************");
-    System.out.println("************User Functionalities************");
-    System.out.println("********************************************");
-    System.out.println("\n\n**View Profile**");
+    System.out.println("\n\n*** View Profile ***");
     userInteractions.viewProfile(account.getUsername());
     
-    System.out.println("\n\n**Edit Profile: Change name to Alexis Neas**");
+    System.out.println("\n\n*** Edit Profile: Change name to Alexis Neas ***");
     userInteractions.editProfile(account.getUsername(), account.getPassword(), "Alexis", "Neas", account.getAccountType(), account.getStatus());
-    System.out.println("\nCheck to ensure the account name is changed");
+    System.out.println("\n -- Check to ensure the account name is changed --");
     userInteractions.viewProfile(account.getUsername());
 
-<<<<<<< HEAD
-    System.out.println("\n\nSearch schools: Schools in California");
-=======
-    System.out.println("Search schools: University of Minnesota and View Results");
->>>>>>> f65843d02d07b9e80fc0887679c68d977b0acacc
+    System.out.println("\n\n*** Search schools and View Search Results: Schools in California ***");
     userInteractions.searchSchool("!", "CALIFORNIA","!" ,"!",//SchoolName, State, location,Control
                                   0, 10000,//NumStudents
                                   -2,-2,//%Female
@@ -85,56 +82,79 @@ public class TextDriver {
                                   -2,-2,//Academics
                                   "", "","", "","");  
 
-    System.out.println("\n\nView School Information: University of Minnesota");
+    System.out.println("\n\n*** View School Information: University of Minnesota ***");
     userInteractions.viewSchoolInfo("UNIVERSITY OF MINNESOTA");
-    System.out.println("\n\nDisplay Similar Schools");
+    System.out.println("\n*** Display Similar Schools ***");
     userInteractions.displaySimilarSchools("UNIVERSITY OF MINNESOTA");
     
-    System.out.println("Edit school: University of Minnesota");
+    System.out.println("\n\n*** Add school to User's saved universities: ***");
+    System.out.println("Original List of Saved Schools");
+    userInteractions.getSavedUniversities(account.getUsername());
+    userInteractions.addSchool("University of Minnesota", account.getUsername());
+    System.out.println(" -- Updated List of Saved Universities: --");
+    userInteractions.getSavedUniversities(account.getUsername());
+    System.out.println("\n*** Removing school from User's List of Schools: *** ");
+    userInteractions.remove("University of Minnesota",account.getUsername());
+    System.out.println("\n -- Display Saved Universities: --");
+    userInteractions.getSavedUniversities(account.getUsername());
+    System.out.println("\n\n *** Log Off ***");
+    accountInteractions.logOff(account);
+    System.out.println("User account log on status: "+account.isLoggedOn());
+    
+   
+    System.out.println("\n\n\n***********************************************");
+    System.out.println("************ Admin Functionalities ************");
+    System.out.println("***********************************************");
+    System.out.println("\n\n");
+    
+    System.out.println("*** Logging in with valid admin credentials: ***");
+    System.out.println("Username: nadmin   Password: admin");
+    account = accountInteractions.logOn("nadmin", "admin");
+
+    System.out.println("\n\n*** Get List of Accounts ***");
+    adminInteractions.getListOfUsers();
+    System.out.println("\n*** Add New Account ***");
+    adminInteractions.addNewUser("Trevor", "Wensman","trevor", "password", 'u');
+    System.out.println("Display updated list of users");
+    adminInteractions.getListOfUsers();
+    
+    System.out.println("\n\n*** Get information for specific account ***");
+    adminInteractions.getUserInfo("trevor");
+    
+    System.out.println("\n\n*** Deactivate user ***");
+    System.out.println("Original Account information");
+    adminInteractions.getUserInfo("trevor");
+    adminInteractions.deactivateUser("trevor");
+    System.out.println("\n -- Get updated user information --");
+    adminInteractions.getUserInfo("trevor");
+    
+    System.out.println("\n\n*** Edit Account Information ***");
+    System.out.println("Original account information");
+    adminInteractions.getUserInfo("trevor");
+    System.out.println("\nChanging first name to ROVERT");
+    adminInteractions.editUser("ROVERT", "Wensman", "trevor", "password", 'u', 'N');
+    System.out.println("\n -- Get updated user information --");
+    adminInteractions.getUserInfo("trevor");
+    
+    
+    System.out.println("\n\n*** Adding a new school called Temp School: ***");
+    System.out.println("NOTE: The school much be change each time you run Driver");
+    adminInteractions.getSchoolInfo("Temp School");
+    adminInteractions.addSchool("Temp School", "Minnesota", "Urban", "State", 10, 50, 50, 50, 50000.00, 99,12, 100.0, 10, 3, 3, 3);
+    System.out.println("\n -- Added School..... Verifying School is there --");
+    adminInteractions.getSchoolInfo("Temp School");
+    
+    System.out.println("\n\n*** Edit school: University of Minnesota ***");
+    System.out.println(" -- Current school info --");
+    adminInteractions.getSchoolInfo("UNIVERSITY OF MINNESOTA"); 
     adminInteractions.editSchool("Temp School", university.getState(), university.getLocation(), university.getControl(),
                                  university.getNumStudents(), 100, university.getSatVerbal(), university.getSatMath(),
                                  university.getTuition(), university.getPercentRecFinAid(), university.getNumApplicants(), university.getPercentAccepted(),
                                  university.getPercentEnroll(), university.getAcademicScale(), university.getSocial(), university.getQualOfLife(),
                                  university.getStudyArea1(),  university.getStudyArea2(),  university.getStudyArea3(),  university.getStudyArea4(),
                                  university.getStudyArea5()); 
+    System.out.println("\n -- Get updated school information --");
     adminInteractions.getSchoolInfo("UNIVERSITY OF MINNESOTA"); 
-    
-    userInteractions.addSchool("University of Minnesota", account.getUsername());
-    System.out.println("Saved universities:");
-    userInteractions.getSavedUniversities(account.getUsername());
-    System.out.println("Removing school: ");
-    userInteractions.remove("University of Minnesota",account.getUsername());
-    accountInteractions.logOff(account);
-    System.out.println("User account log on status: "+account.isLoggedOn());
-    
-    
-    
-    
-    
-    System.out.println("\n\n*******************************************************\n\n");
-    System.out.println("Logging in with valid admin credentials:");
-    account = accountInteractions.logOn("nadmin", "admin");
-
-    
-    adminInteractions.getListOfUsers();
-    adminInteractions.addNewUser("Trevor", "Wensman","trevor", "password", 'u');
-
-    adminInteractions.getListOfUsers();
-    adminInteractions.getUserInfo("trevor");
-    System.out.println("Deactivating user");
-    adminInteractions.deactivateUser("trevor");
-    adminInteractions.getUserInfo("trevor");
-    
-    System.out.println("Editting User.");
-    adminInteractions.editUser("ROVERT", "Wensman", "trevor", "password", 'u', 'N');
-    adminInteractions.getUserInfo("trevor");
-    
-    
-    System.out.println("Adding a new school called Temp School:*****NEEDS TO BE A DIFFERENT NEW SCHOOL");
-    adminInteractions.getSchoolInfo("Temp School");
-    adminInteractions.addSchool("Temp School", "Minnesota", "Urban", "State", 10, 50, 50, 50, 50000.00, 99,12, 100.0, 10, 3, 3, 3);
-    System.out.println("Added School..... Verifying School is there.");
-    adminInteractions.getSchoolInfo("Temp School");
      }
 
 }
