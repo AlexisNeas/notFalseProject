@@ -142,10 +142,10 @@ public class DBController
   
   /**
    * Sets a current users information
-   * @param username the username.
-   * @param password the user's password
    * @param firstName the first name
    * @param lastName the last name
+   * @param username the username.
+   * @param password the user's password
    * @param type type of user
    * @param status status of the user
    * 
@@ -317,7 +317,8 @@ public class DBController
         String lastName = array[i][1];
         char type = 'u';
         char status = 'N';
-        acc = setUserInfo(username, password, firstName, lastName, type, status);
+        acc = setUserInfo(firstName, lastName, username, password, type, status);
+        
       }
     }
     return acc;
@@ -665,35 +666,45 @@ public class DBController
                            String emphases4,String emphases5)
   {
     //University Info
- ArrayList<University> univArray = new ArrayList<University>();
+	ArrayList<University> univArray = new ArrayList<University>();
     String[][] array = univDBlib.university_getUniversities();
     int len1 = array.length;
-
+    boolean ignore1 = false;
+    boolean ignore2 = false;
+    boolean ignore3 = false;
+    boolean ignore4 = false;
     //University Emphasis'
     String[][] arrayEmphases = univDBlib.university_getNamesWithEmphases();
-    
+    if(schoolName.equals("!"))
+    	ignore1 = true;
+    if(stateName.equals("!"))
+    	 ignore2 = true;
+    if(stateName.equals("!"))
+    	 ignore3 = true;
+    if(stateName.equals("!"))
+    	 ignore4 = true;
     
     boolean add = false;
     
     for(int i = 0; i<len1;i++)
     {
       //School Name
-      if(array[i][0].indexOf(schoolName)>0)
+      if(!ignore1 && array[i][0].indexOf(schoolName)>=0)
       {
         add = true;
       }
       //State name
-      else if(array[i][1].indexOf(stateName)>0)
+      else if(!ignore2 && array[i][1].indexOf(stateName)>=0)
       {
         add = true;
       }
       //Location Suburban urban etc
-      else if(array[i][2].indexOf(location)>0)
+      else if(!ignore3 && array[i][2].indexOf(location)>=0)
       {
         add = true; 
       }
       //Control
-      else if(array[i][3].indexOf(control)>0)
+      else if(!ignore4 && array[i][3].indexOf(control)>=0)
       {
         add = true;
       }
@@ -750,17 +761,25 @@ public class DBController
               add = true;
             }
           }
+          if(array[i][0].charAt(0) < arrayEmphases[k][0].charAt(0))
+         	 break;
         }
       }
       
-      String emp1,emp2,emp3,emp4,emp5;
+      
       //Add the school?
       if(add)
       {
-        
+         String emp1 = "";
+         String emp2 = "";
+         String emp3 = "";
+         String emp4 = "";
+         String emp5 = "";
         for(int j = 0; j<array.length;j++)
         {
+        	
             ArrayList<String> emphasesArrayList = universityEmphases(array[i][0]);
+            
             if(emphasesArrayList.size() == 5)
             {
              emp1 = emphasesArrayList.get(0);
@@ -814,28 +833,29 @@ public class DBController
              emp4 = "";
              emp5 = "";
             }
+            if(array[i][0].charAt(0) < arrayEmphases[j][0].charAt(0))
+            	 break;
          
-         
-          University univ = returnUniversity(array[i][0], //schoolName
-                                                 array[i][1], //State
-                                                 array[i][2],//location
-                                                 array[i][3],//control
-                                                 Integer.parseInt(array[i][4]),// numStudents
-                                                 Double.parseDouble(array[i][5]),//%Female
-                                                 Double.parseDouble(array[i][6])//// SATVerbal
-                                                ,Double.parseDouble(array[i][7]),//SATMath
-                                                 Double.parseDouble(array[i][8]),//Expenses
-                                                 Double.parseDouble(array[i][9]),// percentFinancialAid
-                                                 Integer.parseInt(array[i][10]),// numberofApps
-                                                 Integer.parseInt(array[i][11])// percent admitted
-                                                ,Integer.parseInt(array[i][12]), //percentEnrolled
-                                                 Integer.parseInt(array[i][13]), //academicsScale
-                                                 Integer.parseInt(array[i][14]), // social scale
-                                                 Integer.parseInt(array[i][15]), //qualoflife
-                                                 emp1,emp2,emp3,emp4,emp5);
-          univArray.add(univ);
+
         }
-        
+        University univ = returnUniversity(array[i][0], //schoolName
+                array[i][1], //State
+                array[i][2],//location
+                array[i][3],//control
+                Integer.parseInt(array[i][4]),// numStudents
+                Double.parseDouble(array[i][5]),//%Female
+                Double.parseDouble(array[i][6])//// SATVerbal
+               ,Double.parseDouble(array[i][7]),//SATMath
+                Double.parseDouble(array[i][8]),//Expenses
+                Double.parseDouble(array[i][9]),// percentFinancialAid
+                Integer.parseInt(array[i][10]),// numberofApps
+                Integer.parseInt(array[i][11])// percent admitted
+               ,Integer.parseInt(array[i][12]), //percentEnrolled
+                Integer.parseInt(array[i][13]), //academicsScale
+                Integer.parseInt(array[i][14]), // social scale
+                Integer.parseInt(array[i][15]), //qualoflife
+                emp1,emp2,emp3,emp4,emp5);
+        univArray.add(univ);
         add =  false;
       }
     }
