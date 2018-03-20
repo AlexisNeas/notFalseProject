@@ -19,9 +19,12 @@ public class TextDriver {
      * X Log in with User Account
      * X View Profile
      * X Edit Profile
-     * X Search Schools
-     * View Results
-     * View School Information
+
+
+     * X Search Schools******************
+     * X View Results
+     * X View School Information
+
      * Display similar recommendations
      * X Add School to profile
      * X View Saved Schools
@@ -29,14 +32,16 @@ public class TextDriver {
      * X Log out
      * 
      * X Log in as Admin
-     * View Universities
-     * Add new school
-     * Save school
+
+     * X View Universities
+     * X Add new school
+     * X Save school
      * X Edit school
-     * View Users
-     * Add new user
-     * Deactivate user
-     * Edit user
+     * X View Users
+     * X Add new user
+     * X Deactivate user
+     * X Edit user
+
      */
     AccountInteractions accountInteractions = new AccountInteractions();
     AdminInteractions adminInteractions = new AdminInteractions();
@@ -58,9 +63,20 @@ public class TextDriver {
     System.out.println("Edit Profile: Change name to Alexis Neas");
     userInteractions.editProfile(account.getUsername(), account.getPassword(), "Alexis", "Neas", account.getAccountType(), account.getStatus());
     userInteractions.viewProfile(account.getUsername());
-//    
-    
-    
+
+    System.out.println("Search schools: University of Minnesota and View Results");
+    userInteractions.searchSchool("!", "CALIFORNIA","!" ,"!",//SchoolName, State, location,Control
+                                  0, 10000,//NumStudents
+                                  -2,-2,//%Female
+                                  -2,-2,//SATVerbal
+                                  -2,-2,//SATMath
+                                  -2,-2,//Expenses
+                                  -2,-2,//PercentEnrolled
+                                  -2, -2,//AcademicsScale
+                                  -2,-2,//Social
+                                  -2,-2,//Academics
+                                  "", "","", "","");  
+
     System.out.println("View School Information: University of Minnesota");
     userInteractions.viewSchoolInfo("UNIVERSITY OF MINNESOTA");
     System.out.println("Display Similar Schools:");
@@ -82,6 +98,10 @@ public class TextDriver {
     userInteractions.remove("University of Minnesota",account.getUsername());
     accountInteractions.logOff(account);
     System.out.println("User account log on status: "+account.isLoggedOn());
+    
+    
+    
+    
     
     System.out.println("\n\n*******************************************************\n\n");
     System.out.println("Logging in with valid admin credentials:");
