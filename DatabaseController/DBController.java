@@ -491,19 +491,20 @@ public class DBController
           distanceArray[sizeOfDistanceArray][1] = i;
           for(int j = 0; j<sizeOfDistanceArray-1; j++)
           {
-        	  for(int k = 0; k<sizeOfDistanceArray-j-1;k++)
-        	  {
-        		  
-        	  
+           for(int k = 0; k<sizeOfDistanceArray-j-1;k++)
+           {
+            
+           
             if(distanceArray[k][0] > distanceArray[k+1][0])
             {
               double tempDistance = distanceArray[k][0];
               double spot = distanceArray[k][1];
-              distanceArray[k] = distanceArray[k+1];
+              distanceArray[k][0] = distanceArray[k+1][0];
+              distanceArray[k][1] = distanceArray[k+1][1];
               distanceArray[k+1][0] = tempDistance;
               distanceArray[k+1][1] = spot;
             }
-        	  }
+           }
           }
           sizeOfDistanceArray++;
         }
@@ -516,19 +517,20 @@ public class DBController
             
             for(int j = 0; j<4; j++)
             {
-          	  for(int k = 0; k<4-j;k++)
-          	  {
-          		  
-          	  
-              if(distanceArray[k][0] > distanceArray[k+1][0])
-              {
-                double tempDistance = distanceArray[k][0];
-                double spot = distanceArray[k][1];
-                distanceArray[k] = distanceArray[k+1];
-                distanceArray[k+1][0] = tempDistance;
-                distanceArray[k+1][1] = spot;
-              }
-          	  }
+             for(int k = 0; k<4-j;k++)
+             {
+              
+             
+               if(distanceArray[k][0] > distanceArray[k+1][0])
+               {
+                 double tempDistance = distanceArray[k][0];
+                 double spot = distanceArray[k][1];
+                 distanceArray[k][0] = distanceArray[k+1][0];
+                 distanceArray[k][1] = distanceArray[k+1][1];
+                 distanceArray[k+1][0] = tempDistance;
+                 distanceArray[k+1][1] = spot;
+               }
+             }
             }
           }
         }
@@ -680,7 +682,7 @@ public class DBController
                            String emphases4,String emphases5)
   {
     //University Info
-	ArrayList<University> univArray = new ArrayList<University>();
+ ArrayList<University> univArray = new ArrayList<University>();
     String[][] array = univDBlib.university_getUniversities();
     int len1 = array.length;
     boolean ignore1 = false;
@@ -690,13 +692,13 @@ public class DBController
     //University Emphasis'
     String[][] arrayEmphases = univDBlib.university_getNamesWithEmphases();
     if(schoolName.equals("!"))
-    	ignore1 = true;
+     ignore1 = true;
     if(stateName.equals("!"))
-    	 ignore2 = true;
+      ignore2 = true;
     if(stateName.equals("!"))
-    	 ignore3 = true;
+      ignore3 = true;
     if(stateName.equals("!"))
-    	 ignore4 = true;
+      ignore4 = true;
     
     boolean add = false;
     
@@ -776,7 +778,7 @@ public class DBController
             }
           }
           if(array[i][0].charAt(0) < arrayEmphases[k][0].charAt(0))
-         	 break;
+           break;
         }
       }
       
@@ -791,7 +793,7 @@ public class DBController
          String emp5 = "";
         for(int j = 0; j<array.length;j++)
         {
-        	
+         
             ArrayList<String> emphasesArrayList = universityEmphases(array[i][0]);
             
             if(emphasesArrayList.size() == 5)
@@ -848,7 +850,7 @@ public class DBController
              emp5 = "";
             }
             if(array[i][0].charAt(0) < arrayEmphases[j][0].charAt(0))
-            	 break;
+              break;
          
 
         }
