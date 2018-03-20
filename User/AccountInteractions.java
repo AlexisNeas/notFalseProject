@@ -32,7 +32,7 @@ public class AccountInteractions {
     }
     else if(user.getStatus() == 'N')
     {
-      System.out.println("Account has been deactivated");
+      System.out.println("Account has been deactivated: The account has not been logged on");
     }
     else
     {
@@ -57,6 +57,10 @@ public class AccountInteractions {
   public void logOff(Account account){
     
     aController.logOff(account);
+    if(!account.isLoggedOn())
+      System.out.println("The account is now logged off");
+    else
+      System.out.println("ERROR: The account did not log off");
   }
    
   

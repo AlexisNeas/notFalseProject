@@ -19,7 +19,7 @@ public class TextDriver {
      * X Log in with User Account
      * X View Profile
      * X Edit Profile
-     * X Search Schools******************
+     * X Search Schools
      * X View Results
      * X View School Information
      * X Display similar recommendations
@@ -54,7 +54,14 @@ public class TextDriver {
     adminInteractions.deactivateUser("juser");
     account = accountInteractions.logOn("juser", "user");
     
-    adminInteractions.editUser("User", "Juser", "juser", "user", 'u', 'Y');
+    adminInteractions.editUser("Juser", "User", "juser", "user", 'u', 'Y');
+    adminInteractions.editUser("Trevor", "Wensman", "trevor", "password", 'u', 'Y');
+    adminInteractions.editSchool("Temp School", university.getState(), university.getLocation(), university.getControl(),
+                                 university.getNumStudents(), 25, university.getSatVerbal(), university.getSatMath(),
+                                 university.getTuition(), university.getPercentRecFinAid(), university.getNumApplicants(), university.getPercentAccepted(),
+                                 university.getPercentEnroll(), university.getAcademicScale(), university.getSocial(), university.getQualOfLife(),
+                                 university.getStudyArea1(),  university.getStudyArea2(),  university.getStudyArea3(),  university.getStudyArea4(),
+                                 university.getStudyArea5()); 
     
     
     System.out.println("\n\n*******************************************************\n\n");
@@ -73,7 +80,7 @@ public class TextDriver {
     userInteractions.viewProfile(account.getUsername());
     
     System.out.println("\n\n*** Edit Profile: Change name to Alexis Neas ***");
-    userInteractions.editProfile(account.getUsername(), account.getPassword(), "Alexis", "Neas", account.getAccountType(), account.getStatus());
+    userInteractions.editProfile("Alexis", "Neas", account.getUsername(), account.getPassword(), account.getAccountType(), account.getStatus());
     System.out.println("\n -- Check to ensure the account name is changed --");
     userInteractions.viewProfile(account.getUsername());
 
@@ -92,14 +99,15 @@ public class TextDriver {
 
     System.out.println("\n\n*** View School Information: University of Minnesota ***");
     userInteractions.viewSchoolInfo("UNIVERSITY OF MINNESOTA");
-    System.out.println("\n*** Display Similar Schools ***");
+    System.out.println("\n*** Display Top 5 Schools Similar to University of Minnesota ***");
     userInteractions.displaySimilarSchools("UNIVERSITY OF MINNESOTA");
     
     System.out.println("\n\n*** Add school to User's saved universities: ***");
     System.out.println("Original List of Saved Schools");
     userInteractions.getSavedUniversities(account.getUsername());
+    System.out.println("\nAdding University of Minnesota to current user account");
     userInteractions.addSchool("University of Minnesota", account.getUsername());
-    System.out.println(" -- Updated List of Saved Universities: --");
+    System.out.println("\n -- Updated List of Saved Universities: --");
     userInteractions.getSavedUniversities(account.getUsername());
     System.out.println("\n*** Removing school from User's List of Schools: *** ");
     userInteractions.remove("University of Minnesota",account.getUsername());
@@ -144,7 +152,8 @@ public class TextDriver {
     System.out.println("\n -- Get updated user information --");
     adminInteractions.getUserInfo("trevor");
     
-    
+    System.out.println("\n\n*** Viewing list of schools currently in system ***");
+    adminInteractions.viewUniversities();
     System.out.println("\n\n*** Adding a new school called Temp School: ***");
     System.out.println("NOTE: The school much be change each time you run Driver");
     adminInteractions.getSchoolInfo("Temp School");
@@ -152,9 +161,9 @@ public class TextDriver {
     System.out.println("\n -- Added School..... Verifying School is there --");
     adminInteractions.getSchoolInfo("Temp School");
     
-    System.out.println("\n\n*** Edit school: University of Minnesota ***");
+    System.out.println("\n\n*** Edit school: Temp School ***");
     System.out.println(" -- Current school info --");
-    adminInteractions.getSchoolInfo("UNIVERSITY OF MINNESOTA"); 
+    adminInteractions.getSchoolInfo("Temp School"); 
     adminInteractions.editSchool("Temp School", university.getState(), university.getLocation(), university.getControl(),
                                  university.getNumStudents(), 100, university.getSatVerbal(), university.getSatMath(),
                                  university.getTuition(), university.getPercentRecFinAid(), university.getNumApplicants(), university.getPercentAccepted(),
@@ -162,7 +171,11 @@ public class TextDriver {
                                  university.getStudyArea1(),  university.getStudyArea2(),  university.getStudyArea3(),  university.getStudyArea4(),
                                  university.getStudyArea5()); 
     System.out.println("\n -- Get updated school information --");
-    adminInteractions.getSchoolInfo("UNIVERSITY OF MINNESOTA"); 
+    adminInteractions.getSchoolInfo("Temp School"); 
+    
+    System.out.println("\n\n *** Log Off ***");
+    accountInteractions.logOff(account);
+    System.out.println("Admin account log on status: "+account.isLoggedOn());
      }
 
 }

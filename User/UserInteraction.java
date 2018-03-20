@@ -65,15 +65,15 @@ public class UserInteraction {
   public void viewSchoolInfo(String school)
   {
     University u = userController.getSchoolInfo(school);
-    System.out.println("Name: " + u.getSchoolName()+"\nState: " +
-         u.getState()+"\nLocation: " + u.getLocation()+"\nControl: " + u.getControl()+"\nStudy Area 1: " + u.getStudyArea1()+
-         "\nStudy Area 2: " + u.getStudyArea2()+"\nStudy Area 3: " + u.getStudyArea3()+"\nStudy Area 4: " 
-         + u.getStudyArea4()+"\nStudy Area 5: " + u.getStudyArea5()+"\nNumber of Applications: " +
-         u.getNumApplicants() + "\nNumber of Students: " + u.getNumStudents() + "\nAcademic Scale: " +
-         u.getAcademicScale()+ "\nQuality of Life: " + u.getQualOfLife()+ "\nFemales %: " + 
-         u.getPercentFemale() + "%\nSAT Verbal: " + u.getSatVerbal() + "\nSAT Math: " + u.getSatMath() + "\nTuition: " + u.getTuition() +
-         "\nReceiving Financial Aid: " + u.getPercentRecFinAid()+ "%" + "\nAccepted: " + u.getPercentAccepted() + "\nEnrolled: " + u.getPercentEnroll() + "% " +"\nSocial Rating: "+
-         u.getSocial() + "\n");
+    System.out.println("\tName: " + u.getSchoolName()+"\n\tState: " +
+                       u.getState()+"\n\tLocation: " + u.getLocation()+"\n\tControl: " + u.getControl()+ "\n\tNumber of Students: " +
+                       u.getNumStudents()+ "\n\t% Female: "+ u.getPercentFemale() + "\n\tSAT Verbal: " + u.getSatVerbal() + 
+                       "\n\tSAT Math: " + u.getSatMath()+ "\n\tTuition: " + u.getTuition()+ "\n\t% Receiving Financial Aid: " + 
+                       u.getPercentRecFinAid()+"\n\tNumber of Applications: " + u.getNumApplicants()+ "\n\t% Accepted: " + 
+                       u.getPercentAccepted()+ "\n\t% Enrolled: " + u.getPercentEnroll()  + "\n\tAcademic Scale: " +
+                       u.getAcademicScale() +"\n\tSocial Rating: "+ u.getSocial()+ "\n\tQuality of Life: " + u.getQualOfLife() +
+                       "\n\tStudy Area 1: " + u.getStudyArea1()+"\n\tStudy Area 2: " + u.getStudyArea2()+"\n\tStudy Area 3: " + 
+                       u.getStudyArea3()+"\n\tStudy Area 4: "  + u.getStudyArea4()+"\n\tStudy Area 5: " + u.getStudyArea5());
 
   } 
   
@@ -85,7 +85,7 @@ public class UserInteraction {
   public void addSchool(String school, String username)
   {
    userController.addSchool(username, school); 
-   System.out.println("School has been added.");
+   System.out.println("\tSchool has been added.");
   }
   
 /**
@@ -127,7 +127,8 @@ public class UserInteraction {
   public void getSavedUniversities(String username)
   {
     ArrayList<String> universities = userController.getSavedUniversities(username);
-    
+    if(universities.size() == 0)
+      System.out.println("\tNo saved universities");
     for (String u: universities)
     {
      System.out.println("\t"+u); 
@@ -142,9 +143,9 @@ public class UserInteraction {
    * @param password the user's password
    * 
    */
-  public void editProfile(String username, String password, String firstName, String lastName, char type, char status)
+  public void editProfile(String firstName, String lastName, String username, String password, char type, char status)
   {
-    userController.editProfile( username,  password,  firstName,  lastName,  type,  status);
+    userController.editProfile(firstName,  lastName,   username,  password,  type,  status);
     System.out.println("Changes have been saved");
     
   }

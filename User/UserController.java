@@ -176,9 +176,9 @@ public class UserController {
    * 
    * @return returns true if the profile has been successfully saved
    */
-  public void editProfile(String username, String password, String firstName, String lastName, char type, char status)
+  public void editProfile(String firstName, String lastName, String username, String password, char type, char status)
   {
-   dbController.setUserInfo(  username,  password,  firstName,  lastName,  type,  status);
+   dbController.setUserInfo(  firstName, lastName, username,  password,  type,  status);
   }
   /**
    * 
