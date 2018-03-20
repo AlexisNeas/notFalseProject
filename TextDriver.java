@@ -68,7 +68,7 @@ public class TextDriver {
     System.out.println("View School Information: University of Minnesota");
     userInteractions.viewSchoolInfo("UNIVERSITY OF MINNESOTA");
     System.out.println("Display Similar Schools:");
-    
+    userInteractions.displaySimilarSchools("UNIVERSITY OF MINNESOTA");
                                 
     
     userInteractions.addSchool("University of Minnesota", account.getUsername());

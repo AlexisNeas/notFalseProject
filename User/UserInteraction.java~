@@ -57,9 +57,9 @@ public class UserInteraction {
   {
     boolean removed = userController.removeSchool(school, user);
    if( removed )
-    System.out.println("School has been removed");
+    System.out.println("\tSchool has been removed");
    else
-     System.out.println("Error: School was not removed");
+     System.out.println("\tError: School was not removed");
   }
   
   /**
@@ -75,10 +75,10 @@ public class UserInteraction {
          u.getState()+"\nLocation: " + u.getLocation()+"\nControl: " + u.getControl()+"\nStudy Area 1: " + u.getStudyArea1()+
          "\nStudy Area 2: " + u.getStudyArea2()+"\nStudy Area 3: " + u.getStudyArea3()+"\nStudy Area 4: " 
          + u.getStudyArea4()+"\nStudy Area 5: " + u.getStudyArea5()+"\nNumber of Applications: " +
-         u.getNumApplicants() + "\nNumber of Students: " + u.getNumStudents() + "Academic Scale: " +
+         u.getNumApplicants() + "\nNumber of Students: " + u.getNumStudents() + "\nAcademic Scale: " +
          u.getAcademicScale()+ "\nQuality of Life: " + u.getQualOfLife()+ "\nFemales %: " + 
          u.getPercentFemale() + "%\nSAT Verbal: " + u.getSatVerbal() + "\nSAT Math: " + u.getSatMath() + "\nTuition: " + u.getTuition() +
-         "% Receiving Financial Aid: " + u.getPercentRecFinAid()+ "%\nAccepted: " + u.getPercentAccepted() + "\nEnrolled: " + u.getPercentEnroll() + "%/nSocial Rating: "+
+         "\nReceiving Financial Aid: " + u.getPercentRecFinAid()+ "%" + "\nAccepted: " + u.getPercentAccepted() + "\nEnrolled: " + u.getPercentEnroll() + "% " +"\nSocial Rating: "+
          u.getSocial() + "\n");
 
   } 
@@ -90,7 +90,7 @@ public class UserInteraction {
    */
   public void addSchool(String school, String username)
   {
-   userController.addSchool(school, username); 
+   userController.addSchool(username, school); 
    System.out.println("School has been added.");
   }
   
@@ -136,7 +136,7 @@ public class UserInteraction {
     
     for (String u: universities)
     {
-     System.out.println(u); 
+     System.out.println("\t"+u); 
     }
   }
   
@@ -158,7 +158,7 @@ public class UserInteraction {
   public void viewProfile(String username)
   {
     Account info = userController.viewProfile(username);
-    System.out.println("First name: "+info.getFirstName()+"\nLast name: "+info.getLastName()+"\nUsername: "
-                         +info.getUsername()+"\nPassword: "+info.getPassword()+"\nAccount type: "+info.getAccountType());
+    System.out.println("\tFirst name: "+info.getFirstName()+"\n\tLast name: "+info.getLastName()+"\n\tUsername: "
+                         +info.getUsername()+"\n\tPassword: "+info.getPassword()+"\n\tAccount type: "+info.getAccountType());
   }
 }

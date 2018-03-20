@@ -338,6 +338,7 @@ public class DBController
     }
     return userArray;
   }
+  
   /**
    * Finds similar schools.
    * 
@@ -354,348 +355,186 @@ public class DBController
    * @param socialScale Lower limit for Social Scale.
    * @param qualityOfLifeScale Lower limit for Quality Of Life Scale.
    */
-  public ArrayList<University> findSimilarSchools(String schoolName, String stateName, String location, String control,
-                                       int numberOfStudents,  double percentFemale, 
-                                       double SATVerbal, double SATMath, double expenses, double percentEnrolled, 
-                                       int academicsScale, int socialScale, int qualityOfLifeScale, String emphases1,
-                                       String emphases2, String emphases3, String emphases4, String emphases5)
+  public ArrayList<University> findSimilarSchools(University mainUniversity)
   {
-    double maxStudent = 0;
-    double minStudent = 0;
-    double maxFemale = 0;
-    double minFemale = 0;
-    double maxSATVerbal = 0;
-    double minSATVerbal = 0;
-    double maxSATMath = 0;
-    double minSATMath = 0;
-    double maxExpenses = 0;
-    double minExpenses = 0;
-    double maxPercentEnrolled  = 0;
-    double minPercentEnrolled  = 0;
-    int maxAcademicsScale = 0;
-    int minAcademicsScale = 0;
-    int maxSocialScale = 0;
-    int minSocialScale = 0;
-    int maxQualityOfLifeScale = 0;
-    int minQualityOfLifeScale = 0;
-    String[][] array = univDBlib.university_getUniversities();
-    int len1 = array.length;
-    int len2 = array[0].length;
-    //University Emphasis'
-    String[][] arrayEmphases = univDBlib.university_getNamesWithEmphases();
-    String[][] schools = new String[5][len2];
-    Double[][] temp = new Double[len1][2];
+    String[][] schoolArray = univDBlib.university_getUniversities();
+    double[][] distanceArray = new double[5][2];
+    int sizeOfDistanceArray = 0;
     
-    
-    
-
-    
-    //University Search
-    for(int a = 0; a<array.length; a++)
+    double maxStudent = Double.NEGATIVE_INFINITY;
+    double minStudent = Double.POSITIVE_INFINITY;
+    double minSatVerbal = Double.POSITIVE_INFINITY;
+    double minSatMath = Double.POSITIVE_INFINITY;
+    double maxExpenses = Double.NEGATIVE_INFINITY;
+    double minExpenses = Double.POSITIVE_INFINITY;
+    int maxApplicants = Integer.MIN_VALUE;
+    int minApplicants = Integer.MAX_VALUE;
+    for(int a = 0; a<schoolArray.length; a++)
     {
-      if(maxStudent < Integer.parseInt(array[a][4]))
+      if(maxStudent < Integer.parseInt(schoolArray[a][4]))
       {
-        maxStudent = Integer.parseInt(array[a][4]);
+        maxStudent = Integer.parseInt(schoolArray[a][4]);
       }
-      else if(minStudent > Integer.parseInt(array[a][4]))
+      else if(minStudent > Integer.parseInt(schoolArray[a][4]))
       {
-        minStudent = Integer.parseInt(array[a][4]);
+        minStudent = Integer.parseInt(schoolArray[a][4]);
       }
-      
-      
-      if(maxFemale < Double.parseDouble(array[a][5]))
+      if(minSatVerbal > Double.parseDouble(schoolArray[a][6]))
       {
-        maxFemale = Double.parseDouble(array[a][5]);
+        minSatVerbal = Double.parseDouble(schoolArray[a][6]);
       }
-      else if(minFemale > Double.parseDouble(array[a][5]))
+      if(minSatMath > Double.parseDouble(schoolArray[a][7]))
       {
-        minFemale = Double.parseDouble(array[a][5]);
+        minSatMath = Double.parseDouble(schoolArray[a][7]);
       }
-      
-      
-      
-      if(maxSATVerbal< Double.parseDouble(array[a][6]))
+      if(maxExpenses < Double.parseDouble(schoolArray[a][8]))
       {
-        maxSATVerbal =  Double.parseDouble(array[a][6]);
+        maxExpenses =  Double.parseDouble(schoolArray[a][8]);
       }
-      else if(minSATVerbal > Double.parseDouble(array[a][6]))
+      else if(minExpenses > Double.parseDouble(schoolArray[a][8]))
       {
-        minSATVerbal =  Double.parseDouble(array[a][6]);
+        minExpenses =  Double.parseDouble(schoolArray[a][8]);
       }
-      
-      
-      if(maxSATMath < Double.parseDouble(array[a][7]))
+      if(maxApplicants < Integer.parseInt(schoolArray[a][10]))
       {
-        maxSATMath =  Double.parseDouble(array[a][7]);
+        maxApplicants =  Integer.parseInt(schoolArray[a][10]);
       }
-      else if(minSATMath > Double.parseDouble(array[a][7]))
+      else if(minApplicants > Integer.parseInt(schoolArray[a][10]))
       {
-        minSATMath =  Double.parseDouble(array[a][7]);
+        minApplicants =  Integer.parseInt(schoolArray[a][10]);
       }
-      
-      
-      if(maxExpenses < Double.parseDouble(array[a][8]))
-      {
-        maxExpenses =  Double.parseDouble(array[a][8]);
-      }
-      else if(minExpenses > Double.parseDouble(array[a][8]))
-      {
-        minExpenses =  Double.parseDouble(array[a][8]);
-      }
-      
-      
-      if(maxPercentEnrolled < Double.parseDouble(array[a][9]))
-      {
-        maxPercentEnrolled =  Double.parseDouble(array[a][9]);
-      }
-      else if(minPercentEnrolled > Double.parseDouble(array[a][9]))
-      {
-        minPercentEnrolled =  Double.parseDouble(array[a][9]);
-      }
-      
-      
-      if(maxAcademicsScale < Integer.parseInt(array[a][10]))
-      {
-        maxAcademicsScale =  Integer.parseInt(array[a][10]);
-      }
-      else if(minAcademicsScale > Integer.parseInt(array[a][10]))
-      {
-        minAcademicsScale =  Integer.parseInt(array[a][10]);
-      }
-      
-      
-      if(maxSocialScale < Integer.parseInt(array[a][11]))
-      {
-        maxSocialScale =  Integer.parseInt(array[a][11]);
-      }
-      else if(minSocialScale > Integer.parseInt(array[a][11]))
-      {
-        minSocialScale =  Integer.parseInt(array[a][11]);
-      }
-      
-      
-      if(maxQualityOfLifeScale < Integer.parseInt(array[a][12]))
-      {
-        maxQualityOfLifeScale =  Integer.parseInt(array[a][12]);
-      }
-      else if(minQualityOfLifeScale > Integer.parseInt(array[a][12]))
-      {
-        minQualityOfLifeScale =  Integer.parseInt(array[a][12]);
-      }
-      
     }
     
-
-    
-    
-    
-    
-    
-    
-    
-    double v = 0;
-    for(int i = 0; i<array.length; i++)
+    for(int i = 0; i < schoolArray.length; i++)
     {
-      if(schoolName.equals(array[i][0]))
+      if(!schoolArray[i][0].equals(mainUniversity.getSchoolName()))
       {
+        double distance = 1; // We know the name will not match and its a string so minimum starting is 1
         
-      }
-      else
-      {
-        v+=1;
-      }
-      
-      
-      
-      if(stateName.equals(array[i][1]))
-      {
+        if(!schoolArray[i][1].equals(mainUniversity.getState()))
+        {
+          distance++;
+        }
+        if(!schoolArray[i][2].equals(mainUniversity.getLocation()))
+        {
+          distance++;
+        }
+        if(!schoolArray[i][3].equals(mainUniversity.getControl()))
+        {
+          distance++;
+        }
+        if(Integer.parseInt(schoolArray[i][4]) != mainUniversity.getNumStudents())
+        {
+          distance = distance + Math.abs(Integer.parseInt(schoolArray[i][4]) - mainUniversity.getNumStudents()) 
+            / (maxStudent-minStudent);
+        }
+        if(Double.parseDouble(schoolArray[i][5]) != mainUniversity.getPercentFemale())
+        {
+          distance = distance + Math.abs(Double.parseDouble(schoolArray[i][5]) - mainUniversity.getPercentFemale())
+            / 100; // between 0 and 100
+        }
+        if(Double.parseDouble(schoolArray[i][6]) != mainUniversity.getSatVerbal())
+        {
+          distance = distance + Math.abs(Double.parseDouble(schoolArray[i][6]) - mainUniversity.getSatVerbal())
+            / (800 - minSatVerbal); // up to 800
+        }
+        if(Double.parseDouble(schoolArray[i][7]) != mainUniversity.getSatMath())
+        {
+          distance = distance + Math.abs(Double.parseDouble(schoolArray[i][7]) - mainUniversity.getSatMath())
+            / (800 - minSatMath); // up to 800
+        }
+        if(Double.parseDouble(schoolArray[i][8]) != mainUniversity.getTuition())
+        {
+          distance = distance + Math.abs(Double.parseDouble(schoolArray[i][8]) - mainUniversity.getTuition())
+            / (maxExpenses - minExpenses);
+        }
+        if(Double.parseDouble(schoolArray[i][9]) != mainUniversity.getPercentRecFinAid())
+        {
+          distance = distance + Math.abs(Double.parseDouble(schoolArray[i][9]) - mainUniversity.getPercentRecFinAid())
+            / 100; //between 0 and 100
+        }
+        if(Integer.parseInt(schoolArray[i][10]) != mainUniversity.getNumApplicants())
+        {
+          distance = distance + Math.abs(Integer.parseInt(schoolArray[i][10]) - mainUniversity.getNumApplicants())
+            / (maxApplicants - minApplicants);
+        }
+        if(Double.parseDouble(schoolArray[i][11]) != mainUniversity.getPercentAccepted())
+        {
+          distance = distance + Math.abs(Double.parseDouble(schoolArray[i][11]) - mainUniversity.getPercentAccepted())
+            / 100; //between 0 and 100
+        }
+        if(Double.parseDouble(schoolArray[i][12]) != mainUniversity.getPercentEnroll())
+        {
+          distance = distance + Math.abs(Double.parseDouble(schoolArray[i][12]) - mainUniversity.getPercentEnroll())
+            / 100; //between 0 and 100
+        }
+        if(Integer.parseInt(schoolArray[i][13]) != mainUniversity.getAcademicScale())
+        {
+          distance = distance + Math.abs(Integer.parseInt(schoolArray[i][13]) - mainUniversity.getAcademicScale())
+            / 4; //between 1 and 5
+        }
+        if(Integer.parseInt(schoolArray[i][14]) != mainUniversity.getSocial())
+        {
+          distance = distance + Math.abs(Integer.parseInt(schoolArray[i][14]) - mainUniversity.getSocial())
+            / 4; //between 1 and 5
+        }
+        if(Integer.parseInt(schoolArray[i][15]) != mainUniversity.getQualOfLife())
+        {
+          distance = distance + Math.abs(Integer.parseInt(schoolArray[i][15]) - mainUniversity.getQualOfLife())
+            / 4; //between 1 and 5
+        }
         
-      }
-      else
-      {
-        v +=1;
-      }
-      
-      if(location.equals(array[i][2]))
-      {
-        
-      }
-      else
-      {
-        v+=1; 
-      }
-      
-      
-      if(control.equals(array[i][3]))
-      {
-        
-      }
-      else
-      {
-        v+=1; 
-      }
-      
-      
-      //Emphases Search
-      for(int aa = 0; aa<array.length; aa++)
-      {
-       if(arrayEmphases[i][0].contentEquals(schoolName))
-       {
-        if(arrayEmphases[i][1].contentEquals(emphases1))
+        if(sizeOfDistanceArray < 5)
         {
-         
+          distanceArray[sizeOfDistanceArray][0] = distance;
+          distanceArray[sizeOfDistanceArray][1] = i;
+          for(int j = 0; j<sizeOfDistanceArray; j++)
+          {
+            if(distanceArray[j][0] > distanceArray[j+1][0])
+            {
+              double[] temp = distanceArray[j];
+              distanceArray[j] = distanceArray[j+1];
+              distanceArray[j+1] = temp;
+            }
+          }
+          sizeOfDistanceArray++;
         }
-        else {
-         v+=1;
-        }
-        if(arrayEmphases[i][2].contentEquals(emphases2))
+        else
         {
-         
+          if(distanceArray[4][0] > distance)
+          {
+            distanceArray[4][0] = distance;
+            distanceArray[4][1] = i;
+            
+            for(int j = 0; j<4; j++)
+            {
+              if(distanceArray[j][0] > distanceArray[j+1][0])
+              {
+                double[] temp = distanceArray[j];
+                distanceArray[j] = distanceArray[j+1];
+                distanceArray[j+1] = distanceArray[j];
+              }
+            }
+          }
         }
-        else {
-         v+=1;
-        }
-        if(arrayEmphases[i][3].contentEquals(emphases3))
-        {
-         
-        }
-        else {
-         v+=1;
-        }
-        if(arrayEmphases[i][4].contentEquals(emphases4))
-        {
-         
-        }
-        else {
-         v+=1;
-        }
-        if(arrayEmphases[i][5].contentEquals(emphases5))
-        {
-         
-        }
-        else {
-         v+=1;
-        }
-       }
-      }
-      double studentVector = Math.abs(numberOfStudents - Double.parseDouble(array[i][4])) / Math.abs(maxStudent - minStudent);
-      double femaleVector = Math.abs(percentFemale - Double.parseDouble(array[i][5])) /  Math.abs(maxFemale - minFemale);
-      double SATVerbalVector = Math.abs(SATVerbal - Double.parseDouble(array[i][6])) /  Math.abs(maxSATVerbal - minSATVerbal);
-      double SATMathVector = Math.abs(SATMath - Double.parseDouble(array[i][7])) /  Math.abs(maxSATMath - minSATMath);     
-      double ExpensesVector = Math.abs(expenses - Double.parseDouble(array[i][8])) /  Math.abs(maxExpenses - minExpenses);      
-      double PercentEnrolledVector  = Math.abs(percentEnrolled - Double.parseDouble(array[i][9])) /  Math.abs(maxPercentEnrolled - minPercentEnrolled);    
-      double AcademicsScaleVector = Math.abs(academicsScale - Double.parseDouble(array[i][10])) /  Math.abs(maxAcademicsScale - minAcademicsScale);      
-      double SocialScaleVector = Math.abs(socialScale - Double.parseDouble(array[i][11])) /  Math.abs(maxSocialScale - minSocialScale);   
-      double QualityOfLifeScaleVector = Math.abs(qualityOfLifeScale - Double.parseDouble(array[i][12])) /  Math.abs(maxQualityOfLifeScale - minQualityOfLifeScale);
-      double total = v + studentVector + femaleVector + SATVerbalVector + SATMathVector + ExpensesVector + PercentEnrolledVector + AcademicsScaleVector + SocialScaleVector + QualityOfLifeScaleVector;
-      temp[i][0] = i + 0.0;//Adds position of the school in the list.
-      temp[i][1] = v + total;//The 'score' the received based on the algorithm.
-      
-      
-      //Need to sort.
-      //Then add to the schools array to return the top 5 schools.
-      v = 0;
-    }
-    for(int q = 0; q < temp.length; q++)//FIX SORT?
-    {
-      if(temp[q][1] > temp[q+1][1])
-      {
-        double tempI = temp[q][0];
-        double tempV = temp[q][1];
-        temp[q][0] = temp[q+1][0];
-        temp[q][1] = temp[q+1][1];
-        temp[q+1][0] = tempI;
-        temp[q+1][1] = tempV;
       }
     }
-    String emp1,emp2,emp3,emp4,emp5;
-    ArrayList<University> universityArray = new ArrayList<University>();
-    for(int z = 0; z<schools.length;z++)
+    ArrayList<University> nearSchools = new ArrayList<>();
+    for(int i = 0; i<5; i++)
     {
-     
-     int spot = temp[z][0].intValue();
-     ArrayList<String> emphasesArrayList = universityEmphases(array[spot][0]);
-     if(emphasesArrayList.size() == 5)
-     {
-      emp1 = emphasesArrayList.get(0);
-      emp2 = emphasesArrayList.get(1);
-      emp3 = emphasesArrayList.get(2);
-      emp4 = emphasesArrayList.get(3);
-      emp5 = emphasesArrayList.get(4);
-      
-     }
-     else if(emphasesArrayList.size() == 4)
-     {
-      emp1 = emphasesArrayList.get(0);
-      emp2 = emphasesArrayList.get(1);
-      emp3 = emphasesArrayList.get(2);
-      emp4 = emphasesArrayList.get(3);
-      emp5 = "";
-      
-     }
-     else if(emphasesArrayList.size() == 3)
-     {
-      emp1 = emphasesArrayList.get(0);
-      emp2 = emphasesArrayList.get(1);
-      emp3 = emphasesArrayList.get(2);
-      emp4 = "";
-      emp5 = "";
-      
-     }
-     else if(emphasesArrayList.size() == 2)
-     {
-      emp1 = emphasesArrayList.get(0);
-      emp2 = emphasesArrayList.get(1);
-      emp3 = "";
-      emp4 = "";
-      emp5 = "";
-      
-     }
-     else if(emphasesArrayList.size() == 1)
-     {
-      emp1 = emphasesArrayList.get(0);
-      emp2 = "";
-      emp3 = "";
-      emp4 = "";
-      emp5 = "";
-      
-     }
-     else {
-      
-      emp1 = "";
-      emp2 = "";
-      emp3 = "";
-      emp4 = "";
-      emp5 = "";
-     }
-     
-     
-
-     
-     
-     
-     
-     University newUniversity = returnUniversity(array[spot][0], //schoolName
-                                                 array[spot][1], //State
-                                                 array[spot][2],//location
-                                                 array[spot][3],//control
-                                                 Integer.parseInt(array[spot][4]),// numStudents
-                                                 Double.parseDouble(array[spot][5]),//%Female
-                                                 Double.parseDouble(array[spot][6])//// SATVerbal
-                                                ,Double.parseDouble(array[spot][7]),//SATMath
-                                                 Double.parseDouble(array[spot][8]),//Expenses
-                                                 Double.parseDouble(array[spot][9]),// percentFinancialAid
-                                                 Integer.parseInt(array[spot][10]),// numberofApps
-                                                 Integer.parseInt(array[spot][11])// percent admitted
-                                                ,Integer.parseInt(array[spot][12]), //percentEnrolled
-                                                 Integer.parseInt(array[spot][13]), //academicsScale
-                                                 Integer.parseInt(array[spot][14]), // social scale
-                                                 Integer.parseInt(array[spot][15]), //qualoflife
-                                                 emp1,emp2,emp3,emp4,emp5);
-     universityArray.add(newUniversity);
+      int loc = (int)distanceArray[i][1];
+      nearSchools.add(new University(schoolArray[loc][0],schoolArray[loc][1],schoolArray[loc][2],schoolArray[loc][3],
+                                     Integer.parseInt(schoolArray[loc][4]),Double.parseDouble(schoolArray[loc][5]),
+                                     Double.parseDouble(schoolArray[loc][6]),Double.parseDouble(schoolArray[loc][7]),
+                                     Double.parseDouble(schoolArray[loc][8]),Double.parseDouble(schoolArray[loc][9]),
+                                     Integer.parseInt(schoolArray[loc][10]),Double.parseDouble(schoolArray[loc][11]),
+                                     Double.parseDouble(schoolArray[loc][12]),Integer.parseInt(schoolArray[loc][13]),
+                                     Integer.parseInt(schoolArray[loc][14]),Integer.parseInt(schoolArray[loc][15]),
+                                     "","","","",""));
     }
-    return universityArray;
+    return nearSchools;
   }
+  
   /**
    * Removes a school from a users profile.
    * @param schoolName school to remove

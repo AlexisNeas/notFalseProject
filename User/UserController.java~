@@ -16,6 +16,11 @@ public class UserController {
  private University university;
  private AccountController accountController;
  
+ public UserController()
+ {
+   this.dbController = new DBController("notfal", "csci230");
+   this.accountController = new AccountController();
+ }
   /**
    * Takes a list of search criteria inputed by user, and returns a list of Universities
    * in an order of relevance
@@ -43,7 +48,7 @@ public class UserController {
    * @param lowQualityOfLifeScale Lower limit for Quality Of Life Scale.
    * @param upQualityOfLifeScale Upper limit for Quality Of Life Scale.
    * 
-   * @return the university object closest to the search
+   * @return the university objects closest to the search
    */
   public ArrayList <University> searchSchool(String schoolName, String stateName, String location, String control,
                            int lowNumberOfStudents, int upNumberOfStudents,  
@@ -184,8 +189,12 @@ public class UserController {
    dbController.setUserInfo(  username,  password,  firstName,  lastName,  type,  status);
   }
   
+  public Account viewProfile(String username)
+  {
+    Account acct = dbController.getUserInfo(username);
+    return acct;
+  }
   
-
 }
 
   

@@ -136,17 +136,9 @@ public class UserController {
    * 
    * @return list of similar schools
    */
-  public ArrayList<University> findSimilarSchools(String schoolName, String stateName, String location, String control,
-                                       int numberOfStudents,  double percentFemale, 
-                                       double SATVerbal, double SATMath, double expenses, double percentEnrolled, 
-                                       int academicsScale, int socialScale, int qualityOfLifeScale, String emphases1,
-                                       String emphases2, String emphases3, String emphases4, String emphases5)
+  public ArrayList<University> findSimilarSchools(University university)
   {
-   return dbController.findSimilarSchools(schoolName, stateName, location, control,
-                                       numberOfStudents, percentFemale, 
-                                       SATVerbal, SATMath, expenses, percentEnrolled, 
-                                       academicsScale, socialScale, qualityOfLifeScale, emphases1,
-                                       emphases2, emphases3, emphases4, emphases5); 
+   return dbController.findSimilarSchools(university); 
   }
   
   /**
