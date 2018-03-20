@@ -188,7 +188,13 @@ public class UserController {
   {
    dbController.setUserInfo(  username,  password,  firstName,  lastName,  type,  status);
   }
-  
+  /**
+   * 
+   * 
+   * 
+   * @param username
+   * @return account an account object with the users information.
+   */
   public Account viewProfile(String username)
   {
     Account acct = dbController.getUserInfo(username);

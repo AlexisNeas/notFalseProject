@@ -142,10 +142,10 @@ public class DBController
   
   /**
    * Sets a current users information
-   * @param username the username.
-   * @param password the user's password
    * @param firstName the first name
    * @param lastName the last name
+   * @param username the username.
+   * @param password the user's password
    * @param type type of user
    * @param status status of the user
    * 

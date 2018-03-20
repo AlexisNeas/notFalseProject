@@ -19,8 +19,8 @@ public class TextDriver {
      * X View Profile
      * X Edit Profile
      * X Search Schools******************
-     * View Results
-     * View School Information
+     * X View Results
+     * X View School Information
      * Display similar recommendations
      * X Add School to profile
      * X View Saved Schools
@@ -55,7 +55,7 @@ public class TextDriver {
     userInteractions.editProfile(account.getUsername(), account.getPassword(), "Alexis", "Neas", account.getAccountType(), account.getStatus());
     userInteractions.viewProfile(account.getUsername());
     System.out.println("Search schools: University of Minnesota and View Results");
-    userInteractions.searchSchool("!", "MINNESOTA","!" ,"!",//SchoolName, State, location,Control
+    userInteractions.searchSchool("!", "CALIFORNIA","!" ,"!",//SchoolName, State, location,Control
                                   0, 10000,//NumStudents
                                   -2,-2,//%Female
                                   -2,-2,//SATVerbal
