@@ -21,19 +21,11 @@ public class TextDriver {
      * Search Schools******************
      * View Results
      * View School Information
-<<<<<<< HEAD
-     * Display similar recommendations *************8
-     * Add School to profile
-     * View Saved Schools
-     * Remove Schools
-     * Log out
-=======
      * Display similar recommendations
      * X Add School to profile
      * X View Saved Schools
      * X Remove Schools
      * X Log out
->>>>>>> 5e1f0e6fe7743f3e82e02a286e892d203c852696
      * 
      * X Log in as Admin
      * View Universities
@@ -62,12 +54,7 @@ public class TextDriver {
     System.out.println("Edit Profile: Change name to Alexis Neas");
     userInteractions.editProfile(account.getUsername(), account.getPassword(), "Alexis", "Neas", account.getAccountType(), account.getStatus());
     userInteractions.viewProfile(account.getUsername());
-<<<<<<< HEAD
 //    System.out.println("Search schools: University of Minnesota and View Results");
-=======
-    System.out.println("Search schools: University of Minnesota");
-
->>>>>>> 5e1f0e6fe7743f3e82e02a286e892d203c852696
 //    userInteractions.searchSchool("", "MINNESOTA","" ,"",
 //                                  null, 40000,
 //                                  null,null,
@@ -77,15 +64,11 @@ public class TextDriver {
 //                                  null,null,
 //                                  null, null,
 //                                  null,null,
-<<<<<<< HEAD
 //                                  "", "","", "","");  
     System.out.println("View School Information: University of Minnesota");
     userInteractions.viewSchoolInfo("UNIVERSITY OF MINNESOTA");
     System.out.println("Display Similar Schools:");
     
-=======
-//                                  "", "","", "",""); 
->>>>>>> 5e1f0e6fe7743f3e82e02a286e892d203c852696
                                 
     
     userInteractions.addSchool("University of Minnesota", account.getUsername());

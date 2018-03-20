@@ -59,7 +59,9 @@ public class AdminController {
    * @param name the name of the school to get info for
    */
   public University getSchoolInformation(String name){
-    return dbController.getSchoolInfo(name);
+    University univ = dbController.getSchoolInfo(name);
+    return univ;
+    
   }
   
   /**
