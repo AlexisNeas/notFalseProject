@@ -22,7 +22,7 @@ public class TextDriver {
      * X Search Schools******************
      * X View Results
      * X View School Information
-     * Display similar recommendations
+     * X Display similar recommendations
      * X Add School to profile
      * X View Saved Schools
      * X Remove Schools
@@ -111,7 +111,8 @@ public class TextDriver {
     adminInteractions.getUserInfo("trevor");
     
     
-    System.out.println("Adding a new school.");
+    System.out.println("Adding a new school called Temp School:*****NEEDS TO BE A DIFFERENT NEW SCHOOL");
+    adminInteractions.getSchoolInfo("Temp School");
     adminInteractions.addSchool("Temp School", "Minnesota", "Urban", "State", 10, 50, 50, 50, 50000.00, 99,12, 100.0, 10, 3, 3, 3);
     System.out.println("Added School..... Verifying School is there.");
     adminInteractions.getSchoolInfo("Temp School");
