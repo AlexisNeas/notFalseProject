@@ -100,7 +100,7 @@ public class AdminInteractions {
    */
   public void getUserInfo(String username){
     Account account = adminController.getUserInfo(username);
-    System.out.println("First: " + account.getFirstName()+ " " + "Last: " + account.getLastName() + " " + "Username: " + account.getUsername() + " " + "Password: " + account.getPassword()+ " " + "Type: " + account.getAccountType() + " " + "Status: " + account.getStatus());
+    System.out.println("\tFirst: " + account.getFirstName()+ "\n\t" + "Last: " + account.getLastName() + "\n\t" + "Username: " + account.getUsername() + "\n\t" + "Password: " + account.getPassword()+ "\n\t" + "Type: " + account.getAccountType() + "\n\t" + "Status: " + account.getStatus());
   }
   
   /**
@@ -109,13 +109,16 @@ public class AdminInteractions {
    * @param name the name of the school to get info for
    */
   public void getSchoolInfo(String name){ 
-    University univ = adminController.getSchoolInformation(name);
-    System.out.println("School name: " + univ.getSchoolName() + "\nState: " + univ.getState() + "\nLocation:" + univ.getLocation() + "\nControl: " + univ.getControl()
-                                 + "\nNum Students: " +univ.getNumStudents() + "\nPercent Female: " + univ.getPercentFemale() + "\nSat verbal: " +univ.getSatVerbal() + "\nSat math: " +univ.getSatMath()
-                                 + "\nTuition: " + univ.getTuition() + "\nRec Fin Aid: " +univ.getPercentRecFinAid() + "\nApplicants: " + univ.getNumApplicants() + "\nAccepted: " + univ.getPercentAccepted()
-                         + "\nEnroll: " + univ.getPercentEnroll() + "\nAc Scale: " +univ.getAcademicScale() + "\nSocial: " +univ.getSocial() + "\nQofL: " +univ.getQualOfLife()
-                                 + "\nStudyArea1: " + univ.getStudyArea1()  + "\nStudyArea2: " + univ.getStudyArea2()  + "\nStudyArea3: " + univ.getStudyArea3() + "\nStudyArea4: " +  univ.getStudyArea4()
-                                + "\nStudyArea5: " +  univ.getStudyArea5());
+    University u = adminController.getSchoolInformation(name);
+    System.out.println("\tName: " + u.getSchoolName()+"\n\tState: " +
+                       u.getState()+"\n\tLocation: " + u.getLocation()+"\n\tControl: " + u.getControl()+ "\n\tNumber of Students: " +
+                       u.getNumStudents()+ "\n\t% Female: "+ u.getPercentFemale() + "\n\tSAT Verbal: " + u.getSatVerbal() + 
+                       "\n\tSAT Math: " + u.getSatMath()+ "\n\tTuition: " + u.getTuition()+ "\n\t% Receiving Financial Aid: " + 
+                       u.getPercentRecFinAid()+"\n\tNumber of Applications: " + u.getNumApplicants()+ "\n\t% Accepted: " + 
+                       u.getPercentAccepted()+ "\n\t% Enrolled: " + u.getPercentEnroll()  + "\n\tAcademic Scale: " +
+                       u.getAcademicScale() +"\n\tSocial Rating: "+ u.getSocial()+ "\n\tQuality of Life: " + u.getQualOfLife() +
+                       "\n\tStudy Area 1: " + u.getStudyArea1()+"\n\tStudy Area 2: " + u.getStudyArea2()+"\n\tStudy Area 3: " + 
+                       u.getStudyArea3()+"\n\tStudy Area 4: "  + u.getStudyArea4()+"\n\tStudy Area 5: " + u.getStudyArea5());
   }
   
   /**
@@ -165,8 +168,10 @@ public class AdminInteractions {
   /**
    * Gets all the universities and lists them off
    */
-  public ArrayList<String> viewUniversities(){
-    return adminController.viewUniversities();
+  public void viewUniversities(){
+    ArrayList<String> names = adminController.viewUniversities();
+    for(String name : names)
+      System.out.println("\t"+name);
   }
   
   /**

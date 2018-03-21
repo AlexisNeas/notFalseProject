@@ -10,7 +10,7 @@ import dblibrary.project.csci230.*;
  * Manages the Database.
  * 
  * @author Trevor Wensman
- * @version 2/25/18
+ * @version 3/20/18
  */
 public class DBController 
 {
@@ -57,7 +57,7 @@ public class DBController
    * 
    * @param username the username of the desired user.
    * 
-   * @return
+   * @return user An account object with a user's information.
    * 
    */
   public Account getUserInfo(String username)
@@ -76,7 +76,7 @@ public class DBController
   /**
    * Gets a list of all the school names in the Database.
    * 
-   * @return the schools.
+   * @return An ArrayList<String> of school names in the Database.
    * 
    */
   public ArrayList<String> getListOfSchools()
@@ -148,7 +148,7 @@ public class DBController
    * @param password the user's password
    * @param type type of user
    * @param status status of the user
-   * 
+   * @return An account with the user's information.
    */
   public Account setUserInfo(String firstName, String lastName, String username, String password, char type, char status)
   {
@@ -301,6 +301,7 @@ public class DBController
   /**
    * Deactivates a user.
    * @param username the user to deactivate.
+   * @return An account object with the user's information.
    */
   public Account deactivateUser(String username)
   {
@@ -325,7 +326,7 @@ public class DBController
   }
   /**
    * Gets the information for all users.
-   * @return the user's information.
+   * @return An ArrayList<Account> with the users information.
    */
   public ArrayList<Account> getListOfUsers()
   {
@@ -343,18 +344,9 @@ public class DBController
   /**
    * Finds similar schools.
    * 
-   * @param schoolName Name of the school to search for.
-   * @param stateName Name of the state for schools.
-   * @param location Location area of a school.
-   * @param control Private State or City control.
-   * @param numberOfStudents Lower limit for student population.
-   * @param percentFemale Lower limit for Percent Female.
-   * @param SATVerbal Lower limit for SATVerbal.
-   * @param expenses Lower limit for Expenses.
-   * @param percentEnrolled Lower limit for Percent Enrolled.
-   * @param academicsScale Lower limit for Academics Scale.
-   * @param socialScale Lower limit for Social Scale.
-   * @param qualityOfLifeScale Lower limit for Quality Of Life Scale.
+   * @param mainUniversity the resut clicked on to find similar schools to
+   * 
+   * @return an ArrayList containing the 5 nearest universities
    */
   public ArrayList<University> findSimilarSchools(University mainUniversity)
   {
@@ -557,7 +549,7 @@ public class DBController
    * Removes a school from a users profile.
    * @param schoolName school to remove
    * @oaram username the user
-   * 
+   * @return boolean true if removed.
    */
   public boolean removeSchool(String schoolName, String username)
   {
@@ -612,7 +604,7 @@ public class DBController
   /**
    * Gets a list of a user's schools.
    * @param username the user's name.
-   * @return list an ArrayList of the school name's.
+   * @return list an ArrayList<String> of the school name's.
    */
   public ArrayList<String> getUserSchools(String username)
   {
@@ -667,7 +659,7 @@ public class DBController
    * @param upSocialScale Upper limit for Social Scale.
    * @param lowQualityOfLifeScale Lower limit for Quality Of Life Scale.
    * @param upQualityOfLifeScale Upper limit for Quality Of Life Scale.
-   * 
+   * @return ArrayList<University> with all the schools information in the database.
    */
   public ArrayList<University> search(String schoolName, String stateName, String location, String control,
                            int lowNumberOfStudents, int upNumberOfStudents,  
@@ -922,12 +914,14 @@ public class DBController
   
   
   /**
-   * Makes a user.
    * 
-   * 
-   * 
-   * 
-   * 
+   * @param firstName
+   * @param lastName
+   * @param username
+   * @param password
+   * @param accountType
+   * @param status
+   * @return An account object with the users information.
    */
   public Account returnUser(String firstName, String lastName, String username, String password, char accountType, char status)
   {

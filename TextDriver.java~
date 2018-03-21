@@ -49,6 +49,14 @@ public class TextDriver {
     System.out.println(" ~~ TEST: Log on with invalid username and password ~~");
     System.out.println("Logging in with invalid user credentials of U - ERROR, P - ERROR:");
     account = accountInteractions.logOn("ERROR", "ERROR");
+    
+    System.out.println("\n ~~ TEST: Deactivated Account log in ~~");
+    adminInteractions.deactivateUser("juser");
+    account = accountInteractions.logOn("juser", "user");
+    
+    adminInteractions.editUser("User", "Juser", "juser", "user", 'u', 'Y');
+    
+    
     System.out.println("\n\n*******************************************************\n\n");
     
     System.out.println("**********************************************");

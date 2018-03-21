@@ -8,7 +8,7 @@ import DatabaseController.DBController;
  * Provides the the logic for admin functionalities.
  * 
  * @author Zachary Vetter
- * @version 3/15/18
+ * @version 3/20/18
  */
 public class AdminController {
   
@@ -28,7 +28,7 @@ public class AdminController {
   private AccountController accountController;
   
   /**
-   * Constructor
+   * Constructor to access the database and initialize the account controller
    */
   public AdminController() {
     this.dbController = new DBController("notfal", "csci230");
@@ -38,14 +38,14 @@ public class AdminController {
 /**
    * Gets all the users in the system
    * 
-   * @return a list containing all the users
+   * @return an array list containing all the users
    */
   public ArrayList<Account> getListOfUsers(){
     return dbController.getListOfUsers();
   }
   
   /**
-   * Gets all the universities and lists them off
+   * Gets all the universities in the system
    * 
    * @return a list of the universities
    */
@@ -57,6 +57,8 @@ public class AdminController {
    * Gets a schools info
    * 
    * @param name the name of the school to get info for
+   * 
+   * @return a University object that contains the schools info
    */
   public University getSchoolInformation(String name){
     University univ = dbController.getSchoolInfo(name);
@@ -74,7 +76,7 @@ public class AdminController {
   }
   
   /**
-   * Adds a new school
+   * Adds a new school to the system
    * 
    * @param school to be added
    */
@@ -83,7 +85,7 @@ public class AdminController {
     dbController.addNewSchool(school);
   }
   
-   /**
+  /**
    * Edits a schools informations
    * 
    * @param school a University object with the updated school information
@@ -104,12 +106,14 @@ public class AdminController {
    * @param type
    * @param status
    */
-  public Account editUser(String firstName, String lastName, String username, String password, char type, char status){
-    return dbController.setUserInfo(firstName, lastName, username, password, type, status);
+  public void editUser(String firstName, String lastName, String username, String password, char type, char status){
+    dbController.setUserInfo(firstName, lastName, username, password, type, status);
   }
   
   /**
    * Changes a user's status to deactivated
+   * 
+   * @param username the username of the account being deactivated
    */
   public void deactivateUser(String username){
     dbController.deactivateUser(username);

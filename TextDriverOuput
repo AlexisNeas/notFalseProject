@@ -1,0 +1,421 @@
+ ~~ TEST: Log on with invalid username and password ~~
+Logging in with invalid user credentials of U - ERROR, P - ERROR:
+Invalid username or password
+
+ ~~ TEST: Deactivated Account log in ~~
+Account has been deactivated: The account has not been logged on
+
+
+*******************************************************
+
+
+**********************************************
+************ User Functionalities ************
+**********************************************
+
+
+
+*** Logging in with valid user credentials: ***
+ -- Username: juser   Password: user --
+The user account is now logged on
+User account log on status: true
+
+
+*** View Profile ***
+	First name: Juser
+	Last name: User
+	Username: juser
+	Password: user
+	Account type: u
+
+
+*** Edit Profile: Change name to Alexis Neas ***
+Changes have been saved
+
+ -- Check to ensure the account name is changed --
+	First name: Alexis
+	Last name: Neas
+	Username: juser
+	Password: user
+	Account type: u
+
+
+*** Search schools and View Search Results: Schools in California ***
+CAL TECH
+GOLDEN GATE COLLEGE
+SAN JOSE STATE
+STANFORD
+UNIVERSITY OF CALIFORNIA BERKELEY
+UNIVERSITY OF CALIFORNIA DAVIS
+UNIVERSITY OF CALIFORNIA LOS ANGELES
+UNIVERSITY OF CALIFORNIA SAN DIEGO
+UNIVERSITY OF CALIFORNIA SANTA CRUZ
+UNIVERSITY OF SAN FRANCISCO
+UNIVERSITY OF SOUTHERN CALIFORNIA
+UNIVERSITY OF THE PACIFIC
+
+
+*** View School Information: University of Minnesota ***
+	Name: UNIVERSITY OF MINNESOTA
+	State: MINNESOTA
+	Location: URBAN
+	Control: STATE
+	Number of Students: 40000
+	% Female: 45.0
+	SAT Verbal: 490.0
+	SAT Math: 557.0
+	Tuition: 13772.0
+	% Receiving Financial Aid: 50.0
+	Number of Applications: 8500
+	% Accepted: 80.0
+	% Enrolled: 60.0
+	Academic Scale: 4
+	Social Rating: 3
+	Quality of Life: 4
+	Study Area 1: AGRICULTURE
+	Study Area 2: ENGINEERING
+	Study Area 3: 
+	Study Area 4: 
+	Study Area 5: 
+
+*** Display Top 5 Schools Similar to University of Minnesota ***
+UNIVERSITY OF CALIFORNIA LOS ANGELES
+UNIVERSITY OF WASHINGTON
+TEMPLE
+OHIO STATE
+SUNY BUFFALO
+
+
+*** Add school to User's saved universities: ***
+Original List of Saved Schools
+	No saved universities
+
+Adding University of Minnesota to current user account
+	School has been added.
+
+ -- Updated List of Saved Universities: --
+	University of Minnesota
+
+*** Removing school from User's List of Schools: *** 
+	School has been removed
+
+ -- Display Saved Universities: --
+	No saved universities
+
+
+ *** Log Off ***
+The account is now logged off
+User account log on status: false
+
+
+
+***********************************************
+************ Admin Functionalities ************
+***********************************************
+
+
+
+*** Logging in with valid admin credentials: ***
+Username: nadmin   Password: admin
+The admin account is now logged on
+
+
+*** Get List of Accounts ***
+juser
+luser
+nadmin
+trevor
+
+*** Add New Account ***
+Display updated list of users
+juser
+luser
+nadmin
+trevor
+
+
+*** Get information for specific account ***
+	First: Trevor
+	Last: Wensman
+	Username: trevor
+	Password: password
+	Type: u
+	Status: Y
+
+
+*** Deactivate user ***
+Original Account information
+	First: Trevor
+	Last: Wensman
+	Username: trevor
+	Password: password
+	Type: u
+	Status: Y
+
+ -- Get updated user information --
+	First: Trevor
+	Last: Wensman
+	Username: trevor
+	Password: password
+	Type: u
+	Status: N
+
+
+*** Edit Account Information ***
+Original account information
+	First: Trevor
+	Last: Wensman
+	Username: trevor
+	Password: password
+	Type: u
+	Status: N
+
+Changing first name to ROVERT
+
+ -- Get updated user information --
+	First: ROVERT
+	Last: Wensman
+	Username: trevor
+	Password: password
+	Type: u
+	Status: N
+
+
+*** Viewing list of schools currently in system ***
+	ABILENE CHRISTIAN UNIVERSITY
+	ADELPHI
+	AMERICAN UNIVERSITY OF BEIRUT
+	ARIZONA STATE
+	AUBURN
+	AUGSBURG
+	BARD
+	BARNARD
+	BARUCH
+	BAYLOR UNIVERSITY
+	BENNINGTON
+	BOSTON COLLEGE
+	BOSTON UNIVERSITY
+	BRANDEIS
+	BROWN
+	BRYN MAWR
+	BUCKNELL
+	BUTLER
+	CAL TECH
+	CARNEGIE MELLON
+	CASE WESTERN
+	CCNY
+	CHALMERS UNIVERSITY OF TECHNOLOGY
+	CLARK UNIVERSITY
+	CLARKSON UNIVERSITY
+	COLGATE
+	COLLEGE OF NEWROCHELLE
+	COLORADO COLLEGE
+	COLORADO SCHOOL OF MINES
+	COLUMBIA
+	CONNECTICUT COLLEGE
+	COOPER UNION
+	CORNELL
+	CORPUS CHRISTI STATE U
+	DALLAS BAPTIST COLLEGE
+	DARTMOUTH
+	DEPAUL UNIVERSITY
+	DREW
+	EASTERN MICHIGAN
+	EASTMAN SCHOOL OF MUSIC
+	ECOLE NATIONALE SUPERIEURE DE TELECOMMUNICATION DE PARIS
+	ECOLE POLYTECHNIQUE
+	EMORY
+	FLORIDA ACADEMIC UNIVERSITY
+	FLORIDA STATE
+	FLORIDA TECH
+	FORDHAM
+	GEORGE WASHINGTON
+	GEORGETOWN
+	GEORGIA TECH
+	GLASSBORO STATE COLLEGE
+	GOLDEN GATE COLLEGE
+	GOTHENBURG UNIVERSITY
+	HAMPSHIRE COLLEGE
+	HARVARD
+	HOFSTRA
+	HOLY CROSS
+	HUNTINGTON COLLEGE
+	ILLINOIS TECH
+	JOHNS HOPKINS
+	JUILLIARD
+	LEHIGH UNIVERSITY
+	LESLEY
+	LEWIS AND CLARK
+	MANHATTANVILLE COLLEGE
+	MARIST COLLEGE
+	MASSACHUSETTS INSTITUTE OF TECHNOLOGY
+	MESA
+	MICHIGAN STATE
+	MONMOUTH COLLEGE
+	MORGAN STATE
+	MOUNT HOLYOKE
+	NEW JERSEY TECH
+	NEW YORK UNIVERSITY
+	NEWENGLAND COLLEGE
+	NEWJERSEY TECH
+	NEWYORK IT
+	NICHOLLS STATE
+	NORTH CAROLINA STATE UNIVERSITY
+	NORTHWESTERN
+	NOTRE DAME
+	OBERLIN
+	OHIO STATE
+	OKLAHOMA STATE UNIVERSITY
+	ORAL ROBERTS UNIVERSITY
+	OREGON INSTITUTE OF TECHNOLOGY
+	OREGON STATE
+	PENN STATE
+	POLYTECHNIC INSTITUTE OF NEWYORK
+	PRATT
+	PRINCETON
+	PURDUE
+	QUEENS
+	REED
+	RENSSELAER
+	RICE
+	ROCHESTER TECH
+	RUTGERS
+	SAINT ELIZABETHS
+	SAM HOUSTON STATE UNIVERSITY
+	SAN JOSE STATE
+	SETON HALL
+	SMITH
+	ST JOHNS UNIVERSITY
+	STANFORD
+	STEVENS
+	SUFFOLK COMMUNITY COLLEGE
+	SUNY ALBANY
+	SUNY BINGHAMTON
+	SUNY BUFFALO
+	SUNY PLATTSBURGH
+	SUNY PURCHASE
+	SUNY STONY BROOK
+	SWARTHMORE
+	SYRACUSE
+	Temp School
+	TEMPLE
+	TEXAS A&M
+	TEXAS CHRISTIAN UNIVERSITY
+	TOURO
+	TRINITY COLLEGE
+	TUFTS
+	TULANE
+	UNIVERSITE SAINT JOSEPH
+	UNIVERSITY OF ALABAMA
+	UNIVERSITY OF BRIDGEPORT
+	UNIVERSITY OF CALIFORNIA BERKELEY
+	UNIVERSITY OF CALIFORNIA DAVIS
+	UNIVERSITY OF CALIFORNIA LOS ANGELES
+	UNIVERSITY OF CALIFORNIA SAN DIEGO
+	UNIVERSITY OF CALIFORNIA SANTA CRUZ
+	UNIVERSITY OF CHICAGO
+	UNIVERSITY OF COLORADO
+	UNIVERSITY OF DENVER
+	UNIVERSITY OF EVANSVILLE
+	UNIVERSITY OF GEORGIA
+	UNIVERSITY OF HARTFORD
+	UNIVERSITY OF KANSAS
+	UNIVERSITY OF LOWELL
+	UNIVERSITY OF MAINE
+	UNIVERSITY OF MARYLAND
+	UNIVERSITY OF MASSACHUSETTS AMHERST
+	UNIVERSITY OF MICHIGAN
+	UNIVERSITY OF MINNESOTA
+	UNIVERSITY OF MISSISSIPPI
+	UNIVERSITY OF MISSOURI
+	UNIVERSITY OF MONTANA
+	UNIVERSITY OF NORTHCAROLINA
+	UNIVERSITY OF NOTRE DAME
+	UNIVERSITY OF OKLAHOMA
+	UNIVERSITY OF OREGON
+	UNIVERSITY OF PENNSYLVANIA
+	UNIVERSITY OF PITTSBURGH
+	UNIVERSITY OF PORTLAND
+	UNIVERSITY OF PUGET SOUND
+	UNIVERSITY OF ROCHESTER
+	UNIVERSITY OF SAN FRANCISCO
+	UNIVERSITY OF SOUTH DAKOTA
+	UNIVERSITY OF SOUTHERN CALIFORNIA
+	UNIVERSITY OF TEXAS
+	UNIVERSITY OF THE DISTRICT OF COLUMBIA
+	UNIVERSITY OF THE PACIFIC
+	UNIVERSITY OF THE SOUTH
+	UNIVERSITY OF TOLEDO
+	UNIVERSITY OF TULSA
+	UNIVERSITY OF VIRGINIA
+	UNIVERSITY OF WASHINGTON
+	UNIVERSITY WEST VIRGINIA
+	VANDERBILT
+	VASSAR
+	VILLANOVA
+	WALLA WALLA COLLEGE
+	WASHINGTON AND LEE
+	WAYNE STATE COLLEGE
+	WESLEYAN
+	WILLIAM PATERSON COLLEGE
+	WORCESTER
+	YALE
+	YANKTOWN COLLEGE
+
+
+*** Adding a new school called Temp School: ***
+NOTE: The school much be change each time you run Driver
+ -- Added School..... Verifying School is there --
+	Name: Temp School
+	State: Minnesota
+	Location: Urban
+	Control: State
+	Number of Students: 10
+	% Female: 50.0
+	SAT Verbal: 50.0
+	SAT Math: 50.0
+	Tuition: 50000.0
+	% Receiving Financial Aid: 99.0
+	Number of Applications: 12
+	% Accepted: 100.0
+	% Enrolled: 10.0
+	Academic Scale: 3
+	Social Rating: 3
+	Quality of Life: 3
+	Study Area 1:  
+	Study Area 2:  
+	Study Area 3:  
+	Study Area 4:  
+	Study Area 5:  
+
+
+*** Edit school: Temp School ***
+ -- Current school info --
+	Name: Temp School
+	State: null
+	Location: null
+	Control: null
+	Number of Students: 0
+	% Female: 25.0
+	SAT Verbal: 0.0
+	SAT Math: 0.0
+	Tuition: 0.0
+	% Receiving Financial Aid: 0.0
+	Number of Applications: 0
+	% Accepted: 0.0
+	% Enrolled: 0.0
+	Academic Scale: 0
+	Social Rating: 0
+	Quality of Life: 0
+	Study Area 1:  
+	Study Area 2:  
+	Study Area 3:  
+	Study Area 4:  
+	Study Area 5:  
+
+
+
+
+ *** Log Off ***
+The account is now logged off
+Admin account log on status: false
