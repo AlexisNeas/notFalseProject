@@ -56,12 +56,7 @@ public class TextDriver {
     
     adminInteractions.editUser("Juser", "User", "juser", "user", 'u', 'Y');
     adminInteractions.editUser("Trevor", "Wensman", "trevor", "password", 'u', 'Y');
-    adminInteractions.editSchool("Temp School", university.getState(), university.getLocation(), university.getControl(),
-                                 university.getNumStudents(), 25, university.getSatVerbal(), university.getSatMath(),
-                                 university.getTuition(), university.getPercentRecFinAid(), university.getNumApplicants(), university.getPercentAccepted(),
-                                 university.getPercentEnroll(), university.getAcademicScale(), university.getSocial(), university.getQualOfLife(),
-                                 university.getStudyArea1(),  university.getStudyArea2(),  university.getStudyArea3(),  university.getStudyArea4(),
-                                 university.getStudyArea5()); 
+    adminInteractions.editSchool("Temp School", "Minnesota", "Urban", "State", 10, 50, 50, 50, 50000.00, 99,12, 100.0, 10, 3, 3, 3,"","","","","");
     
     
     System.out.println("\n\n*******************************************************\n\n");
