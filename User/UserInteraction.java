@@ -12,6 +12,9 @@ import DatabaseController.*;
  * 
  */
 public class UserInteraction {
+  /**
+   * Instance of the UserController class
+   */
   private UserController userController;
   
   /**
