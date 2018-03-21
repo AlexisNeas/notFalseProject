@@ -50,11 +50,11 @@ public class UserController {
    * @param upSocialScale Upper limit for Social Scale.
    * @param lowQualityOfLifeScale Lower limit for Quality Of Life Scale.
    * @param upQualityOfLifeScale Upper limit for Quality Of Life Scale.
-   * @oaram emphases1 one of the emphases of the university
-   * @oaram emphases2 one of the emphases of the university
-   * @oaram emphases3 one of the emphases of the university
-   * @oaram emphases4 one of the emphases of the university
-   * @oaram emphases5 one of the emphases of the university
+   * @param emphases1 one of the emphases of the university
+   * @param emphases2 one of the emphases of the university
+   * @param emphases3 one of the emphases of the university
+   * @param emphases4 one of the emphases of the university
+   * @param emphases5 one of the emphases of the university
    * 
    * @return the university objects closest to the search in an ArrayList
    */
