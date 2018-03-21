@@ -3,13 +3,34 @@ package User;
 /**
  * Provides the logic for the Admin class 
  * author: Jess Hansen
- * date: 2/27/2018
+ * date: 3/20/2018
  */
 public class Admin extends Account
 {
-  private boolean loggedIn;
-  private String firstName, lastName, username, password;
-  private char accountType, status;
+  /**
+   * First name of the admin
+   */
+  private String firstName; 
+  /**
+   * Last name of the admin
+   */
+  private String lastName;
+  /**
+   * username of the admin
+   */
+  private String username;
+  /**
+   * Admin's password
+   */
+  private String password;
+  /**
+   * Clarifies the account is an admin's
+   */
+  private char accountType;
+  /**
+   * Clarifies whether the account is active or not
+   */
+  private char status;
  
   /**
    * Basic constructor for creating an Admin object
@@ -21,13 +42,6 @@ public class Admin extends Account
    * @param status indicates whether the admin has an active acount or not
    */
   public Admin(String firstName, String lastName, String username, String password, char accountType, char status){
-//    this.loggedIn = loggedIn;
-//    this.firstName =firstName;
-//    this.lastName = lastName;
-//    this.username = username; 
-//    this.password = password;
-//    this.accountType = accountType;
-//    this.status = status;
     super(firstName,lastName,username,password,accountType,status);
   }
 }
