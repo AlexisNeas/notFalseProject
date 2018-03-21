@@ -1,33 +1,32 @@
 package User;
 import DatabaseController.*;
-
-
-
-/**
-
- * Provides the logic for the Account Controller class 
- * author: Jess Hansen
- * date: 2/27/2018
- */
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import DatabaseController.DBController;
-
+/**
+ * Provides the logic for the Account Controller class 
+ * author: Jess Hansen
+ * date: 3/20/2018
+ */
 public class AccountController {
-  
+  /**
+   * Instance of the DBController class
+   */
   private DBController dbController;
   
+  /**
+   * Constructor for the AccountController class
+   * Initializes the DBController
+   */
   public AccountController(){
     this.dbController = new DBController("notfal", "csci230");
   }
   
   /**
-   * Checks if the user's credentials are valid and either
-   * logs them in or supplies them with an error message to try again
+   * Checks if the user's credentials are valid or not and logs them in
    * @param username is the username of the account trying to log on
    * @param password of the user trying to log on
-   * @return boolean value regarding if the sign in was successful or not
+   * @return Account of the account being logged in
    */
   public Account logOn(String username, String password){
     Account user = dbController.getUserInfo(username);
@@ -61,6 +60,7 @@ public class AccountController {
   /**
    * If the user is logged on, 
    * the user is able to log off using this method 
+   * @param account of the user being logged off
    */
   public void logOff(Account account){
     account.logOff();
