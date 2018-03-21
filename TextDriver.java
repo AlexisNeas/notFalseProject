@@ -156,7 +156,6 @@ public class TextDriver {
     adminInteractions.viewUniversities();
     System.out.println("\n\n*** Adding a new school called Temp School: ***");
     System.out.println("NOTE: The school much be change each time you run Driver");
-    adminInteractions.getSchoolInfo("Temp School");
     adminInteractions.addSchool("Temp School", "Minnesota", "Urban", "State", 10, 50, 50, 50, 50000.00, 99,12, 100.0, 10, 3, 3, 3);
     System.out.println("\n -- Added School..... Verifying School is there --");
     adminInteractions.getSchoolInfo("Temp School");
