@@ -8,10 +8,6 @@ package User;
 
 
 public class User extends Account {
-  private boolean loggedIn;
-  private String firstName, lastName, username, password;
-  private char accountType, status;
- 
   /**
    * Basic constructor method for the User class
    */
