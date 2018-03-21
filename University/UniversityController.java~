@@ -123,7 +123,7 @@ public class UniversityController
 
                                            percentFemale,satVerbal,satMath, tuition, percentRecFinAid,
 
-                                          numApplicants,percentAccepted, percentEnroll, academicScale, social,
+                                           numApplicants, percentAccepted, percentEnroll, academicScale, social,
 
                                            qualOfLife, studyArea1, studyArea2, studyArea3, studyArea4, 
 
