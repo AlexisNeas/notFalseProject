@@ -1,3 +1,4 @@
+
  ~~ TEST: Log on with invalid username and password ~~
 Logging in with invalid user credentials of U - ERROR, P - ERROR:
 Invalid username or password
@@ -18,6 +19,7 @@ Account has been deactivated: The account has not been logged on
 *** Logging in with valid user credentials: ***
  -- Username: juser   Password: user --
 The user account is now logged on
+User Options: View Profile, View Saved Schools, Search Schools
 User account log on status: true
 
 
@@ -118,6 +120,7 @@ User account log on status: false
 *** Logging in with valid admin credentials: ***
 Username: nadmin   Password: admin
 The admin account is now logged on
+Admin Options: View Users, View Universities
 
 
 *** Get List of Accounts ***
@@ -365,23 +368,24 @@ Changing first name to ROVERT
 
 *** Adding a new school called Temp School: ***
 NOTE: The school much be change each time you run Driver
+
  -- Added School..... Verifying School is there --
 	Name: Temp School
-	State: Minnesota
-	Location: Urban
-	Control: State
-	Number of Students: 10
-	% Female: 50.0
-	SAT Verbal: 50.0
-	SAT Math: 50.0
-	Tuition: 50000.0
-	% Receiving Financial Aid: 99.0
-	Number of Applications: 12
-	% Accepted: 100.0
-	% Enrolled: 10.0
-	Academic Scale: 3
-	Social Rating: 3
-	Quality of Life: 3
+	State: null
+	Location: null
+	Control: null
+	Number of Students: 0
+	% Female: 25.0
+	SAT Verbal: 0.0
+	SAT Math: 0.0
+	Tuition: 0.0
+	% Receiving Financial Aid: 0.0
+	Number of Applications: 0
+	% Accepted: 0.0
+	% Enrolled: 0.0
+	Academic Scale: 0
+	Social Rating: 0
+	Quality of Life: 0
 	Study Area 1:  
 	Study Area 2:  
 	Study Area 3:  
@@ -413,9 +417,31 @@ NOTE: The school much be change each time you run Driver
 	Study Area 4:  
 	Study Area 5:  
 
-
+ -- Get updated school information --
+	Name: Temp School
+	State: null
+	Location: null
+	Control: null
+	Number of Students: 0
+	% Female: 100.0
+	SAT Verbal: 0.0
+	SAT Math: 0.0
+	Tuition: 0.0
+	% Receiving Financial Aid: 0.0
+	Number of Applications: 0
+	% Accepted: 0.0
+	% Enrolled: 0.0
+	Academic Scale: 0
+	Social Rating: 0
+	Quality of Life: 0
+	Study Area 1:  
+	Study Area 2:  
+	Study Area 3:  
+	Study Area 4:  
+	Study Area 5:  
 
 
  *** Log Off ***
 The account is now logged off
 Admin account log on status: false
+
