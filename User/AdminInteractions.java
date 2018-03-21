@@ -3,10 +3,10 @@ import java.util.*;
 import University.University;
 
 /**
- * Provides the admin with functionalities.
+ * Provides the admin with functionalities by interacting with the AdminController class.
  * 
  * @author Zachary Vetter
- * @version 3/15/18
+ * @version 3/20/18
  */
 public class AdminInteractions {
   
@@ -15,7 +15,9 @@ public class AdminInteractions {
    */
   private AdminController adminController;
   
-  
+  /**
+   * Constructor that initializes the admin controller
+   */
   public AdminInteractions(){
     this.adminController = new AdminController();
   }
@@ -58,7 +60,7 @@ public class AdminInteractions {
   }
   
   /**
-   * Shows a schools information
+   * Gets a school's information and prints it out
    * 
    * @param schoolName the name of school to get info for
    */
@@ -176,6 +178,8 @@ public class AdminInteractions {
   
   /**
    * Changes a user's status to deactivated
+   * 
+   * @param username the username of the user to deactivate
    */
   public void deactivateUser(String username) {
     adminController.deactivateUser(username);

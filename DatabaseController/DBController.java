@@ -10,7 +10,7 @@ import dblibrary.project.csci230.*;
  * Manages the Database.
  * 
  * @author Trevor Wensman
- * @version 2/25/18
+ * @version 3/20/18
  */
 public class DBController 
 {
@@ -343,18 +343,9 @@ public class DBController
   /**
    * Finds similar schools.
    * 
-   * @param schoolName Name of the school to search for.
-   * @param stateName Name of the state for schools.
-   * @param location Location area of a school.
-   * @param control Private State or City control.
-   * @param numberOfStudents Lower limit for student population.
-   * @param percentFemale Lower limit for Percent Female.
-   * @param SATVerbal Lower limit for SATVerbal.
-   * @param expenses Lower limit for Expenses.
-   * @param percentEnrolled Lower limit for Percent Enrolled.
-   * @param academicsScale Lower limit for Academics Scale.
-   * @param socialScale Lower limit for Social Scale.
-   * @param qualityOfLifeScale Lower limit for Quality Of Life Scale.
+   * @param mainUniversity the resut clicked on to find similar schools to
+   * 
+   * @return an ArrayList containing the 5 nearest universities
    */
   public ArrayList<University> findSimilarSchools(University mainUniversity)
   {
