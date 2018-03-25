@@ -55,7 +55,7 @@ public class TextDriver {
     account = accountInteractions.logOn("juser", "user");
     
     adminInteractions.editUser("Juser", "User", "juser", "user", 'u', 'Y');
-    adminInteractions.editUser("Trevor", "Wensman", "trevor", "password", 'u', 'Y');
+    //adminInteractions.editUser("Trevor", "Wensman", "trevor", "password", 'u', 'Y');
     adminInteractions.editSchool("Temp School", "Minnesota", "Urban", "State", 10, 50, 50, 50, 50000.00, 99,12, 100.0, 10, 3, 3, 3,"","","","","");
     
     
@@ -80,7 +80,7 @@ public class TextDriver {
     userInteractions.viewProfile(account.getUsername());
 
     System.out.println("\n\n*** Search schools and View Search Results: Schools in California ***");
-    userInteractions.searchSchool("!", "CALIFORNIA","!" ,"!",//SchoolName, State, location,Control
+    userInteractions.searchSchool("OF", "MINNESOTA","!" ,"!",//SchoolName, State, location,Control
                                   0, 10000,//NumStudents
                                   -2,-2,//%Female
                                   -2,-2,//SATVerbal
@@ -95,7 +95,7 @@ public class TextDriver {
     System.out.println("\n\n*** View School Information: University of Minnesota ***");
     userInteractions.viewSchoolInfo("UNIVERSITY OF MINNESOTA");
     System.out.println("\n*** Display Top 5 Schools Similar to University of Minnesota ***");
-    userInteractions.displaySimilarSchools("UNIVERSITY OF MINNESOTA");
+    userInteractions.displaySimilarSchools("YALE");
     
     System.out.println("\n\n*** Add school to User's saved universities: ***");
     System.out.println("Original List of Saved Schools");
