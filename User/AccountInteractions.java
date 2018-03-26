@@ -45,11 +45,13 @@ public class AccountInteractions {
       if(user instanceof User)
       {
         System.out.println("The user account is now logged on");
+        System.out.println("User Options: View Profile, View Saved Schools, Search Schools");
         return (User)user;
       }
       else
       {
         System.out.println("The admin account is now logged on");
+        System.out.println("Admin Options: View Users, View Universities");
         return (Admin)user;
       }
     }

@@ -11,9 +11,13 @@ import University.*;
  */
 
 public class UserController {
+  /**
+   * Instance of the DBController class
+   */
  private DBController dbController;
- private User user;
- private University university;
+ /**
+  * Instance of the AccountController class
+  */
  private AccountController accountController;
  
  /**
