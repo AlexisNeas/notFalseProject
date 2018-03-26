@@ -497,7 +497,7 @@ public class DBController
             distance += 1;
         }
         if(tempEmphasis.size() - mainEmphasis.size() != 0)
-          distance = distance + (tempEmphasis.size() - mainEmphasis.size());
+          distance = distance + Math.abs(tempEmphasis.size() - mainEmphasis.size());
         
         
         if(sizeOfDistanceArray < 5)
