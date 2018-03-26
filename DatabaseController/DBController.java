@@ -351,6 +351,13 @@ public class DBController
   public ArrayList<University> findSimilarSchools(University mainUniversity)
   {
     String[][] schoolArray = univDBlib.university_getUniversities();
+    String[][] emphasisArray = univDBlib.university_getUniversities();
+    ArrayList<String> mainEmphasis = new ArrayList<>();
+    for(int i = 0; i < emphasisArray.length; i++)
+    {
+      if(emphasisArray[i][0].equals(mainUniversity.getSchoolName()))
+        mainEmphasis.add(emphasisArray[i][1]);
+    }
     double[][] distanceArray = new double[5][2];
     int sizeOfDistanceArray = 0;
     
@@ -362,6 +369,7 @@ public class DBController
     double minExpenses = Double.POSITIVE_INFINITY;
     int maxApplicants = Integer.MIN_VALUE;
     int minApplicants = Integer.MAX_VALUE;
+    
     for(int a = 0; a<schoolArray.length; a++)
     {
       if(maxStudent < Integer.parseInt(schoolArray[a][4]))
@@ -476,6 +484,21 @@ public class DBController
           distance = distance + Math.abs(Integer.parseInt(schoolArray[i][15]) - mainUniversity.getQualOfLife())
             / 4; //between 1 and 5
         }
+        
+        ArrayList<String> tempEmphasis = new ArrayList<>();
+        for(int z = 0; z < emphasisArray.length; z++)
+        {
+          if(emphasisArray[z][0].equals(schoolArray[i][0]))
+            tempEmphasis.add(emphasisArray[z][1]);
+        }
+        for(int z = 0; z < mainEmphasis.size(); z++)
+        {
+          if(!tempEmphasis.contains(mainEmphasis.get(z)))
+            distance += 1;
+        }
+        if(tempEmphasis.size() - mainEmphasis.size() != 0)
+          distance = distance + (tempEmphasis.size() - mainEmphasis.size());
+        
         
         if(sizeOfDistanceArray < 5)
         {
