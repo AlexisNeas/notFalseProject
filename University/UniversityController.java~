@@ -1,10 +1,13 @@
-package University;
+
 
 /**
-
  * File: UniversityController.java
-
+ * 
+ * @author Jubie Alade
+ * 
+ * @version March 20, 2018
  */
+package University;
 import java.util.ArrayList;
 
 
@@ -26,9 +29,9 @@ public class UniversityController
 
 
   /** 
-
-   * Return the universityList 
-
+   * gets the list of schools
+   * 
+   * @Return the universityList 
    */
 
   public ArrayList <University> getListOfSchools()
