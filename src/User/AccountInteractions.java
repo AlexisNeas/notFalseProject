@@ -1,4 +1,4 @@
-package User;
+package src.User;
 /**
  * Provides a class that directly interacts with user and
  * calls methods from the Account Controller

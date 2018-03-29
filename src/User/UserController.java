@@ -1,7 +1,7 @@
-package User;
+package src.User;
 import java.util.*;
-import DatabaseController.*;
-import University.*;
+import src.DatabaseController.*;
+import src.University.*;
 
 /**
  * Class that interacts with the contructed Database Controller and account controller. Interacts with the classes based on User Interactions
@@ -75,7 +75,7 @@ public class UserController {
                            String emphases1,String emphases2,String emphases3,
                            String emphases4,String emphases5) {
 
-     return dbController.search2(schoolName, stateName, location, control, lowNumberOfStudents, upNumberOfStudents,
+     return dbController.searchTwo(schoolName, stateName, location, control, lowNumberOfStudents, upNumberOfStudents,
                                 lowPercentFemale, upPercentFemale, lowSATVerbal, upSATVerbal, lowSATMath, upSATMath,
                                 lowExpenses, upExpenses, lowPercentEnrolled, upPercentEnrolled, lowAcademicsScale, upAcademicsScale,
                                 lowSocialScale,upSocialScale, lowQualityOfLifeScale, upQualityOfLifeScale, emphases1, emphases2,

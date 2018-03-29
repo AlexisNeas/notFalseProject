@@ -82,16 +82,16 @@ public class TextDriver {
 
     System.out.println("\n\n*** Search schools and View Search Results: Schools in California ***");
     userInteractions.searchSchool("OF", "MINNESOTA","!" ,"!",//SchoolName, State, location,Control
-                                  0, 10000,//NumStudents
-                                  -2,-2,//%Female
-                                  -2,-2,//SATVerbal
-                                  -2,-2,//SATMath
-                                  -2,-2,//Expenses
-                                  -2,-2,//PercentEnrolled
-                                  -2,-2,//AcademicsScale
-                                  -2,-2,//Social
-                                  -2,-2,//Academics
-                                  "", "","", "","");  
+                                  -1, -1,//NumStudents
+                                  -1,-1,//%Female
+                                  -1,-1,//SATVerbal
+                                  -1,-1,//SATMath
+                                  -1,-1,//Expenses
+                                  -1,-1,//PercentEnrolled
+                                  -1,-1,//AcademicsScale
+                                  -1,-1,//Social
+                                  -1,-1,//Academics
+                                  "!", "!","!", "!","!");  
 
     System.out.println("\n\n*** View School Information: University of Minnesota ***");
     userInteractions.viewSchoolInfo("UNIVERSITY OF MINNESOTA");

@@ -739,23 +739,23 @@ public class DBController
     if(!emphases5.equals("!"))
      total++;
 
-<<<<<<< HEAD
-		  
+
+	
 		  
 	  for(int i = 0; i <array.length; i++) 
 	  {
 		  int searchTotal = 0;
 		  if(!schoolName.equals("!"))
-			  if(schoolName.equals(array[i][0]))
+			  if(array[i][0].indexOf(schoolName)>=0)
 				  searchTotal++;
 		  if(!stateName.equals("!"))
-			  if(stateName.equals(array[i][1]))
+			  if(array[i][1].indexOf(stateName)>=0)
 				  searchTotal++;
 		  if(!location.equals("!"))
-			  if(location.equals(array[i][2]))
+			  if(array[i][2].indexOf(location)>=0)
 				  searchTotal++;
 		  if(!control.equals("!"))
-			  if(control.equals(array[i][3]))
+			  if(array[i][3].indexOf(control)>=0)
 				  searchTotal++;
 		  if(lowNumberOfStudents != -1)
 			  if(lowNumberOfStudents < Integer.parseInt(array[i][4]) && upNumberOfStudents > Integer.parseInt(array[i][4]))
@@ -900,7 +900,10 @@ public class DBController
 		                Integer.parseInt(array[i][14]), // social scale
 		                Integer.parseInt(array[i][15]), //qualoflife
 		                emp1,emp2,emp3,emp4,emp5);
+		        result.add(univ);
 		  }
+		  searchTotal = 0;
+		 
 	  }
 	  
 	  

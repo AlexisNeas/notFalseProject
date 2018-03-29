@@ -1,8 +1,8 @@
-package User;
+package src.User;
 import java.util.ArrayList;
 
-import University.*;
-import DatabaseController.*;
+import src.University.*;
+import src.DatabaseController.*;
 
 /**
  * Class that allows a user to interact with CMC and initializes the User Controller
