@@ -22,10 +22,7 @@ public class DBTest
     Account acc = new Account("Jubie", "Alade", "jalade", "csci", 'u', 'Y');
     char expected = 'u';                               
     char result = acc.getAccountType();
-    Assert.assertEquals("The char info was set correctly: " + expected, expected, result);
-    
-    
-   
+    Assert.assertEquals("The char info was set correctly: " + expected, expected, result);  
   }
   
   @Test 
@@ -36,6 +33,18 @@ public class DBTest
     univ.setSchoolName("SJU"); 
     String result = univ.getSchoolName();
     Assert.assertEquals("The info was set correctly " + expected, expected, result);
+  }
+  
+  @Test
+  public void addNewSchoolTest()
+  {
+    University univ = new University();
+    
+    
+
+    
+    
+    
   }
   
 }
