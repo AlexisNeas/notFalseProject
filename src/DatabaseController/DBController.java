@@ -1,9 +1,9 @@
-package DatabaseController;
+package src.DatabaseController;
 import java.util.ArrayList;
 
-import University.University;
-import University.UniversityController;
-import User.*;
+import src.University.*;
+
+import src.User.*;
 import dblibrary.project.csci230.*;
 
 /**
@@ -19,7 +19,7 @@ public class DBController
   //private University university;
   private UniversityController universityController;
   
-  // Contructs the database library for use in the DB Controller
+  // Constructs the database library for use in the DB Controller
   public DBController(String username, String password)
   {
     univDBlib = new UniversityDBLibrary(username,password);
@@ -783,10 +783,123 @@ public class DBController
 		  if(lowQualityOfLifeScale != -1)
 			  if(lowQualityOfLifeScale < Integer.parseInt(array[i][12]) && upQualityOfLifeScale > Integer.parseInt(array[i][12]))
 				  searchTotal++;
-		  
-		  if(!emphases1.equals("!"))
+		  ArrayList<String> temps = new ArrayList<String>();
+		  for(int j = 0; j <arrayEmphases.length; j++)
+		  {
 			  
+			  if(array[i][0].equals(arrayEmphases[j][0]))
+			  {
+				  if(!emphases1.equals("!"))
+					  if(emphases1.equals(array[i][1]))
+					  {
+						  temps.add(arrayEmphases[i][1]);
+						  searchTotal++;
+					  }
 		  
+				  if(!emphases2.equals("!"))
+					  if(emphases2.equals(arrayEmphases[i][1]))
+					  {
+						  temps.add(arrayEmphases[i][1]);
+						  searchTotal++;
+					  }
+				  if(!emphases3.equals("!"))
+					  if(emphases3.equals(arrayEmphases[i][1]))
+					  {
+						  temps.add(arrayEmphases[i][1]);
+						  searchTotal++;
+					  }
+				  if(!emphases4.equals("!"))
+					  if(emphases4.equals(arrayEmphases[i][1]))
+					  {
+						  temps.add(arrayEmphases[i][1]);
+						  searchTotal++;
+					  }
+				  if(!emphases5.equals("!"))
+					  if(emphases5.equals(arrayEmphases[i][1]))
+					  {
+						  temps.add(arrayEmphases[i][1]);
+						  searchTotal++;
+					  }
+			  }
+		  }
+		  if(searchTotal == total)
+		  {
+			  	String  emp1;
+			  	String  emp2;
+			  	String  emp3;
+			  	String  emp4;
+			  	String  emp5;
+	            if(temps.size() == 5)
+	            {
+	             emp1 = temps.get(0);
+	             emp2 = temps.get(1);
+	             emp3 = temps.get(2);
+	             emp4 = temps.get(3);
+	             emp5 = temps.get(4);
+	             
+	            }
+	            else if(temps.size() == 4)
+	            {
+	             emp1 = temps.get(0);
+	             emp2 = temps.get(1);
+	             emp3 = temps.get(2);
+	             emp4 = temps.get(3);
+	             emp5 = "";
+	             
+	            }
+	            else if(temps.size() == 3)
+	            {
+	             emp1 = temps.get(0);
+	             emp2 = temps.get(1);
+	             emp3 = temps.get(2);
+	             emp4 = "";
+	             emp5 = "";
+	             
+	            }
+	            else if(temps.size() == 2)
+	            {
+	             emp1 = temps.get(0);
+	             emp2 = temps.get(1);
+	             emp3 = "";
+	             emp4 = "";
+	             emp5 = "";
+	             
+	            }
+	            else if(temps.size() == 1)
+	            {
+	             emp1 = temps.get(0);
+	             emp2 = "";
+	             emp3 = "";
+	             emp4 = "";
+	             emp5 = "";
+	             
+	            }
+	            else {
+	             
+	             emp1 = "";
+	             emp2 = "";
+	             emp3 = "";
+	             emp4 = "";
+	             emp5 = "";
+	            }
+		        University univ = returnUniversity(array[i][0], //schoolName
+		                array[i][1], //State
+		                array[i][2],//location
+		                array[i][3],//control
+		                Integer.parseInt(array[i][4]),// numStudents
+		                Double.parseDouble(array[i][5]),//%Female
+		                Double.parseDouble(array[i][6])//// SATVerbal
+		               ,Double.parseDouble(array[i][7]),//SATMath
+		                Double.parseDouble(array[i][8]),//Expenses
+		                Double.parseDouble(array[i][9]),// percentFinancialAid
+		                Integer.parseInt(array[i][10]),// numberofApps
+		                Integer.parseInt(array[i][11])// percent admitted
+		               ,Integer.parseInt(array[i][12]), //percentEnrolled
+		                Integer.parseInt(array[i][13]), //academicsScale
+		                Integer.parseInt(array[i][14]), // social scale
+		                Integer.parseInt(array[i][15]), //qualoflife
+		                emp1,emp2,emp3,emp4,emp5);
+		  }
 	  }
 	  
 	  
