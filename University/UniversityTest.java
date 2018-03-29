@@ -1,8 +1,8 @@
-package University; 
+package tests; 
 import University.*;
 import org.junit.*;
 import static org.junit.Assert.*;
-import org.junit.*;
+
 
 
 public class UniversityTest

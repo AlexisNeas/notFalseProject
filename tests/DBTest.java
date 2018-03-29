@@ -39,6 +39,9 @@ public class DBTest
   public void addNewSchoolTest()
   {
     University univ = new University();
+    univ.setSchoolName("UOJ");
+    
+    
     
     
 
