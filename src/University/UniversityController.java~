@@ -20,7 +20,6 @@ import java.util.ArrayList;
  */
 
 public class UniversityController 
-
 { 
 
   //Creating an array for university objects named universityArray

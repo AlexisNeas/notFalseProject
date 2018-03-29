@@ -1,9 +1,9 @@
-package DatabaseController;
+package src.DatabaseController;
 import java.util.ArrayList;
 
-import University.University;
-import University.UniversityController;
-import User.*;
+import src.University.*;
+
+import src.User.*;
 import dblibrary.project.csci230.*;
 
 /**
@@ -697,102 +697,102 @@ public class DBController
                            String emphases1,String emphases2,String emphases3,
                            String emphases4,String emphases5)
   {
-	  String[][] array = univDBlib.university_getUniversities();
-	  String[][] arrayEmphases = univDBlib.university_getNamesWithEmphases();
-	  ArrayList<University> result = new ArrayList<University>();
-	  int total = 0;
+   String[][] array = univDBlib.university_getUniversities();
+   String[][] arrayEmphases = univDBlib.university_getNamesWithEmphases();
+   ArrayList<University> result = new ArrayList<University>();
+   int total = 0;
 
-		  if(!schoolName.equals("!"))
-			  total++; 
-		  if(!stateName.equals("!"))
-			  total++;
-		  if(!location.equals("!"))
-			  total++;
-		  if(!control.equals("!"))
-			  total++;
-		  if(lowNumberOfStudents != -1)
-			  total++;
-		  if(lowPercentFemale != -1)
-			  total++;  
-		  if(lowSATVerbal != -1)
-			  total++;
-		  if(lowSATMath != -1)
-			  total++;
-		  if(lowExpenses != -1)
-			  total++;
-		  if(lowPercentEnrolled != -1)
-			  total++;
-		  if(lowAcademicsScale != -1)
-			  total++;
-		  if(lowSocialScale != -1)
-			  total++;
-		  if(lowQualityOfLifeScale != -1)
-			  total++;
-		  if(!emphases1.equals("!"))
-			  total++;
-		  if(!emphases2.equals("!"))
-			  total++;
-		  if(!emphases3.equals("!"))
-			  total++;
-		  if(!emphases4.equals("!"))
-			  total++;
-		  if(!emphases5.equals("!"))
-			  total++;
+    if(!schoolName.equals("!"))
+     total++; 
+    if(!stateName.equals("!"))
+     total++;
+    if(!location.equals("!"))
+     total++;
+    if(!control.equals("!"))
+     total++;
+    if(lowNumberOfStudents != -1)
+     total++;
+    if(lowPercentFemale != -1)
+     total++;  
+    if(lowSATVerbal != -1)
+     total++;
+    if(lowSATMath != -1)
+     total++;
+    if(lowExpenses != -1)
+     total++;
+    if(lowPercentEnrolled != -1)
+     total++;
+    if(lowAcademicsScale != -1)
+     total++;
+    if(lowSocialScale != -1)
+     total++;
+    if(lowQualityOfLifeScale != -1)
+     total++;
+    if(!emphases1.equals("!"))
+     total++;
+    if(!emphases2.equals("!"))
+     total++;
+    if(!emphases3.equals("!"))
+     total++;
+    if(!emphases4.equals("!"))
+     total++;
+    if(!emphases5.equals("!"))
+     total++;
 
-		  
-		  
-	  for(int i = 0; i <array.length; i++) 
-	  {
-		  int searchTotal = 0;
-		  if(!schoolName.equals("!"))
-			  if(schoolName.equals(array[i][0]))
-				  searchTotal++;
-		  if(!stateName.equals("!"))
-			  if(stateName.equals(array[i][1]))
-				  searchTotal++;
-		  if(!location.equals("!"))
-			  if(location.equals(array[i][2]))
-				  searchTotal++;
-		  if(!control.equals("!"))
-			  if(control.equals(array[i][3]))
-				  searchTotal++;
-		  if(lowNumberOfStudents != -1)
-			  if(lowNumberOfStudents < Integer.parseInt(array[i][4]) && upNumberOfStudents > Integer.parseInt(array[i][4]))
-				  searchTotal++;
-		  if(lowPercentFemale != -1)
-			  if(lowPercentFemale < Double.parseDouble(array[i][5]) && upPercentFemale > Double.parseDouble(array[i][5]))
-				  searchTotal++;  
-		  if(lowSATVerbal != -1)
-			  if(lowSATVerbal < Double.parseDouble(array[i][6]) && upSATVerbal > Double.parseDouble(array[i][6]))
-				  searchTotal++;
-		  if(lowSATMath != -1)
-			  if(lowSATMath < Double.parseDouble(array[i][7]) && upSATMath > Double.parseDouble(array[i][7]))
-				  searchTotal++;
-		  if(lowExpenses != -1)
-			  if(lowExpenses < Double.parseDouble(array[i][8]) && upExpenses > Double.parseDouble(array[i][8]))
-				  searchTotal++;
-		  if(lowPercentEnrolled != -1)
-			  if(lowPercentEnrolled < Double.parseDouble(array[i][9]) && upPercentEnrolled > Double.parseDouble(array[i][9]))
-				  searchTotal++;
-		  if(lowAcademicsScale != -1)
-			  if(lowAcademicsScale < Integer.parseInt(array[i][10]) && upAcademicsScale > Integer.parseInt(array[i][10]))
-				  searchTotal++;
-		  if(lowSocialScale != -1)
-			  if(lowSocialScale < Integer.parseInt(array[i][11]) && upSocialScale > Integer.parseInt(array[i][11]))
-				  searchTotal++;
-		  if(lowQualityOfLifeScale != -1)
-			  if(lowQualityOfLifeScale < Integer.parseInt(array[i][12]) && upQualityOfLifeScale > Integer.parseInt(array[i][12]))
-				  searchTotal++;
-		  
-		  if(!emphases1.equals("!"))
-			  
-		  
-	  }
-	  
-	  
-	  
-	  
-	  return result;
+    
+    
+   for(int i = 0; i <array.length; i++) 
+   {
+    int searchTotal = 0;
+    if(!schoolName.equals("!"))
+     if(schoolName.equals(array[i][0]))
+      searchTotal++;
+    if(!stateName.equals("!"))
+     if(stateName.equals(array[i][1]))
+      searchTotal++;
+    if(!location.equals("!"))
+     if(location.equals(array[i][2]))
+      searchTotal++;
+    if(!control.equals("!"))
+     if(control.equals(array[i][3]))
+      searchTotal++;
+    if(lowNumberOfStudents != -1)
+     if(lowNumberOfStudents < Integer.parseInt(array[i][4]) && upNumberOfStudents > Integer.parseInt(array[i][4]))
+      searchTotal++;
+    if(lowPercentFemale != -1)
+     if(lowPercentFemale < Double.parseDouble(array[i][5]) && upPercentFemale > Double.parseDouble(array[i][5]))
+      searchTotal++;  
+    if(lowSATVerbal != -1)
+     if(lowSATVerbal < Double.parseDouble(array[i][6]) && upSATVerbal > Double.parseDouble(array[i][6]))
+      searchTotal++;
+    if(lowSATMath != -1)
+     if(lowSATMath < Double.parseDouble(array[i][7]) && upSATMath > Double.parseDouble(array[i][7]))
+      searchTotal++;
+    if(lowExpenses != -1)
+     if(lowExpenses < Double.parseDouble(array[i][8]) && upExpenses > Double.parseDouble(array[i][8]))
+      searchTotal++;
+    if(lowPercentEnrolled != -1)
+     if(lowPercentEnrolled < Double.parseDouble(array[i][9]) && upPercentEnrolled > Double.parseDouble(array[i][9]))
+      searchTotal++;
+    if(lowAcademicsScale != -1)
+     if(lowAcademicsScale < Integer.parseInt(array[i][10]) && upAcademicsScale > Integer.parseInt(array[i][10]))
+      searchTotal++;
+    if(lowSocialScale != -1)
+     if(lowSocialScale < Integer.parseInt(array[i][11]) && upSocialScale > Integer.parseInt(array[i][11]))
+      searchTotal++;
+    if(lowQualityOfLifeScale != -1)
+     if(lowQualityOfLifeScale < Integer.parseInt(array[i][12]) && upQualityOfLifeScale > Integer.parseInt(array[i][12]))
+      searchTotal++;
+    
+    if(!emphases1.equals("!"))
+           searchTotal++;
+    
+   }
+   
+  
+   
+   
+   return result;
   }
   
   /**

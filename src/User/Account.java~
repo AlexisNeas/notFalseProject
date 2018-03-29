@@ -1,9 +1,9 @@
 package User;
 /**
- * Account entity
+ * Account entity super class to User and Admin. 
  * 
  * @author Zachary Vetter
- * @version 3/15/18
+ * @version 3/20/18
  */
 public class Account {
   
@@ -45,26 +45,27 @@ public class Account {
   
   
   /**
- * @param loggedIn
- * @param firstName
- * @param lastName
- * @param username
- * @param password
- * @param accountType
- * @param status
- */
-public Account(String firstName, String lastName, String username, String password, char accountType,
-  char status) {
+   * Account constructor
+   * 
+   * @param firstName
+   * @param lastName
+   * @param username
+   * @param password
+   * @param accountType
+   * @param status
+   */
+  public Account(String firstName, String lastName, String username, String password, char accountType,
+                 char status) {
+    
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.username = username;
+    this.password = password;
+    this.accountType = accountType;
+    this.status = status;
+  }
 
- this.firstName = firstName;
- this.lastName = lastName;
- this.username = username;
- this.password = password;
- this.accountType = accountType;
- this.status = status;
-}
-
-/**
+  /**
    * Gets the account's first name
    * 
    * @return first name
@@ -186,6 +187,11 @@ public Account(String firstName, String lastName, String username, String passwo
     this.loggedIn = false;
   }
   
+  /**
+   * Checks to see if the account is currently logged on
+   * 
+   * @return a boolean with the value true if the account is logged on
+   */
   public boolean isLoggedOn(){
     return this.loggedIn;
   }
