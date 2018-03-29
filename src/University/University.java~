@@ -1,16 +1,16 @@
 package University;
 
 /**
-
  * File: University.java
-
+ * 
+ * @author Jubie Alade
+ * 
+ * @Version March 20, 2018
  */
 
 
 /**
-
  * Class that gets and sets university information 
-
  */
 
 public class University extends UniversityController
@@ -34,13 +34,9 @@ public class University extends UniversityController
   
 
   /**
-
    * University constructor with initialized information 
-
    */
-
   public University()
-
   {    
 
   String schoolName="";
@@ -84,7 +80,6 @@ public class University extends UniversityController
   String studyArea4="";
 
   String studyArea5="";
-
   }
 
   
@@ -94,55 +89,30 @@ public class University extends UniversityController
   
 
   /**
-
    * Constructor for university object. Sets instance variables to equal constructor variables
-
    * 
-
    * @param schoolName a string containing the school name 
-
    * @param state a string containing the name of the state
-
    * @param location a string containing the name of the schools location
-
    * @param control a String specifying who controls the new university
-
    * @param numStudents an integer for the number of students at school 
-
    * @param percentFemale a double out of 100 representing the percentage of females in the student population
-
    * @param satVerbal a double out of 800 representing the average SAT Verbal exam score for all students currently enrolled in the new university
-
    * @param satMath a double out of 800 representing the average SAT Math exam score for all students currently enrolled in the new university
-
    * @param tuition a double representing the annual tuition for the new university
-
    * @param percentRecFinAid a double out of 100 representing the percentage of students receiving any form sort 
-
    * of financial assistance from the new university
-
    * @param numApplicants an integer representing the number of students who typically apply annually to the new university 
-
    * @param percentAccepted a double out of 100 representing the percentage of applicants who are admitted annually to the new university
-
    * @param percentEnroll a double out of 100 representing the percentage of admitted students who enroll in the new university
-
    * @param academicScale an int between 1 and 5 (with 5 being best) indicating the quality of the academics at the new university
-
    * @param social an int between 1 and 5 (with 5 being best) indicating the quality of the social life at the new university
-
    * @param qualOfLife an int between 1 and 5 (with 5 being best) indicating the overall quality of life at the new university
-
    * @param studyArea1 a string containing the name of the study area
-
    * @param studyArea2 a string containing the name of the study area
-
    * @param studyArea3 a string containing the name of the study area
-
    * @param studyArea4 a string containing the name of the study area
-
    * @param studyArea5 a string containing the name of the study area
-
    */
 
   public University(String schoolName, String state, String location, String control, int numStudents,
@@ -208,35 +178,22 @@ public class University extends UniversityController
   
 
   /**
-
    * gets school name
-
    * 
-
    * @return school name
-
    */
-
   public String getSchoolName()
 
   {
-
     return schoolName; 
-
   }
 
-  
 
   /**
-
    * get state
-
    * 
-
    * @return state name
-
    */
-
   public String getState() 
 
   {
@@ -248,15 +205,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get location 
-
    * 
-
    * @return location 
-
    */
-
   public String getLocation()
 
   {
@@ -268,15 +220,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get control
-
    * 
-
    * @return control
-
    */
-
   public String getControl() 
 
   {
@@ -288,15 +235,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get study area name
-
    * 
-
    * @return study area name 
-
    */
-
   public String getStudyArea1() 
 
   {
@@ -308,15 +250,10 @@ public class University extends UniversityController
   
 
    /**
-
    * get study area name
-
    * 
-
    * @return study area name 
-
    */
-
   public String getStudyArea2()
 
   {
@@ -328,15 +265,10 @@ public class University extends UniversityController
   
 
    /**
-
    * get study area name
-
    * 
-
    * @return study area name 
-
    */
-
   public String getStudyArea3()
 
   {
@@ -348,17 +280,11 @@ public class University extends UniversityController
   
 
    /**
-
    * get study area name
-
    * 
-
    * @return study area name 
-
    */
-
   public String getStudyArea4()
-
   {
 
   return studyArea4;
@@ -368,15 +294,10 @@ public class University extends UniversityController
   
 
    /**
-
    * get study area name
-
    * 
-
    * @return study area name 
-
    */
-
   public String getStudyArea5() 
 
   {
@@ -388,15 +309,10 @@ public class University extends UniversityController
   
 
   /** 
-
    * get number of applicants 
-
    * 
-
    * @return number of applicants 
-
    */
-
   public int getNumApplicants() 
 
   {
@@ -408,15 +324,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get number of students
-
    * 
-
    * @return number of students 
-
    */
-
   public int getNumStudents() 
 
   {
@@ -428,15 +339,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get acad scale
-
    * 
-
    * @return acad scale
-
    */
-
   public int getAcademicScale() 
 
   {
@@ -448,15 +354,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get qual of life
-
    * 
-
    * @return qual of life
-
    */
-
   public int getQualOfLife() 
 
   {
@@ -468,15 +369,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get percent female students
-
    * 
-
    * @return percent female students 
-
    */
-
   public double getPercentFemale() 
 
   {
@@ -488,15 +384,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get satVerbal
-
    * 
-
    * @return satVerbal 
-
    */
-
   public double getSatVerbal() 
 
   {
@@ -508,15 +399,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get satMath
-
    * 
-
    * @return satMath
-
    */
-
   public double getSatMath()
 
   {
@@ -528,15 +414,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get tuition cost
-
    * 
-
    * @return tuition cost
-
    */
-
   public double getTuition()
 
   {
@@ -548,15 +429,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get percent financial aid 
-
    * 
-
    * @return percent financial aid
-
    */
-
   public double getPercentRecFinAid() 
 
   {
@@ -568,15 +444,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get percent emitted 
-
    * 
-
    * @return percent emitted
-
    */
-
   public double getPercentAccepted() 
 
   {
@@ -588,15 +459,10 @@ public class University extends UniversityController
   
 
   /**
-
    * get percent enrolled 
-
    * 
-
    * @return percent enrolled
-
    */
-
   public double getPercentEnroll() 
 
   {
@@ -604,6 +470,12 @@ public class University extends UniversityController
   return percentEnroll;
 
   }
+  
+  /**
+   * gets social amount
+   * 
+   * @return social amount
+   */
 
   public int getSocial()
   {
@@ -617,15 +489,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the school name 
-
    * 
-
    * @param string school name of the school 
-
    */
-
   public void setSchoolName(String schoolName)
 
   {
@@ -637,15 +504,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set name of the state
-
    * 
-
    * @param state the name of the state
-
    */
-
   public void setState(String state)
 
   {
@@ -657,15 +519,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the schools location 
-
    * 
-
    * @param location the location of the school 
-
    */
-
   public void setLocation(String location)
 
   {
@@ -677,15 +534,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set control amount 
-
    * 
-
    * @param control the control number
-
    */
-
   public void setControl(String control) 
 
   {
@@ -697,15 +549,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set name of study area 
-
    * 
-
    * @param studyArea1 name of study area 
-
    */
-
   public void setStudyArea1(String studyArea1) 
 
   {
@@ -717,15 +564,10 @@ public class University extends UniversityController
   
 
    /**
-
    * set name of study area 
-
    * 
-
    * @param studyArea2 name of study area 
-
    */
-
   public void setStudyArea2(String studyArea2)
 
   {
@@ -737,15 +579,10 @@ public class University extends UniversityController
   
 
    /**
-
    * set name of study area 
-
    * 
-
    * @param studyArea3 name of study area
-
    */
-
   public void setStudyArea3(String studyArea3)
 
   {
@@ -757,15 +594,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set name of study area
-
    * 
-
    * @param studyArea4 name of study area 
-
    */
-
   public void setStudyArea4(String studyArea4)
 
   {
@@ -777,15 +609,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set name of study area
-
    * 
-
    * @param studyArea5 name of study area 
-
    */
-
   public void setStudyArea5(String studyArea5) 
 
   {
@@ -794,6 +621,11 @@ public class University extends UniversityController
 
   }
   
+  /**
+   * set social scale 
+   * 
+   * @param social the amount on the social scale  
+   */
   public void setSocial(int social)
   {
     this.social=social;
@@ -802,15 +634,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the num of applicants 
-
    * 
-
    * @param numApplicants the number of applicants 
-
    */
-
   public void setNumApplicants(int numApplicants) 
 
   {
@@ -822,15 +649,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the number of students 
-
    * 
-
    * @param numStudents the number of students at a school 
-
    */
-
   public void setNumStudents(int numStudents) 
 
   {
@@ -842,15 +664,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the academic scale 
-
    * 
-
    * @param academicScale the rating of the academic scale 
-
    */
-
   public void setAcademicScale(int academicScale) 
 
   {
@@ -862,15 +679,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the qual of life 
-
    * 
-
    * @param qualOfLife the quality of life 
-
    */
-
   public void setQualOfLife(int qualOfLife) 
 
   {
@@ -882,15 +694,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the percent of female students 
-
    * 
-
    * @param percentFemale the percent of female students at a school 
-
    */
-
   public void setPercentFemale(double percentFemale) 
 
   {
@@ -902,15 +709,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the average sat Verbal score 
-
    * 
-
    * @param satVerbal the average score for the school 
-
    */
-
   public void setSatVerbal(double satVerbal) 
 
   {
@@ -922,15 +724,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the avg sat math score
-
    * 
-
    * @param satMath the average sat math score for the school 
-
    */
-
   public void setSatMath(double satMath)
 
   {
@@ -942,15 +739,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the tuition price 
-
    * 
-
    * @param tuition the tuition price 
-
    */
-
   public void setTuition(double tuition)
 
   {
@@ -962,15 +754,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the percent of students getting fin aid 
-
    * 
-
    * @param percentRecFinAid the percent of students getting aid 
-
    */
-
   public void setPercentRecFinAid(double percentRecFinAid) 
 
   {
@@ -982,15 +769,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the percent of accepted students 
-
    * 
-
    * @param percentAccepted the percent of students accepted to the school 
-
    */
-
   public void setPercentAccepted(double percentAccepted) 
 
   {
@@ -1002,15 +784,10 @@ public class University extends UniversityController
   
 
   /**
-
    * set the percent of admitted students that enroll 
-
    * 
-
    * @param percentEntroll the percent of admitted students that enroll
-
    */
-
   public void setPercentEnroll(double percentEnroll) 
 
   {

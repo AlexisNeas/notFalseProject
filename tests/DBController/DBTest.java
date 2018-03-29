@@ -1,9 +1,10 @@
-package DBController;
-import University.*;
-import User.*;
-import DatabaseController.*;
+package tests.DBController;
+import src.University.*;
+import src.User.*;
+import src.DatabaseController.*;
 import static org.junit.Assert.*;
 import org.junit.*;
+import java.util.*;
 
 
 
@@ -39,60 +40,23 @@ public class DBTest
   public void addNewSchoolTest()
   {
     University univ = new University();
+    ArrayList<String> list;
+    DBController dbCont = new DBController("notfal", "csci230");  
+    univ.setSchoolName("UOJ");
+    dbCont.addNewSchool(univ); 
+    list=dbCont.getListOfSchools();
     
-    
-    @Test
-	public void testGetSchoolInfo() {
-		fail("Not yet implemented");
-	}
+    for (int i=0; i< list.size(); i++)
+    {
+      if(list.get(i).equals("UOJ")) 
+      {
+        String result = list.get(i);
+        String expected = "UOJ";
+        Assert.assertTrue("The university was added: " + expected, result == "UOJ");
+      }
+      break;
+    }
 
-	@Test
-	public void testUserSaveSchool() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFindUser() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testRemoveSchoolFromDatabase() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testDeactivateUser() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetListOfUsers() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFindSimilarSchools() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testRemoveSchool() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetUserSchools() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSearch() {
-		fail("Not yet implemented");
-	}
-    
-    
-    
   }
   
 }

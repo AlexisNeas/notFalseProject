@@ -1,4 +1,4 @@
-package University;
+package src.University;
 
 /**
  * File: University.java

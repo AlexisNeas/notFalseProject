@@ -697,48 +697,49 @@ public class DBController
                            String emphases1,String emphases2,String emphases3,
                            String emphases4,String emphases5)
   {
-	  String[][] array = univDBlib.university_getUniversities();
-	  String[][] arrayEmphases = univDBlib.university_getNamesWithEmphases();
-	  ArrayList<University> result = new ArrayList<University>();
-	  int total = 0;
+   String[][] array = univDBlib.university_getUniversities();
+   String[][] arrayEmphases = univDBlib.university_getNamesWithEmphases();
+   ArrayList<University> result = new ArrayList<University>();
+   int total = 0;
 
-		  if(!schoolName.equals("!"))
-			  total++; 
-		  if(!stateName.equals("!"))
-			  total++;
-		  if(!location.equals("!"))
-			  total++;
-		  if(!control.equals("!"))
-			  total++;
-		  if(lowNumberOfStudents != -1)
-			  total++;
-		  if(lowPercentFemale != -1)
-			  total++;  
-		  if(lowSATVerbal != -1)
-			  total++;
-		  if(lowSATMath != -1)
-			  total++;
-		  if(lowExpenses != -1)
-			  total++;
-		  if(lowPercentEnrolled != -1)
-			  total++;
-		  if(lowAcademicsScale != -1)
-			  total++;
-		  if(lowSocialScale != -1)
-			  total++;
-		  if(lowQualityOfLifeScale != -1)
-			  total++;
-		  if(!emphases1.equals("!"))
-			  total++;
-		  if(!emphases2.equals("!"))
-			  total++;
-		  if(!emphases3.equals("!"))
-			  total++;
-		  if(!emphases4.equals("!"))
-			  total++;
-		  if(!emphases5.equals("!"))
-			  total++;
+    if(!schoolName.equals("!"))
+     total++; 
+    if(!stateName.equals("!"))
+     total++;
+    if(!location.equals("!"))
+     total++;
+    if(!control.equals("!"))
+     total++;
+    if(lowNumberOfStudents != -1)
+     total++;
+    if(lowPercentFemale != -1)
+     total++;  
+    if(lowSATVerbal != -1)
+     total++;
+    if(lowSATMath != -1)
+     total++;
+    if(lowExpenses != -1)
+     total++;
+    if(lowPercentEnrolled != -1)
+     total++;
+    if(lowAcademicsScale != -1)
+     total++;
+    if(lowSocialScale != -1)
+     total++;
+    if(lowQualityOfLifeScale != -1)
+     total++;
+    if(!emphases1.equals("!"))
+     total++;
+    if(!emphases2.equals("!"))
+     total++;
+    if(!emphases3.equals("!"))
+     total++;
+    if(!emphases4.equals("!"))
+     total++;
+    if(!emphases5.equals("!"))
+     total++;
 
+<<<<<<< HEAD
 		  
 		  
 	  for(int i = 0; i <array.length; i++) 

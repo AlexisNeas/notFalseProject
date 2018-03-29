@@ -1,4 +1,4 @@
-package User;
+package src.User;
 
 /**
  * Provides the logic for the User class 
