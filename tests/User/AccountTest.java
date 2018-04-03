@@ -13,11 +13,17 @@ public class AccountTest {
 	public void setUp() throws Exception {
 		acct = new Account("First", "Last", "user", "pass", 'u', 'Y');
 	}
-//
-//	@Test
-//	public void testAccount() {
-//		
-//	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAccountInvalidType() {
+		new Account("First", "Last", "user", "pass", 'x', 'Y');
+	}
+	
+	@Test
+	(expected = IllegalArgumentException.class)
+	public void testAccountInvalidStatus() {
+		new Account("First", "Last", "user", "pass", 'u', 'X');
+	}
 
 	@Test
 	public void testGetFirstName() {
@@ -92,6 +98,11 @@ public class AccountTest {
 		char result = acct.getAccountType();
 		assertTrue("The type of the account did not change", expected == result);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetAccountTypeInvalid() {
+		acct.setAccountType('x');
+	}
 
 	@Test
 	public void testSetStatusCorrect() {
@@ -99,6 +110,11 @@ public class AccountTest {
 		acct.setStatus(expected);
 		char result = acct.getStatus();
 		assertTrue("The status of the account did not change", expected == result);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetAccountStatusInvalid() {
+		acct.setStatus('X');
 	}
 
 	@Test
