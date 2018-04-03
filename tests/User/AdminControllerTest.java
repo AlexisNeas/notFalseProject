@@ -21,13 +21,12 @@ public class AdminControllerTest {
 	@Test
 	public void testGetListOfUsers() {
 		ArrayList<Account> result = adminController.getListOfUsers();
-		assertTrue("Should return an ArrayList of Accounts", result instanceof ArrayList<?>);
+		assertTrue("Should be an ArrayList of Accounts", result instanceof ArrayList);
 	}
 
 	@Test
 	public void testViewUniversities() {
-		ArrayList<String> result = adminController.viewUniversities();
-		assertTrue("Should return an ArrayList of Strings", result instanceof ArrayList<?>);
+		fail("");
 	}
 
 	@Test

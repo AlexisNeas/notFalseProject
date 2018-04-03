@@ -53,6 +53,8 @@ public class Account {
    * @param password
    * @param accountType
    * @param status
+   * 
+   * @throws IllegalArgumentException if account type or status are invalid
    */
   public Account(String firstName, String lastName, String username, String password, char accountType,
                  char status) {
@@ -158,6 +160,8 @@ public class Account {
    * Sets the account type to user or admin
    * 
    * @param type the account type
+   * 
+   * @throws IllegalArgumentException if the account type is not 'a' or 'u'
    */
   public void setAccountType(char type){
 	  if(type != 'a' && type != 'u')
@@ -171,6 +175,8 @@ public class Account {
    * Sets the status of the account to acctive or inactive
    * 
    * @param stat the new status of the account
+   * 
+   * @throws IllegalArgumentException status must be 'Y' or 'N'
    */
   public void setStatus(char stat){
 	  if(stat != 'Y' && stat != 'N')

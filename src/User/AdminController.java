@@ -1,8 +1,8 @@
-package src.User;
-import src.University.*;
+package User;
+import University.*;
 import java.util.ArrayList;
 import java.util.List;
-import src.DatabaseController.DBController;
+import DatabaseController.DBController;
 
 /**
  * Provides the the logic for admin functionalities.
