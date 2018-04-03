@@ -79,7 +79,21 @@ public class DBTest
 	    	 String result = list.get(0).getSchoolName();
 	         String expected = "UNIVERSITY OF MINNESOTA";
 	         Assert.assertTrue("Search did not return desired result: " + expected, result.equals(expected));
-	    
+	   
+	         
+	   list = dc.searchTwo("!", "!","!" ,"!",//SchoolName, State, location,Control
+               -1, -1,//NumStudents
+               -1,-1,//%Female
+               -1,-1,//SATVerbal
+               -1,-1,//SATMath
+               -1,-1,//Expenses
+               -1,-1,//PercentEnrolled
+               -1,-1,//AcademicsScale
+               -1,-1,//Social
+               -1,-1,//Academics
+               "!", "!","!", "!","!");
+	   
+	   Assert.assertTrue("Search did not return desired result: " + true, list.isEmpty()==true);
   }
   @Test 
   public void getUserSchoolsTest()
@@ -94,15 +108,7 @@ public class DBTest
      Assert.assertTrue("Saved schools did not return desired result: " + expected, result.equals(expected));
 	  
   }
-  
-  @Test
-  public void removeUserSchoolTest()
-  {
-	  DBController dc = new DBController("notfal", "csci230");
-	  boolean b = dc.removeSchool("UNIVERSITY OF MINNESOTA", "juser");
-	  Assert.assertTrue("Remove user schools did not return desired result: " + true, b == true);
-	  
-  }
+ 
   
   @Test
   public void findSimilarSchoolsTest()
@@ -127,6 +133,16 @@ public class DBTest
 	  Assert.assertTrue("List of users not correct:" + expected, result.equals(expected));
   }
   
+  @Test
+  public void activateUserTest()
+  {
+	  DBController dc = new DBController("notfal", "csci230");
+	  Account acc = dc.activateUser("juser");
+	  char result = acc.getStatus();
+	  char expected = 'Y';
+	  Assert.assertTrue("List of users not correct:" + expected, result == expected);
+	  
+  }
   @Test
   public void deactivateUser()
   {
@@ -157,6 +173,15 @@ public class DBTest
 	String result = univ.getSchoolName();
 	String expected = "UNIVERSITY OF MINNESOTA";
 	Assert.assertTrue("Saved schools did not return desired result: " + expected, result.equals(expected));
+  }
+  
+  @Test
+  public void removeUserSchoolTest()
+  {
+	  DBController dc = new DBController("notfal", "csci230");
+	  University univ =   dc.getSchoolInfo("UNIVERSITY OF MINNESOTA");
+	  ArrayList<String> list = dc.getUserSchools("juser");
+	  Assert.assertTrue("Saved schools did not return desired result: " + null, list.isEmpty());
   }
 
   

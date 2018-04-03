@@ -297,7 +297,32 @@ public class DBController
   {
     univDBlib.university_deleteUniversity(schoolName);
   }
-  
+  /**
+   * Activates a user.
+   * @param username the user to deactivate.
+   * @return An account object with the user's information.
+   */
+  public Account activateUser(String username)
+  {
+		Account acc = null;
+	    String[][] array = univDBlib.user_getUsers();
+	    int len = array.length;
+	    for(int i = 0; i<len ;i++)
+	    {
+	      
+	      if(array[i][2].equals(username))
+	      {
+	        String password= array[i][3];
+	        String firstName= array[i][0];
+	        String lastName = array[i][1];
+	        char type = 'u';
+	        char status = 'Y';
+	        acc = setUserInfo(firstName, lastName, username, password, type, status);
+	        
+	      }
+	    }
+	    return acc;
+  }
   /**
    * Deactivates a user.
    * @param username the user to deactivate.
@@ -305,7 +330,7 @@ public class DBController
    */
   public Account deactivateUser(String username)
   {
- Account acc = null;
+	Account acc = null;
     String[][] array = univDBlib.user_getUsers();
     int len = array.length;
     for(int i = 0; i<len ;i++)
@@ -883,6 +908,7 @@ public class DBController
 	             emp4 = "";
 	             emp5 = "";
 	            }
+	            if(searchTotal != 0) {
 		        University univ = returnUniversity(array[i][0], //schoolName
 		                array[i][1], //State
 		                array[i][2],//location
@@ -901,6 +927,7 @@ public class DBController
 		                Integer.parseInt(array[i][15]), //qualoflife
 		                emp1,emp2,emp3,emp4,emp5);
 		        result.add(univ);
+	            }
 		  }
 		  searchTotal = 0;
 		 
