@@ -112,6 +112,7 @@ public class AdminInteractions {
    */
   public void getSchoolInfo(String name){ 
     University u = adminController.getSchoolInformation(name);
+    System.out.println(u);
     System.out.println("\tName: " + u.getSchoolName()+"\n\tState: " +
                        u.getState()+"\n\tLocation: " + u.getLocation()+"\n\tControl: " + u.getControl()+ "\n\tNumber of Students: " +
                        u.getNumStudents()+ "\n\t% Female: "+ u.getPercentFemale() + "\n\tSAT Verbal: " + u.getSatVerbal() + 
