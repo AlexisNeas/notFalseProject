@@ -90,7 +90,7 @@ public class DBTest
 	         
 	  	Assert.assertTrue("Search did not return desired result: " + true, list.isEmpty());
 	  	
-	  	list = dc.searchTwo("!", "ada","!" ,"!",//SchoolName, State, location,Control
+	  	list = dc.searchTwo("!", "!","!" ,"!",//SchoolName, State, location,Control
 	               -1, -1,//NumStudents
 	               -1,-1,//%Female
 	               -1,-1,//SATVerbal
