@@ -1,4 +1,4 @@
-package src.DatabaseController;
+package DatabaseController;
 import java.util.ArrayList;
 
 import src.University.*;
