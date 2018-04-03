@@ -7,88 +7,130 @@ import org.junit.Test;
 
 public class AccountTest {
 
+	private Account acct;
+	
 	@Before
 	public void setUp() throws Exception {
+		acct = new Account("First", "Last", "user", "pass", 'u', 'Y');
 	}
-
-	@Test
-	public void testAccount() {
-		fail("Not yet implemented");
-	}
+//
+//	@Test
+//	public void testAccount() {
+//		
+//	}
 
 	@Test
 	public void testGetFirstName() {
-		fail("Not yet implemented");
+		String expected = "First";
+		String result = acct.getFirstName();
+		assertTrue("The first name of the account is \"First\"", expected.equals(result));
 	}
 
 	@Test
 	public void testGetLastName() {
-		fail("Not yet implemented");
+		String expected = "Last";
+		String result = acct.getLastName();
+		assertTrue("The last name of the account is \"Last\"", expected.equals(result));
 	}
 
 	@Test
 	public void testGetUsername() {
-		fail("Not yet implemented");
+		String expected = "user";
+		String result = acct.getUsername();
+		assertTrue("The username of the account is \"user\"", expected.equals(result));
 	}
 
 	@Test
 	public void testGetPassword() {
-		fail("Not yet implemented");
+		String expected = "pass";
+		String result = acct.getPassword();
+		assertTrue("The password of the account is \"pass\"", expected.equals(result));
 	}
 
 	@Test
 	public void testGetAccountType() {
-		fail("Not yet implemented");
+		char expected = 'u';
+		char result = acct.getAccountType();
+		assertTrue("The type of the account is \"u\"", expected == result);
 	}
 
 	@Test
 	public void testGetStatus() {
-		fail("Not yet implemented");
+		char expected = 'Y';
+		char result = acct.getStatus();
+		assertTrue("The status of the account is \"Y\"", expected == result);
 	}
 
 	@Test
-	public void testSetFirstName() {
-		fail("Not yet implemented");
+	public void testSetFirstNameCorrect() {
+		String expected = "Success";
+		acct.setFirstName(expected);
+		String result = acct.getFirstName();
+		assertTrue("The first name of the account did not change", expected.equals(result));
 	}
 
 	@Test
-	public void testSetLastName() {
-		fail("Not yet implemented");
+	public void testSetLastNameCorrect() {
+		String expected = "Success";
+		acct.setLastName(expected);
+		String result = acct.getLastName();
+		assertTrue("The last name of the account did not change", expected.equals(result));
 	}
 
 	@Test
-	public void testSetUsername() {
-		fail("Not yet implemented");
+	public void testSetPasswordCorrect() {
+		String expected = "Success";
+		acct.setPassword(expected);
+		String result = acct.getPassword();
+		assertTrue("The password of the account did not change", expected.equals(result));
 	}
 
 	@Test
-	public void testSetPassword() {
-		fail("Not yet implemented");
+	public void testSetAccountTypeCorrect() {
+		char expected = 'a';
+		acct.setAccountType(expected);
+		char result = acct.getAccountType();
+		assertTrue("The type of the account did not change", expected == result);
 	}
 
 	@Test
-	public void testSetAccountType() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetStatus() {
-		fail("Not yet implemented");
+	public void testSetStatusCorrect() {
+		char expected = 'N';
+		acct.setStatus(expected);
+		char result = acct.getStatus();
+		assertTrue("The status of the account did not change", expected == result);
 	}
 
 	@Test
 	public void testLogOn() {
-		fail("Not yet implemented");
+		boolean expected = true;
+		acct.logOn();
+		boolean result = acct.isLoggedOn();
+		assertTrue("The account should be logged on", expected == result);
 	}
 
 	@Test
 	public void testLogOff() {
-		fail("Not yet implemented");
+		boolean expected = false;
+		acct.logOn();
+		boolean check = true;
+		boolean checkResult = acct.isLoggedOn();
+		assertTrue("The account never logged on", check == checkResult);
+		acct.logOff();
+		boolean result = acct.isLoggedOn();
+		assertTrue("The account should be logged off", expected == result);
 	}
 
 	@Test
 	public void testIsLoggedOn() {
-		fail("Not yet implemented");
+		boolean expected1 = false;
+		boolean result1 = acct.isLoggedOn();
+		assertTrue("The account should be logged off", expected1 == result1);
+		
+		acct.logOn();
+		boolean expected2 = true;
+		boolean result2 = acct.isLoggedOn();
+		assertTrue("The account should be logged on", expected2 == result2);
 	}
 
 }

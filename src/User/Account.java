@@ -1,4 +1,4 @@
-package src.User;
+package User;
 /**
  * Account entity super class to User and Admin. 
  * 
@@ -63,6 +63,7 @@ public class Account {
     this.password = password;
     this.accountType = accountType;
     this.status = status;
+    this.loggedIn = false;
   }
 
   /**
@@ -135,15 +136,6 @@ public class Account {
    */
   public void setLastName(String name){
     this.lastName = name;
-  }
-  
-  /**
-   * Sets the account username
-   * 
-   * @param uname the new username
-   */
-  public void setUsername(String uname){
-    this.username = uname;
   }
   
   /**
