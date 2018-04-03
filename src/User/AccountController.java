@@ -1,5 +1,5 @@
-package src.User;
-import src.DatabaseController.*;
+package User;
+import DatabaseController.*;
 import java.util.ArrayList;
 
 import DatabaseController.DBController;

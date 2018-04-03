@@ -40,29 +40,25 @@ public class DBTest
   public void addNewSchoolTest()
   {
     University univ = new University();
-    ArrayList<String> list;
+    
     DBController dbCont = new DBController("notfal", "csci230");  
     univ.setSchoolName("UOJ");
     dbCont.addNewSchool(univ); 
-    list=dbCont.getListOfSchools();
+    univ = dbCont.getSchoolInfo("UOJ");
     
-    for (int i=0; i< list.size(); i++)
-    {
-      if(list.get(i).equals("UOJ")) 
-      {
-        String result = list.get(i);
-        String expected = "UOJ";
-        Assert.assertTrue("The university was added: " + expected, result == "UOJ");
-      }
-      break;
-    }
 
-  }
+        String result = univ.getSchoolName();
+        String expected = "UOJ";
+        Assert.assertTrue("The university was added: " + expected, result.equals("UOJ"));
+
+   }
+
+  
   
   @Test
   public void searchTwoTest()
   {
-	  University univ = new University();
+	  
 	  ArrayList<University> list;
 	  DBController dc = new DBController("notfal", "csci230");
 	    list = dc.searchTwo("OF", "MINNESOTA","!" ,"!",//SchoolName, State, location,Control
@@ -80,7 +76,36 @@ public class DBTest
 	         String expected = "UNIVERSITY OF MINNESOTA";
 	         Assert.assertTrue("Search did not return desired result: " + expected, result.equals(expected));
 	   
+	  	list = dc.searchTwo("!", "!","!" ,"!",//SchoolName, State, location,Control
+	               -500, -400,//NumStudents
+	               -1,-1,//%Female
+	               -1,-1,//SATVerbal
+	               -1,-1,//SATMath
+	               -1,-1,//Expenses
+	               -1,-1,//PercentEnrolled
+	               -1,-1,//AcademicsScale
+	               -1,-1,//Social
+	               -1,-1,//Academics
+	               "!", "!","!", "!","!");
 	         
+	  	Assert.assertTrue("Search did not return desired result: " + true, list.isEmpty());
+	  	
+	  	list = dc.searchTwo("!", "!","!" ,"!",//SchoolName, State, location,Control
+	               -1, -1,//NumStudents
+	               -1,-1,//%Female
+	               -1,-1,//SATVerbal
+	               -1,-1,//SATMath
+	               -1,-1,//Expenses
+	               -1,-1,//PercentEnrolled
+	               -1,-1,//AcademicsScale
+	               -1,-1,//Social
+	               -1,-1,//Academics
+	               "!", "!","!", "!","!");
+	         
+	  	Assert.assertTrue("Search did not return desired result: " + true, list.isEmpty());
+	  	
+	  	
+	  	
 	   list = dc.searchTwo("!", "!","!" ,"!",//SchoolName, State, location,Control
                -1, -1,//NumStudents
                -1,-1,//%Female
@@ -93,7 +118,7 @@ public class DBTest
                -1,-1,//Academics
                "!", "!","!", "!","!");
 	   
-	   Assert.assertTrue("Search did not return desired result: " + true, list.isEmpty()==true);
+	   Assert.assertTrue("Search did not return desired result: " + true, list.isEmpty());
   }
   @Test 
   public void getUserSchoolsTest()
@@ -106,7 +131,10 @@ public class DBTest
  	 String result = list.get(0);
      String expected = "UNIVERSITY OF MINNESOTA";
      Assert.assertTrue("Saved schools did not return desired result: " + expected, result.equals(expected));
-	  
+	 
+     
+     
+     
   }
  
   
@@ -179,9 +207,10 @@ public class DBTest
   public void removeUserSchoolTest()
   {
 	  DBController dc = new DBController("notfal", "csci230");
-	  University univ =   dc.getSchoolInfo("UNIVERSITY OF MINNESOTA");
+	  
+	  dc.removeSchool("UNIVERSITY OF MINNESOTA", "juser");
 	  ArrayList<String> list = dc.getUserSchools("juser");
-	  Assert.assertTrue("Saved schools did not return desired result: " + null, list.isEmpty());
+	  Assert.assertTrue("Remove schools did not return desired result: " + null, list.isEmpty());
   }
 
   
