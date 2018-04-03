@@ -1,4 +1,4 @@
-package src.User;
+package User;
 /**
  * Account entity super class to User and Admin. 
  * 
@@ -56,7 +56,14 @@ public class Account {
    */
   public Account(String firstName, String lastName, String username, String password, char accountType,
                  char status) {
-    
+    if(accountType != 'a' && accountType != 'u')
+    {
+    	throw new IllegalArgumentException("Account Type must be 'a' or 'u'");
+    }
+    if(status != 'Y' && status != 'N')
+    {
+    	throw new IllegalArgumentException("Status must be 'Y' or 'N'");
+    }
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
@@ -153,7 +160,11 @@ public class Account {
    * @param type the account type
    */
   public void setAccountType(char type){
-    this.accountType = type;
+	  if(type != 'a' && type != 'u')
+	  {
+		  throw new IllegalArgumentException("Account Type must be 'a' or 'u'");
+	  }
+	  this.accountType = type;
   }
   
   /**
@@ -162,7 +173,11 @@ public class Account {
    * @param stat the new status of the account
    */
   public void setStatus(char stat){
-    this.status = stat;
+	  if(stat != 'Y' && stat != 'N')
+	  {
+		throw new IllegalArgumentException("Status must be 'Y' or 'N'");
+	  }
+	  this.status = stat;
   }
   
   /**
