@@ -1,4 +1,4 @@
-package src.User;
+package User;
 /**
  * Account entity super class to User and Admin. 
  * 

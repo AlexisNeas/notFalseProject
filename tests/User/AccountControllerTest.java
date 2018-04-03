@@ -16,12 +16,12 @@ public class AccountControllerTest {
 	  
 	@Test
 	public void testLogOnForValidUser() {
-		String userName = "Juser";
+		String userName = "juser";
 		String password = "user";
-		Account expResult = new User("Juser", "User", "juser", "user", 'u', 'Y'); 
+		Account expResult = new User("juser", "user", "juser", "user", 'u', 'Y'); 
 	    Account result = aController.logOn(userName,password);
 	    
-	    assert.assertEquals("Account logged on for: " + userName,expResult, result);
+	    assert.assertTrue("Account is logged in.",expResult, result);
 	}
 	
 	@Test
@@ -58,7 +58,7 @@ public class AccountControllerTest {
 	public void testLogOffForValidUser() {
 		String userName = "juser";
 		String password = "user";
-		Account user = new User("Juser", "user", "juser", "user", 'u', 'Y'); 
+		Account user = new User("juser", "user", "juser", "user", 'u', 'Y'); 
 		boolean expResult = false;
 	    aController.logOff(userName,password);
 	    boolean result = user.isLoggedOn();
