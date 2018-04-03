@@ -262,18 +262,9 @@ public class DBController
    * @param the school name to save
    * 
    */
-  public University userSaveSchool(String username,String schoolName)
+  public void userSaveSchool(String username,String schoolName)
   {
-	 University univ = this.getSchoolInfo(schoolName);
-	 if(univ != null)
-	 {
-		 
-	 }
-	 else
-	 {
-	  univDBlib.user_saveSchool(username, schoolName);
-	 }
-	 return univ;
+    univDBlib.user_saveSchool(username, schoolName);
   }
   
   
