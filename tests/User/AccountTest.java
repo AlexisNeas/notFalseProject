@@ -1,4 +1,4 @@
-package User;
+package src.User;
 
 import static org.junit.Assert.*;
 
