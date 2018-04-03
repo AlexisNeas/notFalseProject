@@ -1,7 +1,7 @@
-package src.User;
+package tests.User;
 
 import static org.junit.Assert.*;
-
+import src.User.Account;
 import org.junit.Before;
 import org.junit.Test;
 
