@@ -1,6 +1,6 @@
-package src;
-import DatabaseController;
-import User;
+
+import User.*;
+
 import University.*;
   
 /**

@@ -1,9 +1,9 @@
 package DatabaseController;
 import java.util.ArrayList;
 
-import src.University.*;
+import University.*;
 
-import src.User.*;
+import User.*;
 import dblibrary.project.csci230.*;
 
 /**
@@ -16,9 +16,6 @@ public class DBController
 {
   // The Database library
   private UniversityDBLibrary univDBlib;
-  //private University university;
-  private UniversityController universityController;
-  
   // Constructs the database library for use in the DB Controller
   public DBController(String username, String password)
   {
