@@ -19,7 +19,7 @@ public class AccountControllerTest {
 	public void testLogOnForValidUser() {
 		String userName = "juser";
 		String password = "user";
-		Account expResult = new User("juser", "user", "juser", "user", 'u', 'Y'); 
+		Account expResult = new User("Alexis", "Neas", "juser", "user", 'u', 'Y'); 
 	    Account result = aController.logOn(userName,password);
 	    
 	    assertTrue("Account is logged in.",expResult.equals(result));

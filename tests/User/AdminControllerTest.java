@@ -23,20 +23,24 @@ public class AdminControllerTest {
 
 	@Test
 	public void testGetListOfUsers() {
+		ArrayList<Account> expected = db.getListOfUsers();
 		ArrayList<Account> result = adminController.getListOfUsers();
-		assertTrue("Should be an ArrayList of Accounts", result instanceof ArrayList);
+		assertTrue("Should be an ArrayList of Accounts", result.equals(expected));
 	}
 
 	@Test
 	public void testViewUniversities() {
+		ArrayList<String> expected = db.getListOfSchools();
 		ArrayList<String> result = adminController.viewUniversities();
-		assertTrue("Should be an ArrayList of Strings", result instanceof ArrayList);
+		assertTrue("Should be an ArrayList of Strings", result.equals(expected));
 	}
-
-	@Test
-	public void testGetSchoolInformation() {
-		fail("Not yet implemented");
-	}
+//
+//	@Test
+//	public void testGetSchoolInformation() {
+//		University expected = db.getSchoolInfo("UNIVERSITY OF MINNESOTA");
+//		University result = adminController.getSchoolInformation("UNIVERSITY OF MINNESOTA");
+//		assertTrue("University of Minnesota info does not match", result.equals)
+//	}
 
 	@Test
 	public void testAddNewUser() {
