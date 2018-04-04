@@ -42,14 +42,14 @@ public class AccountControllerTest {
 		Account expResult = new User("Alexis", "Neas", "juser", "user", 'u', 'Y'); 
 		Account result = aController.logOn(userName,password);
 	    
-		assertFalse("Password entered is invalid.",expResult.equals(result));
+		assertTrue("Password provided is invalid.",expResult.equals(result));
 	}
 	
 	@Test
 	public void testLogOnForDeactivatedAccount() {
-		String userName = "jdeactivated";
-		String password = "deactivated";
-		Account expResult = new User("Jdeactivated", "deactivated", "jdeactivated", "deactivated", 'u', 'N'); 
+		String userName = "trevor";
+		String password = "password";
+		Account expResult = new User("Rovert", "Wensman", userName , password, 'u', 'N'); 
 		Account result = aController.logOn(userName,password);
 	    
 		assertFalse("Account is deactivated.",expResult.equals(result));
@@ -57,7 +57,7 @@ public class AccountControllerTest {
 	
 	@Test
 	public void testLogOffForValidUser() {
-		Account user = new User("juser", "user", "juser", "user", 'u', 'Y'); 
+		Account user = new User("Alexis", "Neas", "juser", "user", 'u', 'Y'); 
 		boolean expResult = false;
 	    aController.logOff(user);
 	    boolean result = user.isLoggedOn();
@@ -69,8 +69,8 @@ public class AccountControllerTest {
 	
 	@Test
 	public void testLogOffForValidAdmin() {
-		String userName = "jadmin";
-		Account admin = new User("Jadmin", "admin", "jadmin", "admin", 'a', 'Y'); 
+		String userName = "nadmin";
+		Account admin = new User("Noreen", "Admin", "nadmin", "admin", 'a', 'Y'); 
 		boolean expResult = false;
 	    aController.logOff(admin);
 	    boolean result = admin.isLoggedOn();
