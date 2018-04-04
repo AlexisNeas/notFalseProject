@@ -16,7 +16,7 @@ public class TextDriver {
    * @param args
    */
   public static void main(String [] args) {
-    /*TODO
+    /*
      * X Log in with User Account
      * X View Profile
      * X Edit Profile
