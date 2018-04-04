@@ -8,14 +8,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 import University.University;
+import DatabaseController.DBController;
 
 public class AdminControllerTest {
 	
 	private AdminController adminController;
+	private DBController db;
 	
 	@Before
 	public void setUp() throws Exception {
 		adminController = new AdminController();
+		db = new DBController("notfal","csci230");
 	}
 
 	@Test
@@ -26,7 +29,8 @@ public class AdminControllerTest {
 
 	@Test
 	public void testViewUniversities() {
-		fail("");
+		ArrayList<String> result = adminController.viewUniversities();
+		assertTrue("Should be an ArrayList of Strings", result instanceof ArrayList);
 	}
 
 	@Test

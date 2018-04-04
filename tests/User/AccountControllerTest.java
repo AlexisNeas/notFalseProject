@@ -1,7 +1,8 @@
 package User;
 
 import static org.junit.Assert.*;
-
+import User.Account;
+import org.junit.Before;
 import org.junit.Test;
 
 public class AccountControllerTest {
@@ -21,7 +22,7 @@ public class AccountControllerTest {
 		Account expResult = new User("juser", "user", "juser", "user", 'u', 'Y'); 
 	    Account result = aController.logOn(userName,password);
 	    
-	    assert.assertTrue("Account is logged in.",expResult, result);
+	    assertTrue("Account is logged in.",expResult.equals(result));
 	}
 	
 	@Test
@@ -31,7 +32,7 @@ public class AccountControllerTest {
 		Account expResult = new User("Juser", "User", "juser", "user", 'u', 'Y'); 
 	    Account result = aController.logOn(userName,password);
 	    
-	    assert.assertFalse("Username provided is invalid.",expResult, result);
+	    assertFalse("Username provided is invalid.",expResult.equals(result));
 	}
 	
 	@Test
@@ -41,7 +42,7 @@ public class AccountControllerTest {
 		Account expResult = new User("Juser", "User", "juser", "user", 'u', 'Y'); 
 		Account result = aController.logOn(userName,password);
 	    
-		assert.assertFalse("Password entered is invalid.",expResult, result);
+		assertFalse("Password entered is invalid.",expResult.equals(result));
 	}
 	
 	@Test
@@ -51,19 +52,17 @@ public class AccountControllerTest {
 		Account expResult = new User("Jdeactivated", "deactivated", "jdeactivated", "deactivated", 'u', 'N'); 
 		Account result = aController.logOn(userName,password);
 	    
-		assert.assertFalse("Account is deactivated.",expResult, result);
+		assertFalse("Account is deactivated.",expResult.equals(result));
 	}
 	
 	@Test
 	public void testLogOffForValidUser() {
-		String userName = "juser";
-		String password = "user";
 		Account user = new User("juser", "user", "juser", "user", 'u', 'Y'); 
 		boolean expResult = false;
-	    aController.logOff(userName,password);
+	    aController.logOff(user);
 	    boolean result = user.isLoggedOn();
 	    
-	    assert.assertEquals("Account is logged off.",expResult, result);
+	    assertEquals("Account is logged off.",expResult, result);
 	}
 	
 
@@ -71,17 +70,14 @@ public class AccountControllerTest {
 	@Test
 	public void testLogOffForValidAdmin() {
 		String userName = "jadmin";
-		String password = "admin";
 		Account admin = new User("Jadmin", "admin", "jadmin", "admin", 'a', 'Y'); 
 		boolean expResult = false;
-	    aController.logOff(userName,password);
+	    aController.logOff(admin);
 	    boolean result = admin.isLoggedOn();
 	    
-	    assert.assertEquals("Account logged on for: " + userName,expResult, result);
+	    assertEquals("Account logged on for: " + userName,expResult, result);
 	}
 	
 
 	
-	}
-
 }
