@@ -7,7 +7,7 @@
  * 
  * @version March 20, 2018
  */
-package src.University;
+package University;
 import java.util.ArrayList;
 
 

@@ -1,6 +1,6 @@
-package src;
-import src.User.*;
-import src.University.*;
+
+import User.*;
+import University.*;
   
 /**
  * @author zvetter001

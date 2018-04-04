@@ -1,7 +1,7 @@
-package tests.DBController;
-import src.University.*;
-import src.User.*;
-import src.DatabaseController.*;
+package DBController;
+import University.*;
+import User.*;
+import DatabaseController.*;
 import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.*;
