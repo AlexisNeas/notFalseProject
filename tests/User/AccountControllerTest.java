@@ -19,7 +19,7 @@ public class AccountControllerTest {
 	public void testLogOnForValidUser() {
 		String userName = "juser";
 		String password = "user";
-		Account expResult = new User("juser", "user", "juser", "user", 'u', 'Y'); 
+		Account expResult = new User("Alexis", "Neas", "juser", "user", 'u', 'Y'); 
 	    Account result = aController.logOn(userName,password);
 	    
 	    assertTrue("Account is logged in.",expResult.equals(result));
@@ -37,9 +37,9 @@ public class AccountControllerTest {
 	
 	@Test
 	public void testLogOnForInvalidPassword() {
-		String userName = "Juser";
+		String userName = "juser";
 		String password = "password";
-		Account expResult = new User("Juser", "User", "juser", "user", 'u', 'Y'); 
+		Account expResult = new User("Alexis", "Neas", "juser", "user", 'u', 'Y'); 
 		Account result = aController.logOn(userName,password);
 	    
 		assertFalse("Password entered is invalid.",expResult.equals(result));
@@ -78,6 +78,14 @@ public class AccountControllerTest {
 	    assertEquals("Account logged on for: " + userName,expResult, result);
 	}
 	
-
+	@Test
+	public void testLogOnForValidAdmin() {
+		String userName = "nadmin";
+		String password = "admin";
+		Admin expResult = new Admin("Noreen", "Admin", "nadmin", "admin", 'a', 'Y'); 
+	    Account result = aController.logOn(userName,password);
+	    
+	    assertTrue("Account is logged in.",expResult.equals(result));
+	}
 	
 }
