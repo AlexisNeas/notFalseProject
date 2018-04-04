@@ -2,6 +2,9 @@ package User;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
+import University.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -57,24 +60,25 @@ public class UserControllerTest {
 	@Test
 	public void testGetSchoolInfoValid() {
 		University u = uct.getSchoolInfo("UNIVERSITY OF MINNESOTA");
-		assertTrue("The school is invalid and shouldn't have information", u.getName() == "UNIVERSITY OF MINNESOTA");
+		assertTrue("The school is invalid and shouldn't have information", u.getSchoolName() == "UNIVERSITY OF MINNESOTA");
 	}
 
 	@Test
 	public void testAddSchoolInvalidSchool() {
 		fail("Not yet implemented");
 	}
-
-	@Test
-	public void testFindSimilarSchoolsInvalidSchool() {
-		ArrayList<University> u = uct.findSimilarSchools("LINDA");
-		assertTrue("There shouldn't be similar schools for an invalid school", u.length == 0);
-	}
+//
+//	@Test
+//	public void testFindSimilarSchoolsInvalidSchool() {
+//		ArrayList<University> u = uct.findSimilarSchools("LINDA");
+//		assertTrue("There shouldn't be similar schools for an invalid school", u.length == 0);
+//	}
 	
 	@Test
 	public void testFindSimilarSchoolsValid() {
-		ArrayList<University> u = uct.findSimilarSchools("UNIVERSITY OF MINNESOTA");
-		assertTrue("Returned no schools.", u.length == 5);
+		University univ = uct.getSchoolInfo("UNIVERSITY OF MINNESOTA");
+		ArrayList<University> u = uct.findSimilarSchools(univ);
+		assertTrue("Returned no schools.", u.size() == 5);
 	}
 
 	@Test
@@ -84,14 +88,14 @@ public class UserControllerTest {
 
 	@Test
 	public void testGetSavedUniversitiesInvalidUser() {
-		ArrayList<University> u = uct.getSavedUniversities("Linda");
+		ArrayList<String> u = uct.getSavedUniversities("Linda");
 		assertTrue("No saved schools for invalid user", u==null);
 	}
 	
 	@Test
 	public void testGetSavedUniversitiesValid() {
-		ArrayList<University> u = uct.getSavedUniversities("juser");
-		assertTrue("No array list returned", u.length != null);
+		ArrayList<String> u = uct.getSavedUniversities("juser");
+		assertTrue("No array list returned", u.size() != 0);
 	}
 
 	@Test

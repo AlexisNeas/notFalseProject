@@ -1,6 +1,6 @@
-package src.User;
+package User;
 import java.util.*;
-import src.University.University;
+import University.University;
 
 /**
  * Provides the admin with functionalities by interacting with the AdminController class.

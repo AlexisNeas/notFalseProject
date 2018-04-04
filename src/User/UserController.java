@@ -1,7 +1,7 @@
 package User;
 import java.util.*;
-import src.DatabaseController.*;
-import src.University.*;
+import DatabaseController.*;
+import University.*;
 
 /**
  * Class that interacts with the contructed Database Controller and account controller. Interacts with the classes based on User Interactions

@@ -1,4 +1,4 @@
-package src.User;
+package User;
 /**
  * Account entity super class to User and Admin. 
  * 
@@ -53,10 +53,19 @@ public class Account {
    * @param password
    * @param accountType
    * @param status
+   * 
+   * @throws IllegalArgumentException if account type or status are invalid
    */
   public Account(String firstName, String lastName, String username, String password, char accountType,
                  char status) {
-    
+    if(accountType != 'a' && accountType != 'u')
+    {
+    	throw new IllegalArgumentException("Account Type must be 'a' or 'u'");
+    }
+    if(status != 'Y' && status != 'N')
+    {
+    	throw new IllegalArgumentException("Status must be 'Y' or 'N'");
+    }
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
@@ -151,18 +160,30 @@ public class Account {
    * Sets the account type to user or admin
    * 
    * @param type the account type
+   * 
+   * @throws IllegalArgumentException if the account type is not 'a' or 'u'
    */
   public void setAccountType(char type){
-    this.accountType = type;
+	  if(type != 'a' && type != 'u')
+	  {
+		  throw new IllegalArgumentException("Account Type must be 'a' or 'u'");
+	  }
+	  this.accountType = type;
   }
   
   /**
    * Sets the status of the account to acctive or inactive
    * 
    * @param stat the new status of the account
+   * 
+   * @throws IllegalArgumentException status must be 'Y' or 'N'
    */
   public void setStatus(char stat){
-    this.status = stat;
+	  if(stat != 'Y' && stat != 'N')
+	  {
+		throw new IllegalArgumentException("Status must be 'Y' or 'N'");
+	  }
+	  this.status = stat;
   }
   
   /**
@@ -186,5 +207,18 @@ public class Account {
    */
   public boolean isLoggedOn(){
     return this.loggedIn;
+  }
+  
+  @Override public boolean equals(Object object)
+  {
+	  if(object instanceof Account)
+	  {
+		  Account other = (Account)object; 
+	      return (this.firstName.equals(other.getFirstName()) && this.lastName.equals(other.getLastName())
+			 && this.username.equals(other.getUsername()) && this.password.equals(other.getPassword())
+			 && this.accountType == other.getAccountType() && this.status == other.getStatus());
+      }
+	  else
+		  return false;
   }
 }

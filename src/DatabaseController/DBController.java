@@ -1,9 +1,9 @@
-package src.DatabaseController;
+package DatabaseController;
 import java.util.ArrayList;
 
-import src.University.*;
+import University.*;
 
-import src.User.*;
+import User.*;
 import dblibrary.project.csci230.*;
 
 /**
@@ -16,9 +16,6 @@ public class DBController
 {
   // The Database library
   private UniversityDBLibrary univDBlib;
-  //private University university;
-  private UniversityController universityController;
-  
   // Constructs the database library for use in the DB Controller
   public DBController(String username, String password)
   {
@@ -1239,9 +1236,9 @@ public class DBController
   {
     try{
       DBController databasecontroller = new DBController("notfal", "csci230");
-      String[][] array = databasecontroller.getUnivDBlib().university_getUniversities();
-      databasecontroller.getUnivDBlib().university_deleteUniversity("Temp School");
-      databasecontroller.getUnivDBlib().user_deleteUser("trevor");
+      String[][] array = databasecontroller.getUnivDBlib().user_getUsers();
+      //databasecontroller.getUnivDBlib().university_deleteUniversity("Temp School");
+      //databasecontroller.getUnivDBlib().user_deleteUser("trevor");
 
       //String[][] array = databasecontroller.getUnivDBlib().user_getUsers();
 

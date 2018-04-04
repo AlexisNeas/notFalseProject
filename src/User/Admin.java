@@ -1,4 +1,4 @@
-package src.User;
+package User;
 
 /**
  * Provides the logic for the Admin class 
