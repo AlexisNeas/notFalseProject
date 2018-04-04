@@ -1266,4 +1266,14 @@ public class DBController
     }
     
   }
+  
+  public void deleteUser(String username)
+  {
+	  univDBlib.user_deleteUser(username);
+  }
+  
+  public void deleteSchool(String name)
+  {
+	  univDBlib.university_deleteUniversity(name);
+  }
 }

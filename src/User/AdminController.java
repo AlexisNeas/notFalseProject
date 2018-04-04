@@ -106,8 +106,10 @@ public class AdminController {
    * @param type
    * @param status
    */
-  public void editUser(String firstName, String lastName, String username, String password, char type, char status){
-    dbController.setUserInfo(firstName, lastName, username, password, type, status);
+  public void editUser(Account account){
+    dbController.setUserInfo(account.getFirstName(), account.getLastName(),
+    		account.getUsername(), account.getPassword(), account.getAccountType(),
+    		account.getStatus());
   }
   
   /**
