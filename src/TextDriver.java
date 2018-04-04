@@ -1,6 +1,7 @@
 package src;
-import src.User.*;
-import src.University.*;
+import DatabaseController;
+import User;
+import University.*;
   
 /**
  * @author zvetter001

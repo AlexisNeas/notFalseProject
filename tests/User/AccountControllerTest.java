@@ -28,7 +28,7 @@ public class AccountControllerTest {
 	public void testLogOnForInvalidUsername() {
 		String userName = "Jess";
 		String password = "user";
-		Account expResult = new User("Juser", "User", "juser", "user", 'u', 'Y'); 
+		Account expResult = new User("juser", "User", "juser", "user", 'u', 'Y'); 
 	    Account result = aController.logOn(userName,password);
 	    
 	    assert.assertFalse("Username provided is invalid.",expResult, result);
