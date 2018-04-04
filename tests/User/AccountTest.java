@@ -3,7 +3,7 @@ package User;
 
 
 import static org.junit.Assert.*;
-import src.User.Account;
+import User.Account;
 import org.junit.Before;
 import org.junit.Test;
 
