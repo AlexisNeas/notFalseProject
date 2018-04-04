@@ -1,4 +1,4 @@
-package src.User;
+package User;
 import java.util.*;
 import src.DatabaseController.*;
 import src.University.*;
