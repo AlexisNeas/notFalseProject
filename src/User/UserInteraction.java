@@ -92,8 +92,10 @@ public class UserInteraction {
    */
   public void addSchool(String school, String username)
   {
-   userController.addSchool(username, school); 
-   System.out.println("\tSchool has been added.");
+   int response = userController.addSchool(username, school); 
+   
+   if(response == 1)
+	   System.out.println("\tSchool has been added.");
   }
   
   /**

@@ -4,7 +4,7 @@ import DatabaseController.*;
 import University.*;
 
 /**
- * Class that interacts with the contructed Database Controller and account controller. Interacts with the classes based on User Interactions
+ * Class that interacts with the constructed Database Controller and account controller. Interacts with the classes based on User Interactions
  * 
  * @author Alexis Neas
  * @version 3/20/18
@@ -115,9 +115,18 @@ public class UserController {
    * @param user the name of user saving the school
    * @param school school to be added to user's list
    */
-  public void addSchool(String user, String school)
+  public int addSchool(String user, String school)
   {
-   dbController.userSaveSchool(user, school); 
+	  try {
+		  
+   return dbController.userSaveSchool(user, school); 
+	  }
+	  
+	  catch(IllegalArgumentException e)
+	  {
+		  System.out.println("Error: Invalid user or school.");
+	  }
+	  
   }
   
   /**
@@ -131,23 +140,6 @@ public class UserController {
    return dbController.findSimilarSchools(university); 
   }
   
-  /**
-   * Displays the results of a search
-   * 
-   * @param universities list of schools that should be displayed
-   */
-  public void displayResults(ArrayList<University> universities)
-  {
-    if (universities == null)
-      System.out.println("No universities to display");
-    else
-    {
-      for( University u:universities)
-      {
-        System.out.println("University: "+ u.getSchoolName()); 
-      }
-    }
-  }
   
   /**
    * Gets a list of user's saved universities
