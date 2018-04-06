@@ -10,11 +10,11 @@ import java.util.*;
 
 public class DBTest
 {
-  
+  private Account newUser;
   @Before
   public void setUp()
   {
-   
+	  this.newUser = new User("first", "last", "username", "password", 'a', 'Y');
   }
   
   @Test
@@ -35,6 +35,8 @@ public class DBTest
     String result = univ.getSchoolName();
     Assert.assertEquals("The info was set correctly " + expected, expected, result);
   }
+  
+
   
   @Test
   public void addNewSchoolTest()
@@ -111,6 +113,14 @@ public class DBTest
 	  	
 
   }
+  
+  @Test(expected = Exception.class)
+	public void testAddNewUser() throws Exception{
+		
+		DBController dc = new DBController("notfal", "csci230");
+		dc.addNewUser(newUser);
+		
+	}
   @Test 
   public void getUserSchoolsTest()
   {

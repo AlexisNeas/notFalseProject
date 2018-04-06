@@ -95,10 +95,12 @@ public class DBController
    * @param firstName the users first name.
    * @param lastName the users last name.
    * @param type the type of user.
+ * @throws Exception 
    * 
    */
-  public void addNewUser(User user)
+  public void addNewUser(Account user) throws Exception
   {
+	  
  String username = user.getUsername();
  String firstName = user.getFirstName();
  String lastName = user.getLastName();
@@ -109,6 +111,10 @@ public class DBController
     {
       univDBlib.user_addUser(firstName,lastName, username, 
                              password, type);
+    }
+    else
+    {
+    	throw new Exception("USERNAME IS ALREADY TAKEN");
     }
   }
   /**
@@ -223,11 +229,11 @@ public class DBController
             }
             else {
              
-             emp1 = " ";
-             emp2 = " ";
-             emp3 = " ";
-             emp4 = " ";
-             emp5 = " ";
+             emp1 = "";
+             emp2 = "";
+             emp3 = "";
+             emp4 = "";
+             emp5 = "";
             }
          
           
@@ -279,7 +285,7 @@ public class DBController
     int len = array.length;
     for(int i = 0; i<len ;i++)
     {
-      if(array[i][0].equals(username))
+      if(array[i][2].equals(username))
       {
         bool = true;
         break;
@@ -676,7 +682,10 @@ public class DBController
           
         }
       }
-      
+      if(list.isEmpty())
+      {
+    	  throw new Exception("YOU HAVE NO SAVED SCHOOLS");
+      }
       return list;
     }
   }

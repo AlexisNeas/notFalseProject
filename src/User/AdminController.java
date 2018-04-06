@@ -72,7 +72,12 @@ public class AdminController {
    * @param user to be added
    */
   public void addNewUser(User user){
-    dbController.addNewUser(user);
+    try {
+		dbController.addNewUser(user);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
   }
   
   /**

@@ -50,12 +50,18 @@ public class AdminControllerTest {
 //	}
 
 	@Test
-	public void testAddNewUser() {
+	public void testAddNewUser() throws Exception{
+		try {
 		ArrayList<Account> currentUsers = adminController.getListOfUsers();
 		assertTrue("The new account is already in the database", !currentUsers.contains(newUser));
 		adminController.addNewUser(newUser);
 		currentUsers = adminController.getListOfUsers();
 		assertTrue("The account was not added", currentUsers.contains(newUser));
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@Test
@@ -81,7 +87,7 @@ public class AdminControllerTest {
 	}
 
 	@Test
-	public void testEditUser() {
+	public void testEditUser() throws Exception {
 		db.addNewUser(newUser);
 		Account testAccount = adminController.getUserInfo(newUser.getUsername());
 		assertTrue("The Account's last name is New", testAccount.getLastName().equals("New"));
@@ -92,7 +98,7 @@ public class AdminControllerTest {
 	}
 
 	@Test
-	public void testDeactivateUser() {
+	public void testDeactivateUser() throws Exception {
 		db.addNewUser(newUser);
 		Account testAccount = adminController.getUserInfo(newUser.getUsername());
 		assertTrue("The account is already deactivated", testAccount.getStatus()=='Y');
@@ -102,7 +108,7 @@ public class AdminControllerTest {
 	}
 
 	@Test
-	public void testGetUserInfo() {
+	public void testGetUserInfo() throws Exception {
 		db.addNewUser(newUser);
 		Account testAccount = adminController.getUserInfo(newUser.getUsername());
 		assertTrue("The accouns are not the same", newUser.equals(testAccount));
