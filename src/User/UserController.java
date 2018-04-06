@@ -148,6 +148,7 @@ public class UserController {
 	  {
 		  System.out.println("Error: Invalid user or school.");
 	  }
+	return 0;
 	  
   }
   
