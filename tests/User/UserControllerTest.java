@@ -88,7 +88,6 @@ public class UserControllerTest {
 		ArrayList<University> u = uct.findSimilarSchools(univ);
 		assertTrue("Returned no schools.", u.size() == 5);
 	}
-
 	
 	@Test(expected = Exception.class)
 	public void testGetSavedUniversitiesInvalidUser() {
@@ -96,6 +95,11 @@ public class UserControllerTest {
 	}
 	
 	@Test
+	public void testDisplayResults() {
+		fail("Not yet implemented");
+	}
+	
+	@Test(expected = Exception.class)
 	public void testGetSavedUniversitiesValid() {
 		ArrayList<String> u = uct.getSavedUniversities("juser");
 		ArrayList<String> expected = db.getUserSchools("juser");

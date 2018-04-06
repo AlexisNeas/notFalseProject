@@ -72,7 +72,12 @@ public class AdminController {
    * @param user to be added
    */
   public void addNewUser(User user){
-    dbController.addNewUser(user);
+    try {
+		dbController.addNewUser(user);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
   }
   
   /**
@@ -106,8 +111,10 @@ public class AdminController {
    * @param type
    * @param status
    */
-  public void editUser(String firstName, String lastName, String username, String password, char type, char status){
-    dbController.setUserInfo(firstName, lastName, username, password, type, status);
+  public void editUser(Account account){
+    dbController.setUserInfo(account.getFirstName(), account.getLastName(),
+    		account.getUsername(), account.getPassword(), account.getAccountType(),
+    		account.getStatus());
   }
   
   /**
