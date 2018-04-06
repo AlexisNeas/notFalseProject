@@ -796,5 +796,19 @@ public class University extends UniversityController
 
   }
 
-
+  @Override public boolean equals(Object object) {
+	  if(object instanceof University) {
+		  University school = (University)object;
+		  return schoolName.equals(school.getSchoolName()) && state.equals(school.getState()) && location.equals(school.getLocation())
+				  && control.equals(school.getControl()) && numStudents==school.getNumStudents() && numApplicants==school.getNumApplicants()
+				  && academicScale==school.getAcademicScale() && social==school.getSocial() && qualOfLife==school.getQualOfLife()
+				  && percentFemale==school.getPercentFemale() && satVerbal==school.getSatVerbal() && satMath==school.getSatMath()
+				  && tuition==school.getTuition() && percentRecFinAid==school.getPercentRecFinAid() && percentAccepted==school.getPercentAccepted()
+				  && percentEnroll==school.getPercentEnroll() && studyArea1.equals(school.getStudyArea1()) && studyArea2.equals(school.getStudyArea2())
+				  && studyArea3.equals(school.getStudyArea3()) && studyArea4.equals(school.getStudyArea4()) && studyArea5.equals(school.getStudyArea5());
+	  }
+	  else
+		  return false;
+  }
+  
 }

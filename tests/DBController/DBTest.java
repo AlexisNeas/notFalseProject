@@ -165,7 +165,8 @@ public class DBTest
   public void activateUserTest()
   {
 	  DBController dc = new DBController("notfal", "csci230");
-	  Account acc = dc.activateUser("juser");
+	  dc.activateUser("juser");
+	  Account acc = dc.getUserInfo("juser");
 	  char result = acc.getStatus();
 	  char expected = 'Y';
 	  Assert.assertTrue("List of users not correct:" + expected, result == expected);
@@ -175,7 +176,8 @@ public class DBTest
   public void deactivateUser()
   {
 	  DBController dc = new DBController("notfal", "csci230");
-	  Account acc = dc.deactivateUser("juser");
+	  dc.deactivateUser("juser");
+	  Account acc = dc.getUserInfo("juser");
 	  char result = acc.getStatus();
 	  char expected = 'N';
 	  Assert.assertTrue("List of users not correct:" + expected, result == expected);

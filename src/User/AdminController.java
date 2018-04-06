@@ -1,7 +1,6 @@
 package User;
 import University.*;
 import java.util.ArrayList;
-import java.util.List;
 import DatabaseController.DBController;
 
 /**
@@ -71,8 +70,13 @@ public class AdminController {
    * 
    * @param user to be added
    */
-  public void addNewUser(User user){
-    dbController.addNewUser(user);
+  public void addNewUser(Account user){
+    try {
+	  dbController.addNewUser(user);
+    }
+    catch(IllegalArgumentException e){
+    	System.out.println("Username is already taken");
+    }
   }
   
   /**
@@ -81,8 +85,12 @@ public class AdminController {
    * @param school to be added
    */
   public void addSchool(University school) {
-    
-    dbController.addNewSchool(school);
+    try {
+    	dbController.addNewSchool(school);
+    }
+    catch(IllegalArgumentException e) {
+    	System.out.println("The school name is already taken");
+    }
   }
   
   /**
@@ -91,9 +99,12 @@ public class AdminController {
    * @param school a University object with the updated school information
    */
   public void setSchoolInfo(University school) {
-    
-    dbController.setSchoolInformation(school);
-    
+    try {
+    	dbController.setSchoolInformation(school);
+    }
+    catch(IllegalArgumentException e) {
+    	System.out.println("The school does not exist");
+    }
   }
   
   /**
@@ -107,9 +118,14 @@ public class AdminController {
    * @param status
    */
   public void editUser(Account account){
-    dbController.setUserInfo(account.getFirstName(), account.getLastName(),
-    		account.getUsername(), account.getPassword(), account.getAccountType(),
-    		account.getStatus());
+	  try {
+		  dbController.setUserInfo(account.getFirstName(), account.getLastName(),
+				  account.getUsername(), account.getPassword(), account.getAccountType(),
+				  account.getStatus());
+	  }
+	  catch(IllegalArgumentException e) {
+		  System.out.println("The account does not exist.");
+	  }
   }
   
   /**
@@ -118,7 +134,12 @@ public class AdminController {
    * @param username the username of the account being deactivated
    */
   public void deactivateUser(String username){
-    dbController.deactivateUser(username);
+    try {
+	  dbController.deactivateUser(username);
+    }
+    catch(IllegalArgumentException e) {
+	  System.out.println("The account does not exist.");
+    }
   }
   
   /**

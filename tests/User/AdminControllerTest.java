@@ -41,13 +41,14 @@ public class AdminControllerTest {
 		ArrayList<String> result = adminController.viewUniversities();
 		assertTrue("Should be an ArrayList of Strings", result.equals(expected));
 	}
-//
-//	@Test
-//	public void testGetSchoolInformation() {
-//		University expected = db.getSchoolInfo("UNIVERSITY OF MINNESOTA");
-//		University result = adminController.getSchoolInformation("UNIVERSITY OF MINNESOTA");
-//		assertTrue("University of Minnesota info does not match", result.equals)
-//	}
+
+	@Test
+	public void testGetSchoolInformation() {
+		University expected = newSchool;
+		adminController.addSchool(expected);
+		University result = adminController.getSchoolInformation(expected.getSchoolName());
+		assertTrue("Test school info does not match", result.equals(expected));
+	}
 
 	@Test
 	public void testAddNewUser() {

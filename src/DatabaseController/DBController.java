@@ -70,6 +70,7 @@ public class DBController
     }
     return user;
   }
+  
   /**
    * Gets a list of all the school names in the Database.
    * 
@@ -95,8 +96,9 @@ public class DBController
    * @param lastName the users last name.
    * @param type the type of user.
    * 
+   * @throws IllegalArgumentException the username is already taken
    */
-  public void addNewUser(User user)
+  public void addNewUser(Account user) throws IllegalArgumentException
   {
  String username = user.getUsername();
  String firstName = user.getFirstName();
@@ -109,32 +111,45 @@ public class DBController
       univDBlib.user_addUser(firstName,lastName, username, 
                              password, type);
     }
+    else {
+    	throw new IllegalArgumentException();
+    }
   }
+  
   /**
    * Adds a new school to the database.
    * @param University a University object containing the information for the school.
    * 
+   * @throws IllegalArgumentException if name is already used
    */
-  public void addNewSchool(University univ)
+  public void addNewSchool(University univ) throws IllegalArgumentException
   {
-    univDBlib.university_addUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), 
-            univ.getControl(),  univ.getNumStudents(),  univ.getPercentFemale(), 
-            univ.getSatVerbal(),  univ.getSatMath(),  univ.getTuition(),  univ.getPercentRecFinAid(),
-            univ.getNumApplicants(),  univ.getPercentAccepted(), 
-            univ.getPercentEnroll(),  univ.getAcademicScale(),  univ.getSocial(),  univ.getQualOfLife());
+	  
+    int add = univDBlib.university_addUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), 
+            	univ.getControl(),  univ.getNumStudents(),  univ.getPercentFemale(), 
+            	univ.getSatVerbal(),  univ.getSatMath(),  univ.getTuition(),  univ.getPercentRecFinAid(),
+            	univ.getNumApplicants(),  univ.getPercentAccepted(), 
+            	univ.getPercentEnroll(),  univ.getAcademicScale(),  univ.getSocial(),  univ.getQualOfLife());
+    if(add == -1) {
+    	throw new IllegalArgumentException();
+    }
   }
+  
   /**
    * Sets a current Schools information.
    * @param University a University object containing the information for the school.
-   * 
+   * @throws IllegalArgumentException if the school doesn't exist
    */
-  public void setSchoolInformation(University univ)
+  public void setSchoolInformation(University univ) throws IllegalArgumentException
   {
-    univDBlib.university_editUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), 
+    int edited = univDBlib.university_editUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), 
                                         univ.getControl(),  univ.getNumStudents(),  univ.getPercentFemale(), 
                                         univ.getSatVerbal(),  univ.getSatMath(),  univ.getTuition(),  univ.getPercentRecFinAid(),
                                         univ.getNumApplicants(),  univ.getPercentAccepted(), 
                                         univ.getPercentEnroll(),  univ.getAcademicScale(),  univ.getSocial(),  univ.getQualOfLife());
+    if(edited == -1) {
+    	throw new IllegalArgumentException();
+    }
   }
   
   /**
@@ -146,17 +161,15 @@ public class DBController
    * @param type type of user
    * @param status status of the user
    * @return An account with the user's information.
+   * @throws IllegalArgumentException if user does not exist in the database
    */
-  public Account setUserInfo(String firstName, String lastName, String username, String password, char type, char status)
+  public void setUserInfo(String firstName, String lastName, String username, String password, char type, char status) throws IllegalArgumentException
   {
- Account acc = null;
-
-      univDBlib.user_editUser(username , firstName, lastName, 
+      int edit = univDBlib.user_editUser(username , firstName, lastName, 
                               password, type, status);
-      acc = returnUser(firstName,lastName,username,password,type,status);
-      
-    
-    return acc;
+      if(edit == -1) {
+    	  throw new IllegalArgumentException();
+      }
   }
   /**
    * Gets an individual schools information.
@@ -299,7 +312,7 @@ public class DBController
    * @param username the user to deactivate.
    * @return An account object with the user's information.
    */
-  public Account activateUser(String username)
+  public void activateUser(String username)
   {
 		Account acc = null;
 	    String[][] array = univDBlib.user_getUsers();
@@ -314,18 +327,18 @@ public class DBController
 	        String lastName = array[i][1];
 	        char type = 'u';
 	        char status = 'Y';
-	        acc = setUserInfo(firstName, lastName, username, password, type, status);
+	        setUserInfo(firstName, lastName, username, password, type, status);
 	        
 	      }
 	    }
-	    return acc;
   }
   /**
    * Deactivates a user.
    * @param username the user to deactivate.
    * @return An account object with the user's information.
+   * @throws IllegalArgumentException if username is invalid
    */
-  public Account deactivateUser(String username)
+  public void deactivateUser(String username) throws IllegalArgumentException
   {
 	Account acc = null;
     String[][] array = univDBlib.user_getUsers();
@@ -340,11 +353,10 @@ public class DBController
         String lastName = array[i][1];
         char type = 'u';
         char status = 'N';
-        acc = setUserInfo(firstName, lastName, username, password, type, status);
+        setUserInfo(firstName, lastName, username, password, type, status);
         
       }
     }
-    return acc;
   }
   /**
    * Gets the information for all users.
