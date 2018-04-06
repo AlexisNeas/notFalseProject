@@ -77,7 +77,7 @@ public class UserController {
           int lowSocialScale, int upSocialScale,
           int lowQualityOfLifeScale, int upQualityOfLifeScale,
           String emphases1,String emphases2,String emphases3,
-          String emphases4,String emphases5) {
+          String emphases4,String emphases5) throws Exception {
 
      try {
 		return dbController.searchTwo( schoolName,  stateName,  location,  control,
@@ -177,8 +177,9 @@ public class UserController {
    * @param username the username to get the saved universities from
    * 
    * @return the list of schools that have been saved by user
+ * @throws Exception 
    */
-  public ArrayList<String> getSavedUniversities(String username)
+  public ArrayList<String> getSavedUniversities(String username) throws Exception
   {
    return dbController.getUserSchools(username); 
   }

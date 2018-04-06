@@ -102,7 +102,7 @@ public class DBTest
 			                              1,5,//Academics
 			                              "AGRICULTURE", "ENGINEERING","!", "!","!");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	    	 String result = list.get(0).getSchoolName();
@@ -213,6 +213,14 @@ public class DBTest
 	  ArrayList<String> list = dc.getUserSchools("juser");
 	  Assert.assertTrue("Remove schools did not return desired result: " + null, list.isEmpty());
   }
+  
+  @Test(expected = Exception.class)
+  public void testInvalidUserSchools() throws Exception
+  {
+	  DBController dc = new DBController("notfal", "csci230");
+	  dc.getUserSchools("sup");
+  }
+  
 
   
 }

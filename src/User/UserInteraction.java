@@ -127,6 +127,7 @@ public class UserInteraction {
    * @param emphases3 one of the emphases of the university
    * @param emphases4 one of the emphases of the university
    * @param emphases5 one of the emphases of the university
+ * @throws Exception 
    * 
    */
   public void searchSchool(String schoolName, String stateName, String location, String control,
@@ -144,7 +145,7 @@ public class UserInteraction {
           int lowSocialScale, int upSocialScale,
           int lowQualityOfLifeScale, int upQualityOfLifeScale,
           String emphases1,String emphases2,String emphases3,
-          String emphases4,String emphases5) {
+          String emphases4,String emphases5) throws Exception {
     ArrayList<University> universities = userController.searchSchool( schoolName,  stateName,  location,  control,
 	          lowNumberOfStudents,  upNumberOfStudents,  
 	          lowPercentFemale,  upPercentFemale, 
@@ -173,8 +174,9 @@ public class UserInteraction {
    * Will allow the user to view their saved Universities
    * 
    * @param username the username of the account to view saved universities
+ * @throws Exception 
    */
-  public void getSavedUniversities(String username)
+  public void getSavedUniversities(String username) throws Exception
   {
     ArrayList<String> universities = userController.getSavedUniversities(username);
     if(universities.size() == 0)

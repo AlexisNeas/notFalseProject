@@ -87,13 +87,13 @@ public class UserControllerTest {
 	}
 
 	@Test
-	public void testGetSavedUniversitiesInvalidUser() {
+	public void testGetSavedUniversitiesInvalidUser() throws Exception {
 		ArrayList<String> u = uct.getSavedUniversities("Linda");
 		assertTrue("No saved schools for invalid user", u==null);
 	}
 	
 	@Test
-	public void testGetSavedUniversitiesValid() {
+	public void testGetSavedUniversitiesValid() throws Exception {
 		ArrayList<String> u = uct.getSavedUniversities("juser");
 		assertTrue("No array list returned", u.size() != 0);
 	}
