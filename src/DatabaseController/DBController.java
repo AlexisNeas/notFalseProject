@@ -657,12 +657,13 @@ public class DBController
    * Gets a list of a user's schools.
    * @param username the user's name.
    * @return list an ArrayList<String> of the school name's.
+ * @throws Exception 
    */
-  public ArrayList<String> getUserSchools(String username)
+  public ArrayList<String> getUserSchools(String username) throws Exception
   {
     String[][] array = univDBlib.user_getUsernamesWithSavedSchools();
     
-
+    boolean found = false;
     ArrayList<String> list = new ArrayList<String>();
     if(array == null)
       return list;
@@ -674,6 +675,7 @@ public class DBController
         
         if(array[i][0].equals(username))
         {
+          found = true;
           int len2 = array[i].length;
           for(int j = 1; j<len2;j++)
           {
@@ -685,6 +687,10 @@ public class DBController
       if(list.isEmpty())
       {
     	  throw new Exception("YOU HAVE NO SAVED SCHOOLS");
+      }
+      if(!found)
+      {
+    	  throw new Exception("THIS USER DOES NO EXIST");
       }
       return list;
     }

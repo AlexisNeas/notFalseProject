@@ -122,7 +122,7 @@ public class DBTest
 		
 	}
   @Test 
-  public void getUserSchoolsTest()
+  public void getUserSchoolsTest() throws Exception
   {
 	  ArrayList<String> list;
 	  DBController dc = new DBController("notfal", "csci230");
@@ -183,7 +183,7 @@ public class DBTest
 	  
   }
   @Test
-  public void userSaveSchool()
+  public void userSaveSchool() throws Exception
   {
 	  ArrayList<String> list;
 	  DBController dc = new DBController("notfal", "csci230");
@@ -205,7 +205,7 @@ public class DBTest
   }
   
   @Test
-  public void removeUserSchoolTest()
+  public void removeUserSchoolTest() throws Exception
   {
 	  DBController dc = new DBController("notfal", "csci230");
 	  
