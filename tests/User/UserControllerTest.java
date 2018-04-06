@@ -90,7 +90,7 @@ public class UserControllerTest {
 	}
 	
 	@Test(expected = Exception.class)
-	public void testGetSavedUniversitiesInvalidUser() {
+	public void testGetSavedUniversitiesInvalidUser() throws Exception {
 		uct.getSavedUniversities("Linda");
 	}
 	
@@ -100,7 +100,7 @@ public class UserControllerTest {
 	}
 	
 	@Test(expected = Exception.class)
-	public void testGetSavedUniversitiesValid() {
+	public void testGetSavedUniversitiesValid() throws Exception {
 		ArrayList<String> u = uct.getSavedUniversities("juser");
 		ArrayList<String> expected = db.getUserSchools("juser");
 		assertTrue("No array list returned", u.size() != 0);
@@ -129,6 +129,6 @@ public class UserControllerTest {
 	public void testAddSchoolInvalidUser() {
 		
 	}
-	}
-
 }
+
+
