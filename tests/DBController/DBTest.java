@@ -10,11 +10,11 @@ import java.util.*;
 
 public class DBTest
 {
-  
+  private Account newUser;
   @Before
   public void setUp()
   {
-   
+	  this.newUser = new User("first", "last", "username", "password", 'a', 'Y');
   }
   
   @Test
@@ -35,6 +35,8 @@ public class DBTest
     String result = univ.getSchoolName();
     Assert.assertEquals("The info was set correctly " + expected, expected, result);
   }
+  
+
   
   @Test
   public void addNewSchoolTest()
@@ -100,7 +102,7 @@ public class DBTest
 			                              1,5,//Academics
 			                              "AGRICULTURE", "ENGINEERING","!", "!","!");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	    	 String result = list.get(0).getSchoolName();
@@ -111,8 +113,16 @@ public class DBTest
 	  	
 
   }
+  
+  @Test(expected = Exception.class)
+	public void testAddNewUser() throws Exception{
+		
+		DBController dc = new DBController("notfal", "csci230");
+		dc.addNewUser(newUser);
+		
+	}
   @Test 
-  public void getUserSchoolsTest()
+  public void getUserSchoolsTest() throws Exception
   {
 	  ArrayList<String> list;
 	  DBController dc = new DBController("notfal", "csci230");
@@ -173,7 +183,7 @@ public class DBTest
 	  
   }
   @Test
-  public void userSaveSchool()
+  public void userSaveSchool() throws Exception
   {
 	  ArrayList<String> list;
 	  DBController dc = new DBController("notfal", "csci230");
@@ -195,7 +205,7 @@ public class DBTest
   }
   
   @Test
-  public void removeUserSchoolTest()
+  public void removeUserSchoolTest() throws Exception
   {
 	  DBController dc = new DBController("notfal", "csci230");
 	  
@@ -203,6 +213,14 @@ public class DBTest
 	  ArrayList<String> list = dc.getUserSchools("juser");
 	  Assert.assertTrue("Remove schools did not return desired result: " + null, list.isEmpty());
   }
+  
+  @Test(expected = Exception.class)
+  public void testInvalidUserSchools() throws Exception
+  {
+	  DBController dc = new DBController("notfal", "csci230");
+	  dc.getUserSchools("sup");
+  }
+  
 
   
 }

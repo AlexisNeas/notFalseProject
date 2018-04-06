@@ -50,6 +50,24 @@ public class DBController
     }
       return arrayList;
   }
+  
+  /**
+   * Gets all emphases in the Database.
+   * 
+   */
+  public ArrayList<String> getEmphases()
+  {
+	ArrayList<String> emphasesList= new ArrayList<String>();
+	String[][] arrayEmphases = univDBlib.university_getEmphases();
+	for(int i = 0; i < arrayEmphases.length; i++)
+	{
+		emphasesList.add(arrayEmphases[i][0]); 
+	}
+	
+	
+	return emphasesList;
+	  
+  }
   /**
    * Gets a specifed user from the database.
    * 
@@ -97,10 +115,12 @@ public class DBController
    * @param firstName the users first name.
    * @param lastName the users last name.
    * @param type the type of user.
+ * @throws Exception 
    * 
    */
-  public void addNewUser(User user)
+  public void addNewUser(Account user) throws Exception
   {
+	  
  String username = user.getUsername();
  String firstName = user.getFirstName();
  String lastName = user.getLastName();
@@ -111,6 +131,10 @@ public class DBController
     {
       univDBlib.user_addUser(firstName,lastName, username, 
                              password, type);
+    }
+    else
+    {
+    	throw new Exception("USERNAME IS ALREADY TAKEN");
     }
   }
   /**
@@ -125,6 +149,23 @@ public class DBController
             univ.getSatVerbal(),  univ.getSatMath(),  univ.getTuition(),  univ.getPercentRecFinAid(),
             univ.getNumApplicants(),  univ.getPercentAccepted(), 
             univ.getPercentEnroll(),  univ.getAcademicScale(),  univ.getSocial(),  univ.getQualOfLife());
+  }
+  
+  /**
+   * Adds an emphases for a school.
+   */
+  public void addNewEmphases(String schoolName, String emphases) throws Exception
+  {
+	  ArrayList<String> schools = this.getListOfSchools();
+	  if(schools.contains(schoolName))
+	  {
+		  univDBlib.university_addUniversityEmphasis(schoolName, emphases);
+	  }
+	  else
+	  {
+		  throw new Exception("SCHOOL DOES NO EXIST.");
+	  }
+	  
   }
   /**
    * Sets a current Schools information.
@@ -225,11 +266,11 @@ public class DBController
             }
             else {
              
-             emp1 = " ";
-             emp2 = " ";
-             emp3 = " ";
-             emp4 = " ";
-             emp5 = " ";
+             emp1 = "";
+             emp2 = "";
+             emp3 = "";
+             emp4 = "";
+             emp5 = "";
             }
          
           
@@ -281,7 +322,7 @@ public class DBController
     int len = array.length;
     for(int i = 0; i<len ;i++)
     {
-      if(array[i][0].equals(username))
+      if(array[i][2].equals(username))
       {
         bool = true;
         break;
@@ -369,7 +410,7 @@ public class DBController
   /**
    * Finds similar schools.
    * 
-   * @param mainUniversity the resut clicked on to find similar schools to
+   * @param mainUniversity the result clicked on to find similar schools to
    * 
    * @return an ArrayList containing the 5 nearest universities
    */
@@ -596,7 +637,7 @@ public class DBController
   /**
    * Removes a school from a users profile.
    * @param schoolName school to remove
-   * @oaram username the user
+   * @param username the user
    * @return boolean true if removed.
    */
   public boolean removeSchool(String schoolName, String username)
@@ -653,12 +694,13 @@ public class DBController
    * Gets a list of a user's schools.
    * @param username the user's name.
    * @return list an ArrayList<String> of the school name's.
+ * @throws Exception 
    */
-  public ArrayList<String> getUserSchools(String username)
+  public ArrayList<String> getUserSchools(String username) throws Exception
   {
     String[][] array = univDBlib.user_getUsernamesWithSavedSchools();
     
-
+    boolean found = false;
     ArrayList<String> list = new ArrayList<String>();
     if(array == null)
       return list;
@@ -670,6 +712,7 @@ public class DBController
         
         if(array[i][0].equals(username))
         {
+          found = true;
           int len2 = array[i].length;
           for(int j = 1; j<len2;j++)
           {
@@ -678,7 +721,11 @@ public class DBController
           
         }
       }
-      
+
+      if(!found)
+      {
+    	  throw new Exception("THIS USER DOES NOT EXIST");
+      }
       return list;
     }
   }
@@ -983,241 +1030,7 @@ public class DBController
 	  return result;
   }
   
-  /**
-   * Search
-   * @param schoolName Name of the school to search for.
-   * @param stateName Name of the state for schools.
-   * @param location Location area of a school.
-   * @param control Private State or City control.
-   * @param lowNumberOfStudents Lower limit for student population.
-   * @param upNumberOfStudents Upper limit for student population.
-   * @param lowPercentFemale Lower limit for Percent Female.
-   * @param upPercentFemale Upper limit for Percent Female.
-   * @param lowSATVerbal Lower limit for SATVerbal.
-   * @param upSATVerbal Upper limit for SATVerbal.
-   * @param lowSATMath Lower limit for SATMath.
-   * @param upSATMath Upper limit for SATMath.
-   * @param lowExpenses Lower limit for Expenses.
-   * @param upExpenses Upper limit for Expenses.
-   * @param lowPercentEnrolled Lower limit for Percent Enrolled.
-   * @param upPercentEnrolled Upper limit for Percent Enrolled.
-   * @param lowAcademicsScale Lower limit for Academics Scale.
-   * @param upAcademicsScale Upper limit for Academics Scale.
-   * @param lowSocialScale Lower limit for Social Scale.
-   * @param upSocialScale Upper limit for Social Scale.
-   * @param lowQualityOfLifeScale Lower limit for Quality Of Life Scale.
-   * @param upQualityOfLifeScale Upper limit for Quality Of Life Scale.
-   * @return ArrayList<University> with all the schools information in the database.
-   */
-  public ArrayList<University> search(String schoolName, String stateName, String location, String control,
-                           int lowNumberOfStudents, int upNumberOfStudents,  
-                           double lowPercentFemale, double upPercentFemale, 
-                           double lowSATVerbal, double upSATVerbal,
-                           double lowSATMath, double upSATMath,
-                           double lowExpenses, double upExpenses,
-                           double lowPercentEnrolled, double upPercentEnrolled,
-                           int lowAcademicsScale, int upAcademicsScale,
-                           int lowSocialScale, int upSocialScale,
-                           int lowQualityOfLifeScale, int upQualityOfLifeScale,
-                           String emphases1,String emphases2,String emphases3,
-                           String emphases4,String emphases5)
-  {
-    //University Info
- ArrayList<University> univArray = new ArrayList<University>();
-    String[][] array = univDBlib.university_getUniversities();
-    int len1 = array.length;
-    boolean ignore1 = false;
-    boolean ignore2 = false;
-    boolean ignore3 = false;
-    boolean ignore4 = false;
-    //University Emphasis'
-    String[][] arrayEmphases = univDBlib.university_getNamesWithEmphases();
-    if(schoolName.equals("!"))
-     ignore1 = true;
-    if(stateName.equals("!"))
-      ignore2 = true;
-    if(stateName.equals("!"))
-      ignore3 = true;
-    if(stateName.equals("!"))
-      ignore4 = true;
-    
-    boolean add = false;
-    
-    for(int i = 0; i<len1;i++)
-    {
-      //School Name
-      if(!ignore1 && array[i][0].indexOf(schoolName)>=0)
-      {
-        add = true;
-      }
-      //State name
-      else if(!ignore2 && array[i][1].indexOf(stateName)>=0)
-      {
-        add = true;
-      }
-      //Location Suburban urban etc
-      else if(!ignore3 && array[i][2].indexOf(location)>=0)
-      {
-        add = true; 
-      }
-      //Control
-      else if(!ignore4 && array[i][3].indexOf(control)>=0)
-      {
-        add = true;
-      }
-      //Student Body Population
-      else if(lowNumberOfStudents < Integer.parseInt(array[i][4]) &&  Integer.parseInt(array[i][4]) < upNumberOfStudents)
-      {
-        add = true; 
-      }
-      //%Female
-      else if(lowPercentFemale < Double.parseDouble(array[i][5]) && Double.parseDouble(array[i][5]) < upPercentFemale)
-      {
-        add = true; 
-      }
-      //SatVerbal
-      else if(lowSATVerbal < Double.parseDouble(array[i][6]) && Double.parseDouble(array[i][6]) < upSATVerbal)
-      {
-        add = true;
-      }
-      //SatMath
-      else if(lowSATMath < Double.parseDouble(array[i][7]) && Double.parseDouble(array[i][7]) < upSATMath)
-      {
-        add = true;
-      }
-      else if(lowExpenses < Double.parseDouble(array[i][8]) && Double.parseDouble(array[i][8]) < upExpenses)
-      {
-        add = true; 
-      }
-      else if(lowPercentEnrolled < Double.parseDouble(array[i][9]) && Double.parseDouble(array[i][9]) < upPercentEnrolled)
-      {
-        add = true; 
-      }
-      else if(lowAcademicsScale <  Integer.parseInt(array[i][10]) &&  Integer.parseInt(array[i][10]) < upAcademicsScale)
-      {
-        add = true; 
-      }
-      else if(lowSocialScale <  Integer.parseInt(array[i][11]) &&  Integer.parseInt(array[i][11]) < upSocialScale)
-      {
-        add = true; 
-      }
-      else if(lowQualityOfLifeScale <  Integer.parseInt(array[i][12]) &&  Integer.parseInt(array[i][12]) < upQualityOfLifeScale)
-      {
-        add = true; 
-      }
-      else if(!add && !emphases1.equals(""))
-      {
-        for(int k = 0; k <arrayEmphases.length;k++)
-        {
-          if(schoolName.equals(arrayEmphases[k][0]))
-          {
-            if(emphases1.equals(arrayEmphases[k][0]) || emphases2.equals(arrayEmphases[k][0])
-                 || emphases3.equals(arrayEmphases[k][0])|| emphases4.equals(arrayEmphases[k][0])
-                 || emphases5.equals(arrayEmphases[k][0]))
-            {
-              add = true;
-            }
-          }
-          if(array[i][0].charAt(0) < arrayEmphases[k][0].charAt(0))
-           break;
-        }
-      }
-      
-      
-      //Add the school?
-      if(add)
-      {
-         String emp1 = "";
-         String emp2 = "";
-         String emp3 = "";
-         String emp4 = "";
-         String emp5 = "";
-        for(int j = 0; j<array.length;j++)
-        {
-         
-            ArrayList<String> emphasesArrayList = universityEmphases(array[i][0]);
-            
-            if(emphasesArrayList.size() == 5)
-            {
-             emp1 = emphasesArrayList.get(0);
-             emp2 = emphasesArrayList.get(1);
-             emp3 = emphasesArrayList.get(2);
-             emp4 = emphasesArrayList.get(3);
-             emp5 = emphasesArrayList.get(4);
-             
-            }
-            else if(emphasesArrayList.size() == 4)
-            {
-             emp1 = emphasesArrayList.get(0);
-             emp2 = emphasesArrayList.get(1);
-             emp3 = emphasesArrayList.get(2);
-             emp4 = emphasesArrayList.get(3);
-             emp5 = "";
-             
-            }
-            else if(emphasesArrayList.size() == 3)
-            {
-             emp1 = emphasesArrayList.get(0);
-             emp2 = emphasesArrayList.get(1);
-             emp3 = emphasesArrayList.get(2);
-             emp4 = "";
-             emp5 = "";
-             
-            }
-            else if(emphasesArrayList.size() == 2)
-            {
-             emp1 = emphasesArrayList.get(0);
-             emp2 = emphasesArrayList.get(1);
-             emp3 = "";
-             emp4 = "";
-             emp5 = "";
-             
-            }
-            else if(emphasesArrayList.size() == 1)
-            {
-             emp1 = emphasesArrayList.get(0);
-             emp2 = "";
-             emp3 = "";
-             emp4 = "";
-             emp5 = "";
-             
-            }
-            else {
-             
-             emp1 = "";
-             emp2 = "";
-             emp3 = "";
-             emp4 = "";
-             emp5 = "";
-            }
-            if(array[i][0].charAt(0) < arrayEmphases[j][0].charAt(0))
-              break;
-         
 
-        }
-        University univ = returnUniversity(array[i][0], //schoolName
-                array[i][1], //State
-                array[i][2],//location
-                array[i][3],//control
-                Integer.parseInt(array[i][4]),// numStudents
-                Double.parseDouble(array[i][5]),//%Female
-                Double.parseDouble(array[i][6])//// SATVerbal
-               ,Double.parseDouble(array[i][7]),//SATMath
-                Double.parseDouble(array[i][8]),//Expenses
-                Double.parseDouble(array[i][9]),// percentFinancialAid
-                Integer.parseInt(array[i][10]),// numberofApps
-                Integer.parseInt(array[i][11])// percent admitted
-               ,Integer.parseInt(array[i][12]), //percentEnrolled
-                Integer.parseInt(array[i][13]), //academicsScale
-                Integer.parseInt(array[i][14]), // social scale
-                Integer.parseInt(array[i][15]), //qualoflife
-                emp1,emp2,emp3,emp4,emp5);
-        univArray.add(univ);
-        add =  false;
-      }
-    }
-    return univArray;
-  }
   /**
    * Reads a schools information into a University Object.
    * 
@@ -1285,12 +1098,17 @@ public class DBController
       DBController databasecontroller = new DBController("notfal", "csci230");
       University u = databasecontroller.getSchoolInfo("UNIVERSITY OF MINNESOTA");
       String[][] info = databasecontroller.univDBlib.university_getNamesWithEmphases();
+      ArrayList<String> emphases = new ArrayList<String>();
       for(int i = 0; i < info.length; i ++)
       {
-    		  		System.out.println(info[i][0]);
-    		  		for(int j = 1; j<info[i].length;j++)
-    		  			System.out.println(info[i][j]);
+    	  if(!emphases.contains(info[i][1]))
+    		  emphases.add(info[i][1]);
    
+      }
+      for(int j = 0; j < emphases.size();j++)
+      {
+    	  System.out.println(emphases.get(j));
+    	  
       }
       
       //databasecontroller.getUnivDBlib().university_deleteUniversity("Temp School");
