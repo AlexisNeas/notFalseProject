@@ -30,7 +30,9 @@ public class AccountController {
    * @return Account of the account being logged in
    */
   public Account logOn(String username, String password){
+	   
     Account user = dbController.getUserInfo(username);
+    
     if(user == null)
       return user;
     else if(user != null && password.equals(user.getPassword()))
@@ -54,6 +56,7 @@ public class AccountController {
     {
       return user;
     }
+	  
   }
   
  // public void displayOptions(){}

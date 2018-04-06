@@ -15,8 +15,9 @@ public class TextDriver {
   
   /**
    * @param args
+ * @throws Exception 
    */
-  public static void main(String [] args) {
+  public static void main(String [] args) throws Exception {
     /*
      * X Log in with User Account
      * X View Profile
