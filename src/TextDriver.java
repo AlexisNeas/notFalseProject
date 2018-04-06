@@ -1,5 +1,6 @@
 
 import User.*;
+
 import University.*;
   
 /**
@@ -16,7 +17,7 @@ public class TextDriver {
    * @param args
    */
   public static void main(String [] args) {
-    /*TODO
+    /*
      * X Log in with User Account
      * X View Profile
      * X Edit Profile
@@ -81,7 +82,7 @@ public class TextDriver {
     userInteractions.viewProfile(account.getUsername());
 
     System.out.println("\n\n*** Search schools and View Search Results: Schools in California ***");
-    userInteractions.searchSchool("OF", "MINNESOTA","!" ,"!",//SchoolName, State, location,Control
+/*    userInteractions.searchSchool("OF", "MINNESOTA","!" ,"!",//SchoolName, State, location,Control
                                   -1, -1,//NumStudents
                                   -1,-1,//%Female
                                   -1,-1,//SATVerbal
@@ -91,7 +92,7 @@ public class TextDriver {
                                   -1,-1,//AcademicsScale
                                   -1,-1,//Social
                                   -1,-1,//Academics
-                                  "!", "!","!", "!","!");  
+                                  "!", "!","!", "!","!");  */
 
     System.out.println("\n\n*** View School Information: University of Minnesota ***");
     userInteractions.viewSchoolInfo("UNIVERSITY OF MINNESOTA");

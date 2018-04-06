@@ -1,4 +1,5 @@
 package DatabaseController;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import University.*;
@@ -94,10 +95,12 @@ public class DBController
    * @param firstName the users first name.
    * @param lastName the users last name.
    * @param type the type of user.
+ * @throws Exception 
    * 
    */
-  public void addNewUser(User user)
+  public void addNewUser(Account user) throws Exception
   {
+	  
  String username = user.getUsername();
  String firstName = user.getFirstName();
  String lastName = user.getLastName();
@@ -108,6 +111,10 @@ public class DBController
     {
       univDBlib.user_addUser(firstName,lastName, username, 
                              password, type);
+    }
+    else
+    {
+    	throw new Exception("USERNAME IS ALREADY TAKEN");
     }
   }
   /**
@@ -222,11 +229,11 @@ public class DBController
             }
             else {
              
-             emp1 = " ";
-             emp2 = " ";
-             emp3 = " ";
-             emp4 = " ";
-             emp5 = " ";
+             emp1 = "";
+             emp2 = "";
+             emp3 = "";
+             emp4 = "";
+             emp5 = "";
             }
          
           
@@ -278,7 +285,7 @@ public class DBController
     int len = array.length;
     for(int i = 0; i<len ;i++)
     {
-      if(array[i][0].equals(username))
+      if(array[i][2].equals(username))
       {
         bool = true;
         break;
@@ -650,12 +657,13 @@ public class DBController
    * Gets a list of a user's schools.
    * @param username the user's name.
    * @return list an ArrayList<String> of the school name's.
+ * @throws Exception 
    */
-  public ArrayList<String> getUserSchools(String username)
+  public ArrayList<String> getUserSchools(String username) throws Exception
   {
     String[][] array = univDBlib.user_getUsernamesWithSavedSchools();
     
-
+    boolean found = false;
     ArrayList<String> list = new ArrayList<String>();
     if(array == null)
       return list;
@@ -667,6 +675,7 @@ public class DBController
         
         if(array[i][0].equals(username))
         {
+          found = true;
           int len2 = array[i].length;
           for(int j = 1; j<len2;j++)
           {
@@ -675,7 +684,14 @@ public class DBController
           
         }
       }
-      
+      if(list.isEmpty())
+      {
+    	  throw new Exception("YOU HAVE NO SAVED SCHOOLS");
+      }
+      if(!found)
+      {
+    	  throw new Exception("THIS USER DOES NO EXIST");
+      }
       return list;
     }
   }
@@ -705,6 +721,7 @@ public class DBController
    * @param lowQualityOfLifeScale Lower limit for Quality Of Life Scale.
    * @param upQualityOfLifeScale Upper limit for Quality Of Life Scale.
    * @return ArrayList<University> with all the schools information in the database.
+   * @throws Exception 
    */
   public ArrayList<University> searchTwo(String schoolName, String stateName, String location, String control,
                            int lowNumberOfStudents, int upNumberOfStudents,  
@@ -712,12 +729,16 @@ public class DBController
                            double lowSATVerbal, double upSATVerbal,
                            double lowSATMath, double upSATMath,
                            double lowExpenses, double upExpenses,
+                           double lowPercentRecFinAid, double upPercentRecFinAid,
+                           int lowNumApplicants, int upNumApplicants,
+                           double lowPercentAccepted, double upPercentAccepted,
                            double lowPercentEnrolled, double upPercentEnrolled,
+                           
                            int lowAcademicsScale, int upAcademicsScale,
                            int lowSocialScale, int upSocialScale,
                            int lowQualityOfLifeScale, int upQualityOfLifeScale,
                            String emphases1,String emphases2,String emphases3,
-                           String emphases4,String emphases5)
+                           String emphases4,String emphases5) throws Exception
   {
    String[][] array = univDBlib.university_getUniversities();
    String[][] arrayEmphases = univDBlib.university_getNamesWithEmphases();
@@ -741,6 +762,12 @@ public class DBController
     if(lowSATMath != -1)
      total++;
     if(lowExpenses != -1)
+     total++;
+    if(lowPercentRecFinAid != -1)
+     total++;
+    if(lowNumApplicants != -1)
+     total++;
+    if(lowPercentAccepted != -1)
      total++;
     if(lowPercentEnrolled != -1)
      total++;
@@ -774,7 +801,7 @@ public class DBController
 			  if(array[i][1].indexOf(stateName)>=0)
 				  searchTotal++;
 		  if(!location.equals("!"))
-			  if(array[i][2].indexOf(location)>=0)
+			  if(array[i][2].equals(location))
 				  searchTotal++;
 		  if(!control.equals("!"))
 			  if(array[i][3].indexOf(control)>=0)
@@ -794,55 +821,76 @@ public class DBController
 		  if(lowExpenses != -1)
 			  if(lowExpenses < Double.parseDouble(array[i][8]) && upExpenses > Double.parseDouble(array[i][8]))
 				  searchTotal++;
+		  if(lowPercentRecFinAid != -1)
+			  if(lowPercentRecFinAid < Double.parseDouble(array[i][9]) && upPercentRecFinAid > Double.parseDouble(array[i][9]))
+				  searchTotal++;
+		  if(lowNumApplicants != -1)
+			  if(lowNumApplicants < Double.parseDouble(array[i][10]) && upNumApplicants > Double.parseDouble(array[i][10]))
+				  searchTotal++;
+		  if(lowPercentAccepted != -1)
+			  if(lowPercentAccepted < Double.parseDouble(array[i][11]) && upPercentAccepted > Double.parseDouble(array[i][11]))
+				  searchTotal++;
 		  if(lowPercentEnrolled != -1)
-			  if(lowPercentEnrolled < Double.parseDouble(array[i][9]) && upPercentEnrolled > Double.parseDouble(array[i][9]))
+			  if(lowPercentEnrolled < Double.parseDouble(array[i][12]) && upPercentEnrolled > Double.parseDouble(array[i][12]))
 				  searchTotal++;
 		  if(lowAcademicsScale != -1)
-			  if(lowAcademicsScale < Integer.parseInt(array[i][10]) && upAcademicsScale > Integer.parseInt(array[i][10]))
+			  if(lowAcademicsScale < Integer.parseInt(array[i][13]) && upAcademicsScale > Integer.parseInt(array[i][13]))
 				  searchTotal++;
 		  if(lowSocialScale != -1)
-			  if(lowSocialScale < Integer.parseInt(array[i][11]) && upSocialScale > Integer.parseInt(array[i][11]))
+			  if(lowSocialScale < Integer.parseInt(array[i][14]) && upSocialScale > Integer.parseInt(array[i][14]))
 				  searchTotal++;
 		  if(lowQualityOfLifeScale != -1)
-			  if(lowQualityOfLifeScale < Integer.parseInt(array[i][12]) && upQualityOfLifeScale > Integer.parseInt(array[i][12]))
+			  if(lowQualityOfLifeScale < Integer.parseInt(array[i][15]) && upQualityOfLifeScale > Integer.parseInt(array[i][15]))
 				  searchTotal++;
 		  ArrayList<String> temps = new ArrayList<String>();
+		  
 		  for(int j = 0; j <arrayEmphases.length; j++)
 		  {
-			  
-			  if(array[i][0].equals(arrayEmphases[j][0]))
+
+			  if(arrayEmphases[j][0].equals(array[i][0]))
 			  {
+				  
 				  if(!emphases1.equals("!"))
-					  if(emphases1.equals(array[i][1]))
+				  {
+					  if(emphases1.equals(arrayEmphases[j][1]))
 					  {
-						  temps.add(arrayEmphases[i][1]);
+						  temps.add(arrayEmphases[j][1]);
 						  searchTotal++;
 					  }
+				  }
 		  
 				  if(!emphases2.equals("!"))
-					  if(emphases2.equals(arrayEmphases[i][1]))
+				  {
+					  if(emphases2.equals(arrayEmphases[j][1]))
 					  {
-						  temps.add(arrayEmphases[i][1]);
+						  temps.add(arrayEmphases[j][1]);
 						  searchTotal++;
 					  }
+				  }
 				  if(!emphases3.equals("!"))
-					  if(emphases3.equals(arrayEmphases[i][1]))
+				  {
+					  if(emphases3.equals(arrayEmphases[j][1]))
 					  {
-						  temps.add(arrayEmphases[i][1]);
+						  temps.add(arrayEmphases[j][1]);
 						  searchTotal++;
 					  }
+				  }
 				  if(!emphases4.equals("!"))
-					  if(emphases4.equals(arrayEmphases[i][1]))
+				  {
+					  if(emphases4.equals(arrayEmphases[j][1]))
 					  {
-						  temps.add(arrayEmphases[i][1]);
+						  temps.add(arrayEmphases[j][1]);
 						  searchTotal++;
 					  }
+				  }
 				  if(!emphases5.equals("!"))
-					  if(emphases5.equals(arrayEmphases[i][1]))
+				  {
+					  if(emphases5.equals(arrayEmphases[j][1]))
 					  {
-						  temps.add(arrayEmphases[i][1]);
+						  temps.add(arrayEmphases[j][1]);
 						  searchTotal++;
 					  }
+				  }
 			  }
 		  }
 		  if(searchTotal == total)
@@ -906,7 +954,7 @@ public class DBController
 	             emp5 = "";
 	            }
 	            if(searchTotal != 0) {
-		        University univ = returnUniversity(array[i][0], //schoolName
+		        University u = returnUniversity(array[i][0], //schoolName
 		                array[i][1], //State
 		                array[i][2],//location
 		                array[i][3],//control
@@ -923,13 +971,25 @@ public class DBController
 		                Integer.parseInt(array[i][14]), // social scale
 		                Integer.parseInt(array[i][15]), //qualoflife
 		                emp1,emp2,emp3,emp4,emp5);
-		        result.add(univ);
+		        result.add(u);
+		        System.out.println("\tName: " + u.getSchoolName()+"\n\tState: " +
+		                u.getState()+"\n\tLocation: " + u.getLocation()+"\n\tControl: " + u.getControl()+ "\n\tNumber of Students: " +
+		                u.getNumStudents()+ "\n\t% Female: "+ u.getPercentFemale() + "\n\tSAT Verbal: " + u.getSatVerbal() + 
+		                "\n\tSAT Math: " + u.getSatMath()+ "\n\tTuition: " + u.getTuition()+ "\n\t% Receiving Financial Aid: " + 
+		                u.getPercentRecFinAid()+"\n\tNumber of Applications: " + u.getNumApplicants()+ "\n\t% Accepted: " + 
+		                u.getPercentAccepted()+ "\n\t% Enrolled: " + u.getPercentEnroll()  + "\n\tAcademic Scale: " +
+		                u.getAcademicScale() +"\n\tSocial Rating: "+ u.getSocial()+ "\n\tQuality of Life: " + u.getQualOfLife() +
+		                "\n\tStudy Area 1: " + u.getStudyArea1()+"\n\tStudy Area 2: " + u.getStudyArea2()+"\n\tStudy Area 3: " + 
+		                u.getStudyArea3()+"\n\tStudy Area 4: "  + u.getStudyArea4()+"\n\tStudy Area 5: " + u.getStudyArea5());
 	            }
 		  }
 		  searchTotal = 0;
 		 
 	  }
 	  
+	  if(result.isEmpty()) {
+		  throw new Exception("No Search results");
+	  }
 	  
 	  
 	  
@@ -1236,19 +1296,28 @@ public class DBController
   {
     try{
       DBController databasecontroller = new DBController("notfal", "csci230");
-      String[][] array = databasecontroller.getUnivDBlib().university_getUniversities();
-      databasecontroller.getUnivDBlib().university_deleteUniversity("Temp School");
-      databasecontroller.getUnivDBlib().user_deleteUser("trevor");
+      University u = databasecontroller.getSchoolInfo("UNIVERSITY OF MINNESOTA");
+      String[][] info = databasecontroller.univDBlib.university_getNamesWithEmphases();
+      for(int i = 0; i < info.length; i ++)
+      {
+    		  		System.out.println(info[i][0]);
+    		  		for(int j = 1; j<info[i].length;j++)
+    		  			System.out.println(info[i][j]);
+   
+      }
+      
+      //databasecontroller.getUnivDBlib().university_deleteUniversity("Temp School");
+      //databasecontroller.getUnivDBlib().user_deleteUser("trevor");
 
       //String[][] array = databasecontroller.getUnivDBlib().user_getUsers();
 
-      for(int i = 0; i < array.length; i++)
-      {
-        for(int j = 0; j<array[i].length; j++)
-        {
-          System.out.println(array[i][j]);
-        }
-      }
+//      for(int i = 0; i < array.length; i++)
+//      {
+//        for(int j = 0; j<array[i].length; j++)
+//        {
+//          System.out.println(array[i][j]);
+//        }
+//      }
       //String message = "";
       //String[][] arrayEmphases = databasecontroller.getUnivDBlib().university_getNamesWithEmphases();
 //      for(int k = 0; k < arrayEmphases.length; k++)
@@ -1265,5 +1334,15 @@ public class DBController
       e.printStackTrace();
     }
     
+  }
+  
+  public void deleteUser(String username)
+  {
+	  univDBlib.user_deleteUser(username);
+  }
+  
+  public void deleteSchool(String name)
+  {
+	  univDBlib.university_deleteUniversity(name);
   }
 }

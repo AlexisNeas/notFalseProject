@@ -63,23 +63,45 @@ public class UserController {
    * @return the university objects closest to the search in an ArrayList
    */
   public ArrayList <University> searchSchool(String schoolName, String stateName, String location, String control,
-                           int lowNumberOfStudents, int upNumberOfStudents,  
-                           double lowPercentFemale, double upPercentFemale, 
-                           double lowSATVerbal, double upSATVerbal,
-                           double lowSATMath, double upSATMath,
-                           double lowExpenses, double upExpenses,
-                           double lowPercentEnrolled, double upPercentEnrolled,
-                           int lowAcademicsScale, int upAcademicsScale,
-                           int lowSocialScale, int upSocialScale,
-                           int lowQualityOfLifeScale, int upQualityOfLifeScale,
-                           String emphases1,String emphases2,String emphases3,
-                           String emphases4,String emphases5) {
+          int lowNumberOfStudents, int upNumberOfStudents,  
+          double lowPercentFemale, double upPercentFemale, 
+          double lowSATVerbal, double upSATVerbal,
+          double lowSATMath, double upSATMath,
+          double lowExpenses, double upExpenses,
+          double lowPercentRecFinAid, double upPercentRecFinAid,
+          int lowNumApplicants, int upNumApplicants,
+          double lowPercentAccepted, double upPercentAccepted,
+          double lowPercentEnrolled, double upPercentEnrolled,
+          
+          int lowAcademicsScale, int upAcademicsScale,
+          int lowSocialScale, int upSocialScale,
+          int lowQualityOfLifeScale, int upQualityOfLifeScale,
+          String emphases1,String emphases2,String emphases3,
+          String emphases4,String emphases5) {
 
-     return dbController.searchTwo(schoolName, stateName, location, control, lowNumberOfStudents, upNumberOfStudents,
-                                lowPercentFemale, upPercentFemale, lowSATVerbal, upSATVerbal, lowSATMath, upSATMath,
-                                lowExpenses, upExpenses, lowPercentEnrolled, upPercentEnrolled, lowAcademicsScale, upAcademicsScale,
-                                lowSocialScale,upSocialScale, lowQualityOfLifeScale, upQualityOfLifeScale, emphases1, emphases2,
-                                emphases3, emphases4, emphases5);
+     try {
+		return dbController.searchTwo( schoolName,  stateName,  location,  control,
+		          lowNumberOfStudents,  upNumberOfStudents,  
+		          lowPercentFemale,  upPercentFemale, 
+		          lowSATVerbal,  upSATVerbal,
+		          lowSATMath,  upSATMath,
+		          lowExpenses,  upExpenses,
+		          lowPercentRecFinAid,  upPercentRecFinAid,
+		          lowNumApplicants,  upNumApplicants,
+		          lowPercentAccepted,  upPercentAccepted,
+		          lowPercentEnrolled,  upPercentEnrolled,
+		         
+		          lowAcademicsScale,  upAcademicsScale,
+		          lowSocialScale,  upSocialScale,
+		          lowQualityOfLifeScale,  upQualityOfLifeScale,
+		          emphases1, emphases2, emphases3,
+		          emphases4, emphases5);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+     
                                
   }
   

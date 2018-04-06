@@ -208,4 +208,17 @@ public class Account {
   public boolean isLoggedOn(){
     return this.loggedIn;
   }
+  
+  @Override public boolean equals(Object object)
+  {
+	  if(object instanceof Account)
+	  {
+		  Account other = (Account)object; 
+	      return (this.firstName.equals(other.getFirstName()) && this.lastName.equals(other.getLastName())
+			 && this.username.equals(other.getUsername()) && this.password.equals(other.getPassword())
+			 && this.accountType == other.getAccountType() && this.status == other.getStatus());
+      }
+	  else
+		  return false;
+  }
 }
