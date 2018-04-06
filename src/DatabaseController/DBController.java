@@ -72,11 +72,11 @@ public class DBController
    * Gets a specifed user from the database.
    * 
    * @param username the username of the desired user.
-   * 
+   * @throws NullPointerException
    * @return user An account object with a user's information.
    * 
    */
-  public Account getUserInfo(String username)
+  public Account getUserInfo(String username) 
   {
     String[][] array = univDBlib.user_getUsers();
     Account user = null;
@@ -87,6 +87,8 @@ public class DBController
         user = returnUser(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4].charAt(0), array[i][5].charAt(0));
       }
     }
+ 
+    
     return user;
   }
   
