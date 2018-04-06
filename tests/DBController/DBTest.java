@@ -178,42 +178,22 @@ public class DBTest
   @Test
   public void activateUserTest()
   {
-<<<<<<< HEAD
 	  DBController dc = new DBController("notfal", "csci230");
 	  dc.activateUser("juser");
 	  Account acc = dc.getUserInfo("juser");
 	  char result = acc.getStatus();
 	  char expected = 'Y';
 	  Assert.assertTrue("List of users not correct:" + expected, result == expected);
-	  
-=======
-   DBController dc = new DBController("notfal", "csci230");
-   Account acc = dc.activateUser("juser");
-   char result = acc.getStatus();
-   char expected = 'Y';
-   Assert.assertTrue("List of users not correct:" + expected, result == expected);
-   
->>>>>>> 5d0b1208a95d6420b1062ea28e473fe8fd3b7d9a
   }
   @Test
   public void deactivateUser()
   {
-<<<<<<< HEAD
 	  DBController dc = new DBController("notfal", "csci230");
 	  dc.deactivateUser("juser");
 	  Account acc = dc.getUserInfo("juser");
 	  char result = acc.getStatus();
 	  char expected = 'N';
 	  Assert.assertTrue("List of users not correct:" + expected, result == expected);
-	  
-=======
-   DBController dc = new DBController("notfal", "csci230");
-   Account acc = dc.deactivateUser("juser");
-   char result = acc.getStatus();
-   char expected = 'N';
-   Assert.assertTrue("List of users not correct:" + expected, result == expected);
-   
->>>>>>> 5d0b1208a95d6420b1062ea28e473fe8fd3b7d9a
   }
   @Test
   public void userSaveSchool() throws Exception

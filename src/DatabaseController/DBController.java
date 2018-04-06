@@ -147,7 +147,6 @@ public class DBController
    */
   public void addNewSchool(University univ) throws IllegalArgumentException
   {
-	  
     int add = univDBlib.university_addUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), 
             	univ.getControl(),  univ.getNumStudents(),  univ.getPercentFemale(), 
             	univ.getSatVerbal(),  univ.getSatMath(),  univ.getTuition(),  univ.getPercentRecFinAid(),
@@ -312,9 +311,9 @@ public class DBController
    * @param the school name to save
    * 
    */
-  public void userSaveSchool(String username,String schoolName)
+  public int userSaveSchool(String username,String schoolName)
   {
-    univDBlib.user_saveSchool(username, schoolName);
+    return univDBlib.user_saveSchool(username, schoolName);
   }
   
   
