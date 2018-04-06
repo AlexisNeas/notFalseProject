@@ -92,8 +92,10 @@ public class UserInteraction {
    */
   public void addSchool(String school, String username)
   {
-   userController.addSchool(username, school); 
-   System.out.println("\tSchool has been added.");
+   int response = userController.addSchool(username, school); 
+   
+   if(response == 1)
+	   System.out.println("\tSchool has been added.");
   }
   
   /**
@@ -127,25 +129,41 @@ public class UserInteraction {
    * @param emphases3 one of the emphases of the university
    * @param emphases4 one of the emphases of the university
    * @param emphases5 one of the emphases of the university
+ * @throws Exception 
    * 
    */
   public void searchSchool(String schoolName, String stateName, String location, String control,
-                           int lowNumberOfStudents, int upNumberOfStudents,  
-                           double lowPercentFemale, double upPercentFemale, 
-                           double lowSATVerbal, double upSATVerbal,
-                           double lowSATMath, double upSATMath,
-                           double lowExpenses, double upExpenses,
-                           double lowPercentEnrolled, double upPercentEnrolled,
-                           int lowAcademicsScale, int upAcademicsScale,
-                           int lowSocialScale, int upSocialScale,
-                           int lowQualityOfLifeScale, int upQualityOfLifeScale,
-                           String emphases1,String emphases2,String emphases3,
-                           String emphases4,String emphases5) {
-    ArrayList<University> universities = userController.searchSchool(schoolName, stateName, location, control, lowNumberOfStudents, upNumberOfStudents,
-                                lowPercentFemale, upPercentFemale, lowSATVerbal, upSATVerbal, lowSATMath, upSATMath,
-                                lowExpenses, upExpenses, lowPercentEnrolled, upPercentEnrolled, lowAcademicsScale, upAcademicsScale,
-                                lowSocialScale,upSocialScale, lowQualityOfLifeScale, upQualityOfLifeScale, emphases1, emphases2,
-                                emphases3, emphases4, emphases5);
+          int lowNumberOfStudents, int upNumberOfStudents,  
+          double lowPercentFemale, double upPercentFemale, 
+          double lowSATVerbal, double upSATVerbal,
+          double lowSATMath, double upSATMath,
+          double lowExpenses, double upExpenses,
+          double lowPercentRecFinAid, double upPercentRecFinAid,
+          int lowNumApplicants, int upNumApplicants,
+          double lowPercentAccepted, double upPercentAccepted,
+          double lowPercentEnrolled, double upPercentEnrolled,
+          
+          int lowAcademicsScale, int upAcademicsScale,
+          int lowSocialScale, int upSocialScale,
+          int lowQualityOfLifeScale, int upQualityOfLifeScale,
+          String emphases1,String emphases2,String emphases3,
+          String emphases4,String emphases5) throws Exception {
+    ArrayList<University> universities = userController.searchSchool( schoolName,  stateName,  location,  control,
+	          lowNumberOfStudents,  upNumberOfStudents,  
+	          lowPercentFemale,  upPercentFemale, 
+	          lowSATVerbal,  upSATVerbal,
+	          lowSATMath,  upSATMath,
+	          lowExpenses,  upExpenses,
+	          lowPercentRecFinAid,  upPercentRecFinAid,
+	          lowNumApplicants,  upNumApplicants,
+	          lowPercentAccepted,  upPercentAccepted,
+	          lowPercentEnrolled,  upPercentEnrolled,
+	         
+	          lowAcademicsScale,  upAcademicsScale,
+	          lowSocialScale,  upSocialScale,
+	          lowQualityOfLifeScale,  upQualityOfLifeScale,
+	          emphases1, emphases2, emphases3,
+	          emphases4, emphases5);
     for (int i = 0; i<universities.size();i++)
     {
      System.out.println(universities.get(i).getSchoolName()); 
@@ -158,8 +176,9 @@ public class UserInteraction {
    * Will allow the user to view their saved Universities
    * 
    * @param username the username of the account to view saved universities
+ * @throws Exception 
    */
-  public void getSavedUniversities(String username)
+  public void getSavedUniversities(String username) throws Exception
   {
     ArrayList<String> universities = userController.getSavedUniversities(username);
     if(universities.size() == 0)

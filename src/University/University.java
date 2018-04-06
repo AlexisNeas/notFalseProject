@@ -14,80 +14,80 @@ package University;
  */
 
 public class University extends UniversityController
-
+  
 {  
-
   
-
+  
+  
   //university information 
-
+  
   private String schoolName, state, location, control,  studyArea1,  studyArea2,  studyArea3,  studyArea4, 
-
+    
     studyArea5;
-
+  
   private int numStudents, numApplicants, academicScale, social, qualOfLife;
-
+  
   private double percentFemale,  satVerbal,  satMath,  tuition,  percentRecFinAid, percentAccepted, percentEnroll;
-
   
-
   
-
+  
+  
+  
   /**
    * University constructor with initialized information 
    */
   public University()
   {    
-
-  String schoolName="";
-
-  String state="";
-
-  String location="";
-
-  String control="";
-
-  int numStudents=0;
-
-  double percentFemale=0;
-
-  double satVerbal=0;
-
-  double satMath=0;
-
-  double tuition=0;
-
-  double percentRecFinAid=0;
-
-  int numApplicants=0;
-
-  double percentAccepted=0;
-
-  double percentEnroll=0;
-
-  int academicScale=0;
-
-  int social=0;
-
-  int qualOfLife=0;
-
-  String studyArea1="";
-
-  String studyArea2="";
-
-  String studyArea3="";
-
-  String studyArea4="";
-
-  String studyArea5="";
+    
+    String schoolName="";
+    
+    String state="";
+    
+    String location="";
+    
+    String control="";
+    
+    int numStudents=0;
+    
+    double percentFemale=0;
+    
+    double satVerbal=0;
+    
+    double satMath=0;
+    
+    double tuition=0;
+    
+    double percentRecFinAid=0;
+    
+    int numApplicants=0;
+    
+    double percentAccepted=0;
+    
+    double percentEnroll=0;
+    
+    int academicScale=0;
+    
+    int social=0;
+    
+    int qualOfLife=0;
+    
+    String studyArea1="";
+    
+    String studyArea2="";
+    
+    String studyArea3="";
+    
+    String studyArea4="";
+    
+    String studyArea5="";
   }
-
   
-
   
-
   
-
+  
+  
+  
+  
   /**
    * Constructor for university object. Sets instance variables to equal constructor variables
    * 
@@ -114,361 +114,360 @@ public class University extends UniversityController
    * @param studyArea4 a string containing the name of the study area
    * @param studyArea5 a string containing the name of the study area
    */
-
+  
   public University(String schoolName, String state, String location, String control, int numStudents,
-
+                    
                     double percentFemale, double satVerbal, double satMath, double tuition, double percentRecFinAid,
-
+                    
                     int numApplicants, double percentAccepted, double percentEnroll, int academicScale, int social,
-
+                    
                     int qualOfLife, String studyArea1, String studyArea2, String studyArea3, String studyArea4, 
-
+                    
                     String studyArea5)
-
+    
   {
-
+    
     this.schoolName = schoolName;
-
+    
     this.state = state;
-
+    
     this.location = location;
-
+    
     this.control = control;
-
+    
     this.studyArea1= studyArea1;
-
+    
     this.studyArea2 = studyArea2;
-
+    
     this.studyArea3= studyArea3;
-
+    
     this.studyArea4 = studyArea4;
-
+    
     this.studyArea5 = studyArea5;
-
+    
     this.numStudents = numStudents;
-
+    
     this.numApplicants = numApplicants;
-
+    
     this.academicScale = academicScale;
-
+    
     this.social = social;
-
+    
     this.qualOfLife = qualOfLife;
-
+    
     this.percentFemale = percentFemale;
-
+    
     this.satVerbal = satVerbal;
-
+    
     this.satMath = satMath;
-
+    
     this.tuition = tuition;
-
+    
     this.percentRecFinAid = percentRecFinAid;
-
+    
     this.percentAccepted = percentAccepted;
-
+    
     this.percentEnroll = percentEnroll;  
-
+    
   }
-
   
-
   
-
   
-
+  
+  
+  
+  
   /**
    * gets school name
    * 
    * @return school name
    */
   public String getSchoolName()
-
   {
     return schoolName; 
   }
-
-
+  
+  
   /**
    * get state
    * 
    * @return state name
    */
   public String getState() 
-
+    
   {
-
-  return state;
-
+    
+    return state;
+    
   }
-
   
-
+  
+  
   /**
    * get location 
    * 
    * @return location 
    */
   public String getLocation()
-
+    
   {
-
-  return location;
-
+    
+    return location;
+    
   }
-
   
-
+  
+  
   /**
    * get control
    * 
    * @return control
    */
   public String getControl() 
-
+    
   {
-
-  return control;
-
+    
+    return control;
+    
   }
-
   
-
+  
+  
   /**
    * get study area name
    * 
    * @return study area name 
    */
   public String getStudyArea1() 
-
+    
   {
-
-  return studyArea1;
-
+    
+    return studyArea1;
+    
   }
-
   
-
-   /**
+  
+  
+  /**
    * get study area name
    * 
    * @return study area name 
    */
   public String getStudyArea2()
-
+    
   {
-
-  return studyArea2;
-
+    
+    return studyArea2;
+    
   }
-
   
-
-   /**
+  
+  
+  /**
    * get study area name
    * 
    * @return study area name 
    */
   public String getStudyArea3()
-
+    
   {
-
-  return studyArea3;
-
+    
+    return studyArea3;
+    
   }
-
   
-
-   /**
+  
+  
+  /**
    * get study area name
    * 
    * @return study area name 
    */
   public String getStudyArea4()
   {
-
-  return studyArea4;
-
+    
+    return studyArea4;
+    
   }
-
   
-
-   /**
+  
+  
+  /**
    * get study area name
    * 
    * @return study area name 
    */
   public String getStudyArea5() 
-
+    
   {
-
-  return studyArea5;
-
+    
+    return studyArea5;
+    
   }
-
   
-
+  
+  
   /** 
    * get number of applicants 
    * 
    * @return number of applicants 
    */
   public int getNumApplicants() 
-
+    
   {
-
-  return numApplicants;
-
+    
+    return numApplicants;
+    
   }
-
   
-
+  
+  
   /**
    * get number of students
    * 
    * @return number of students 
    */
   public int getNumStudents() 
-
+    
   {
-
-  return numStudents;
-
+    
+    return numStudents;
+    
   }
-
   
-
+  
+  
   /**
    * get acad scale
    * 
    * @return acad scale
    */
   public int getAcademicScale() 
-
+    
   {
-
-  return academicScale;
-
+    
+    return academicScale;
+    
   }
-
   
-
+  
+  
   /**
    * get qual of life
    * 
    * @return qual of life
    */
   public int getQualOfLife() 
-
+    
   {
-
-  return qualOfLife;
-
+    
+    return qualOfLife;
+    
   }
-
   
-
+  
+  
   /**
    * get percent female students
    * 
    * @return percent female students 
    */
   public double getPercentFemale() 
-
+    
   {
-
-  return percentFemale;
-
+    
+    return percentFemale;
+    
   }
-
   
-
+  
+  
   /**
    * get satVerbal
    * 
    * @return satVerbal 
    */
   public double getSatVerbal() 
-
+    
   {
-
-  return satVerbal;
-
+    
+    return satVerbal;
+    
   }
-
   
-
+  
+  
   /**
    * get satMath
    * 
    * @return satMath
    */
   public double getSatMath()
-
+    
   {
-
-  return satMath;
-
+    
+    return satMath;
+    
   }
-
   
-
+  
+  
   /**
    * get tuition cost
    * 
    * @return tuition cost
    */
   public double getTuition()
-
+    
   {
-
-  return tuition;
-
+    
+    return tuition;
+    
   }
-
   
-
+  
+  
   /**
    * get percent financial aid 
    * 
    * @return percent financial aid
    */
   public double getPercentRecFinAid() 
-
+    
   {
-
-  return percentRecFinAid;
-
+    
+    return percentRecFinAid;
+    
   }
-
   
-
+  
+  
   /**
    * get percent emitted 
    * 
    * @return percent emitted
    */
   public double getPercentAccepted() 
-
+    
   {
-
-  return percentAccepted;
-
+    
+    return percentAccepted;
+    
   }
-
   
-
+  
+  
   /**
    * get percent enrolled 
    * 
    * @return percent enrolled
    */
   public double getPercentEnroll() 
-
+    
   {
-
-  return percentEnroll;
-
+    
+    return percentEnroll;
+    
   }
   
   /**
@@ -476,149 +475,149 @@ public class University extends UniversityController
    * 
    * @return social amount
    */
-
+  
   public int getSocial()
   {
     return social;
   }
-
   
-
-   
-
   
-
+  
+  
+  
+  
+  
   /**
    * set the school name 
    * 
    * @param string school name of the school 
    */
   public void setSchoolName(String schoolName)
-
+    
   {
-
+    
     this.schoolName= schoolName;
-
+    
   }
-
   
-
+  
+  
   /**
    * set name of the state
    * 
    * @param state the name of the state
    */
   public void setState(String state)
-
+    
   {
-
+    
     this.state= state;
-
+    
   }
-
   
-
+  
+  
   /**
    * set the schools location 
    * 
    * @param location the location of the school 
    */
   public void setLocation(String location)
-
+    
   {
-
+    
     this.location= location;
-
+    
   }
-
   
-
+  
+  
   /**
    * set control amount 
    * 
    * @param control the control number
    */
   public void setControl(String control) 
-
+    
   {
-
-  this.control= control;
-
+    
+    this.control= control;
+    
   }
-
   
-
+  
+  
   /**
    * set name of study area 
    * 
    * @param studyArea1 name of study area 
    */
   public void setStudyArea1(String studyArea1) 
-
+    
   {
-
-  this.studyArea1=studyArea1;
-
+    
+    this.studyArea1=studyArea1;
+    
   }
-
   
-
-   /**
+  
+  
+  /**
    * set name of study area 
    * 
    * @param studyArea2 name of study area 
    */
   public void setStudyArea2(String studyArea2)
-
+    
   {
-
-  this.studyArea2= studyArea2;
-
+    
+    this.studyArea2= studyArea2;
+    
   }
-
   
-
-   /**
+  
+  
+  /**
    * set name of study area 
    * 
    * @param studyArea3 name of study area
    */
   public void setStudyArea3(String studyArea3)
-
+    
   {
-
-  this.studyArea3=studyArea3;
-
+    
+    this.studyArea3=studyArea3;
+    
   }
-
   
-
+  
+  
   /**
    * set name of study area
    * 
    * @param studyArea4 name of study area 
    */
   public void setStudyArea4(String studyArea4)
-
+    
   {
-
-  this.studyArea4=studyArea4;
-
+    
+    this.studyArea4=studyArea4;
+    
   }
-
   
-
+  
+  
   /**
    * set name of study area
    * 
    * @param studyArea5 name of study area 
    */
   public void setStudyArea5(String studyArea5) 
-
+    
   {
-
-  this.studyArea5= studyArea5;
-
+    
+    this.studyArea5= studyArea5;
+    
   }
   
   /**
@@ -630,170 +629,170 @@ public class University extends UniversityController
   {
     this.social=social;
   }
-
   
-
+  
+  
   /**
    * set the num of applicants 
    * 
    * @param numApplicants the number of applicants 
    */
   public void setNumApplicants(int numApplicants) 
-
+    
   {
-
-  this.numApplicants= numApplicants;
-
+    
+    this.numApplicants= numApplicants;
+    
   }
-
   
-
+  
+  
   /**
    * set the number of students 
    * 
    * @param numStudents the number of students at a school 
    */
   public void setNumStudents(int numStudents) 
-
+    
   {
-
-  this.numStudents = numStudents;
-
+    
+    this.numStudents = numStudents;
+    
   }
-
   
-
+  
+  
   /**
    * set the academic scale 
    * 
    * @param academicScale the rating of the academic scale 
    */
   public void setAcademicScale(int academicScale) 
-
+    
   {
-
-  this.academicScale= academicScale;
-
+    
+    this.academicScale= academicScale;
+    
   }
-
   
-
+  
+  
   /**
    * set the qual of life 
    * 
    * @param qualOfLife the quality of life 
    */
   public void setQualOfLife(int qualOfLife) 
-
+    
   {
-
-  this.qualOfLife= qualOfLife;
-
+    
+    this.qualOfLife= qualOfLife;
+    
   }
-
   
-
+  
+  
   /**
    * set the percent of female students 
    * 
    * @param percentFemale the percent of female students at a school 
    */
   public void setPercentFemale(double percentFemale) 
-
+    
   {
-
-  this.percentFemale= percentFemale;
-
+    
+    this.percentFemale= percentFemale;
+    
   }
-
   
-
+  
+  
   /**
    * set the average sat Verbal score 
    * 
    * @param satVerbal the average score for the school 
    */
   public void setSatVerbal(double satVerbal) 
-
+    
   {
-
-  this.satVerbal= satVerbal;
-
+    
+    this.satVerbal= satVerbal;
+    
   }
-
   
-
+  
+  
   /**
    * set the avg sat math score
    * 
    * @param satMath the average sat math score for the school 
    */
   public void setSatMath(double satMath)
-
+    
   {
-
-  this.satMath= satMath;
-
+    
+    this.satMath= satMath;
+    
   }
-
   
-
+  
+  
   /**
    * set the tuition price 
    * 
    * @param tuition the tuition price 
    */
   public void setTuition(double tuition)
-
+    
   {
-
-  this.tuition= tuition;
-
+    
+    this.tuition= tuition;
+    
   }
-
   
-
+  
+  
   /**
    * set the percent of students getting fin aid 
    * 
    * @param percentRecFinAid the percent of students getting aid 
    */
   public void setPercentRecFinAid(double percentRecFinAid) 
-
+    
   {
-
-  this.percentRecFinAid= percentRecFinAid;
-
+    
+    this.percentRecFinAid= percentRecFinAid;
+    
   }
-
   
-
+  
+  
   /**
    * set the percent of accepted students 
    * 
    * @param percentAccepted the percent of students accepted to the school 
    */
   public void setPercentAccepted(double percentAccepted) 
-
+    
   {
-
-  this.percentAccepted= percentAccepted;
-
+    
+    this.percentAccepted= percentAccepted;
+    
   }
-
   
-
+  
+  
   /**
    * set the percent of admitted students that enroll 
    * 
    * @param percentEntroll the percent of admitted students that enroll
    */
   public void setPercentEnroll(double percentEnroll) 
-
+    
   {
-
-  this.percentEnroll= percentEnroll;
-
+    
+    this.percentEnroll= percentEnroll;
+    
   }
 
   @Override public boolean equals(Object object) {
@@ -809,6 +808,102 @@ public class University extends UniversityController
 	  }
 	  else
 		  return false;
+  }
+  
+  public University makeUniversity(String schoolName,String state,String location, String control, int numStudents,
+                                   
+                                   double percentFemale, double satVerbal,double satMath, double tuition, double percentRecFinAid,
+                                   
+                                   int numApplicants, double percentAccepted, double percentEnroll, int academicScale, int social,
+                                   
+                                   int qualOfLife, String studyArea1,String studyArea2,String studyArea3,String studyArea4, 
+                                   
+                                   String studyArea5)
+    
+  {    
+    
+    //contructs a university object 
+    
+    University university = new University(schoolName, state, location, control, numStudents,
+                                           
+                                           percentFemale,satVerbal,satMath, tuition, percentRecFinAid,
+                                           
+                                           numApplicants, percentAccepted, percentEnroll, academicScale, social,
+                                           
+                                           qualOfLife, studyArea1, studyArea2, studyArea3, studyArea4, 
+                                           
+                                           studyArea5);  
+    
+    
+    if (percentFemale > 100 || percentFemale < 0)
+    {
+      throw new IllegalArgumentException("Invalid female percentage.");
+    }
+    else if (percentAccepted > 100 || percentAccepted < 0)
+    {
+      throw new IllegalArgumentException("Invalid acceptance percentage.");
+    }
+    else if (percentRecFinAid > 100 || percentRecFinAid < 0)
+    {
+      throw new IllegalArgumentException("Illegal financial aid percentage");
+    }
+    else if (numStudents < 0)
+    {
+      throw new IllegalArgumentException("Invalid number of students");
+    }
+    else if (satVerbal > 800 || satVerbal < 0 || satMath > 800 || satMath < 0)
+    {
+      throw new IllegalArgumentException("Invalid scores");
+    }
+    else if (tuition < 0)
+    {
+      throw new IllegalArgumentException("Invalid tuition");
+    }
+    else if (numApplicants < 0)
+    {
+      throw new IllegalArgumentException("Invalid num applicants");
+    }
+    else if (percentEnroll > 100 || percentEnroll < 0)
+    {
+      throw new IllegalArgumentException("Invalid enroll percentage");
+    }
+    else if (academicScale < 0 || academicScale > 5)
+    {
+      throw new IllegalArgumentException("Invalid academic scale");
+    }
+    else if (social < 0 || social > 5)
+    {
+      throw new IllegalArgumentException("Invalid social scale");
+    }
+    else if (qualOfLife < 0 || qualOfLife > 5)
+    {
+      throw new IllegalArgumentException("Invalid qual of life");
+    }
+    else if (control != "PRIVATE" || control != "STATE" || control != "CITY" || control != "-1")
+    {
+      throw new IllegalArgumentException("Invalid control");
+    }
+    else if (state != "ALABAMA" || state != "ALASKA" || state != "ARIZONA" || state != "ARKANSAS" ||
+             state != "CALIFORNIA" || state != "COLORADO" || state != "CONNECTICUT" || state != "DELAWARE" ||
+             state != "FLORIDA" || state != "GEORGIA" || state != "HAWAII" || state != "IDAHO" || state != "ILLINOIS" ||
+             state != "INDIANA" || state != "IOWA" || state != "KANSAS" || state != "KENTUCKY" || state != "LOUISIANA" ||
+             state != "MAINE" || state != "MARYLAND" || state != "MASSACHUSETTS" || state != "MICHIGAN" || state != "MINNESOTA" ||
+             state != "MISSISSIPPI" || state != "MISSOURI" || state != "MONTANA" || state != "NEBRASKA" || 
+             state != "NEVADA" || state != "NEW HAMPSHIRE" || state != "NEW MEXICO" || state != "NEW YORK" ||
+             state != "NORTH CAROLINA" || state != "NORTH DAKOTA" || state != "OHIO" || state != "OKLAHOMA" ||
+             state != "OREGON" || state != "PENNSYLVANIA" || state != "RHODE ISLAND" || state != "SOUTH CAROLINA" ||
+             state != "SOUTH DAKOTA" || state != "TENNESSEE" || state != "TEXAS" || state != "UTAH" ||
+             state != "VERMONT" || state != "VIRGINIA" || state != "WASHINGTON" || state != "WEST VIRGINIA" ||
+             state != "WISCONSIN" || state != "WYOMING" || state != "FOREIGN" || state != "-1")
+    {
+      throw new IllegalArgumentException("Invalid state");
+    }
+    else if (location != "SUBURBAN" || location != "URBAN" || location != "SMALL-CITY"|| location != "-1")
+    {
+      throw new IllegalArgumentException("Invalid location");
+    }
+   
+    return university; 
   }
   
 }

@@ -4,7 +4,7 @@ import DatabaseController.*;
 import University.*;
 
 /**
- * Class that interacts with the contructed Database Controller and account controller. Interacts with the classes based on User Interactions
+ * Class that interacts with the constructed Database Controller and account controller. Interacts with the classes based on User Interactions
  * 
  * @author Alexis Neas
  * @version 3/20/18
@@ -63,23 +63,45 @@ public class UserController {
    * @return the university objects closest to the search in an ArrayList
    */
   public ArrayList <University> searchSchool(String schoolName, String stateName, String location, String control,
-                           int lowNumberOfStudents, int upNumberOfStudents,  
-                           double lowPercentFemale, double upPercentFemale, 
-                           double lowSATVerbal, double upSATVerbal,
-                           double lowSATMath, double upSATMath,
-                           double lowExpenses, double upExpenses,
-                           double lowPercentEnrolled, double upPercentEnrolled,
-                           int lowAcademicsScale, int upAcademicsScale,
-                           int lowSocialScale, int upSocialScale,
-                           int lowQualityOfLifeScale, int upQualityOfLifeScale,
-                           String emphases1,String emphases2,String emphases3,
-                           String emphases4,String emphases5) {
+          int lowNumberOfStudents, int upNumberOfStudents,  
+          double lowPercentFemale, double upPercentFemale, 
+          double lowSATVerbal, double upSATVerbal,
+          double lowSATMath, double upSATMath,
+          double lowExpenses, double upExpenses,
+          double lowPercentRecFinAid, double upPercentRecFinAid,
+          int lowNumApplicants, int upNumApplicants,
+          double lowPercentAccepted, double upPercentAccepted,
+          double lowPercentEnrolled, double upPercentEnrolled,
+          
+          int lowAcademicsScale, int upAcademicsScale,
+          int lowSocialScale, int upSocialScale,
+          int lowQualityOfLifeScale, int upQualityOfLifeScale,
+          String emphases1,String emphases2,String emphases3,
+          String emphases4,String emphases5) throws Exception {
 
-     return dbController.searchTwo(schoolName, stateName, location, control, lowNumberOfStudents, upNumberOfStudents,
-                                lowPercentFemale, upPercentFemale, lowSATVerbal, upSATVerbal, lowSATMath, upSATMath,
-                                lowExpenses, upExpenses, lowPercentEnrolled, upPercentEnrolled, lowAcademicsScale, upAcademicsScale,
-                                lowSocialScale,upSocialScale, lowQualityOfLifeScale, upQualityOfLifeScale, emphases1, emphases2,
-                                emphases3, emphases4, emphases5);
+     try {
+		return dbController.searchTwo( schoolName,  stateName,  location,  control,
+		          lowNumberOfStudents,  upNumberOfStudents,  
+		          lowPercentFemale,  upPercentFemale, 
+		          lowSATVerbal,  upSATVerbal,
+		          lowSATMath,  upSATMath,
+		          lowExpenses,  upExpenses,
+		          lowPercentRecFinAid,  upPercentRecFinAid,
+		          lowNumApplicants,  upNumApplicants,
+		          lowPercentAccepted,  upPercentAccepted,
+		          lowPercentEnrolled,  upPercentEnrolled,
+		         
+		          lowAcademicsScale,  upAcademicsScale,
+		          lowSocialScale,  upSocialScale,
+		          lowQualityOfLifeScale,  upQualityOfLifeScale,
+		          emphases1, emphases2, emphases3,
+		          emphases4, emphases5);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+     
                                
   }
   
@@ -115,9 +137,18 @@ public class UserController {
    * @param user the name of user saving the school
    * @param school school to be added to user's list
    */
-  public void addSchool(String user, String school)
+  public int addSchool(String user, String school)
   {
-   dbController.userSaveSchool(user, school); 
+	  try {
+		  
+   return dbController.userSaveSchool(user, school); 
+	  }
+	  
+	  catch(IllegalArgumentException e)
+	  {
+		  System.out.println("Error: Invalid user or school.");
+	  }
+	  
   }
   
   /**
@@ -131,23 +162,6 @@ public class UserController {
    return dbController.findSimilarSchools(university); 
   }
   
-  /**
-   * Displays the results of a search
-   * 
-   * @param universities list of schools that should be displayed
-   */
-  public void displayResults(ArrayList<University> universities)
-  {
-    if (universities == null)
-      System.out.println("No universities to display");
-    else
-    {
-      for( University u:universities)
-      {
-        System.out.println("University: "+ u.getSchoolName()); 
-      }
-    }
-  }
   
   /**
    * Gets a list of user's saved universities
@@ -155,8 +169,9 @@ public class UserController {
    * @param username the username to get the saved universities from
    * 
    * @return the list of schools that have been saved by user
+ * @throws Exception 
    */
-  public ArrayList<String> getSavedUniversities(String username)
+  public ArrayList<String> getSavedUniversities(String username) throws Exception
   {
    return dbController.getUserSchools(username); 
   }
