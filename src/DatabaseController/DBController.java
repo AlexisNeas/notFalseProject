@@ -408,7 +408,7 @@ public class DBController
   /**
    * Finds similar schools.
    * 
-   * @param mainUniversity the resut clicked on to find similar schools to
+   * @param mainUniversity the result clicked on to find similar schools to
    * 
    * @return an ArrayList containing the 5 nearest universities
    */
