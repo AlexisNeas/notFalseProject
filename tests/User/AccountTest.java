@@ -150,5 +150,19 @@ public class AccountTest {
   boolean result2 = acct.isLoggedOn();
   assertTrue("The account should be logged on", expected2 == result2);
  }
+ 
+ @Test
+ public void testEqualsTrue() {
+	 Account acct2 = new Account("First", "Last", "user", "pass", 'u', 'Y');
+	 boolean result = acct.equals(acct2);
+	 assertTrue("The accounts are not equal", result);
+ }
+ 
+ @Test
+ public void testEqualsNotAccount() {
+	 String noAcct = "false";
+	 boolean result = acct.equals(noAcct);
+	 assertTrue("The accounts should be different but are equal", !result);
+ }
 
 }

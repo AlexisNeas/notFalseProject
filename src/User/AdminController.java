@@ -12,26 +12,15 @@ import DatabaseController.DBController;
 public class AdminController {
   
   /**
-   * Provides access to admin objects
-   */
-  private Admin admin;
-  
-  /**
    * Interacts with the database controller to access the data
    */
   private DBController dbController;
-  
-  /**
-   * Interacts with the account controller
-   */
-  private AccountController accountController;
   
   /**
    * Constructor to access the database and initialize the account controller
    */
   public AdminController() {
     this.dbController = new DBController("notfal", "csci230");
-    this.accountController = new AccountController();
   }
 
 /**

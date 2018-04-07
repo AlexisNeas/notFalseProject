@@ -51,18 +51,12 @@ public class AdminControllerTest {
 	}
 
 	@Test
-	public void testAddNewUser() throws Exception{
-		try {
+	public void testAddNewUser() {
 		ArrayList<Account> currentUsers = adminController.getListOfUsers();
 		assertTrue("The new account is already in the database", !currentUsers.contains(newUser));
 		adminController.addNewUser(newUser);
 		currentUsers = adminController.getListOfUsers();
 		assertTrue("The account was not added", currentUsers.contains(newUser));
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
 	}
 
 	@Test
