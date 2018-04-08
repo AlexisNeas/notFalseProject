@@ -3,7 +3,7 @@ package User;
  * Account entity super class to User and Admin. 
  * 
  * @author Zachary Vetter
- * @version 3/20/18
+ * @version 4/8/18
  */
 public class Account {
   
@@ -172,7 +172,7 @@ public class Account {
   }
   
   /**
-   * Sets the status of the account to acctive or inactive
+   * Sets the status of the account to active or inactive
    * 
    * @param stat the new status of the account
    * 
@@ -209,6 +209,13 @@ public class Account {
     return this.loggedIn;
   }
   
+  /**
+   * Checks to see if two account objects are equal
+   * 
+   * @param object the object to see if it is equal to the account
+   * 
+   * @return true if the accounts have equal information and false if they dont or the object isnt an account
+   */
   @Override public boolean equals(Object object)
   {
 	  if(object instanceof Account)
