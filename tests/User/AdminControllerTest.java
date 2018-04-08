@@ -58,6 +58,15 @@ public class AdminControllerTest {
 		currentUsers = adminController.getListOfUsers();
 		assertTrue("The account was not added", currentUsers.contains(newUser));
 	}
+	
+	@Test
+	public void testAddNewUserDuplicateUsername() {
+		int expected = 1;
+		db.addNewUser(newUser);
+		adminController.addNewUser(newUser);
+		int result = adminController.getError();
+		assertTrue("The user was added twice", expected == result);
+	}
 
 	@Test
 	public void testAddSchool() {
@@ -66,6 +75,15 @@ public class AdminControllerTest {
 		adminController.addSchool(newSchool);
 		currentSchools = adminController.viewUniversities();
 		assertTrue("The school was not added", currentSchools.contains(newSchool.getSchoolName()));
+	}
+	
+	@Test
+	public void testAddSchoolDuplicateName() {
+		int expected = 2;
+		db.addNewSchool(newSchool);
+		adminController.addSchool(newSchool);
+		int result = adminController.getError();
+		assertTrue("The school was added twice", expected == result);
 	}
 
 	@Test
@@ -80,6 +98,14 @@ public class AdminControllerTest {
 		assertTrue("The school should now be in MINNESOTA",
 				testSchool.getState().equals("MINNESOTA"));
 	}
+	
+	@Test
+	public void testSetSchoolInfoNonexistantSchool() {
+		int expected = 3;
+		adminController.setSchoolInfo(newSchool);
+		int result = adminController.getError();
+		assertTrue("School shouldnt exist in the database", expected == result);
+	}
 
 	@Test
 	public void testEditUser() throws Exception {
@@ -91,6 +117,14 @@ public class AdminControllerTest {
 		testAccount = adminController.getUserInfo(testAccount.getUsername());
 		assertTrue("New last name is Vetter", testAccount.getLastName().equals("Vetter"));
 	}
+	
+	@Test
+	public void testEditUserNonexistantAccount() {
+		int expected = 4;
+		adminController.editUser(newUser);
+		int result = adminController.getError();
+		assertTrue("The account shouldnt exist", expected == result);
+	}
 
 	@Test
 	public void testDeactivateUser() throws Exception {
@@ -100,6 +134,14 @@ public class AdminControllerTest {
 		adminController.deactivateUser(testAccount.getUsername());
 		testAccount = adminController.getUserInfo(testAccount.getUsername());
 		assertTrue("The account was not deactivated", testAccount.getStatus()=='N');
+	}
+	
+	@Test
+	public void testDeactivateUserNonexistantAccount() {
+		int expected = 4;
+		adminController.deactivateUser(newUser.getUsername());
+		int result = adminController.getError();
+		assertTrue("The account shouldnt exist", expected == result);
 	}
 
 	@Test

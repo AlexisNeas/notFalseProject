@@ -17,6 +17,11 @@ public class AdminController {
   private DBController dbController;
   
   /**
+   * The error that occurred;
+   */
+  private int error;
+  
+  /**
    * Constructor to access the database and initialize the account controller
    */
   public AdminController() {
@@ -64,7 +69,8 @@ public class AdminController {
 	  dbController.addNewUser(user);
     }
     catch(IllegalArgumentException e){
-    	System.out.println("Username is already taken");
+    	//System.out.println("Username is already taken");
+    	error = 1;
     }
   }
   
@@ -78,7 +84,8 @@ public class AdminController {
     	dbController.addNewSchool(school);
     }
     catch(IllegalArgumentException e) {
-    	System.out.println("The school name is already taken");
+    	//System.out.println("The school name is already taken");
+    	error = 2;
     }
   }
   
@@ -92,7 +99,8 @@ public class AdminController {
     	dbController.setSchoolInformation(school);
     }
     catch(IllegalArgumentException e) {
-    	System.out.println("The school does not exist");
+    	//System.out.println("The school does not exist");
+    	error = 3;
     }
   }
   
@@ -113,7 +121,8 @@ public class AdminController {
 				  account.getStatus());
 	  }
 	  catch(IllegalArgumentException e) {
-		  System.out.println("The account does not exist.");
+		  //System.out.println("The account does not exist.");
+		  error = 4;
 	  }
   }
   
@@ -127,7 +136,8 @@ public class AdminController {
 	  dbController.deactivateUser(username);
     }
     catch(IllegalArgumentException e) {
-	  System.out.println("The account does not exist.");
+	  //System.out.println("The account does not exist.");
+	  error = 4;
     }
   }
   
@@ -140,5 +150,14 @@ public class AdminController {
   public Account getUserInfo(String username)
   {
     return dbController.getUserInfo(username);
+  }
+  
+  /**
+   * Gets the error that occurred
+   */
+  public int getError() {
+	  int returnError = error;
+	  error = 0;
+	  return returnError;
   }
 }

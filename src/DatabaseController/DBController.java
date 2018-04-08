@@ -186,7 +186,7 @@ public class DBController
                                         univ.getSatVerbal(),  univ.getSatMath(),  univ.getTuition(),  univ.getPercentRecFinAid(),
                                         univ.getNumApplicants(),  univ.getPercentAccepted(), 
                                         univ.getPercentEnroll(),  univ.getAcademicScale(),  univ.getSocial(),  univ.getQualOfLife());
-    if(edited == -1) {
+    if(edited <= 0) {
     	throw new IllegalArgumentException();
     }
   }
@@ -206,7 +206,7 @@ public class DBController
   {
       int edit = univDBlib.user_editUser(username , firstName, lastName, 
                               password, type, status);
-      if(edit == -1) {
+      if(edit <= 0) {
     	  throw new IllegalArgumentException();
       }
   }
@@ -379,7 +379,7 @@ public class DBController
    */
   public void deactivateUser(String username) throws IllegalArgumentException
   {
-	Account acc = null;
+	boolean found = false;
     String[][] array = univDBlib.user_getUsers();
     int len = array.length;
     for(int i = 0; i<len ;i++)
@@ -387,6 +387,7 @@ public class DBController
       
       if(array[i][2].equals(username))
       {
+    	found = true;
         String password= array[i][3];
         String firstName= array[i][0];
         String lastName = array[i][1];
@@ -395,6 +396,9 @@ public class DBController
         setUserInfo(firstName, lastName, username, password, type, status);
         
       }
+    }
+    if(!found) {
+    	throw new IllegalArgumentException();
     }
   }
   /**
