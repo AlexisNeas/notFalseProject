@@ -31,7 +31,7 @@ public class DBTest
   @Test 
   public void setSchoolInformationTest()
   {
-    University univ = new University();
+    University univ = new University(null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null, null, null);
     String expected = "SJU";
     univ.setSchoolName("SJU"); 
     String result = univ.getSchoolName();
@@ -155,7 +155,7 @@ public class DBTest
   @Test
   public void findSimilarSchoolsTest()
   {
-   University univ = new University();
+   University univ = new University(null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null, null, null);
    
    ArrayList<University> list;
    DBController dc = new DBController("notfal", "csci230");

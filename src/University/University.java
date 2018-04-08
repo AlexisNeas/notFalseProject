@@ -13,8 +13,7 @@ package University;
  * Class that gets and sets university information 
  */
 
-public class University extends UniversityController
-  
+public class University extends UniversityController  
 {  
   
   
@@ -39,7 +38,7 @@ public class University extends UniversityController
   public University()
   {    
     
-    String schoolName="";
+    String schoolName = "";
     
     String state="";
     
@@ -81,6 +80,7 @@ public class University extends UniversityController
     
     String studyArea5="";
   }
+ 
   
   
   
@@ -178,7 +178,7 @@ public class University extends UniversityController
   
   
   /**
-   * gets school name
+   * Method that gets school name
    * 
    * @return school name
    */
@@ -189,289 +189,235 @@ public class University extends UniversityController
   
   
   /**
-   * get state
+   * Method that gets state
    * 
    * @return state name
    */
-  public String getState() 
-    
-  {
-    
-    return state;
-    
+  public String getState()    
+  {  
+    return state;  
   }
   
   
   
   /**
-   * get location 
+   * Method that gets location 
    * 
    * @return location 
    */
-  public String getLocation()
-    
+  public String getLocation()    
   {
-    
-    return location;
-    
+       return location;    
   }
   
   
   
   /**
-   * get control
+   * Method that gets control
    * 
    * @return control
    */
-  public String getControl() 
-    
-  {
-    
-    return control;
-    
+  public String getControl()   
+  {   
+    return control;   
   }
   
   
   
   /**
-   * get study area name
+   * Method that gets study area name
    * 
    * @return study area name 
    */
-  public String getStudyArea1() 
-    
-  {
-    
-    return studyArea1;
-    
+  public String getStudyArea1()     
+  {   
+    return studyArea1;   
   }
   
   
   
   /**
-   * get study area name
+   * Method that gets study area name
    * 
    * @return study area name 
    */
-  public String getStudyArea2()
-    
-  {
-    
-    return studyArea2;
-    
+  public String getStudyArea2()   
+  {   
+    return studyArea2;   
   }
   
   
   
   /**
-   * get study area name
+   * Method that gets study area name
    * 
    * @return study area name 
    */
-  public String getStudyArea3()
-    
-  {
-    
-    return studyArea3;
-    
+  public String getStudyArea3()   
+  {   
+    return studyArea3;   
   }
   
   
   
   /**
-   * get study area name
+   * Method that gets study area name
    * 
    * @return study area name 
    */
   public String getStudyArea4()
-  {
-    
-    return studyArea4;
-    
+  {   
+    return studyArea4;   
   }
   
   
   
   /**
-   * get study area name
+   * Method that gets study area name
    * 
    * @return study area name 
    */
-  public String getStudyArea5() 
-    
-  {
-    
-    return studyArea5;
-    
+  public String getStudyArea5()     
+  {    
+    return studyArea5;    
   }
   
   
   
   /** 
-   * get number of applicants 
+   * Method that gets number of applicants 
    * 
    * @return number of applicants 
    */
-  public int getNumApplicants() 
-    
-  {
-    
-    return numApplicants;
-    
+  public int getNumApplicants()    
+  {   
+    return numApplicants;    
   }
   
   
   
   /**
-   * get number of students
+   * Method that gets number of students
    * 
    * @return number of students 
    */
-  public int getNumStudents() 
-    
-  {
-    
-    return numStudents;
-    
+  public int getNumStudents()     
+  {   
+    return numStudents;   
   }
   
   
   
   /**
-   * get acad scale
+   * Method that gets academic scale
    * 
-   * @return acad scale
+   * @return academic scale
    */
-  public int getAcademicScale() 
-    
-  {
-    
-    return academicScale;
-    
+  public int getAcademicScale()     
+  {    
+    return academicScale;    
   }
   
   
   
   /**
-   * get qual of life
+   * Method that gets quality of life
    * 
-   * @return qual of life
+   * @return quality of life
    */
-  public int getQualOfLife() 
-    
-  {
-    
-    return qualOfLife;
-    
+  public int getQualOfLife()    
+  {   
+    return qualOfLife;   
   }
   
   
   
   /**
-   * get percent female students
+   * Method that gets percent female students
    * 
    * @return percent female students 
    */
-  public double getPercentFemale() 
-    
-  {
-    
-    return percentFemale;
-    
+  public double getPercentFemale()     
+  {   
+    return percentFemale;   
   }
   
   
   
   /**
-   * get satVerbal
+   * Method that gets satVerbal
    * 
    * @return satVerbal 
    */
-  public double getSatVerbal() 
-    
-  {
-    
-    return satVerbal;
-    
+  public double getSatVerbal()     
+  {    
+    return satVerbal;    
   }
   
   
   
   /**
-   * get satMath
+   * Method that gets satMath
    * 
    * @return satMath
    */
-  public double getSatMath()
-    
-  {
-    
-    return satMath;
-    
+  public double getSatMath()   
+  {    
+    return satMath;    
   }
   
   
   
   /**
-   * get tuition cost
+   * Method that gets tuition cost
    * 
    * @return tuition cost
    */
   public double getTuition()
-    
-  {
-    
-    return tuition;
-    
+  {  
+    return tuition;   
   }
   
   
   
   /**
-   * get percent financial aid 
+   * Method that gets percent financial aid 
    * 
    * @return percent financial aid
    */
-  public double getPercentRecFinAid() 
-    
+  public double getPercentRecFinAid()  
   {
-    
     return percentRecFinAid;
-    
   }
   
   
   
   /**
-   * get percent emitted 
+   * Method that gets percent emitted 
    * 
    * @return percent emitted
    */
   public double getPercentAccepted() 
     
-  {
-    
-    return percentAccepted;
-    
+  {    
+    return percentAccepted;    
   }
   
   
   
   /**
-   * get percent enrolled 
+   * Method that gets percent enrolled 
    * 
    * @return percent enrolled
    */
   public double getPercentEnroll() 
     
-  {
-    
-    return percentEnroll;
-    
+  {   
+    return percentEnroll;   
   }
   
   /**
-   * gets social amount
+   * Method that gets social amount
    * 
    * @return social amount
    */
@@ -488,12 +434,11 @@ public class University extends UniversityController
   
   
   /**
-   * set the school name 
+   * Method that sets the school name 
    * 
    * @param string school name of the school 
    */
-  public void setSchoolName(String schoolName)
-    
+  public void setSchoolName(String schoolName)   
   {
     
     this.schoolName= schoolName;
@@ -503,67 +448,88 @@ public class University extends UniversityController
   
   
   /**
-   * set name of the state
+   * Method that sets name of the state
    * 
+   * @pre name must be valid and in caps
    * @param state the name of the state
    */
   public void setState(String state)
-    
   {
-    
-    this.state= state;
+	  if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS") ||
+	             state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT") || state.equals("DELAWARE") ||
+	             state.equals("FLORIDA") || state.equals("GEORGIA") || state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS") ||
+	             state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS") || state.equals("KENTUCKY") || state.equals("LOUISIANA") ||
+	             state.equals("MAINE") || state.equals("MARYLAND") || state.equals("MASSACHUSETTS") || state.equals("MICHIGAN") || state.equals("MINNESOTA") ||
+	             state.equals("MISSISSIPPI") || state.equals("MISSOURI") || state.equals("MONTANA") || state.equals("NEBRASKA") || 
+	             state.equals("NEVADA") || state.equals("NEW HAMPSHIRE") || state.equals("NEW MEXICO") || state.equals("NEW YORK") ||
+	             state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA") || state.equals("OHIO") || state.equals("OKLAHOMA") ||
+	             state.equals("OREGON") || state.equals("PENNSYLVANIA") || state.equals("RHODE ISLAND") || state.equals("SOUTH CAROLINA") ||
+	             state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE") || state.equals("TEXAS") || state.equals("UTAH") ||
+	             state.equals("VERMONT") || state.equals("VIRGINIA") || state.equals("WASHINGTON") || state.equals("WEST VIRGINIA") ||
+	             state.equals("WISCONSIN") || state.equals("WYOMING") || state.equals("FOREIGN") || state.equals("-1"))
+	    {
+		  this.state= state;
+	    }
+	  else 
+	      throw new IllegalArgumentException("Invalid state");
+	  
     
   }
   
   
   
   /**
-   * set the schools location 
+   * Method that sets the schools location 
    * 
+   * @pre name must be valid and in caps
    * @param location the location of the school 
    */
-  public void setLocation(String location)
-    
+  public void setLocation(String location) 
   {
-    
-    this.location= location;
-    
+	  if (location.equals("SUBURBAN") || location.equals("URBAN") || location.equals("SMALL-CITY")|| location.equals("-1"))
+	    {
+		   this.location= location; 
+	    }
+	  else 
+		  throw new IllegalArgumentException("Invalid location");
+
   }
   
   
   
   /**
-   * set control amount 
+   * Method that sets control amount 
    * 
+   * @pre name must be valid and in caps
    * @param control the control number
    */
   public void setControl(String control) 
-    
   {
-    
-    this.control= control;
+	  if (control.equals("PRIVATE") || control.equals("STATE") || control.equals("CITY") || control.equals("-1"))
+	    {
+		  this.control= control;
+	    }
+	  else 
+	      throw new IllegalArgumentException("Invalid control");
     
   }
   
   
   
   /**
-   * set name of study area 
+   * Method that sets name of study area 
    * 
    * @param studyArea1 name of study area 
    */
-  public void setStudyArea1(String studyArea1) 
-    
-  {
-    
-    this.studyArea1=studyArea1;
-    
+  public void setStudyArea1(String studyArea1)    
+  {   
+    this.studyArea1=studyArea1;   
   }
   
   
   
   /**
-   * set name of study area 
+   * Method that sets name of study area 
    * 
    * @param studyArea2 name of study area 
    */
@@ -578,7 +544,7 @@ public class University extends UniversityController
   
   
   /**
-   * set name of study area 
+   * Method that sets name of study area 
    * 
    * @param studyArea3 name of study area
    */
@@ -593,7 +559,7 @@ public class University extends UniversityController
   
   
   /**
-   * set name of study area
+   * Method that sets name of study area 
    * 
    * @param studyArea4 name of study area 
    */
@@ -608,7 +574,7 @@ public class University extends UniversityController
   
   
   /**
-   * set name of study area
+   * Method that sets name of study area 
    * 
    * @param studyArea5 name of study area 
    */
@@ -621,26 +587,36 @@ public class University extends UniversityController
   }
   
   /**
-   * set social scale 
+   * Method that sets social scale 
    * 
+   * @pre number must be in range
    * @param social the amount on the social scale  
    */
   public void setSocial(int social)
   {
+	  if (social < 0 || social > 5)
+	    {
+	      throw new IllegalArgumentException("Invalid social scale");
+	    }
+	  else
     this.social=social;
   }
   
   
   
   /**
-   * set the num of applicants 
+   * Method that sets the number of applicants 
    * 
+   * @pre number must be in range
    * @param numApplicants the number of applicants 
    */
-  public void setNumApplicants(int numApplicants) 
-    
+  public void setNumApplicants(int numApplicants)   
   {
-    
+	  if (numApplicants < 0)
+	    {
+	      throw new IllegalArgumentException("Invalid num applicants");
+	    }
+	  else 
     this.numApplicants= numApplicants;
     
   }
@@ -648,14 +624,19 @@ public class University extends UniversityController
   
   
   /**
-   * set the number of students 
+   * Method that sets the number of students 
    * 
+   * @pre number must be in range
    * @param numStudents the number of students at a school 
    */
   public void setNumStudents(int numStudents) 
     
   {
-    
+	  if (numStudents < 0)
+	    {
+	      throw new IllegalArgumentException("Invalid number of students");
+	    }
+	  else 
     this.numStudents = numStudents;
     
   }
@@ -663,14 +644,18 @@ public class University extends UniversityController
   
   
   /**
-   * set the academic scale 
+   * Method that sets the academic scale 
    * 
+   * @pre number must be in range
    * @param academicScale the rating of the academic scale 
    */
-  public void setAcademicScale(int academicScale) 
-    
+  public void setAcademicScale(int academicScale)  
   {
-    
+	  if (academicScale < 0 || academicScale > 5)
+	    {
+	      throw new IllegalArgumentException("Invalid academic scale");
+	    }
+	  else 
     this.academicScale= academicScale;
     
   }
@@ -678,14 +663,18 @@ public class University extends UniversityController
   
   
   /**
-   * set the qual of life 
+   * Method that sets the qual of life 
    * 
+   * @pre number must be in range
    * @param qualOfLife the quality of life 
    */
-  public void setQualOfLife(int qualOfLife) 
-    
+  public void setQualOfLife(int qualOfLife)    
   {
-    
+	  if (qualOfLife < 0 || qualOfLife > 5)
+	    {
+	      throw new IllegalArgumentException("Invalid qual of life");
+	    }
+	  else 
     this.qualOfLife= qualOfLife;
     
   }
@@ -693,29 +682,37 @@ public class University extends UniversityController
   
   
   /**
-   * set the percent of female students 
+   * Method that sets the percent of female students 
    * 
+   * @pre number must be in range
    * @param percentFemale the percent of female students at a school 
    */
   public void setPercentFemale(double percentFemale) 
     
   {
-    
     this.percentFemale= percentFemale;
-    
+    if (percentFemale > 100 || percentFemale < 0)
+    {
+      throw new IllegalArgumentException("Invalid female percentage.");
+    }
   }
   
   
   
   /**
-   * set the average sat Verbal score 
+   * Method that sets the average sat Verbal score 
    * 
+   * @pre number must be in range
    * @param satVerbal the average score for the school 
    */
   public void setSatVerbal(double satVerbal) 
     
   {
-    
+	  if (satVerbal > 800 || satVerbal < 0)
+	    {
+	      throw new IllegalArgumentException("Invalid sat verbal");
+	    }
+	  else 
     this.satVerbal= satVerbal;
     
   }
@@ -723,14 +720,18 @@ public class University extends UniversityController
   
   
   /**
-   * set the avg sat math score
+   * Method that sets the average sat math score
    * 
+   * @pre number must be in range
    * @param satMath the average sat math score for the school 
    */
-  public void setSatMath(double satMath)
-    
+  public void setSatMath(double satMath)   
   {
-    
+   if (satMath>800 || satMath<0)
+   {
+	   throw new IllegalArgumentException("Invalid sat math score");
+   }
+   else 
     this.satMath= satMath;
     
   }
@@ -738,63 +739,83 @@ public class University extends UniversityController
   
   
   /**
-   * set the tuition price 
+   * Method that sets the tuition price 
    * 
+   * @pre number must be in range
    * @param tuition the tuition price 
    */
-  public void setTuition(double tuition)
-    
+  public void setTuition(double tuition)  
   {
-    
-    this.tuition= tuition;
-    
+	  if (tuition < 0)
+	    {
+	      throw new IllegalArgumentException("Invalid tuition");
+	    }
+	  else
+    this.tuition= tuition;  
   }
   
   
   
   /**
-   * set the percent of students getting fin aid 
+   * Method that sets the percent of students getting fin aid 
    * 
+   * @pre number must be in range
    * @param percentRecFinAid the percent of students getting aid 
    */
-  public void setPercentRecFinAid(double percentRecFinAid) 
-    
-  {
-    
-    this.percentRecFinAid= percentRecFinAid;
-    
+  public void setPercentRecFinAid(double percentRecFinAid)     
+  {  
+    if (percentRecFinAid > 100 || percentRecFinAid < 0)
+    {
+      throw new IllegalArgumentException("Illegal financial aid percentage");
+    }
+    else
+    	 this.percentRecFinAid= percentRecFinAid;
   }
   
   
   
   /**
-   * set the percent of accepted students 
+   * Method that sets the percent of accepted students 
    * 
+   * @pre number must be in range
    * @param percentAccepted the percent of students accepted to the school 
    */
   public void setPercentAccepted(double percentAccepted) 
     
   {
-    
-    this.percentAccepted= percentAccepted;
-    
+    this.percentAccepted = percentAccepted;
+    if (percentAccepted > 100 || percentAccepted < 0)
+    {
+      throw new IllegalArgumentException("Invalid acceptance percentage.");
+    }
   }
   
   
   
   /**
-   * set the percent of admitted students that enroll 
+   * Method that sets the percent of admitted students that enroll 
    * 
+   * @pre number must be in range
    * @param percentEntroll the percent of admitted students that enroll
    */
-  public void setPercentEnroll(double percentEnroll) 
-    
+  public void setPercentEnroll(double percentEnroll)    
   {
-    
+	  if (percentEnroll > 100 || percentEnroll < 0)
+	    {
+	      throw new IllegalArgumentException("Invalid enroll percentage");
+	    }
+	  else 
     this.percentEnroll= percentEnroll;
     
   }
 
+  
+  /**
+   * Checking to see if the object is a University object
+   * 
+   * @pre must be correct object type
+   * @param object the object compared to University type object
+   */
   @Override public boolean equals(Object object) {
 	  if(object instanceof University) {
 		  University school = (University)object;
@@ -810,6 +831,9 @@ public class University extends UniversityController
 		  return false;
   }
   
+  
+  
+  /*
   public University makeUniversity(String schoolName,String state,String location, String control, int numStudents,
                                    
                                    double percentFemale, double satVerbal,double satMath, double tuition, double percentRecFinAid,
@@ -822,9 +846,8 @@ public class University extends UniversityController
     
   {    
     
-    //contructs a university object 
-    
-    University university = new University(schoolName, state, location, control, numStudents,
+    //contructs a university object  
+     University university = new University(schoolName, state, location, control, numStudents,
                                            
                                            percentFemale,satVerbal,satMath, tuition, percentRecFinAid,
                                            
@@ -834,76 +857,7 @@ public class University extends UniversityController
                                            
                                            studyArea5);  
     
-    
-    if (percentFemale > 100 || percentFemale < 0)
-    {
-      throw new IllegalArgumentException("Invalid female percentage.");
-    }
-    else if (percentAccepted > 100 || percentAccepted < 0)
-    {
-      throw new IllegalArgumentException("Invalid acceptance percentage.");
-    }
-    else if (percentRecFinAid > 100 || percentRecFinAid < 0)
-    {
-      throw new IllegalArgumentException("Illegal financial aid percentage");
-    }
-    else if (numStudents < 0)
-    {
-      throw new IllegalArgumentException("Invalid number of students");
-    }
-    else if (satVerbal > 800 || satVerbal < 0 || satMath > 800 || satMath < 0)
-    {
-      throw new IllegalArgumentException("Invalid scores");
-    }
-    else if (tuition < 0)
-    {
-      throw new IllegalArgumentException("Invalid tuition");
-    }
-    else if (numApplicants < 0)
-    {
-      throw new IllegalArgumentException("Invalid num applicants");
-    }
-    else if (percentEnroll > 100 || percentEnroll < 0)
-    {
-      throw new IllegalArgumentException("Invalid enroll percentage");
-    }
-    else if (academicScale < 0 || academicScale > 5)
-    {
-      throw new IllegalArgumentException("Invalid academic scale");
-    }
-    else if (social < 0 || social > 5)
-    {
-      throw new IllegalArgumentException("Invalid social scale");
-    }
-    else if (qualOfLife < 0 || qualOfLife > 5)
-    {
-      throw new IllegalArgumentException("Invalid qual of life");
-    }
-    else if (control != "PRIVATE" || control != "STATE" || control != "CITY" || control != "-1")
-    {
-      throw new IllegalArgumentException("Invalid control");
-    }
-    else if (state != "ALABAMA" || state != "ALASKA" || state != "ARIZONA" || state != "ARKANSAS" ||
-             state != "CALIFORNIA" || state != "COLORADO" || state != "CONNECTICUT" || state != "DELAWARE" ||
-             state != "FLORIDA" || state != "GEORGIA" || state != "HAWAII" || state != "IDAHO" || state != "ILLINOIS" ||
-             state != "INDIANA" || state != "IOWA" || state != "KANSAS" || state != "KENTUCKY" || state != "LOUISIANA" ||
-             state != "MAINE" || state != "MARYLAND" || state != "MASSACHUSETTS" || state != "MICHIGAN" || state != "MINNESOTA" ||
-             state != "MISSISSIPPI" || state != "MISSOURI" || state != "MONTANA" || state != "NEBRASKA" || 
-             state != "NEVADA" || state != "NEW HAMPSHIRE" || state != "NEW MEXICO" || state != "NEW YORK" ||
-             state != "NORTH CAROLINA" || state != "NORTH DAKOTA" || state != "OHIO" || state != "OKLAHOMA" ||
-             state != "OREGON" || state != "PENNSYLVANIA" || state != "RHODE ISLAND" || state != "SOUTH CAROLINA" ||
-             state != "SOUTH DAKOTA" || state != "TENNESSEE" || state != "TEXAS" || state != "UTAH" ||
-             state != "VERMONT" || state != "VIRGINIA" || state != "WASHINGTON" || state != "WEST VIRGINIA" ||
-             state != "WISCONSIN" || state != "WYOMING" || state != "FOREIGN" || state != "-1")
-    {
-      throw new IllegalArgumentException("Invalid state");
-    }
-    else if (location != "SUBURBAN" || location != "URBAN" || location != "SMALL-CITY"|| location != "-1")
-    {
-      throw new IllegalArgumentException("Invalid location");
-    }
-   
     return university; 
   }
-  
+  */
 }

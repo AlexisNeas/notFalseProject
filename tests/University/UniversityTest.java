@@ -1,5 +1,5 @@
 package University; 
-import University.*;
+//import University.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -8,12 +8,13 @@ import static org.junit.Assert.*;
 public class UniversityTest
 {
   
-  University university;
+  University university, univ;
   
   @Before
   public void init()
   {
-    university = new University();
+	univ = new University(null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null, null, null);
+    university = new University(null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null, null, null);
   }
   
   @Test
@@ -22,35 +23,35 @@ public class UniversityTest
     university.setSchoolName("SJU");
     String expected = "SJU";
     String result = university.getSchoolName();
-    Assert.assertTrue("The school name is not SJU", university.getSchoolName().equals("SJU"));    
+    Assert.assertEquals("The school name is not SJU", expected, result);    
   }
   
   @Test
-  public void setLocationTest()
+  public void setValidLocationTest()
   {
-    university.setLocation("Collegeville");
-    String expected = "Collegeville";
+    university.setLocation("URBAN");
+    String expected = "URBAN";
     String result = university.getLocation();
-    Assert.assertTrue("The location was set correctly", university.getLocation().equals("Collegeville"));
+    Assert.assertEquals("The location was set correctly", expected, result);
   }
   
   @Test
-  public void setStateTest()
+  public void setValidStateTest()
   {
-    university.setState("MN");
-    String expected = "MN";
+    university.setState("MINNESOTA");
+    String expected = "MINNESOTA";
     String result = university.getState();
-    Assert.assertTrue("State set correctly", university.getState().equals("MN"));
+    Assert.assertEquals("State set correctly", expected, result);
     
   }
   
   @Test
-  public void setControlTest()
+  public void setValidControlTest()
   {
     university.setControl("STATE");
     String expected = "STATE";
     String result = university.getControl();
-    Assert.assertTrue("Control set correctly", university.getControl().equals("STATE"));
+    Assert.assertEquals("Control set correctly", expected, result);
     
   }
   
@@ -60,7 +61,7 @@ public class UniversityTest
     university.setStudyArea1("A");
     String expected = "A";
     String result = university.getStudyArea1();
-    Assert.assertTrue("Study area set correctly", university.getStudyArea1().equals("A"));
+    Assert.assertEquals("Study area set correctly", expected, result);
   }
   
   @Test
@@ -69,7 +70,7 @@ public class UniversityTest
     university.setStudyArea2("B");
     String expected = "B";
     String result = university.getStudyArea2();
-    Assert.assertTrue("Study area set correctly", university.getStudyArea2().equals("B"));   
+    Assert.assertEquals("Study area set correctly", expected, result);   
   }
   
   @Test
@@ -78,7 +79,7 @@ public class UniversityTest
     university.setStudyArea3("C");
     String expected = "C";
     String result = university.getStudyArea3();
-    Assert.assertTrue("Study area set correctly", university.getStudyArea3().equals("C"));
+    Assert.assertEquals("Study area set correctly", expected, result);
   }
   
   @Test
@@ -87,7 +88,7 @@ public class UniversityTest
     university.setStudyArea4("D");
     String expected = "D";
     String result = university.getStudyArea4();
-    Assert.assertTrue("Study area set correctly", university.getStudyArea4().equals("D"));
+    Assert.assertEquals("Study area set correctly", expected, result);
   }
   
   
@@ -97,7 +98,7 @@ public class UniversityTest
     university.setStudyArea5("E");
     String expected = "E";
     String result = university.getStudyArea5();
-    Assert.assertTrue("Study area set correctly", university.getStudyArea5().equals("E"));
+    Assert.assertEquals("Study area set correctly", expected, result);
   }
   @Test
   public void setSocialTest()
@@ -105,7 +106,7 @@ public class UniversityTest
     university.setSocial(3);
     int expected = 3;
     int result = university.getSocial();
-    Assert.assertTrue("The social scale was set correctly", university.getSocial()==3);       
+    Assert.assertEquals("The social scale was set correctly",expected, expected, result);       
   }
   
   @Test
@@ -114,7 +115,7 @@ public class UniversityTest
     university.setNumApplicants(400);
     int expected = 400;
     int result = university.getNumApplicants();
-    Assert.assertTrue("Number of applicants is set correctly", university.getNumApplicants()==400);      
+    assertEquals("Number of applicants is set correctly", expected, expected, result );      
   }
   
   @Test
@@ -123,7 +124,7 @@ public class UniversityTest
     university.setNumStudents(2000);
     int expected = 2000;
     int result = university.getNumStudents();
-    Assert.assertTrue("Number of students is set correctly", university.getNumStudents()==2000);
+    Assert.assertEquals("Number of students is set correctly", expected, expected, result);
   }
   
   @Test
@@ -132,7 +133,7 @@ public class UniversityTest
     university.setQualOfLife(5);
     int expected = 5;
     int result = university.getQualOfLife();
-    Assert.assertTrue("Correct quality of life amount", university.getQualOfLife()==5);
+    Assert.assertEquals("Correct quality of life amount", expected, expected, result);
   }
   
   @Test
@@ -141,7 +142,7 @@ public class UniversityTest
     university.setPercentEnroll(60);
     double expected = 60;
     double result = university.getPercentEnroll();
-    Assert.assertTrue("Correct percent enroll", university.getPercentEnroll() == 60);
+    Assert.assertEquals("Correct percent enroll", expected, expected, result);
   }
   
   @Test
@@ -150,7 +151,7 @@ public class UniversityTest
     university.setPercentAccepted(50);
     double expected = 50;
     double result = university.getPercentAccepted();
-    Assert.assertTrue("Correct percent accepted", university.getPercentAccepted()== 50);
+    Assert.assertEquals("Correct percent accepted", expected, expected, result);
   }
   
   @Test
@@ -158,31 +159,35 @@ public class UniversityTest
   {
     university.setPercentRecFinAid(50);
     double expected = 50;
-    Assert.assertTrue("Correct percent rec. fin. aid", university.getPercentRecFinAid()== 50);
+    double result = university.getPercentRecFinAid();
+    Assert.assertEquals("Correct percent rec. fin. aid", expected, expected, result);
   }
   
   @Test
   public void setTuitionTest()
   {
     university.setTuition(50000);
-    int expected = 50000;
-    Assert.assertTrue("Correct tuition amount",  university.getTuition()== 50000);
+    double expected = 50000;
+    double result = university.getTuition();
+    Assert.assertEquals("Correct tuition amount",  expected, expected, result);
   }
   
   @Test
   public void setSatMathTest()
   {
     university.setSatMath(50);
-    int expected = 50;
-    Assert.assertTrue("Correct satMath score", university.getSatMath()== 50);
+    double expected = 50;
+    double result = university.getSatMath();
+    Assert.assertEquals("Correct satMath score", expected, expected, result);
   }
   
   @Test
   public void setSatVerbalTest()
   {
     university.setSatVerbal(50);
-    int expected = 50;
-    Assert.assertTrue("Correct satMath score", university.getSatVerbal()== 50);
+    double expected = 50;
+    double result = university.getSatMath();
+    Assert.assertEquals("Correct satMath score", expected, expected, result);
   }
   
   @Test
@@ -191,7 +196,7 @@ public class UniversityTest
     university.setAcademicScale(5);
     int expected = 5;
     int result = university.getAcademicScale();
-    Assert.assertTrue("Academic scale set correctly", university.getAcademicScale()== 5);
+    Assert.assertEquals("Academic scale set correctly", expected, expected, result);
   }
   
   @Test
@@ -199,7 +204,101 @@ public class UniversityTest
   {
     university.setPercentFemale(0);
     double expected = 0;
-    Assert.assertTrue("Correct percent female", university.getPercentFemale()== 0);
+    double result = university.getPercentFemale();
+    Assert.assertEquals("Correct percent female", expected, expected, result);
   }
   
-}
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidStateTest()
+  {
+	  univ.setState("MN");
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidLocationTest()
+  {
+	  univ.setLocation("Collegeville");
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidControlTest()
+  {
+	  univ.setControl("state");
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidSocialTest()
+  {
+	  univ.setSocial(10);
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidNumApplicantsTest()
+  {
+	  univ.setNumApplicants(-1);
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidNumStudentsTest()
+  {
+	  univ.setNumStudents(-1);
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidAcademicScaleTest()
+  {
+	  univ.setAcademicScale(99);
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidQualOfLifeTest()
+  {
+	  univ.setQualOfLife(100);
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidPercentFemaleTest()
+  {
+	  univ.setPercentFemale(105);
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidSatMathTest()
+  {
+	  univ.setSatMath(801);
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidSatVerbalTest()
+  {
+	  univ.setSatVerbal(801);
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidTuitionTest()
+  {
+	  univ.setTuition(-1);
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidPercentRecFinAid()
+  {
+	  univ.setPercentRecFinAid(101);
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidPercentAccptedTest()
+  {
+	  univ.setPercentAccepted(101);
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void setInvalidPercentEnrolledTest()
+  {
+	  univ.setPercentEnroll(101);
+  }
+  
+  }
+  
+  
+  
