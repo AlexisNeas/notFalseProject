@@ -202,14 +202,17 @@ public class DBController
    * @return An account with the user's information.
    * @throws IllegalArgumentException if user does not exist in the database
    */
-  public void setUserInfo(String firstName, String lastName, String username, String password, char type, char status) throws IllegalArgumentException
+  public int setUserInfo(String firstName, String lastName, String username, String password, char type, char status) throws IllegalArgumentException
   {
       int edit = univDBlib.user_editUser(username , firstName, lastName, 
                               password, type, status);
       if(edit <= 0) {
     	  throw new IllegalArgumentException();
       }
+      else
+    	  return edit;
   }
+  
   /**
    * Gets an individual schools information.
    * @param schoolName the school name.
@@ -833,7 +836,9 @@ public class DBController
     if(!emphases5.equals("!"))
      total++;
 
-
+    if(total==0) {
+		  throw new Exception("Must Enter Search Criteria");
+	  }
 	
 		  
 	  for(int i = 0; i <array.length; i++) 
@@ -1032,9 +1037,9 @@ public class DBController
 		 
 	  }
 	  
-	  if(result.isEmpty()) {
+	  /*if(result.isEmpty()) {
 		  throw new Exception("No Search results");
-	  }
+	  }*/
 	  
 	  
 	  

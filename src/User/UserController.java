@@ -21,6 +21,15 @@ public class UserController {
  private AccountController accountController;
  
  /**
+  * The error that occurred
+  */
+ private int error;
+ 
+ /**
+  * Changes made to user profile
+  */
+ private int changes;
+ /**
   * User Controller constructor
   */
  public UserController()
@@ -98,7 +107,7 @@ public class UserController {
 		          emphases4, emphases5);
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
-		e.printStackTrace();
+		error = 1;
 	}
 	return null;
      
@@ -139,17 +148,7 @@ public class UserController {
    */
   public int addSchool(String user, String school)
   {
-	  try {
-		  
    return dbController.userSaveSchool(user, school); 
-	  }
-	  
-	  catch(IllegalArgumentException e)
-	  {
-		  System.out.println("Error: Invalid user or school.");
-	  }
-	return 0;
-	  
   }
   
   /**
@@ -189,7 +188,17 @@ public class UserController {
    */
   public void editProfile(String firstName, String lastName, String username, String password, char type, char status)
   {
-   dbController.setUserInfo(  firstName, lastName, username,  password,  type,  status);
+	  changes = 0;
+	  try {
+		  changes = dbController.setUserInfo(  firstName, lastName, username,  password,  type,  status);  
+		  System.out.println("Your changes have been saved.");
+	  }
+	  
+	  catch(IllegalArgumentException e)
+	  {
+		this.error = 2;  
+	  }
+	  
   }
   
   /**
@@ -205,6 +214,16 @@ public class UserController {
     return dbController.getUserInfo(username);
   }
   
+  public int getError()
+  {
+	return this.error;  
+  }
+  
+  public int getChanges()
+  {
+	return this.changes;  
+  }
+
 }
 
   

@@ -13,13 +13,14 @@ import DatabaseController.DBController;
 public class UserControllerTest {
 	private UserController uct;
 	private DBController db;
-	
+	//private User user = new User("Alexis", "Neas","aneas", "password", 'u', 'Y');
 	
 	@Before
 	public void setUp() throws Exception {
 		uct = new UserController();
 		db = new DBController("notfal","csci230");
-		// ****** should there be one school always added and one always removed
+		db.setUserInfo("John", "User", "juser", "user", 'u','Y');
+		
 	}
 
 	/*@Test
@@ -27,10 +28,33 @@ public class UserControllerTest {
 		fail("Not yet implemented");
 	}*/
 
-//	@Test
-//	public void testSearchSchool() {
-
-//	}
+	@Test
+	public void testSearchSchoolEmptySearch() throws Exception{
+	uct.searchSchool( "!",  "!",  "!",  "!",
+	          -1,  -1,  -1,  -1, -1,  -1, -1,  -1,
+	          -1,  -1,-1,  -1,-1,  -1, -1,  -1, -1, 
+	          -1, -1,  -1, -1,  -1,-1,  -1,"!", "!", 
+	          "!", "!", "!");
+	int error = uct.getError();
+	int expected = 1;
+	assertTrue("Cannot search with empty search criteria.", expected == error);
+	}	
+	
+	@Test
+	public void testSearchSchoolValid() throws Exception{
+	ArrayList<University> universities= uct.searchSchool( "!",  "MINNESOTA",  "!",  "!",
+	          -1,  -1,  -1,  -1, -1,  -1, -1,  -1,
+	          -1,  -1,-1,  -1,-1,  -1, -1,  -1, -1, 
+	          -1, -1,  -1, -1,  -1,-1,  -1,"!", "!", 
+	          "!", "!", "!");
+	ArrayList<University> expected = db.searchTwo( "!",  "MINNESOTA",  "!",  "!",
+	          -1,  -1,  -1,  -1, -1,  -1, -1,  -1,
+	          -1,  -1,-1,  -1,-1,  -1, -1,  -1, -1, 
+	          -1, -1,  -1, -1,  -1,-1,  -1,"!", "!", 
+	          "!", "!", "!");
+	assertTrue("Search should not be empty", !universities.isEmpty());
+	assertTrue("Cannot search with empty search criteria.", universities.equals(expected));
+	}
 
 	@Test
 	public void testRemoveSchoolInvalidSchool() {
@@ -69,15 +93,9 @@ public class UserControllerTest {
 		String expected = "UNIVERSITY OF MINNESOTA";
 		assertTrue("The school is invalid and shouldn't have information", u.getSchoolName().equals(expected));	
 	}
-
-/*	@Test
-	public void testAddSchoolInvalidSchool() {
-		fail("Not yet implemented");
-	}*/
 //
 /*	@Test
-	public void testFindSimilarSchoolsValid() {
-		
+	public void testFindSimilarSchoolsValid() {	
 		ArrayList<University> u = uct.findSimilarSchools("UNIVERSITY OF MINNESOTA");
 		assertTrue("There shouldn't be similar schools for an invalid school", u.length == 5);
 	}*/
@@ -91,19 +109,18 @@ public class UserControllerTest {
 	
 	@Test(expected = Exception.class)
 	public void testGetSavedUniversitiesInvalidUser() throws Exception {
-		uct.getSavedUniversities("Linda");
+		uct.getSavedUniversities("INVALIDUSER");
 	}
 	
-	@Test
+	/*@Test
 	public void testDisplayResults() {
 		fail("Not yet implemented");
-	}
+	}*/
 	
-	@Test(expected = Exception.class)
+	@Test
 	public void testGetSavedUniversitiesValid() throws Exception {
 		ArrayList<String> u = uct.getSavedUniversities("juser");
 		ArrayList<String> expected = db.getUserSchools("juser");
-		assertTrue("No array list returned", u.size() != 0);
 		assertTrue("Not returning saved schools of user", u.equals(expected));		
 	}
 
@@ -125,9 +142,41 @@ public class UserControllerTest {
 		assertTrue("No profile for invalid user", a.getUsername().equals(expected));
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testAddSchoolInvalidUser() {
-		
+		int addSchool = uct.addSchool("false", "UNIVERSITY OF MINNESOTA");
+		int expected = -1;
+		assertTrue("User is invalid and school should not be added", addSchool == expected);
+	}
+	
+	@Test
+	public void testAddSchoolInvalidSchool() {
+		uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
+		int addSchool = uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
+		int expected = -1;
+		assertTrue("School is already saved and school should not be added", addSchool == expected);
+	}	
+	
+	@Test
+	public void testAddSchoolValid() {
+		int addSchool = uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
+		int expected = -1;
+		assertTrue("School is already saved and school should not be added", addSchool == expected);
+	}
+	
+	@Test//(expected = IllegalArgumentException.class)
+	public void testEditProfileInvalidUsername() {		
+		uct.editProfile("John", "User","wrongUsername", "password", 'u', 'Y');
+		assertTrue("Error should occur", uct.getError() == 2);
+	}
+	
+	@Test
+	public void testEditProfileChangeName() {
+		//user = new User("Alexis", "Lynn","ju", "pass", 'u', 'Y');
+		//db.addNewUser(user);
+		uct.editProfile("Betty", "Neas","juser", "password", 'u', 'Y');
+		int expected = 1;
+		assertTrue("Three changes should have occured", uct.getChanges() == expected);
 	}
 }
 

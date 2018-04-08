@@ -203,8 +203,7 @@ public class UserInteraction {
   public void editProfile(String firstName, String lastName, String username, String password, char type, char status)
   {
     userController.editProfile(firstName,  lastName,   username,  password,  type,  status);
-    System.out.println("Changes have been saved");
-    
+    //System.out.println("CHANGES SAVED");
   }
   /**
    * Allows the user to view their profile
