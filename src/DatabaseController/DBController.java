@@ -130,15 +130,11 @@ public class DBController
  String lastName = user.getLastName();
  String password = user.getPassword();
  char type = user.getAccountType();
-    boolean bool = findUser(username);
-    if(!bool)
-    {
-      univDBlib.user_addUser(firstName,lastName, username, 
+     int i =  univDBlib.user_addUser(firstName,lastName, username, 
                              password, type);
-    }
-    else {
+ if(i <= 0)
     	throw new IllegalArgumentException();
-    }
+
   }
   
   /**
@@ -238,7 +234,7 @@ public class DBController
         for(int j = 0; j<array[i].length;j++)
         {
          ArrayList<String> emphasesArrayList = getUniversityEmphases(array[i][0]);
-            if(emphasesArrayList.size() == 5)
+            if(emphasesArrayList.size() >=5)
             {
              emp1 = emphasesArrayList.get(0);
              emp2 = emphasesArrayList.get(1);
@@ -320,35 +316,18 @@ public class DBController
    * Saves a school to a users profile.
    * @param username the username
    * @param the school name to save
-   * @return an integer representing the status
+ * @return 
+   * @throws Exception 
    */
-  public int userSaveSchool(String username,String schoolName)
+  public int userSaveSchool(String username,String schoolName) throws Exception
   {
-    return univDBlib.user_saveSchool(username, schoolName);
+    int i = univDBlib.user_saveSchool(username, schoolName);
+    if(i <= 0)
+    	throw new Exception();
+    return i;
   }
   
-  
-  /**
-   * Finds a user in the database
-   * @param username the username
-   * @return boolean true if found
-   * 
-   */
-  public boolean findUser(String username)
-  {
-    String[][] array = univDBlib.user_getUsers();
-    boolean bool = false;
-    int len = array.length;
-    for(int i = 0; i<len ;i++)
-    {
-      if(array[i][2].equals(username))
-      {
-        bool = true;
-        break;
-      }
-    }
-    return bool;
-  }
+ 
   /**
    * Removes a school from the database
    * @param schoolName the name of the school to remove.
@@ -1099,7 +1078,7 @@ public class DBController
     try{
       DBController databasecontroller = new DBController("notfal", "csci230");
       //University u = databasecontroller.getSchoolInfo("UNIVERSITY OF MINNESOTA");
-      String[][] info = databasecontroller.univDBlib.user_getUsers();
+      String[][] info = databasecontroller.univDBlib.university_getNamesWithEmphases();
       ArrayList<String> emphases = new ArrayList<String>();
       ArrayList<String> emp = databasecontroller.getEmphases();
       for(int i = 0; i < info.length; i++)

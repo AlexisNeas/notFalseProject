@@ -89,8 +89,9 @@ public class UserInteraction {
    * 
    * @param school school to be added to user's list
    * @param username the username that the school should be saved to
+ * @throws Exception 
    */
-  public void addSchool(String school, String username)
+  public void addSchool(String school, String username) throws Exception
   {
    int response = userController.addSchool(username, school); 
    

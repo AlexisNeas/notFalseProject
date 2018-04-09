@@ -144,14 +144,14 @@ public class UserControllerTest {
 	}
 	
 	@Test
-	public void testAddSchoolInvalidUser() {
+	public void testAddSchoolInvalidUser() throws Exception {
 		int addSchool = uct.addSchool("false", "UNIVERSITY OF MINNESOTA");
 		int expected = -1;
 		assertTrue("User is invalid and school should not be added", addSchool == expected);
 	}
 	
 	@Test
-	public void testAddSchoolInvalidSchool() {
+	public void testAddSchoolInvalidSchool() throws Exception {
 		uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
 		int addSchool = uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
 		int expected = -1;
@@ -159,7 +159,7 @@ public class UserControllerTest {
 	}	
 	
 	@Test
-	public void testAddSchoolValid() {
+	public void testAddSchoolValid() throws Exception {
 		int addSchool = uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
 		int expected = -1;
 		assertTrue("School is already saved and school should not be added", addSchool == expected);

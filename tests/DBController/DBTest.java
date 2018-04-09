@@ -85,6 +85,7 @@ public class DBTest
         String result = univ.getSchoolName();
         String expected = "UOJ";
         Assert.assertTrue("The university was added: " + expected, result.equals("UOJ"));
+        
    }
 
 
@@ -124,7 +125,7 @@ public class DBTest
   @Test
   public void searchTwoTest()
   {
-
+	  
    
 
 	  
@@ -244,6 +245,20 @@ public class DBTest
               -1,-1,//Social
               -1,-1,//Academics
               "!", "!","!", "!","!");
+	  dc.searchTwo("WORCESTER", "!","!" ,"!",//SchoolName, State, location,Control
+              -1,-1,//NumStudents
+              -1,-1,//%Female
+              -1,-1,//SATVerbal
+              -1,-1,//SATMath
+              -1,-1,//Tuition
+              -1,-1,	//percentRecFinAid
+              -1,-1,		//numApps
+              -1,-1,		//percentAccepted
+              -1,-1,//PercentEnrolled
+              -1,-1,//AcademicsScale
+              -1,-1,//Social
+              -1,-1,//Academics
+              "ENGINEERING", "!","!", "!","!");
 	  expected = result.get(0).getSchoolName();
 	  Assert.assertTrue("Search did not return desired result: " + expected, result.get(0).getSchoolName().equals(expected));
 	  
@@ -295,11 +310,7 @@ public class DBTest
    //System.out.println(list.get(0));
    String result = list.get(0);
    String expected = "UNIVERSITY OF MINNESOTA";
-   Assert.assertTrue("Saved schools did not return desired result: " + expected, result.equals(expected));
-  
-     
-     
-     
+   Assert.assertTrue("Saved schools did not return desired result: " + expected, result.equals(expected));   
   }
  
   
@@ -443,6 +454,8 @@ public class DBTest
 	  expected = u.getSchoolName();
 	  Assert.assertTrue("List of users not correct:" + expected, result.equals(expected));
 	  u = dc.getSchoolInfo("asdfa");
+	  u = dc.getSchoolInfo("WILLIAM PATERSON COLLEGE");
+	  u = dc.getSchoolInfo("CASE WESTERN");
 	  
   	}
   
