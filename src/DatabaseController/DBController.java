@@ -37,7 +37,7 @@ public class DBController
    * @return An array list of emphases for a university.
    * 
    */
-  public ArrayList<String> universityEmphases(String schoolName)
+  public ArrayList<String> getUniversityEmphases(String schoolName)
   {
     String[][] arrayEmphases = univDBlib.university_getNamesWithEmphases();
     ArrayList<String> arrayList = new ArrayList<String>();
@@ -49,6 +49,15 @@ public class DBController
       }
     }
       return arrayList;
+  }
+  
+  public void removeUnivEmp(String schoolName, String emphasis) throws Exception
+  {
+	  
+	  int i = univDBlib.university_removeUniversityEmphasis(schoolName, emphasis);
+	  
+	  if(i <= 0)
+		  throw new Exception();
   }
   
   /**
@@ -163,13 +172,16 @@ public class DBController
   public void addNewEmphases(String schoolName, String emphases) throws Exception
   {
 	  ArrayList<String> schools = this.getListOfSchools();
+	  boolean found = false;
+	  int i = -1;
 	  if(schools.contains(schoolName))
 	  {
-		  univDBlib.university_addUniversityEmphasis(schoolName, emphases);
+		  found = true;
+		  i = univDBlib.university_addUniversityEmphasis(schoolName, emphases);
 	  }
-	  else
+	  else if(i <= 0 || found == false)
 	  {
-		  throw new Exception("SCHOOL DOES NO EXIST.");
+		  throw new Exception("SCHOOL DOES NOT EXIST.");
 	  }
 	  
   }
@@ -229,7 +241,7 @@ public class DBController
       {
         for(int j = 0; j<array[i].length;j++)
         {
-         ArrayList<String> emphasesArrayList = universityEmphases(array[i][0]);
+         ArrayList<String> emphasesArrayList = getUniversityEmphases(array[i][0]);
             if(emphasesArrayList.size() == 5)
             {
              emp1 = emphasesArrayList.get(0);
@@ -1112,20 +1124,29 @@ public class DBController
   {
     try{
       DBController databasecontroller = new DBController("notfal", "csci230");
-      University u = databasecontroller.getSchoolInfo("UNIVERSITY OF MINNESOTA");
-      String[][] info = databasecontroller.univDBlib.university_getNamesWithEmphases();
+      //University u = databasecontroller.getSchoolInfo("UNIVERSITY OF MINNESOTA");
+      String[][] info = databasecontroller.univDBlib.user_getUsers();
       ArrayList<String> emphases = new ArrayList<String>();
-      for(int i = 0; i < info.length; i ++)
-      {
-    	  if(!emphases.contains(info[i][1]))
-    		  emphases.add(info[i][1]);
-   
+      ArrayList<String> emp = databasecontroller.getEmphases();
+      for(int i = 0; i < info.length; i++)
+      {for(int j = 0; j<info[i].length;j++)
+    	  System.out.println(info[i][j]);
       }
-      for(int j = 0; j < emphases.size();j++)
-      {
-    	  System.out.println(emphases.get(j));
-    	  
-      }
+      
+      
+      
+      
+      /*University u = databasecontroller.getSchoolInfo("WILLIAM PATERSON COLLEGE");
+    		  
+    		  System.out.println("\tName: " + u.getSchoolName()+"\n\tState: " +
+		                u.getState()+"\n\tLocation: " + u.getLocation()+"\n\tControl: " + u.getControl()+ "\n\tNumber of Students: " +
+		                u.getNumStudents()+ "\n\t% Female: "+ u.getPercentFemale() + "\n\tSAT Verbal: " + u.getSatVerbal() + 
+		                "\n\tSAT Math: " + u.getSatMath()+ "\n\tTuition: " + u.getTuition()+ "\n\t% Receiving Financial Aid: " + 
+		                u.getPercentRecFinAid()+"\n\tNumber of Applications: " + u.getNumApplicants()+ "\n\t% Accepted: " + 
+		                u.getPercentAccepted()+ "\n\t% Enrolled: " + u.getPercentEnroll()  + "\n\tAcademic Scale: " +
+		                u.getAcademicScale() +"\n\tSocial Rating: "+ u.getSocial()+ "\n\tQuality of Life: " + u.getQualOfLife() +
+		                "\n\tStudy Area 1: " + u.getStudyArea1()+"\n\tStudy Area 2: " + u.getStudyArea2()+"\n\tStudy Area 3: " + 
+		                u.getStudyArea3()+"\n\tStudy Area 4: "  + u.getStudyArea4()+"\n\tStudy Area 5: " + u.getStudyArea5());*/
       
       //databasecontroller.getUnivDBlib().university_deleteUniversity("Temp School");
       //databasecontroller.getUnivDBlib().user_deleteUser("trevor");
