@@ -4,17 +4,27 @@ import static org.junit.Assert.*;
 import User.Account;
 import org.junit.Before;
 import org.junit.Test;
-
+/**
+ * Test methods for the logOn method in the account controller
+ * @author jhansen001
+ * date: 4/8/2018
+ */
 public class AccountControllerTest {
   
 	AccountController aController;
 	
-	
+	/**
+	 * Initializes the account controller object to be used in the tests
+	 * @throws Exception
+	 */
     @Before
 	public void setUp() throws Exception {
 	    aController = new AccountController();
 	  }
 	  
+    /**
+     * Tests the log on method for a valid user
+     */
 	@Test
 	public void testLogOnForValidUser() {
 		String userName = "juser";
@@ -25,6 +35,9 @@ public class AccountControllerTest {
 	    assertTrue("Account is logged in.",expResult.equals(result));
 	}
 	
+	/**
+	 * Tests the log on method for an invalid username
+	 */
 	@Test
 	public void testLogOnForInvalidUsername() {
 		String userName = "Jess";
@@ -34,6 +47,9 @@ public class AccountControllerTest {
 	    assertFalse("Username provided is invalid.",expResult.equals(result));
 	}
 	
+	/**
+	 * Tests the log on method for an invalid password
+	 */
 	@Test
 	public void testLogOnForInvalidPassword() {
 		String userName = "juser";
@@ -41,9 +57,12 @@ public class AccountControllerTest {
 		Account expResult = new User("Alexis", "Neas", "juser", "user", 'u', 'Y'); 
 		Account result = aController.logOn(userName,password);
 	    
-		assertTrue("Password provided is invalid.",expResult.equals(result));
+		assertFalse("Password provided is invalid.",expResult.equals(result));
 	}
 	
+	/**
+	 * Tests the log on method for a deactivated account
+	 */
 	@Test
 	public void testLogOnForDeactivatedAccount() {
 		String userName = "trevor";
@@ -54,6 +73,9 @@ public class AccountControllerTest {
 		assertFalse("Account is deactivated.",expResult.equals(result));
 	}
 	
+	/**
+	 * Tests log off method for a valid user
+	 */
 	@Test
 	public void testLogOffForValidUser() {
 		Account user = new User("Alexis", "Neas", "juser", "user", 'u', 'Y'); 
@@ -65,7 +87,9 @@ public class AccountControllerTest {
 	}
 	
 
-	
+	/**
+	 * Tests the log off method for a valid admin account
+	 */
 	@Test
 	public void testLogOffForValidAdmin() {
 		String userName = "nadmin";
@@ -77,6 +101,9 @@ public class AccountControllerTest {
 	    assertEquals("Account logged on for: " + userName,expResult, result);
 	}
 	
+	/**
+	 * Test log on method for a valid admin account
+	 */
 	@Test
 	public void testLogOnForValidAdmin() {
 		String userName = "nadmin";
