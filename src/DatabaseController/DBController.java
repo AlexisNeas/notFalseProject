@@ -23,12 +23,6 @@ public class DBController
     univDBlib = new UniversityDBLibrary(username,password);
   }
   
-  // Gets the Database.
-  //@return the database.
-  public UniversityDBLibrary getUnivDBlib(){
-    return univDBlib;
-  }
-  
   /**
    * Gets an ArrayList of all the emphases for a university.
    * 
@@ -63,6 +57,7 @@ public class DBController
   /**
    * Gets all emphases in the Database.
    * 
+   * @return an array list containing all possible emphases in the database
    */
   public ArrayList<String> getEmphases()
   {
@@ -78,7 +73,7 @@ public class DBController
 	  
   }
   /**
-   * Gets a specifed user from the database.
+   * Gets a specified user from the database.
    * 
    * @param username the username of the desired user.
    * @throws NullPointerException
@@ -125,8 +120,6 @@ public class DBController
    * @param firstName the users first name.
    * @param lastName the users last name.
    * @param type the type of user.
- * @throws Exception 
-   * 
    * @throws IllegalArgumentException the username is already taken
    */
   public void addNewUser(Account user) throws IllegalArgumentException
@@ -168,6 +161,9 @@ public class DBController
   
   /**
    * Adds an emphases for a school.
+   * @param schoolName the name of the school to add emphases for
+   * @param emphases the emphases to add
+   * @throws Exception if the school does not exist
    */
   public void addNewEmphases(String schoolName, String emphases) throws Exception
   {
@@ -211,7 +207,7 @@ public class DBController
    * @param password the user's password
    * @param type type of user
    * @param status status of the user
-   * @return An account with the user's information.
+   * @return An integer saying how many records were changed
    * @throws IllegalArgumentException if user does not exist in the database
    */
   public int setUserInfo(String firstName, String lastName, String username, String password, char type, char status) throws IllegalArgumentException
@@ -324,7 +320,7 @@ public class DBController
    * Saves a school to a users profile.
    * @param username the username
    * @param the school name to save
-   * 
+   * @return an integer representing the status
    */
   public int userSaveSchool(String username,String schoolName)
   {
@@ -368,7 +364,6 @@ public class DBController
    */
   public void activateUser(String username)
   {
-		Account acc = null;
 	    String[][] array = univDBlib.user_getUsers();
 	    int len = array.length;
 	    for(int i = 0; i<len ;i++)
@@ -694,28 +689,7 @@ public class DBController
       return bool;
     }
   }
-  /**
-   * Adds a school to a user's list.
-   * @param school the school to add
-   * @param username the user's name.
-   */
-//  public boolean addSchoolToUserList(String school, String username)
-//  {  
-//    ArrayList<String> list = getUserSchools(username);
-//    boolean bool = false;
-//    for(int i = 0 ; i<list.size();i++)
-//    {
-//      if(school.equals(list.get(i)))
-//      {
-//        bool = true;
-//      }
-//    }
-//    if(bool == false)
-//    {
-//      univDBlib.user_saveSchool(username, school);
-//    }
-//    return bool;
-//  }
+
   /**
    * Gets a list of a user's schools.
    * @param username the user's name.
@@ -1178,11 +1152,19 @@ public class DBController
     
   }
   
+  /**
+   * Deletes a user from the database
+   * @param username of the user to be deleted
+   */
   public void deleteUser(String username)
   {
 	  univDBlib.user_deleteUser(username);
   }
   
+  /**
+   * Deletes a school from the database
+   * @param name
+   */
   public void deleteSchool(String name)
   {
 	  univDBlib.university_deleteUniversity(name);

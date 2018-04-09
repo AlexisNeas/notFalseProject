@@ -37,6 +37,7 @@ public class UserController {
    this.dbController = new DBController("notfal", "csci230");
    this.accountController = new AccountController();
  }
+ 
   /**
    * Takes a list of search criteria inputed by user, and returns a list of Universities
    * in an order of relevance
