@@ -594,7 +594,7 @@ public class University extends UniversityController
    */
   public void setSocial(int social)
   {
-	  if (social < 0 || social > 5)
+	  if (social < 1 || social > 5)
 	    {
 	      throw new IllegalArgumentException("Invalid social scale");
 	    }
@@ -651,7 +651,7 @@ public class University extends UniversityController
    */
   public void setAcademicScale(int academicScale)  
   {
-	  if (academicScale < 0 || academicScale > 5)
+	  if (academicScale < 1 || academicScale > 5)
 	    {
 	      throw new IllegalArgumentException("Invalid academic scale");
 	    }
@@ -670,7 +670,7 @@ public class University extends UniversityController
    */
   public void setQualOfLife(int qualOfLife)    
   {
-	  if (qualOfLife < 0 || qualOfLife > 5)
+	  if (qualOfLife < 1 || qualOfLife > 5)
 	    {
 	      throw new IllegalArgumentException("Invalid qual of life");
 	    }
@@ -690,11 +690,11 @@ public class University extends UniversityController
   public void setPercentFemale(double percentFemale) 
     
   {
-    this.percentFemale= percentFemale;
     if (percentFemale > 100 || percentFemale < 0)
     {
       throw new IllegalArgumentException("Invalid female percentage.");
     }
+    this.percentFemale= percentFemale;
   }
   
   
@@ -783,11 +783,11 @@ public class University extends UniversityController
   public void setPercentAccepted(double percentAccepted) 
     
   {
-    this.percentAccepted = percentAccepted;
     if (percentAccepted > 100 || percentAccepted < 0)
     {
       throw new IllegalArgumentException("Invalid acceptance percentage.");
     }
+    this.percentAccepted = percentAccepted;
   }
   
   
@@ -830,34 +830,4 @@ public class University extends UniversityController
 	  else
 		  return false;
   }
-  
-  
-  
-  /*
-  public University makeUniversity(String schoolName,String state,String location, String control, int numStudents,
-                                   
-                                   double percentFemale, double satVerbal,double satMath, double tuition, double percentRecFinAid,
-                                   
-                                   int numApplicants, double percentAccepted, double percentEnroll, int academicScale, int social,
-                                   
-                                   int qualOfLife, String studyArea1,String studyArea2,String studyArea3,String studyArea4, 
-                                   
-                                   String studyArea5)
-    
-  {    
-    
-    //contructs a university object  
-     University university = new University(schoolName, state, location, control, numStudents,
-                                           
-                                           percentFemale,satVerbal,satMath, tuition, percentRecFinAid,
-                                           
-                                           numApplicants, percentAccepted, percentEnroll, academicScale, social,
-                                           
-                                           qualOfLife, studyArea1, studyArea2, studyArea3, studyArea4, 
-                                           
-                                           studyArea5);  
-    
-    return university; 
-  }
-  */
 }
