@@ -9,8 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Proivdes test methods for the Admin class 
  * @author jhansen001
- *
+ * date: 4/8/2018
  */
 public class AdminTest {
 
