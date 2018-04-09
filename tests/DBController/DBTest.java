@@ -415,6 +415,10 @@ public class DBTest
   {
 	  DBController dc = new DBController("notfal", "csci230");
 	  dc.removeUnivEmp("Temp School", "asfasd");
+	  ArrayList<String> emp = dc.getUniversityEmphases("Temp School");
+	  boolean result = emp.contains("asfasd");
+	  boolean expected = false;
+	  Assert.assertTrue("List of users not correct:" + expected, result == expected);
   }
   
   @Test (expected = Exception.class)
@@ -431,9 +435,15 @@ public class DBTest
 	  DBController dc = new DBController("notfal", "csci230");
 	  University u = dc.getSchoolInfo("LEWIS AND CLARK");
 	  u = dc.getSchoolInfo("Temp School");
+	  String result = u.getSchoolName();
+	  String expected = u.getSchoolName();
+	  Assert.assertTrue("List of users not correct:" + expected, result.equals(expected));
 	  u = dc.getSchoolInfo("YALE");
+	  result = u.getSchoolName();
+	  expected = u.getSchoolName();
+	  Assert.assertTrue("List of users not correct:" + expected, result.equals(expected));
 	  u = dc.getSchoolInfo("asdfa");
-
+	  
   	}
   
   
