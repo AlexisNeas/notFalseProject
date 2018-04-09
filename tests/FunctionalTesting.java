@@ -2,6 +2,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import DBController.*;
+import University.*;
+import User.*;
 
 public class FunctionalTesting {
 
@@ -13,5 +16,57 @@ public class FunctionalTesting {
 	public void test() {
 		fail("Not yet implemented");
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
