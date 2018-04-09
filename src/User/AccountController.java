@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import DatabaseController.DBController;
 /**
  * Provides the logic for the Account Controller class 
- * author: Jess Hansen
+ * @author jhansen001
  * date: 3/20/2018
  */
 public class AccountController {

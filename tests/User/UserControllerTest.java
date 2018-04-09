@@ -61,6 +61,7 @@ public class UserControllerTest {
 		boolean removed = uct.removeSchool("Alexis", "juser");
 		boolean expected = false;
 		assertTrue("The invlid school should not have been removed.",removed == expected);
+		
 	}	
 	
 	@Test
@@ -172,11 +173,29 @@ public class UserControllerTest {
 	
 	@Test
 	public void testEditProfileChangeName() {
-		//user = new User("Alexis", "Lynn","ju", "pass", 'u', 'Y');
-		//db.addNewUser(user);
-		uct.editProfile("Betty", "Neas","juser", "password", 'u', 'Y');
+		uct.editProfile("Betty", "User","juser", "user", 'u', 'Y');
 		int expected = 1;
+		Account account = db.getUserInfo("juser");
 		assertTrue("Three changes should have occured", uct.getChanges() == expected);
+		assertTrue("FIRST NAME ISN'T CHANGED", account.getFirstName().equals("Betty"));
+	}
+	
+	@Test
+	public void testEditProfileChangeLast() {
+		uct.editProfile("John", "Neas","juser", "user", 'u', 'Y');
+		int expected = 1;
+		Account account = db.getUserInfo("juser");
+		assertTrue("Three changes should have occured", uct.getChanges() == expected);
+		assertTrue("FIRST NAME ISN'T CHANGED", account.getLastName().equals("Neas"));
+	}
+	
+	@Test
+	public void testEditProfileChangePassword() {
+	uct.editProfile("John", "User","juser", "password", 'u', 'Y');
+	int expected = 1;
+	Account account = db.getUserInfo("juser");
+	assertTrue("Three changes should have occured", uct.getChanges() == expected);
+	assertTrue("FIRST NAME ISN'T CHANGED", account.getPassword().equals("password"));
 	}
 }
 

@@ -1,12 +1,15 @@
 
 package User;
 
-
 import static org.junit.Assert.*;
 import User.Account;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * @author Zachary Vetter
+ * @version 4/8/18
+ */
 public class AccountTest {
 
  private Account acct;
@@ -160,8 +163,8 @@ public class AccountTest {
  
  @Test
  public void testEqualsNotAccount() {
-	 String noAcct = "false";
-	 boolean result = acct.equals(noAcct);
+	 String notAcct = "false";
+	 boolean result = acct.equals(notAcct);
 	 assertTrue("The accounts should be different but are equal", !result);
  }
 

@@ -47,6 +47,7 @@ public class DBTest
   @Test 
   public void setSchoolInformationTest()
   {
+
     //University univ = new University();
     DBController dc = new DBController("notfal", "csci230"); 
     University u = dc.getSchoolInfo("Temp School");
@@ -55,6 +56,7 @@ public class DBTest
     String result = u.getState();
     System.out.println(result);
     String expected = "KANSAS";
+
     Assert.assertEquals("The info was set correctly " + expected, expected, result);
   }
   
@@ -304,7 +306,7 @@ public class DBTest
   @Test
   public void findSimilarSchoolsTest()
   {
-   University univ = new University();
+   University univ = new University(null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null, null, null);
    
    ArrayList<University> list;
    DBController dc = new DBController("notfal", "csci230");

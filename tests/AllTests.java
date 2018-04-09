@@ -9,7 +9,7 @@ import User.*;
 
 @RunWith(Suite.class)
 @SuiteClasses({ DBTest.class, UniversityControllerTest.class, UniversityTest.class, AccountControllerTest.class, AccountTest.class,
-	AdminControllerTest.class, AdminTest.class, UserControllerTest.class })
+	AdminControllerTest.class, AdminTest.class, UserControllerTest.class, UserTest.class })
 public class AllTests {
 
 }

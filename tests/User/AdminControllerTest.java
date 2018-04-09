@@ -11,6 +11,10 @@ import org.junit.After;
 import University.University;
 import DatabaseController.DBController;
 
+/**
+ * @author Zachary Vetter
+ * @version 4/8/18
+ */
 public class AdminControllerTest {
 	
 	private AdminController adminController;
