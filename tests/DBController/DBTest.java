@@ -446,15 +446,17 @@ public class DBTest
   }
   
   @Test (expected = Exception.class)
-  public void addUnivEmpInvalidNameTest()throws Exception
+  public void addUnivEmpInvalidNameTest() throws Exception
   {
 	  DBController dc = new DBController("notfal", "csci230");
+
 	  dc.addNewEmphases("invalid school name", "BUSINESS-ADMINISTRATION");
+
 	  
   }
   
   @Test 
-  public void removeUnivEmpTest()throws Exception
+  public void removeUnivEmpTest() throws Exception
   {
 	  DBController dc = new DBController("notfal", "csci230");
 	  dc.removeUnivEmp("Temp School", "asfasd");
@@ -465,7 +467,7 @@ public class DBTest
   }
   
   @Test (expected = Exception.class)
-  public void removeUnivEmpInvalidEmpTest()throws Exception
+  public void removeUnivEmpInvalidEmpTest() throws Exception
   {
 	  DBController dc = new DBController("notfal", "csci230");
 	  dc.removeUnivEmp("invalid name", "BUSINESS-ADMINISTRATION");

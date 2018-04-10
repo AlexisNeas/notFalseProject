@@ -93,7 +93,7 @@ public class FunctionalTesting {
 		ArrayList<University> results = userController.searchSchool("!", "!", "!", "!",
 				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 				-1, -1, -1, -1, -1, -1, "!", "!", "!", "!", "!");
-		assertTrue("The results should be 0", results.size() == 0);
+		assertTrue("The results should be 0", results.isEmpty());
 	}
 	
 	@Test
@@ -118,7 +118,7 @@ public class FunctionalTesting {
 	}
 	
 	@Test
-	public void testViewSavedSchoolsNoSchoolU16Alt1() {
+	public void testViewSavedSchoolsNoSchoolU16Alt1() throws Exception {
 		adminInteractions.addNewUser("ZVets", "New", "TESTING", "password", 'a');
 		ArrayList<String> savedSchools = userController.getSavedUniversities("TESTING");
 		assertTrue("The size of the list should be 0", savedSchools.size() == 0);

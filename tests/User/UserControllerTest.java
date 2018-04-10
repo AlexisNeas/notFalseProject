@@ -143,14 +143,14 @@ public class UserControllerTest {
 		assertTrue("No profile for invalid user", a.getUsername().equals(expected));
 	}
 	
-	@Test(expected = Exception.class)
+	@Test
 	public void testAddSchoolInvalidUser() throws Exception {
 		int addSchool = uct.addSchool("false", "UNIVERSITY OF MINNESOTA");
 		int expected = -1;
 		assertTrue("User is invalid and school should not be added", addSchool == expected);
 	}
 	
-	@Test(expected = Exception.class)
+	@Test
 	public void testAddSchoolInvalidSchool() throws Exception {
 		uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
 		int addSchool = uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
@@ -159,7 +159,7 @@ public class UserControllerTest {
 	}	
 	
 	@Test
-	public void testAddSchoolValid() throws Exception {
+	public void testAddSchoolValid(){
 		DBController dc = new DBController("notfal", "csci230");
 		dc.removeSchool("UNIVERSITY OF MINNESOTA", "juser");
 		int addSchool = uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
