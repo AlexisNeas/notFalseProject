@@ -26,12 +26,10 @@ public class FunctionalTesting {
 		 adminController = new AdminController();
 		 dbController = new DBController("notfal", "csci230");
 		 userController = new UserController();
+		 
 	}
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+
 	
 	
 	
@@ -71,8 +69,9 @@ public class FunctionalTesting {
 				"STATE", 5, 1.0, 1, 1, 1.0, 1.0, 1, 1.0, 1.0, 1, 1, 1, "",
 				"", "", "", "");
 		schoolList = adminController.viewUniversities();
-		assertTrue("The school was not added", schoolList.contains("Vetters School"));
 		dbController.deleteSchool("Vetters School");
+		assertTrue("The school was not added", schoolList.contains("Vetters School"));
+		
 	}
 	
 	@Test
@@ -84,8 +83,9 @@ public class FunctionalTesting {
 		ArrayList<University> results = userController.searchSchool("!", "NORTH DAKOTA", "!", "!",
 				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 				-1, -1, -1, -1, -1, -1, "!", "!", "!", "!", "!");
-		assertTrue("The school did not show up in the result list", results.contains(expected));
 		dbController.deleteSchool("Vetters School");
+		assertTrue("The school did not show up in the result list", results.contains(expected));
+		
 	}
 	
 	@Test
@@ -93,10 +93,11 @@ public class FunctionalTesting {
 		ArrayList<University> results = userController.searchSchool("!", "!", "!", "!",
 				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 				-1, -1, -1, -1, -1, -1, "!", "!", "!", "!", "!");
-		assertTrue("The results should be 0", results.isEmpty());
+		assertTrue("The results should be 0", results == null);
 	}
 	
 	@Test
+
 	public void testDeactivateUserU14() {
 		adminInteractions.addNewUser("ZVets", "New", "TESTING", "password", 'a');
 		adminInteractions.deactivateUser("TESTING");
@@ -157,4 +158,7 @@ public class FunctionalTesting {
 		ArrayList<University> tempSchool = userController.findSimilarSchools(userController.getSchoolInfo("CASE WESTERN"));
 		assertTrue("The lists should not be the same", !yaleSimilar.equals(tempSchool));
 	}
+	
+	
+
 }

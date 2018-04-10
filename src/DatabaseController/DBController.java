@@ -162,7 +162,6 @@ public class DBController
     if(!univ.getStudyArea5().equals(""))
     	this.addNewEmphases(univ.getSchoolName(), univ.getStudyArea5());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     if(add <= 0) {

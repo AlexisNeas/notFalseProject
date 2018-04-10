@@ -27,7 +27,7 @@ public class AdminControllerTest {
 		adminController = new AdminController();
 		db = new DBController("notfal","csci230");
 		newUser = new User("ZVets", "New", "TESTING", "password", 'a', 'Y');
-		newSchool = new University("Vetters School", "NORTH DAKOTA", "BISMARCK",
+		this.newSchool = new University("Vetters School", "NORTH DAKOTA", "BISMARCK",
 				"STATE", 5, 1.0, 1.0, 1.0, 1.0, 1.0, 1, 1.0, 1.0, 1, 1, 1, "",
 				"", "", "", "");
 	}
@@ -92,7 +92,7 @@ public class AdminControllerTest {
 
 	@Test
 	public void testSetSchoolInfo() throws Exception {
-		db.addNewSchool(newSchool);
+		db.addNewSchool(this.newSchool);
 		University testSchool = adminController.getSchoolInformation(newSchool.getSchoolName());
 		assertTrue("The school's state should currently be North Dakota", 
 				testSchool.getState().equals("NORTH DAKOTA"));
