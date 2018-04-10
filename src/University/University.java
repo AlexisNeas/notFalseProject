@@ -38,47 +38,47 @@ public class University extends UniversityController
   public University()
   {    
     
-    String schoolName = "";
+     schoolName = "";
     
-    String state="";
+     state="";
     
-    String location="";
+     location="";
     
-    String control="";
+     control="";
     
-    int numStudents=0;
+     numStudents=0;
     
-    double percentFemale=0;
+     percentFemale=0;
     
-    double satVerbal=0;
+     satVerbal=0;
     
-    double satMath=0;
+     satMath=0;
     
-    double tuition=0;
+     tuition=0;
     
-    double percentRecFinAid=0;
+     percentRecFinAid=0;
     
-    int numApplicants=0;
+     numApplicants=0;
     
-    double percentAccepted=0;
+     percentAccepted=0;
     
-    double percentEnroll=0;
+     percentEnroll=0;
     
-    int academicScale=0;
+     academicScale=0;
     
-    int social=0;
+     social=0;
     
-    int qualOfLife=0;
+     qualOfLife=0;
     
-    String studyArea1="";
+     studyArea1="";
     
-    String studyArea2="";
+     studyArea2="";
     
-    String studyArea3="";
+     studyArea3="";
     
-    String studyArea4="";
+     studyArea4="";
     
-    String studyArea5="";
+     studyArea5="";
   }
  
   

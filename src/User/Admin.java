@@ -8,31 +8,6 @@ package User;
 public class Admin extends Account
 {
   /**
-   * First name of the admin
-   */
-  private String firstName; 
-  /**
-   * Last name of the admin
-   */
-  private String lastName;
-  /**
-   * username of the admin
-   */
-  private String username;
-  /**
-   * Admin's password
-   */
-  private String password;
-  /**
-   * Clarifies the account is an admin's
-   */
-  private char accountType;
-  /**
-   * Clarifies whether the account is active or not
-   */
-  private char status;
- 
-  /**
    * Basic constructor for creating an Admin object
    * @param loggedIn is a boolean to determine whether the admin is logged in or not
    * @param firstName is the first name of the admin

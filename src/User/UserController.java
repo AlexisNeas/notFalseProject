@@ -15,10 +15,6 @@ public class UserController {
    * Instance of the DBController class
    */
  private DBController dbController;
- /**
-  * Instance of the AccountController class
-  */
- private AccountController accountController;
  
  /**
   * The error that occurred
@@ -35,7 +31,6 @@ public class UserController {
  public UserController()
  {
    this.dbController = new DBController("notfal", "csci230");
-   this.accountController = new AccountController();
  }
  
   /**
