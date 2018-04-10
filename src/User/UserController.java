@@ -72,7 +72,7 @@ public class UserController {
    * 
    * @return the university objects closest to the search in an ArrayList
    */
-  public ArrayList <University> searchSchool(String schoolName, String stateName, String location, String control,
+  public ArrayList<University> searchSchool(String schoolName, String stateName, String location, String control,
           int lowNumberOfStudents, int upNumberOfStudents,  
           double lowPercentFemale, double upPercentFemale, 
           double lowSATVerbal, double upSATVerbal,
@@ -87,7 +87,7 @@ public class UserController {
           int lowSocialScale, int upSocialScale,
           int lowQualityOfLifeScale, int upQualityOfLifeScale,
           String emphases1,String emphases2,String emphases3,
-          String emphases4,String emphases5) throws Exception {
+          String emphases4,String emphases5) {
 
      try {
 		return dbController.searchTwo( schoolName,  stateName,  location,  control,
@@ -107,7 +107,6 @@ public class UserController {
 		          emphases1, emphases2, emphases3,
 		          emphases4, emphases5);
 	} catch (Exception e) {
-		// TODO Auto-generated catch block
 		error = 1;
 	}
 	return null;
@@ -148,9 +147,14 @@ public class UserController {
    * @param school school to be added to user's list
  * @throws Exception 
    */
-  public int addSchool(String user, String school) throws Exception
+  public int addSchool(String user, String school)
   {
-   return dbController.userSaveSchool(user, school); 
+   try {
+	return dbController.userSaveSchool(user, school);
+   } catch (Exception e) {
+	e.printStackTrace();
+	return 0;
+   } 
   }
   
   /**
@@ -173,9 +177,14 @@ public class UserController {
    * @return the list of schools that have been saved by user
  * @throws Exception 
    */
-  public ArrayList<String> getSavedUniversities(String username) throws Exception
+  public ArrayList<String> getSavedUniversities(String username)
   {
-   return dbController.getUserSchools(username); 
+   try {
+	   return dbController.getUserSchools(username);
+   } catch (Exception e) {
+	   error = 2;
+	   return new ArrayList<String>();
+   } 
   }
   
   /**

@@ -80,13 +80,16 @@ public class AdminController {
    * @param school to be added
  * @throws Exception 
    */
-  public void addSchool(University school) throws Exception {
+  public void addSchool(University school) {
     try {
     	dbController.addNewSchool(school);
     }
     catch(IllegalArgumentException e) {
     	//System.out.println("The school name is already taken");
     	error = 2;
+    }
+    catch(Exception e) {
+    	error = 5;
     }
   }
   
