@@ -88,9 +88,6 @@ public class AdminController {
     	//System.out.println("The school name is already taken");
     	error = 2;
     }
-    catch(Exception e) {
-    	error = 5;
-    }
   }
   
   /**
