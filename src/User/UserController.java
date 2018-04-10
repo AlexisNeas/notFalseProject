@@ -190,9 +190,9 @@ public class UserController {
    */
   public void editProfile(String firstName, String lastName, String username, String password, char type, char status)
   {
-	  int changes = 0;
+	  
 	  try {
-		  changes = dbController.setUserInfo(  firstName, lastName, username,  password,  type,  status);  
+		  this.changes = dbController.setUserInfo(  firstName, lastName, username,  password,  type,  status);  
 		  System.out.println("Your changes have been saved.");
 	  }
 	  
