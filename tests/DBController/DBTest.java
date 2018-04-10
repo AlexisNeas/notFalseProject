@@ -78,6 +78,12 @@ public class DBTest
     
     DBController dbCont = new DBController("notfal", "csci230");  
     univ.setSchoolName("UOJ");
+    univ.setStudyArea1("Emp1");
+    univ.setStudyArea2("Emp2");
+    univ.setStudyArea3("Emp3");
+    univ.setStudyArea4("Emp4");
+    univ.setStudyArea5("Emp5");
+    
     dbCont.addNewSchool(univ); 
     univ = dbCont.getSchoolInfo("UOJ");
     

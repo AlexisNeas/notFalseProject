@@ -143,10 +143,11 @@ public class AdminInteractions {
    * @param academicScale the academic scale of the school
    * @param social the scale of social life
    * @param qualOfLife scale of the quality of life of students
+ * @throws Exception 
    */
   public void addSchool(String name, String state, String loc, String control, int numStudents, double perFem,
                         int satVerbal, int satMath, double tuition, double perFinancialAid, int numApplicants,
-                        double perAccepted, double perEnroll, int academicScale, int social, int qualOfLife) {
+                        double perAccepted, double perEnroll, int academicScale, int social, int qualOfLife) throws Exception {
     
     University school = new University(name, state, loc, control, numStudents, perFem,
                                        satVerbal, satMath, tuition, perFinancialAid, numApplicants,

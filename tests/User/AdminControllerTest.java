@@ -47,7 +47,7 @@ public class AdminControllerTest {
 	}
 
 	@Test
-	public void testGetSchoolInformation() {
+	public void testGetSchoolInformation() throws Exception {
 		University expected = newSchool;
 		adminController.addSchool(expected);
 		University result = adminController.getSchoolInformation(expected.getSchoolName());
@@ -73,7 +73,7 @@ public class AdminControllerTest {
 	}
 
 	@Test
-	public void testAddSchool() {
+	public void testAddSchool() throws Exception {
 		ArrayList<String> currentSchools = adminController.viewUniversities();
 		assertTrue("The new school is already in the database", !currentSchools.contains(newSchool.getSchoolName()));
 		adminController.addSchool(newSchool);
@@ -82,7 +82,7 @@ public class AdminControllerTest {
 	}
 	
 	@Test
-	public void testAddSchoolDuplicateName() {
+	public void testAddSchoolDuplicateName() throws Exception {
 		int expected = 2;
 		db.addNewSchool(newSchool);
 		adminController.addSchool(newSchool);
@@ -91,7 +91,7 @@ public class AdminControllerTest {
 	}
 
 	@Test
-	public void testSetSchoolInfo() {
+	public void testSetSchoolInfo() throws Exception {
 		db.addNewSchool(newSchool);
 		University testSchool = adminController.getSchoolInformation(newSchool.getSchoolName());
 		assertTrue("The school's state should currently be North Dakota", 

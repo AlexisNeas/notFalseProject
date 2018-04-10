@@ -140,16 +140,25 @@ public class DBController
   /**
    * Adds a new school to the database.
    * @param University a University object containing the information for the school.
-   * 
-   * @throws IllegalArgumentException if name is already used
+ * @throws Exception 
    */
-  public void addNewSchool(University univ) throws IllegalArgumentException
+  public void addNewSchool(University univ) throws Exception
   {
     int add = univDBlib.university_addUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), 
             	univ.getControl(),  univ.getNumStudents(),  univ.getPercentFemale(), 
             	univ.getSatVerbal(),  univ.getSatMath(),  univ.getTuition(),  univ.getPercentRecFinAid(),
             	univ.getNumApplicants(),  univ.getPercentAccepted(), 
             	univ.getPercentEnroll(),  univ.getAcademicScale(),  univ.getSocial(),  univ.getQualOfLife());
+    if(!univ.getStudyArea1().equals(""))
+    	this.addNewEmphases(univ.getSchoolName(), univ.getStudyArea1());
+    if(!univ.getStudyArea2().equals(""))
+    	this.addNewEmphases(univ.getSchoolName(), univ.getStudyArea2());
+    if(!univ.getStudyArea3().equals(""))
+    	this.addNewEmphases(univ.getSchoolName(), univ.getStudyArea3());
+    if(!univ.getStudyArea4().equals(""))
+    	this.addNewEmphases(univ.getSchoolName(), univ.getStudyArea4());
+    if(!univ.getStudyArea5().equals(""))
+    	this.addNewEmphases(univ.getSchoolName(), univ.getStudyArea5());
     if(add == -1) {
     	throw new IllegalArgumentException();
     }

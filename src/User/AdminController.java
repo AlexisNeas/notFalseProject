@@ -78,8 +78,9 @@ public class AdminController {
    * Adds a new school to the system
    * 
    * @param school to be added
+ * @throws Exception 
    */
-  public void addSchool(University school) {
+  public void addSchool(University school) throws Exception {
     try {
     	dbController.addNewSchool(school);
     }
