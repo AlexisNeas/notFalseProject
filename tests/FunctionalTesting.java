@@ -89,14 +89,6 @@ public class FunctionalTesting {
 	}
 	
 	@Test
-	public void testSearchNoCriteriaU13Alt1() {
-		ArrayList<University> results = userController.searchSchool("!", "!", "!", "!",
-				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-				-1, -1, -1, -1, -1, -1, "!", "!", "!", "!", "!");
-		assertTrue("The results should be 0", results.size() == 0);
-	}
-	
-	@Test
 	public void testDeactivateUserU14() {
 		adminInteractions.addNewUser("ZVets", "New", "TESTING", "password", 'a');
 		adminInteractions.deactivateUser("TESTING");
