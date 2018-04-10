@@ -1,5 +1,4 @@
 package DatabaseController;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import University.*;
@@ -162,7 +161,7 @@ public class DBController
     if(!univ.getStudyArea5().equals(""))
     	this.addNewEmphases(univ.getSchoolName(), univ.getStudyArea5());
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 		}
     if(add <= 0) {
     	throw new IllegalArgumentException();
