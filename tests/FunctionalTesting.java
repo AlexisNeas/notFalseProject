@@ -35,6 +35,7 @@ public class FunctionalTesting {
 		boolean expected = true;
 		assertTrue("The account should be logged on", loggedOn==expected);
 	}
+
 	
 	@Test
 	public void testLogOnU1U2() {
@@ -151,8 +152,9 @@ public class FunctionalTesting {
 				"STATE", 5, 1.0, 1, 1, 1.0, 1.0, 1, 1.0, 1.0, 1, 1, 1, "",
 				"", "", "", "");
 		schoolList = adminController.viewUniversities();
-		assertTrue("The school was not added", schoolList.contains("Vetters School"));
 		dbController.deleteSchool("Vetters School");
+		assertTrue("The school was not added", schoolList.contains("Vetters School"));
+		
 	}
 	
 	@Test
@@ -164,8 +166,9 @@ public class FunctionalTesting {
 		ArrayList<University> results = userController.searchSchool("!", "NORTH DAKOTA", "!", "!",
 				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 				-1, -1, -1, -1, -1, -1, "!", "!", "!", "!", "!");
-		assertTrue("The school did not show up in the result list", results.contains(expected));
 		dbController.deleteSchool("Vetters School");
+		assertTrue("The school did not show up in the result list", results.contains(expected));
+		
 	}
 	
 	@Test
@@ -173,10 +176,11 @@ public class FunctionalTesting {
 		ArrayList<University> results = userController.searchSchool("!", "!", "!", "!",
 				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 				-1, -1, -1, -1, -1, -1, "!", "!", "!", "!", "!");
-		assertTrue("The results should be 0", results.size() == 0);
+		assertTrue("The results should be 0", results == null);
 	}
 	
 	@Test
+
 	public void testDeactivateUserU14() {
 		adminInteractions.addNewUser("ZVets", "New", "TESTING", "password", 'a');
 		adminInteractions.deactivateUser("TESTING");
@@ -198,7 +202,7 @@ public class FunctionalTesting {
 	}
 	
 	@Test
-	public void testViewSavedSchoolsNoSchoolU16Alt1() {
+	public void testViewSavedSchoolsNoSchoolU16Alt1() throws Exception {
 		adminInteractions.addNewUser("ZVets", "New", "TESTING", "password", 'a');
 		ArrayList<String> savedSchools = userController.getSavedUniversities("TESTING");
 		assertTrue("The size of the list should be 0", savedSchools.size() == 0);
@@ -237,4 +241,7 @@ public class FunctionalTesting {
 		ArrayList<University> tempSchool = userController.findSimilarSchools(userController.getSchoolInfo("CASE WESTERN"));
 		assertTrue("The lists should not be the same", !yaleSimilar.equals(tempSchool));
 	}
+	
+	
+
 }

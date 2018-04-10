@@ -16,7 +16,7 @@ public class UserControllerTest {
 	//private User user = new User("Alexis", "Neas","aneas", "password", 'u', 'Y');
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		uct = new UserController();
 		db = new DBController("notfal","csci230");
 		db.setUserInfo("John", "User", "juser", "user", 'u','Y');
@@ -29,7 +29,7 @@ public class UserControllerTest {
 	}*/
 
 	@Test
-	public void testSearchSchoolEmptySearch() throws Exception{
+	public void testSearchSchoolEmptySearch(){
 	uct.searchSchool( "!",  "!",  "!",  "!",
 	          -1,  -1,  -1,  -1, -1,  -1, -1,  -1,
 	          -1,  -1,-1,  -1,-1,  -1, -1,  -1, -1, 
@@ -108,9 +108,10 @@ public class UserControllerTest {
 		assertTrue("Returned no schools.", u.size() == 5);
 	}
 	
-	@Test(expected = Exception.class)
-	public void testGetSavedUniversitiesInvalidUser() throws Exception {
-		uct.getSavedUniversities("INVALIDUSER");
+	@Test
+	public void testGetSavedUniversitiesInvalidUser() {
+		ArrayList<String> empty = uct.getSavedUniversities("INVALIDUSER");
+		assertTrue("The list should be empty", empty.size()==0);
 	}
 	
 	/*@Test
@@ -143,23 +144,29 @@ public class UserControllerTest {
 		assertTrue("No profile for invalid user", a.getUsername().equals(expected));
 	}
 	
-	@Test(expected = Exception.class)
-	public void testAddSchoolInvalidUser() throws Exception {
+	@Test
+
+
+
+	public void testAddSchoolInvalidUser() {
+
 		int addSchool = uct.addSchool("false", "UNIVERSITY OF MINNESOTA");
-		int expected = -1;
+		int expected = 0;
 		assertTrue("User is invalid and school should not be added", addSchool == expected);
 	}
 	
-	@Test(expected = Exception.class)
-	public void testAddSchoolInvalidSchool() throws Exception {
+	@Test
+	public void testAddSchoolInvalidSchool() {
+
 		uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
-		int addSchool = uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
-		int expected = -1;
-		assertTrue("School is already saved and school should not be added", addSchool == expected);
+		int result = uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
+		int expected = 0;
+		assertTrue("School is already saved and school should not be added", result == expected);
 	}	
 	
 	@Test
-	public void testAddSchoolValid() throws Exception {
+	public void testAddSchoolValid()  {
+
 		DBController dc = new DBController("notfal", "csci230");
 		dc.removeSchool("UNIVERSITY OF MINNESOTA", "juser");
 		int addSchool = uct.addSchool("juser", "UNIVERSITY OF MINNESOTA");
