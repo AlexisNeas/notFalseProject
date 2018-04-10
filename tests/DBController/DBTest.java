@@ -61,7 +61,7 @@ public class DBTest
     u.setState("KANSAS");
     dc.setSchoolInformation(u);
     String result = u.getState();
-    System.out.println(result);
+    //System.out.println(result);
     String expected = "KANSAS";
 
     Assert.assertEquals("The info was set correctly " + expected, expected, result);

@@ -227,7 +227,7 @@ public class DBController
 	  
       int edit = univDBlib.user_editUser(username , firstName, lastName, 
                               password, type, status);
-      System.out.println(edit);
+      //System.out.println(edit);
       if(edit <= 0) {
     	  throw new IllegalArgumentException();
       }
@@ -334,7 +334,7 @@ public class DBController
    * Saves a school to a users profile.
    * @param username the username
    * @param the school name to save
- * @return 
+ * @return integer indicating how much was changed in DB
    * @throws Exception 
    */
   public int userSaveSchool(String username,String schoolName) throws Exception
