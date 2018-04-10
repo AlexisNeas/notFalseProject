@@ -145,10 +145,16 @@ public class UserController {
    * 
    * @param user the name of user saving the school
    * @param school school to be added to user's list
+ * @throws Exception 
    */
   public int addSchool(String user, String school)
   {
-   return dbController.userSaveSchool(user, school); 
+   try {
+	return dbController.userSaveSchool(user, school);
+   } catch (Exception e) {
+	e.printStackTrace();
+	return 0;
+   } 
   }
   
   /**
@@ -193,9 +199,9 @@ public class UserController {
    */
   public void editProfile(String firstName, String lastName, String username, String password, char type, char status)
   {
-	  changes = 0;
+	  
 	  try {
-		  changes = dbController.setUserInfo(  firstName, lastName, username,  password,  type,  status);  
+		  this.changes = dbController.setUserInfo(  firstName, lastName, username,  password,  type,  status);  
 		  System.out.println("Your changes have been saved.");
 	  }
 	  

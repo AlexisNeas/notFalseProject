@@ -130,33 +130,45 @@ public class DBController
  String lastName = user.getLastName();
  String password = user.getPassword();
  char type = user.getAccountType();
-    boolean bool = findUser(username);
-    if(!bool)
-    {
-      univDBlib.user_addUser(firstName,lastName, username, 
+     int i =  univDBlib.user_addUser(firstName,lastName, username, 
                              password, type);
-    }
-    else {
+ if(i <= 0)
     	throw new IllegalArgumentException();
-    }
+
   }
   
   /**
    * Adds a new school to the database.
    * @param University a University object containing the information for the school.
-   * 
-   * @throws IllegalArgumentException if name is already used
+ * @throws Exception 
    */
-  public void addNewSchool(University univ) throws IllegalArgumentException
+  public int addNewSchool(University univ) throws IllegalArgumentException
   {
     int add = univDBlib.university_addUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), 
             	univ.getControl(),  univ.getNumStudents(),  univ.getPercentFemale(), 
             	univ.getSatVerbal(),  univ.getSatMath(),  univ.getTuition(),  univ.getPercentRecFinAid(),
             	univ.getNumApplicants(),  univ.getPercentAccepted(), 
             	univ.getPercentEnroll(),  univ.getAcademicScale(),  univ.getSocial(),  univ.getQualOfLife());
-    if(add == -1) {
+    if(!univ.getStudyArea1().equals(""))
+		try {
+			this.addNewEmphases(univ.getSchoolName(), univ.getStudyArea1());
+		
+    if(!univ.getStudyArea2().equals(""))
+    	this.addNewEmphases(univ.getSchoolName(), univ.getStudyArea2());
+    if(!univ.getStudyArea3().equals(""))
+    	this.addNewEmphases(univ.getSchoolName(), univ.getStudyArea3());
+    if(!univ.getStudyArea4().equals(""))
+    	this.addNewEmphases(univ.getSchoolName(), univ.getStudyArea4());
+    if(!univ.getStudyArea5().equals(""))
+    	this.addNewEmphases(univ.getSchoolName(), univ.getStudyArea5());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    if(add <= 0) {
     	throw new IllegalArgumentException();
     }
+    return add;
   }
   
   /**
@@ -169,13 +181,13 @@ public class DBController
   {
 	  ArrayList<String> schools = this.getListOfSchools();
 	  boolean found = false;
-	  int i = -1;
+	  int i = 0;
 	  if(schools.contains(schoolName))
 	  {
 		  found = true;
 		  i = univDBlib.university_addUniversityEmphasis(schoolName, emphases);
 	  }
-	  else if(i <= 0 || found == false)
+	  else if(i <= 0|| found == false)
 	  {
 		  throw new Exception("SCHOOL DOES NOT EXIST.");
 	  }
@@ -212,8 +224,10 @@ public class DBController
    */
   public int setUserInfo(String firstName, String lastName, String username, String password, char type, char status) throws IllegalArgumentException
   {
+	  
       int edit = univDBlib.user_editUser(username , firstName, lastName, 
                               password, type, status);
+      System.out.println(edit);
       if(edit <= 0) {
     	  throw new IllegalArgumentException();
       }
@@ -238,7 +252,7 @@ public class DBController
         for(int j = 0; j<array[i].length;j++)
         {
          ArrayList<String> emphasesArrayList = getUniversityEmphases(array[i][0]);
-            if(emphasesArrayList.size() == 5)
+            if(emphasesArrayList.size() >=5)
             {
              emp1 = emphasesArrayList.get(0);
              emp2 = emphasesArrayList.get(1);
@@ -320,35 +334,18 @@ public class DBController
    * Saves a school to a users profile.
    * @param username the username
    * @param the school name to save
-   * @return an integer representing the status
+ * @return 
+   * @throws Exception 
    */
-  public int userSaveSchool(String username,String schoolName)
+  public int userSaveSchool(String username,String schoolName) throws Exception
   {
-    return univDBlib.user_saveSchool(username, schoolName);
+    int i = univDBlib.user_saveSchool(username, schoolName);
+    if(i == -1)
+    	throw new Exception("ERROR IN DATABASE");
+    return i;
   }
   
-  
-  /**
-   * Finds a user in the database
-   * @param username the username
-   * @return boolean true if found
-   * 
-   */
-  public boolean findUser(String username)
-  {
-    String[][] array = univDBlib.user_getUsers();
-    boolean bool = false;
-    int len = array.length;
-    for(int i = 0; i<len ;i++)
-    {
-      if(array[i][2].equals(username))
-      {
-        bool = true;
-        break;
-      }
-    }
-    return bool;
-  }
+ 
   /**
    * Removes a school from the database
    * @param schoolName the name of the school to remove.
@@ -420,7 +417,7 @@ public class DBController
     String[][] array = univDBlib.user_getUsers();
     //System.out.println(array[0][0]);
     ArrayList<Account> userArray = new ArrayList<Account>();
-    for(int i =0; i<array.length;i++)
+    for(int i = 0; i<array.length;i++)
     {
     Account user = returnUser(array[i][0],array[i][1],array[i][2],array[i][3],array[i][4].charAt(0),array[i][5].charAt(0));
     userArray.add(user);
@@ -703,7 +700,10 @@ public class DBController
     boolean found = false;
     ArrayList<String> list = new ArrayList<String>();
     if(array == null)
-      return list;
+    {
+    	found = false;
+    
+    }
     else
     {
       int len = array.length;
@@ -721,14 +721,15 @@ public class DBController
           
         }
       }
+    }
 
-      if(!found)
+      if(found == false)
       {
     	  throw new Exception("THIS USER DOES NOT EXIST");
       }
       return list;
     }
-  }
+  
   
   /**
    * Search
@@ -837,7 +838,7 @@ public class DBController
 			  if(array[i][1].indexOf(stateName)>=0)
 				  searchTotal++;
 		  if(!location.equals("!"))
-			  if(array[i][2].equals(location))
+			  if(array[i][2].indexOf(location)>=0)
 				  searchTotal++;
 		  if(!control.equals("!"))
 			  if(array[i][3].indexOf(control)>=0)
@@ -1008,15 +1009,7 @@ public class DBController
 		                Integer.parseInt(array[i][15]), //qualoflife
 		                emp1,emp2,emp3,emp4,emp5);
 		        result.add(u);
-		        System.out.println("\tName: " + u.getSchoolName()+"\n\tState: " +
-		                u.getState()+"\n\tLocation: " + u.getLocation()+"\n\tControl: " + u.getControl()+ "\n\tNumber of Students: " +
-		                u.getNumStudents()+ "\n\t% Female: "+ u.getPercentFemale() + "\n\tSAT Verbal: " + u.getSatVerbal() + 
-		                "\n\tSAT Math: " + u.getSatMath()+ "\n\tTuition: " + u.getTuition()+ "\n\t% Receiving Financial Aid: " + 
-		                u.getPercentRecFinAid()+"\n\tNumber of Applications: " + u.getNumApplicants()+ "\n\t% Accepted: " + 
-		                u.getPercentAccepted()+ "\n\t% Enrolled: " + u.getPercentEnroll()  + "\n\tAcademic Scale: " +
-		                u.getAcademicScale() +"\n\tSocial Rating: "+ u.getSocial()+ "\n\tQuality of Life: " + u.getQualOfLife() +
-		                "\n\tStudy Area 1: " + u.getStudyArea1()+"\n\tStudy Area 2: " + u.getStudyArea2()+"\n\tStudy Area 3: " + 
-		                u.getStudyArea3()+"\n\tStudy Area 4: "  + u.getStudyArea4()+"\n\tStudy Area 5: " + u.getStudyArea5());
+		        
 	            }
 		  }
 		  searchTotal = 0;

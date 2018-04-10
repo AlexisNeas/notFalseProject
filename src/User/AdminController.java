@@ -78,6 +78,7 @@ public class AdminController {
    * Adds a new school to the system
    * 
    * @param school to be added
+ * @throws Exception 
    */
   public void addSchool(University school) {
     try {
@@ -86,6 +87,9 @@ public class AdminController {
     catch(IllegalArgumentException e) {
     	//System.out.println("The school name is already taken");
     	error = 2;
+    }
+    catch(Exception e) {
+    	error = 5;
     }
   }
   

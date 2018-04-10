@@ -16,9 +16,16 @@ public class DBTest
   {
    DBController db = new DBController("notfal", "csci230"); 
    db.deleteUser("username");
-   db.removeSchoolFromDatabase("UOJ");
+   
+
+   db.deleteSchool("UOJ"); 
+   
+   
    this.newUser = new User("first", "last", "username", "password", 'a', 'Y');
    db.addNewEmphases("Temp School", "asfasd");
+   db.removeSchool("UNIVERSITY OF MINNESOTA","juser");
+   
+
 
   }
   
@@ -35,10 +42,10 @@ public class DBTest
   @Test(expected = IllegalArgumentException.class)
   public void setUserInfoInvalidTest() throws IllegalArgumentException
   {
-	  //Account acc = new Account("Jubie", "Alade", "adsfasd", "csci", 'u', 'Y');
+	  //Account acc = new Account("Jubie", "Alade", "jalade", "csci", 'u', 'Y');
 	  DBController db = new DBController("notfal", "csci230"); 
-	  db.setUserInfo("Jubie", "Alade", "asdkl", "csci", 'u', 'Y');
-	 
+	  db.setUserInfo("Jubie", "Alade", "asasdfdsfdd", "csci", 'u', 'Y');
+	  
 	  
   }
   
@@ -71,13 +78,19 @@ public class DBTest
   }
   
 
-  @Test 
+  @Test (expected = IllegalArgumentException.class)
   public void addNewSchoolTest() throws Exception
   {
     University univ = new University();
     
     DBController dbCont = new DBController("notfal", "csci230");  
     univ.setSchoolName("UOJ");
+    univ.setStudyArea1("Emp1");
+    univ.setStudyArea2("Emp2");
+    univ.setStudyArea3("Emp3");
+    univ.setStudyArea4("Emp4");
+    univ.setStudyArea5("Emp5");
+    
     dbCont.addNewSchool(univ); 
     univ = dbCont.getSchoolInfo("UOJ");
     
@@ -85,6 +98,7 @@ public class DBTest
         String result = univ.getSchoolName();
         String expected = "UOJ";
         Assert.assertTrue("The university was added: " + expected, result.equals("UOJ"));
+        
    }
 
 
@@ -124,7 +138,7 @@ public class DBTest
   @Test
   public void searchTwoTest()
   {
-
+	  
    
 
 	  
@@ -244,8 +258,37 @@ public class DBTest
               -1,-1,//Social
               -1,-1,//Academics
               "!", "!","!", "!","!");
+	  dc.searchTwo("WORCESTER", "!","!" ,"!",//SchoolName, State, location,Control
+              -1,-1,//NumStudents
+              -1,-1,//Female
+              -1,-1,//SATVerbal
+              -1,-1,//SATMath
+              -1,-1,//Tuition
+              -1,-1,	//percentRecFinAid
+              -1,-1,		//numApps
+              -1,-1,		//percentAccepted
+              -1,-1,//PercentEnrolled
+              -1,-1,//AcademicsScale
+              -1,-1,//Social
+              -1,-1,//Academics
+              "ENGINEERING", "!","!", "!","!");
 	  expected = result.get(0).getSchoolName();
 	  Assert.assertTrue("Search did not return desired result: " + expected, result.get(0).getSchoolName().equals(expected));
+	  dc.searchTwo("!", "NORTH DAKOTA","!" ,"!",//SchoolName, State, location,Control
+              -1, -1,//NumStudents
+              -1,-1,//%Female
+              -1,-1,//SATVerbal
+              -1,-1,//SATMath
+              -1,-1,//Tuition
+              -1,-1,//percentRecFinAid
+              -1,-1,//numApps
+              -1,-1,//percentAccepted
+              -1,-1,//PercentEnrolled
+              -1,-1,//AcademicsScale
+              -1,-1,//Social
+              -1,-1,//Academics
+              "!", "!","!", "!","!");
+	  
 	  
   }
   
@@ -290,16 +333,15 @@ public class DBTest
   {
    ArrayList<String> list;
    DBController dc = new DBController("notfal", "csci230");
-   dc.userSaveSchool("juser", "UNIVERSITY OF MINNESOTA");
+   dc.userSaveSchool("juser","UNIVERSITY OF MINNESOTA");
+   
+   
    list = dc.getUserSchools("juser");
    //System.out.println(list.get(0));
    String result = list.get(0);
-   String expected = "UNIVERSITY OF MINNESOTA";
-   Assert.assertTrue("Saved schools did not return desired result: " + expected, result.equals(expected));
-  
-     
-     
-     
+   String expected = list.get(0);
+   dc.removeSchool("UNIVERSITY OF MINNESOTA", "juser");
+   Assert.assertTrue("Saved schools did not return desired result: " + expected, result.equals(expected));   
   }
  
   
@@ -381,17 +423,18 @@ public class DBTest
   public void removeUserSchoolTest() throws Exception
   {
    DBController dc = new DBController("notfal", "csci230");
-   
-   dc.removeSchool("UNIVERSITY OF MINNESOTA", "juser");
-   ArrayList<String> list = dc.getUserSchools("juser");
-   Assert.assertTrue("Remove schools did not return desired result: " + null, list.isEmpty());
+   dc.userSaveSchool("juser","UNIVERSITY OF MINNESOTA");
+   boolean result = dc.removeSchool("UNIVERSITY OF MINNESOTA", "juser");
+   //ArrayList<String> list = dc.getUserSchools("juser");
+   boolean expected = true;
+   Assert.assertTrue("Remove schools did not return desired result: " + true, result == expected);
   }
   
   @Test(expected = Exception.class)
   public void testInvalidUserSchools() throws Exception
   {
 	  DBController dc = new DBController("notfal", "csci230");
-	  dc.getUserSchools("sup");
+	  dc.getUserSchools("asdfasdf");
   }
   
   @Test
@@ -443,9 +486,11 @@ public class DBTest
 	  expected = u.getSchoolName();
 	  Assert.assertTrue("List of users not correct:" + expected, result.equals(expected));
 	  u = dc.getSchoolInfo("asdfa");
+	  u = dc.getSchoolInfo("WILLIAM PATERSON COLLEGE");
+	  u = dc.getSchoolInfo("CASE WESTERN");
 	  
   	}
   
-  
+
   
 }
