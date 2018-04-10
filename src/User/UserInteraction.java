@@ -91,7 +91,7 @@ public class UserInteraction {
    * @param username the username that the school should be saved to
  * @throws Exception 
    */
-  public void addSchool(String school, String username) throws Exception
+  public void addSchool(String school, String username)
   {
    int response = userController.addSchool(username, school); 
    

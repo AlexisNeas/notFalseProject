@@ -70,7 +70,7 @@ public class AdminController {
     }
     catch(IllegalArgumentException e){
     	//System.out.println("Username is already taken");
-    	error = 1;
+    	this.error = 1;
     }
   }
   
@@ -80,13 +80,16 @@ public class AdminController {
    * @param school to be added
  * @throws Exception 
    */
-  public void addSchool(University school) throws Exception {
+  public void addSchool(University school) {
     try {
     	dbController.addNewSchool(school);
     }
     catch(IllegalArgumentException e) {
     	//System.out.println("The school name is already taken");
     	error = 2;
+    }
+    catch(Exception e) {
+    	error = 5;
     }
   }
   
@@ -157,7 +160,7 @@ public class AdminController {
    * Gets the error that occurred
    */
   public int getError() {
-	  int returnError = error;
+	  int returnError = this.error;
 	  error = 0;
 	  return returnError;
   }
