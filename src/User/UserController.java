@@ -152,7 +152,7 @@ public class UserController {
    try {
 	return dbController.userSaveSchool(user, school);
    } catch (Exception e) {
-	e.printStackTrace();
+	
 	return 0;
    } 
   }

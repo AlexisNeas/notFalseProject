@@ -229,7 +229,7 @@ public class DBController
       if(edit <= 0) {
     	  throw new IllegalArgumentException();
       }
-      else
+      
     	  return edit;
   }
   
