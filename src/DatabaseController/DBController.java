@@ -1091,8 +1091,8 @@ public class DBController
       DBController databasecontroller = new DBController("notfal", "csci230");
       //University u = databasecontroller.getSchoolInfo("UNIVERSITY OF MINNESOTA");
       String[][] info = databasecontroller.univDBlib.user_getUsers();
-      ArrayList<String> emphases = new ArrayList<String>();
-      ArrayList<String> emp = databasecontroller.getEmphases();
+      //ArrayList<String> emphases = new ArrayList<String>();
+      //ArrayList<String> emp = databasecontroller.getEmphases();
       for(int i = 0; i < info.length; i++)
       {for(int j = 0; j<info[i].length;j++)
     	  System.out.println(info[i][j]);

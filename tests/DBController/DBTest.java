@@ -2,7 +2,6 @@ package DBController;
 import University.*;
 import User.*;
 import DatabaseController.*;
-import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.*;
 

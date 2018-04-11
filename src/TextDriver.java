@@ -46,7 +46,6 @@ public class TextDriver {
     AdminInteractions adminInteractions = new AdminInteractions();
     UserInteraction userInteractions = new UserInteraction();
     University university = new University();
-    AdminController adminController = new AdminController();
     Account account;
    
     System.out.println(" ~~ TEST: Log on with invalid username and password ~~");

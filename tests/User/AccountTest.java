@@ -162,9 +162,9 @@ public class AccountTest {
  }
  
  @Test
- public void testEqualsNotAccount() {
-	 String notAcct = "false";
-	 boolean result = acct.equals(notAcct);
+ public void testEqualsFalse() {
+	 Account error = new Account("Last", "First", "pass", "user", 'a', 'N');
+	 boolean result = acct.equals(error);
 	 assertTrue("The accounts should be different but are equal", !result);
  }
 
