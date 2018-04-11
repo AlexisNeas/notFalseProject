@@ -207,7 +207,8 @@ public class UserController {
 	  
 	  catch(IllegalArgumentException e)
 	  {
-		this.error = 2;  
+		this.error = 2; 
+		System.out.println("Error occurred. Profile was not edited");
 	  }
 	  
   }
